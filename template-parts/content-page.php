@@ -10,9 +10,11 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<?php if(get_post_meta($post->ID, '_kaya_hide_title_check', true) !== 'on') { ?>
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 	</header><!-- .entry-header -->
+	<?php } ?>
 
 	<div class="entry-content">
 		<?php

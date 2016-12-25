@@ -3,12 +3,12 @@ Theme Name: Kaya
 Theme URI: https://www.anphira.com/kaya-wordpress-theme/
 Author: Anphira, LLC
 Author URI: https://www.anphira.com/
-Description: Starter theme to build fabulous & functional websites.
+Description: Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It's ready to work with your page builder and has built-in support for Visual Composer. You can view the setup instructions by going to the Customizer and selecting "Need Setup Help?".
 Version: 0.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kaya
-Tags:
+Tags: one-column, two-columns, right-sidebar, left-sidebar, flexible-header, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, sticky-post, theme-options, translation-ready, custom-background, post-formats, threaded-comments, full-width-template
 
 This theme, like WordPress, is licensed under the GPL.
 
@@ -48,7 +48,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Normalize
 --------------------------------------------------------------*/
 html {
-	font-family: sans-serif;
+	font-family: Verdana, sans-serif;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust:     100%;
 }
@@ -92,11 +92,25 @@ template {
 
 a {
 	background-color: transparent;
+	text-decoration: none;
 }
 
 a:active,
 a:hover {
 	outline: 0;
+}
+
+a.button, a.button:visited {
+	display: inline-block;
+	background: #333;
+	color: white;
+	text-decoration: none;
+	padding: 7px 15px;
+}
+
+a.button:hover, a.button:focus, a.button:active {
+	background: #777;
+	color: white;
 }
 
 abbr[title] {
@@ -213,6 +227,13 @@ input {
 	line-height: normal;
 }
 
+input[type=text],
+input[type=email],
+input[type=tel] {
+	width: 100%;
+	max-width: 100%;
+}
+
 input[type="checkbox"],
 input[type="radio"] {
 	box-sizing: border-box;
@@ -267,7 +288,7 @@ input,
 select,
 textarea {
 	color: #404040;
-	font-family: sans-serif;
+	font-family: Verdana, sans-serif;
 	font-size: 16px;
 	font-size: 1rem;
 	line-height: 1.5;
@@ -423,27 +444,18 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-	border: 1px solid;
-	border-color: #ccc #ccc #bbb;
-	border-radius: 3px;
-	background: #e6e6e6;
-	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 15px 17px rgba(255, 255, 255, 0.5), inset 0 -5px 12px rgba(0, 0, 0, 0.05);
-	color: rgba(0, 0, 0, .8);
-	font-size: 12px;
-	font-size: 0.75rem;
-	line-height: 1;
-	padding: .6em 1em .4em;
-	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+	display: inline-block;
+	background: #333;
+	color: white;
+	text-decoration: none;
+	padding: 7px 15px;
+	border: none;
 }
 
 button:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover,
-input[type="submit"]:hover {
-	border-color: #ccc #bbb #aaa;
-	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 15px 17px rgba(255, 255, 255, 0.8), inset 0 -5px 12px rgba(0, 0, 0, 0.02);
-}
-
+input[type="submit"]:hover,
 button:focus,
 input[type="button"]:focus,
 input[type="reset"]:focus,
@@ -452,8 +464,8 @@ button:active,
 input[type="button"]:active,
 input[type="reset"]:active,
 input[type="submit"]:active {
-	border-color: #aaa #bbb #bbb;
-	box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.5), inset 0 2px 5px rgba(0, 0, 0, 0.15);
+	color: white;
+	background: #777;
 }
 
 input[type="text"],
@@ -740,7 +752,7 @@ a:active {
 # Widgets
 --------------------------------------------------------------*/
 .widget {
-	margin: 0 0 1.5em;
+	margin: 0 0 0.5em;
 }
 
 /* Make sure select elements fit in widgets. */
@@ -758,10 +770,6 @@ a:active {
 	display: block;
 }
 
-.hentry {
-	margin: 0 0 1.5em;
-}
-
 .byline,
 .updated:not(.published) {
 	display: none;
@@ -770,12 +778,6 @@ a:active {
 .single .byline,
 .group-blog .byline {
 	display: inline;
-}
-
-.page-content,
-.entry-content,
-.entry-summary {
-	margin: 1.5em 0 0;
 }
 
 .page-links {
@@ -933,7 +935,16 @@ object {
 }
 #masthead nav .container {
 	padding: 0 15px;
-	overflow: hidden;
+	overflow: visible;
+}
+
+@media screen and (min-width: 768px) {
+	#masthead.sticky-header {
+		position: fixed;
+		z-index: 1000;
+		width: 100%;
+		background: #fff;
+	}
 }
 
 
@@ -951,10 +962,12 @@ object {
 #colophon .container {
 	padding-left: 15px;
 	padding-right: 15px;
+	overflow: hidden;
 }
 .footer-columns {
 	clear: both;
 	padding: 22px 0 0;
+	overflow: hidden;
 }
 .footer-columns.container {
 	margin: auto;
@@ -974,12 +987,28 @@ body .fa:before {
 	left: 0;
 }
 body .fa {
-	font-family: sans-serif;
 	padding-left: 1.5em;
 	font-size: 1rem;
 	line-height: 1.5;
 	position: relative;
 }
+
+/*--------------------------------------------------------------
+# Social Media Icons
+--------------------------------------------------------------*/
+.social-icons .fa:before {
+	width: 1.5em;
+	text-align: center;
+}
+.social-icons .fa {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 50%;
+}
+.social-icons .social-icon-single {
+	margin-right: 10px;
+}
+
 
 /*--------------------------------------------------------------
 # Visual Composer Support
@@ -995,6 +1024,9 @@ body .fa {
 body .carousel-anything-container .vc_row {
 	margin: auto;
 }
+body .wpb_button, body .wpb_content_element, body ul.wpb_thumbnails-fluid>li {
+	margin-bottom: 0;
+}
 
 
 /*--------------------------------------------------------------
@@ -1006,81 +1038,94 @@ body .white-text, body .white-text p, body .white-text h1, body .white-text h2, 
 .text-center {
 	text-align: center;
 }
+.text-right {
+	text-align: right;
+}
 
 /*--------------------------------------------------------------
 # 12 column grid CSS Classes
 --------------------------------------------------------------*/
-.columns-12, .columns-11, .columns-10, .columns-9, .columns-8, .columns-7, .columns-6, .columns-5, .columns-4, .columns-3, .columns-2, .columns-1, .columns-one-fifth, .columns-one-seventh, .columns-one-eighth, .columns-one-ninth {
+@media screen and (min-width: 768px) {
+	.columns-12, .columns-11, .columns-10, .columns-9, .columns-8, .columns-7, .columns-6, .columns-5, .columns-4, .columns-3, .columns-2, .columns-1, .columns-one-fifth, .columns-one-seventh, .columns-one-eighth, .columns-one-ninth {
+		float: left;
+		margin-right: 2%;
+	}
+}
+.last {
+	margin-right: 0;
+}
+.columns-12-non-responsive, .columns-11-non-responsive, .columns-10-non-responsive, .columns-9-non-responsive, .columns-8-non-responsive, .columns-7-non-responsive, .columns-6-non-responsive, .columns-5-non-responsive, .columns-4-non-responsive, .columns-3-non-responsive, .columns-2-non-responsive, .columns-1-non-responsive, .columns-one-fifth-non-responsive, .columns-one-seventh-non-responsive, .columns-one-eighth-non-responsive, .columns-one-ninth-non-responsive {
 	float: left;
+	margin-right: 2%;
 }
 
-.columns-12 {
-	max-width: 100%;
+.columns-12, .columns-12-non-responsive {
+	width: 100%;
 }
 
-.columns-11 {
-	max-width: 91.66%;
+.columns-11, .columns-11-non-responsive {
+	width: 90.66%;
 }
 
-.columns-10 {
-	max-width: 83.33%;
+.columns-10, .columns-10-non-responsive {
+	width: 83%;
 }
 
-.columns-9 {
-	max-width: 75%;
+.columns-9, .columns-9-non-responsive {
+	width: 74.5%;
 }
 
-.columns-8 {
-	max-width: 66.66%;
+.columns-8, .columns-8-non-responsive {
+	width: 66%;
 }
 
-.columns-7 {
-	max-width: 58.33%;
+.columns-7, .columns-7-non-responsive {
+	width: 57.5%;
 }
 
-.columns-6 {
-	max-width: 50%;
+.columns-6, .columns-6-non-responsive {
+	width: 49%;
 }
 
-.columns-5 {
-	max-width: 41.66%;
+.columns-5, .columns-5-non-responsive {
+	width: 40.5%;
 }
 
-.columns-4 {
-	max-width: 33.33%;
+.columns-4, .columns-4-non-responsive {
+	width: 32%;
 }
 
-.columns-3 {
-	max-width: 25%;
+.columns-3, .columns-3-non-responsive {
+	width: 23.5%;
 }
 
-.columns-2 {
-	max-width: 16.66%;
+.columns-2, .columns-2-non-responsive {
+	width: 15%;
 }
 
-.columns-1 {
-	max-width: 8.33%;
+.columns-1, .columns-1-non-responsive {
+	width: 7.33%;
 }
 
-.columns-one-fifth {
-	max-width: 20%;
+.columns-one-fifth, .columns-one-fifth-non-responsive {
+	width: 20%;
 }
 
-.columns-one-seventh {
-	max-width: 14.28%;
+.columns-one-seventh, .columns-one-seventh-non-responsive {
+	width: 14.28%;
 }
 
-.columns-one-eighth {
-	max-width: 12.5%;
+.columns-one-eighth, .columns-one-eighth-non-responsive {
+	width: 12.5%;
 }
 
-.columns-one-ninth {
-	max-width: 11.11%;
+.columns-one-ninth, .columns-one-ninth-non-responsive {
+	width: 11.11%;
 }
 
 @media screen and (max-width: 767px) {
 	.columns-12, .columns-11, .columns-10, .columns-9, .columns-8, .columns-7, .columns-6, .columns-5, .columns-4, .columns-3, .columns-2, .columns-1, .columns-one-fifth, .columns-one-seventh, .columns-one-eighth, .columns-one-ninth {
 		float: none;
-		max-width: 100%;
+		width: 100%;
 	}
 }

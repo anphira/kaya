@@ -7,6 +7,83 @@
  * @package Kaya
  */
 
+
+/**
+ * Add notification for theme updates
+ */
+include("inc/update_notifier.php");
+
+
+/**
+ * Registers an editor stylesheet for the theme.
+ */
+function kaya_theme_add_editor_styles() {
+    add_editor_style( 'style.css' );
+}
+add_action( 'admin_init', 'kaya_theme_add_editor_styles' );
+
+
+/***
+ * Add notice to admin to welcome people to theme
+ */
+function kaya_welcome_notice() {
+    ?>
+    <div class="notice notice-success is-dismissible">
+        <p><?php _e( 'Thank you for installing the Kaya WordPress theme!<br />If you are new to the theme, please <a href="https://www.anphira.com/kaya-wordpress-theme/kaya-setup-guide/">click here to read the setup instructions</a>, if are already familiar with Kaya then click the x on the right to dismiss this notice. You can always view the setup instructions by going to the Customizer and selecting "Need Setup Help?"', 'kaya' ); ?></p>
+    </div>
+    <?php
+}
+add_action( 'admin_notices', 'kaya_welcome_notice' );
+
+if( ! function_exists('kaya_social_icons') ) :
+
+/**
+ * Displays social icons with Font Awesome icons
+ */
+function kaya_social_icons() {
+	echo '<div class="social-icons">';
+		if( get_theme_mod( 'kaya_facebook' ) != '' ) {
+			echo '<a class="social-icon-single" href="' . get_theme_mod( 'kaya_facebook' ) . '"><i class="fa fa-facebook"></i></a>';
+		}
+		if( get_theme_mod( 'kaya_twitter' ) != '' ) {
+			echo '<a class="social-icon-single" href="' . get_theme_mod( 'kaya_twitter' ) . '"><i class="fa fa-twitter"></i></a>';
+		}
+		if( get_theme_mod( 'kaya_linkedin' ) != '' ) {
+			echo '<a class="social-icon-single" href="' . get_theme_mod( 'kaya_linkedin' ) . '"><i class="fa fa-linkedin"></i></a>';
+		}
+		if( get_theme_mod( 'kaya_google_plus' ) != '' ) {
+			echo '<a class="social-icon-single" href="' . get_theme_mod( 'kaya_google_plus' ) . '"><i class="fa fa-google-plus"></i></a>';
+		}
+		if( get_theme_mod( 'kaya_skype' ) != '' ) {
+			echo '<a class="social-icon-single" href="' . get_theme_mod( 'kaya_skype' ) . '"><i class="fa fa-skype"></i></a>';
+		}
+		if( get_theme_mod( 'kaya_youtube' ) != '' ) {
+			echo '<a class="social-icon-single" href="' . get_theme_mod( 'kaya_youtube' ) . '"><i class="fa fa-youtube"></i></a>';
+		}
+		if( get_theme_mod( 'kaya_vimeo' ) != '' ) {
+			echo '<a class="social-icon-single" href="' . get_theme_mod( 'kaya_vimeo' ) . '"><i class="fa fa-vimeo"></i></a>';
+		}
+		if( get_theme_mod( 'kaya_instagram' ) != '' ) {
+			echo '<a class="social-icon-single" href="' . get_theme_mod( 'kaya_instagram' ) . '"><i class="fa fa-instagram"></i></a>';
+		}
+		if( get_theme_mod( 'kaya_pinterest' ) != '' ) {
+			echo '<a class="social-icon-single" href="' . get_theme_mod( 'kaya_pinterest' ) . '"><i class="fa fa-pinterest-p"></i></a>';
+		}
+		if( get_theme_mod( 'kaya_yelp' ) != '' ) {
+			echo '<a class="social-icon-single" href="' . get_theme_mod( 'kaya_yelp' ) . '"><i class="fa fa-yelp"></i></a>';
+		}
+		if( get_theme_mod( 'kaya_rss' ) != '' ) {
+			echo '<a class="social-icon-single" href="' . get_theme_mod( 'kaya_rss' ) . '"><i class="fa fa-rss"></i></a>';
+		}
+		if( get_theme_mod( 'kaya_email' ) != '' ) {
+			echo '<a class="social-icon-single" href="' . get_theme_mod( 'kaya_email' ) . '"><i class="fa fa-envelope"></i></a>';
+		}
+	echo '</div>';
+}
+
+endif;
+
+
 if ( ! function_exists( 'kaya_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -92,8 +169,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here.', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Posts Sidebar', 'kaya' ),
@@ -101,8 +178,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here.', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Single Post Sidebar', 'kaya' ),
@@ -110,8 +187,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here.', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'WooCommerce Sidebar', 'kaya' ),
@@ -119,8 +196,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here.', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Header Column 2', 'kaya' ),
@@ -128,8 +205,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here.', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Header Column 3', 'kaya' ),
@@ -137,8 +214,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here.', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Header Column 4', 'kaya' ),
@@ -146,8 +223,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here.', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer Column 1', 'kaya' ),
@@ -155,8 +232,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here.', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer Column 2', 'kaya' ),
@@ -164,8 +241,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here.', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer Column 3', 'kaya' ),
@@ -173,8 +250,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here.', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer Column 4', 'kaya' ),
@@ -182,8 +259,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here.', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
 	) );
 }
 add_action( 'widgets_init', 'kaya_widgets_init' );
@@ -223,6 +300,7 @@ function kaya_page_settings_display_callback( $post ) {
     $values = get_post_custom( $post->ID );
     $selected = isset( $values['kaya_sidebar_setting'] ) ? esc_attr( $values['kaya_sidebar_setting'][0] ) : '';
     $check = get_post_meta($post->ID, '_kaya_full_width_check', true);
+    $check_title = get_post_meta($post->ID, '_kaya_hide_title_check', true);
     
     ?>
     <select id="kaya_sidebar_setting" name="kaya_sidebar_setting">
@@ -235,6 +313,10 @@ function kaya_page_settings_display_callback( $post ) {
 	<p>
         <input type="checkbox" id="kaya_full_width_check" name="kaya_full_width_check" <?php checked( $check, 'on' ); ?> />
         <label for="kaya_full_width_check">Make page full width (useful for Landing Pages)</label>
+    </p>
+	<p>
+        <input type="checkbox" id="kaya_hide_title_check" name="kaya_hide_title_check" <?php checked( $check_title, 'on' ); ?> />
+        <label for="kaya_hide_title_check">Hide the page title</label>
     </p>
 	<?php 
 }
@@ -267,6 +349,8 @@ function kaya_page_settings_save_meta_box( $post_id ) {
 	update_post_meta( $post_id, '_kaya_sidebar_setting', $mydata );
 	
 	update_post_meta( $post_id, '_kaya_full_width_check', ($_POST['kaya_full_width_check']) ? 'on' : 'off' );
+	
+	update_post_meta( $post_id, '_kaya_hide_title_check', ($_POST['kaya_hide_title_check']) ? 'on' : 'off' );
 }
 add_action( 'save_post', 'kaya_page_settings_save_meta_box' );
 
@@ -275,11 +359,11 @@ add_action( 'save_post', 'kaya_page_settings_save_meta_box' );
  * Enqueue scripts and styles.
  */
 function kaya_scripts() {
-	wp_enqueue_style( 'kaya-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'kaya-style', get_stylesheet_uri(), false, get_theme_mod( 'kaya_stylesheet_version' ));
 
-	wp_enqueue_script( 'kaya-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	wp_enqueue_script( 'kaya-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20161215', true );
 
-	wp_enqueue_script( 'kaya-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'kaya-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20161215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -320,3 +404,26 @@ function enqueue_our_required_stylesheets(){
 	wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
 }
 add_action('wp_enqueue_scripts','enqueue_our_required_stylesheets');
+
+
+/**
+ * Function to determine good contrast color (black or white)
+ */
+function readableColour($bg){
+    $r = hexdec(substr($bg,0,2));
+    $g = hexdec(substr($bg,2,2));
+    $b = hexdec(substr($bg,4,2));
+
+    $contrast = sqrt(
+        $r * $r * .241 +
+        $g * $g * .691 +
+        $b * $b * .068
+    );
+
+    if($contrast > 130){
+        return '000000';
+    }else{
+        return 'FFFFFF';
+    }
+}
+

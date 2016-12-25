@@ -32,6 +32,128 @@ function kaya_custom_header_setup() {
 }
 add_action( 'after_setup_theme', 'kaya_custom_header_setup' );
 
+function kaya_customizer_settings() {
+?>
+<!-- Load Customizer CSS settings -->
+<style>
+
+body, p, button, input, select, textarea {
+	color: <?php echo get_theme_mod( 'kaya_text_color' ) ?>;
+}
+h1, h2, h3, h4, h5, h6 {
+	color: <?php echo get_theme_mod( 'kaya_heading_color' ) ?>;
+}
+h1 {
+	font-size: <?php echo get_theme_mod( 'kaya_heading_1' ) ?>px;
+}
+h2 {
+	font-size: <?php echo get_theme_mod( 'kaya_heading_2' ) ?>px;
+}
+h3 {
+	font-size: <?php echo get_theme_mod( 'kaya_heading_3' ) ?>px;
+}
+h4 {
+	font-size: <?php echo get_theme_mod( 'kaya_heading_4' ) ?>px;
+}
+h5 {
+	font-size: <?php echo get_theme_mod( 'kaya_heading_5' ) ?>px;
+}
+h6 {
+	font-size: <?php echo get_theme_mod( 'kaya_heading_6' ) ?>px;
+}
+p, body {
+	font-size: <?php echo get_theme_mod( 'kaya_paragraph' ) ?>px;
+}
+.social-icons .fa {
+	background: <?php echo get_theme_mod( 'kaya_social_icon_background_color' ) ?>;
+	font-size: <?php echo get_theme_mod( 'kaya_social_icon_size' ) ?>px;
+}
+.social-icons .fa:hover {
+	background: <?php echo get_theme_mod( 'kaya_social_icon_color' ) ?>;
+}
+.social-icons .fa:before {
+	font-size: <?php echo get_theme_mod( 'kaya_social_icon_size' ) ?>px;
+	color: <?php echo get_theme_mod( 'kaya_social_icon_color' ) ?>;
+}
+.social-icons .fa:hover:before {
+	color: <?php echo get_theme_mod( 'kaya_social_icon_background_color' ) ?>;
+}
+body a, body a:visited {
+	color: <?php echo get_theme_mod( 'kaya_link_color' ) ?>;
+}
+body a:hover, body a:focus, body a:active {
+	color: <?php echo get_theme_mod( 'kaya_link_hover_color' ) ?>;
+}
+#masthead {
+	background: <?php echo get_theme_mod( 'kaya_header_background_color' ) ?>;
+}
+#colophon {
+	background: <?php echo get_theme_mod( 'kaya_footer_background_color' ) ?>;
+}
+#colophon .site-info {
+	background: <?php echo get_theme_mod( 'kaya_lower_footer_background_color' ) ?>;
+}
+nav {
+	background: <?php echo get_theme_mod( 'kaya_menu_background_color' ) ?>;
+}
+body a.button, body a.button:visited, body input[type=submit] {
+	background: <?php echo get_theme_mod( 'kaya_button_color' ) ?>;
+	color: <?php echo get_theme_mod( 'kaya_button_text_color' ) ?>;
+}
+body a.button:hover, body a.button:focus, body a.button:active, body input[type=submit]:hover, body input[type=submit]:focus, body input[type=submit]:active {
+	background: <?php echo get_theme_mod( 'kaya_button_hover_color' ) ?>;
+	color: <?php echo get_theme_mod( 'kaya_button_hover_text_color' ) ?>;
+}
+
+<?php 
+$kaya_grid_width = get_theme_mod( 'kaya_grid_width' ); 
+$kaya_grid_width = ($kaya_grid_width > 320) ? $kaya_grid_width : 1140;
+?>
+<?php if(get_theme_mod( 'kaya_content_in_grid' ) == true) { ?>
+	#content {
+		max-width: <?php echo $kaya_grid_width; ?>px;
+		margin: auto;
+	}
+<?php } ?>
+<?php if(get_theme_mod( 'kaya_header_in_grid' ) == true) { ?>
+	#masthead .container, nav .container {
+		max-width: <?php echo $kaya_grid_width; ?>px;
+		margin: auto;
+	}
+<?php } ?>
+<?php if(get_theme_mod( 'kaya_footer_in_grid' ) == true) { ?>
+	#colophon .container {
+		max-width: <?php echo $kaya_grid_width; ?>px;
+		margin: auto;
+	}
+<?php } ?>
+.vc_row.vc_row-fluid, .footer-columns.container {
+	max-width: <?php echo $kaya_grid_width; ?>px;
+}
+
+
+
+</style>
+<!-- End Load Customizer CSS settings -->
+
+<!-- Add Google Analytics -->
+<?php if(get_theme_mod( 'kaya_google_analytics' ) !== '') { ?>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '<?php echo get_theme_mod( 'kaya_google_analytics' ) ?>', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<?php } ?>
+<!-- End Add Google Analytics -->
+<?php 
+}
+add_action( 'after_setup_theme', 'kaya_customizer_settings' );
+
 if ( ! function_exists( 'kaya_header_style' ) ) :
 /**
  * Styles the header image and text displayed on the blog.
