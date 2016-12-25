@@ -47,7 +47,7 @@ add_action('customize_register', 'kaya_add_help_options');
  */
 function kaya_add_logo($wp_customize) {
 	// add a setting for the site logo
-	$wp_customize->add_setting('kaya_logo', array('sanitize_callback' => ''));
+	$wp_customize->add_setting('kaya_logo', array('sanitize_callback' => 'kaya_sanitize_logo'));
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'kaya_logo',
 		array(
 			'label' =>  __( 'Upload Logo', 'kaya' ),
@@ -57,7 +57,7 @@ function kaya_add_logo($wp_customize) {
 	) );
 
 	// add a setting for the site retina logo
-	$wp_customize->add_setting('kaya_retina_logo', array('sanitize_callback' => ''));
+	$wp_customize->add_setting('kaya_retina_logo', array('sanitize_callback' => 'kaya_sanitize_logo'));
 	// Add a control to upload the retina logo
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'kaya_retina_logo',
 		array(
@@ -68,6 +68,12 @@ function kaya_add_logo($wp_customize) {
 	) );
 }
 add_action('customize_register', 'kaya_add_logo');
+
+function kaya_sanitize_logo( $value ) {
+    
+ 
+    return $value;
+}
 
 /**
  * Adding Colors Options
@@ -313,6 +319,16 @@ function kaya_add_general($wp_customize) {
 		)
 	) );
 	
+	$wp_customize->add_setting('kaya_blog_excerpt');
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_blog_excerpt', array(
+		'label'           => __( 'Limit the Blog Excerpts', 'kaya' ),
+		'description'	  => __( 'Enter a value here to set the number of words used in an excerpt on the main blog archive pages. Leave blank to display full blog posts.', 'kaya'),
+		'type'            => 'number',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_blog_excerpt',
+		)
+	) );
+	
 	$wp_customize->add_setting('kaya_stylesheet_version');
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_stylesheet_version', array(
 		'label'           => __( 'Stylesheet Version', 'kaya' ),
@@ -434,7 +450,7 @@ function kaya_add_seo($wp_customize) {
 		'priority' => 140,
 	));
 	
-	$wp_customize->add_setting('kaya_schema_type');
+	$wp_customize->add_setting('kaya_schema_type', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_schema_type', array(
 		'label'           => __( 'Schema Type', 'kaya' ),
 		'description'	  => __( '<a href="https://docs.google.com/spreadsheets/d/1Ed6RmI01rx4UdW40ciWgz2oS_Kx37_-sPi7sba_jC3w/edit#gid=0">Click here</a> to view type options. For example, if you are a dentist look for Dentist in the left column and then see "http://schema.org/Dentist" in the right column, you would enter just "Dentist" (not the http://schema.org/ part)', 'kaya'),
@@ -444,7 +460,7 @@ function kaya_add_seo($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_schema_additional_type');
+	$wp_customize->add_setting('kaya_schema_additional_type', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_schema_additional_type', array(
 		'label'           => __( 'Schema Additional Type', 'kaya' ),
 		'description'	  => __( 'If the above type is not specific enough, add your additional type here. To find your additional type look for a wikipedia article describing what you do. For example, a web developer would find http://en.wikipedia.org/wiki/Web_developer and then replace the wikipedia part to get http://www.productontology.org/id/Web_developer', 'kaya'),
@@ -454,7 +470,7 @@ function kaya_add_seo($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_schema_name');
+	$wp_customize->add_setting('kaya_schema_name', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_schema_name', array(
 		'label'           => __( 'Schema Name', 'kaya' ),
 		'description'	  => __( 'If the name you want used in your schema is different than your site name, add it here.', 'kaya' ),
@@ -464,7 +480,7 @@ function kaya_add_seo($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_schema_description');
+	$wp_customize->add_setting('kaya_schema_description', array('sanitize_callback' => 'esc_textarea'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_schema_description', array(
 		'label'           => __( 'Description', 'kaya' ),
 		'description'	  => __( 'A short description. For example, if you are a dentist, then a short description of your practice.', 'kaya' ),
@@ -474,7 +490,7 @@ function kaya_add_seo($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_schema_address_street');
+	$wp_customize->add_setting('kaya_schema_address_street', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_schema_address_street', array(
 		'label'           => __( 'Address - Street', 'kaya' ),
 		'description'	  => __( 'Enter your street address, for example "123 Main St"', 'kaya' ),
@@ -484,7 +500,7 @@ function kaya_add_seo($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_schema_address_locality');
+	$wp_customize->add_setting('kaya_schema_address_locality', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_schema_address_locality', array(
 		'label'           => __( 'Address - Locality', 'kaya' ),
 		'description'	  => __( 'Enter your locality, for example "New York City"', 'kaya' ),
@@ -494,7 +510,7 @@ function kaya_add_seo($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_schema_address_region');
+	$wp_customize->add_setting('kaya_schema_address_region', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_schema_address_region', array(
 		'label'           => __( 'Address - Region', 'kaya' ),
 		'description'	  => __( 'Enter your region, for example "New York"', 'kaya' ),
@@ -504,7 +520,7 @@ function kaya_add_seo($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_schema_address_postal');
+	$wp_customize->add_setting('kaya_schema_address_postal', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_schema_address_postal', array(
 		'label'           => __( 'Address - Postal Code', 'kaya' ),
 		'description'	  => __( 'Enter your postal code, for example "12345"', 'kaya' ),
@@ -514,7 +530,7 @@ function kaya_add_seo($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_schema_address_country');
+	$wp_customize->add_setting('kaya_schema_address_country', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_schema_address_country', array(
 		'label'           => __( 'Address - Country', 'kaya' ),
 		'description'	  => __( 'Enter your country, for example "USA"', 'kaya' ),
@@ -524,17 +540,17 @@ function kaya_add_seo($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_schema_map');
+	$wp_customize->add_setting('kaya_schema_map', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_schema_map', array(
 		'label'           => __( 'Map URL', 'kaya' ),
 		'description'	  => __( 'Enter your google maps URL', 'kaya' ),
-		'type'            => 'text',
+		'type'            => 'url',
 		'section'         => 'kaya_seo',
 		'settings'   => 'kaya_schema_map',
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_schema_latitude');
+	$wp_customize->add_setting('kaya_schema_latitude', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_schema_latitude', array(
 		'label'           => __( 'Latitute', 'kaya' ),
 		'description'	  => __( 'Enter your latitude, for example "41.1573"', 'kaya' ),
@@ -544,7 +560,7 @@ function kaya_add_seo($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_schema_longitude');
+	$wp_customize->add_setting('kaya_schema_longitude', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_schema_longitude', array(
 		'label'           => __( 'Longitude', 'kaya' ),
 		'description'	  => __( 'Enter your latitude, for example "-75.8901"', 'kaya' ),
@@ -554,7 +570,7 @@ function kaya_add_seo($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_schema_phone');
+	$wp_customize->add_setting('kaya_schema_phone', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_schema_phone', array(
 		'label'           => __( 'Phone Number', 'kaya' ),
 		'description'	  => __( 'For example "570-555-1234"', 'kaya' ),
@@ -564,7 +580,7 @@ function kaya_add_seo($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_schema_open_hours_1');
+	$wp_customize->add_setting('kaya_schema_open_hours_1', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_schema_open_hours_1', array(
 		'label'           => __( 'Open Hours', 'kaya' ),
 		'description'	  => __( 'The primary hours you are open. For example if you are open Monday through Thursday 9am - 5pm you would put "Mo,Tu,We,Th 09:00-17:00"', 'kaya' ),
@@ -573,7 +589,7 @@ function kaya_add_seo($wp_customize) {
 		'settings'   => 'kaya_schema_open_hours_1',
 		)
 	) );
-	$wp_customize->add_setting('kaya_schema_open_hours_2');
+	$wp_customize->add_setting('kaya_schema_open_hours_2', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_schema_open_hours_2', array(
 		'label'           => __( 'Additional Open Hours', 'kaya' ),
 		'description'	  => __( 'For example if you are also open Friday 9am - 12pm you would put "Fr 09:00-12:00"', 'kaya' ),
@@ -583,7 +599,7 @@ function kaya_add_seo($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_schema_review_value');
+	$wp_customize->add_setting('kaya_schema_review_value', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_schema_review_value', array(
 		'label'           => __( 'Average Review Value', 'kaya' ),
 		'type'            => 'number',
@@ -592,7 +608,7 @@ function kaya_add_seo($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_schema_review_count');
+	$wp_customize->add_setting('kaya_schema_review_count', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_schema_review_count', array(
 		'label'           => __( 'Number of Reviews', 'kaya' ),
 		'type'            => 'number',
@@ -616,7 +632,7 @@ function kaya_add_social($wp_customize) {
 	));
 	
 	// add a setting for the footer columns to show
-	$wp_customize->add_setting('kaya_facebook');
+	$wp_customize->add_setting('kaya_facebook', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_facebook', array(
 		'label'           => __( 'Facebook', 'kaya' ),
 		'type'            => 'url',
@@ -626,7 +642,7 @@ function kaya_add_social($wp_customize) {
 	) );
 	
 	// add a setting for the footer columns to show
-	$wp_customize->add_setting('kaya_twitter');
+	$wp_customize->add_setting('kaya_twitter', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_twitter', array(
 		'label'           => __( 'Twitter', 'kaya' ),
 		'type'            => 'url',
@@ -636,7 +652,7 @@ function kaya_add_social($wp_customize) {
 	) );
 	
 	// add a setting for the footer columns to show
-	$wp_customize->add_setting('kaya_linkedin');
+	$wp_customize->add_setting('kaya_linkedin', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_linkedin', array(
 		'label'           => __( 'LinkedIn', 'kaya' ),
 		'type'            => 'url',
@@ -646,7 +662,7 @@ function kaya_add_social($wp_customize) {
 	) );
 	
 	// add a setting for the footer columns to show
-	$wp_customize->add_setting('kaya_google_plus');
+	$wp_customize->add_setting('kaya_google_plus', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_google_plus', array(
 		'label'           => __( 'Google Plus', 'kaya' ),
 		'type'            => 'url',
@@ -656,7 +672,7 @@ function kaya_add_social($wp_customize) {
 	) );
 	
 	// add a setting for the footer columns to show
-	$wp_customize->add_setting('kaya_skype');
+	$wp_customize->add_setting('kaya_skype', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_skype', array(
 		'label'           => __( 'Skype', 'kaya' ),
 		'type'            => 'url',
@@ -666,7 +682,7 @@ function kaya_add_social($wp_customize) {
 	) );
 	
 	// add a setting for the footer columns to show
-	$wp_customize->add_setting('kaya_youtube');
+	$wp_customize->add_setting('kaya_youtube', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_youtube', array(
 		'label'           => __( 'YouTube', 'kaya' ),
 		'type'            => 'url',
@@ -676,7 +692,7 @@ function kaya_add_social($wp_customize) {
 	) );
 	
 	// add a setting for the footer columns to show
-	$wp_customize->add_setting('kaya_vimeo');
+	$wp_customize->add_setting('kaya_vimeo', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_vimeo', array(
 		'label'           => __( 'Vimeo', 'kaya' ),
 		'type'            => 'url',
@@ -686,7 +702,7 @@ function kaya_add_social($wp_customize) {
 	) );
 	
 	// add a setting for the footer columns to show
-	$wp_customize->add_setting('kaya_instagram');
+	$wp_customize->add_setting('kaya_instagram', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_instagram', array(
 		'label'           => __( 'Instagram', 'kaya' ),
 		'type'            => 'url',
@@ -696,7 +712,7 @@ function kaya_add_social($wp_customize) {
 	) );
 	
 	// add a setting for the footer columns to show
-	$wp_customize->add_setting('kaya_pinterest');
+	$wp_customize->add_setting('kaya_pinterest', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_pinterest', array(
 		'label'           => __( 'Pinterest', 'kaya' ),
 		'type'            => 'url',
@@ -706,7 +722,7 @@ function kaya_add_social($wp_customize) {
 	) );
 	
 	// add a setting for the footer columns to show
-	$wp_customize->add_setting('kaya_yelp');
+	$wp_customize->add_setting('kaya_yelp', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_yelp', array(
 		'label'           => __( 'Yelp', 'kaya' ),
 		'type'            => 'url',
@@ -716,7 +732,7 @@ function kaya_add_social($wp_customize) {
 	) );
 	
 	// add a setting for the footer columns to show
-	$wp_customize->add_setting('kaya_rss');
+	$wp_customize->add_setting('kaya_rss', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_rss', array(
 		'label'           => __( 'RSS', 'kaya' ),
 		'type'            => 'url',
@@ -726,7 +742,7 @@ function kaya_add_social($wp_customize) {
 	) );
 	
 	// add a setting for the footer columns to show
-	$wp_customize->add_setting('kaya_email');
+	$wp_customize->add_setting('kaya_email', array('sanitize_callback' => 'is_email'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_email', array(
 		'label'           => __( 'E-mail Address', 'kaya' ),
 		'type'            => 'email',
@@ -743,12 +759,12 @@ add_action('customize_register', 'kaya_add_social');
  */
 function kaya_add_fonts($wp_customize) {
 	$wp_customize->add_section('kaya_fonts', array(
-		'title' => 'Font Sizes',
+		'title' => 'Font Options',
 		'description' => 'All custom font sizes need to be in pixels. If you want your h1 to be 40px, then enter the number 40.',
 		'priority' => 40,
 	));
 	
-	$wp_customize->add_setting('kaya_heading_1');
+	$wp_customize->add_setting('kaya_heading_1', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_heading_1', array(
 		'label'           => __( 'Heading 1', 'kaya' ),
 		'type'            => 'number',
@@ -757,7 +773,7 @@ function kaya_add_fonts($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_heading_2');
+	$wp_customize->add_setting('kaya_heading_2', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_heading_2', array(
 		'label'           => __( 'Heading 2', 'kaya' ),
 		'type'            => 'number',
@@ -766,7 +782,7 @@ function kaya_add_fonts($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_heading_3');
+	$wp_customize->add_setting('kaya_heading_3', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_heading_3', array(
 		'label'           => __( 'Heading 3', 'kaya' ),
 		'type'            => 'number',
@@ -775,7 +791,7 @@ function kaya_add_fonts($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_heading_4');
+	$wp_customize->add_setting('kaya_heading_4', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_heading_4', array(
 		'label'           => __( 'Heading 4', 'kaya' ),
 		'type'            => 'number',
@@ -784,7 +800,7 @@ function kaya_add_fonts($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_heading_5');
+	$wp_customize->add_setting('kaya_heading_5', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_heading_5', array(
 		'label'           => __( 'Heading 5', 'kaya' ),
 		'type'            => 'number',
@@ -793,7 +809,7 @@ function kaya_add_fonts($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_heading_6');
+	$wp_customize->add_setting('kaya_heading_6', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_heading_6', array(
 		'label'           => __( 'Heading 6', 'kaya' ),
 		'type'            => 'number',
@@ -802,7 +818,7 @@ function kaya_add_fonts($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_paragraph');
+	$wp_customize->add_setting('kaya_paragraph', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_paragraph', array(
 		'label'           => __( 'Paragraph', 'kaya' ),
 		'type'            => 'number',
@@ -811,12 +827,64 @@ function kaya_add_fonts($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_social_icon_size');
+	$wp_customize->add_setting('kaya_social_icon_size', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_social_icon_size', array(
 		'label'           => __( 'Social Icons', 'kaya' ),
 		'type'            => 'number',
 		'section'         => 'kaya_fonts',
 		'settings'   => 'kaya_social_icon_size',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_heading_font', array('sanitize_callback' => ''));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_heading_font', array(
+		'label'           => __( 'Heading Font', 'kaya' ),
+		'description'	  => __( 'If available, the normal weight, bold and italic will be loaded. If you want other font weights to be loaded, use the custom Google font adder below.', 'kaya' ),
+		'type'            => 'select',
+		'choices'		  => kaya_fonts_list(),
+		'section'         => 'kaya_fonts',
+		'settings'   => 'kaya_heading_font',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_paragraph_font', array('sanitize_callback' => ''));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_paragraph_font', array(
+		'label'           => __( 'Regular Text Font', 'kaya' ),
+		'description'	  => __( 'If available, the normal weight, bold and italic will be loaded. If you want other font weights to be loaded, use the custom Google font adder below.', 'kaya' ),
+		'type'            => 'select',
+		'choices'		  => kaya_fonts_list(),
+		'section'         => 'kaya_fonts',
+		'settings'   => 'kaya_paragraph_font',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_custom_google_fonts_url', array('sanitize_callback' => 'esc_url_raw'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_custom_google_fonts_url', array(
+		'label'           => __( 'Add your custom Google Fonts URL', 'kaya' ),
+		'description'	  => __( 'For use of this field, read the theme instructions.', 'kaya' ),
+		'type'            => 'url',
+		'section'         => 'kaya_fonts',
+		'settings'   => 'kaya_custom_google_fonts_url',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_custom_google_fonts_heading', array('sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_custom_google_fonts_heading', array(
+		'label'           => __( 'Custom Heading Font Name', 'kaya' ),
+		'description'	  => __( 'For use of this field, read the theme instructions.', 'kaya' ),
+		'type'            => 'url',
+		'section'         => 'kaya_fonts',
+		'settings'   => 'kaya_custom_google_fonts_heading',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_custom_google_fonts_paragraph', array('sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_custom_google_fonts_paragraph', array(
+		'label'           => __( 'Custom Regular Text Font Name', 'kaya' ),
+		'description'	  => __( 'For use of this field, read the theme instructions.', 'kaya' ),
+		'type'            => 'url',
+		'section'         => 'kaya_fonts',
+		'settings'   => 'kaya_custom_google_fonts_paragraph',
 		)
 	) );
 }

@@ -11,7 +11,8 @@
 /**
  * Add notification for theme updates
  */
-include("inc/update_notifier.php");
+//include("inc/update_notifier.php");
+include("inc/kaya-function.php");
 
 
 /**
@@ -21,6 +22,25 @@ function kaya_theme_add_editor_styles() {
     add_editor_style( 'style.css' );
 }
 add_action( 'admin_init', 'kaya_theme_add_editor_styles' );
+
+
+/**
+ * Blog excerpts
+ */
+function kaya_excerpt_length( $length ) {
+	if(get_theme_mod( 'kaya_blog_excerpt' ) != '') {
+		return get_theme_mod( 'kaya_blog_excerpt' );
+	}
+	else {
+		return 50;
+	}
+}
+add_filter( 'excerpt_length', 'kaya_excerpt_length', 999 );
+
+function kaya_excerpt_more( $more ) {
+	return ' </p><p><a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'kaya') . '</a>';
+}
+add_filter( 'excerpt_more', 'kaya_excerpt_more' );
 
 
 /***
@@ -34,6 +54,7 @@ function kaya_welcome_notice() {
     <?php
 }
 add_action( 'admin_notices', 'kaya_welcome_notice' );
+
 
 if( ! function_exists('kaya_social_icons') ) :
 
@@ -153,7 +174,7 @@ add_action( 'after_setup_theme', 'kaya_setup' );
  * @global int $content_width
  */
 function kaya_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'kaya_content_width', 640 );
+	$GLOBALS['content_width'] = apply_filters( 'kaya_content_width', 1140 );
 }
 add_action( 'after_setup_theme', 'kaya_content_width', 0 );
 

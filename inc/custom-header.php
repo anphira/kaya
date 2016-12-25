@@ -33,15 +33,30 @@ function kaya_custom_header_setup() {
 add_action( 'after_setup_theme', 'kaya_custom_header_setup' );
 
 function kaya_customizer_settings() {
-?>
+	
+	if(get_theme_mod( 'kaya_custom_google_fonts_url' ) != '') 
+		echo '<link href="', get_theme_mod( 'kaya_custom_google_fonts_url' ), '" rel="stylesheet">';
+	else 
+		echo kaya_build_fonts_from_google( get_theme_mod( 'kaya_heading_font' ), get_theme_mod( 'kaya_paragraph_font' ) );
+	?>
 <!-- Load Customizer CSS settings -->
 <style>
 
 body, p, button, input, select, textarea {
 	color: <?php echo get_theme_mod( 'kaya_text_color' ) ?>;
+	font-family: 
+		<?php if(get_theme_mod( 'kaya_custom_google_fonts_paragraph' ) != '')
+			echo kaya_font_family_lookup( get_theme_mod( 'kaya_custom_google_fonts_paragraph' ) );
+		else
+			echo kaya_font_family_lookup( get_theme_mod( 'kaya_paragraph_font' ) ); ?>;
 }
 h1, h2, h3, h4, h5, h6 {
 	color: <?php echo get_theme_mod( 'kaya_heading_color' ) ?>;
+	font-family: 
+		<?php if(get_theme_mod( 'kaya_custom_google_fonts_heading' ) != '')
+			echo kaya_font_family_lookup( get_theme_mod( 'kaya_custom_google_fonts_heading' ) );
+		else
+			echo kaya_font_family_lookup( get_theme_mod( 'kaya_heading_font' ) ); ?>;
 }
 h1 {
 	font-size: <?php echo get_theme_mod( 'kaya_heading_1' ) ?>px;
@@ -135,24 +150,25 @@ $kaya_grid_width = ($kaya_grid_width > 320) ? $kaya_grid_width : 1140;
 
 </style>
 <!-- End Load Customizer CSS settings -->
+<?php
 
-<!-- Add Google Analytics -->
-<?php if(get_theme_mod( 'kaya_google_analytics' ) !== '') { ?>
-<script>
+	echo '<!-- Add Google Analytics -->';
+	if(get_theme_mod( 'kaya_google_analytics' ) !== '') {
+		echo "<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  ga('create', '<?php echo get_theme_mod( 'kaya_google_analytics' ) ?>', 'auto');
+  ga('create', '", get_theme_mod( 'kaya_google_analytics' ), "', 'auto');
   ga('send', 'pageview');
 
-</script>
-<?php } ?>
-<!-- End Add Google Analytics -->
-<?php 
+		</script>";
+	} 
+	echo '<!-- End Add Google Analytics -->';
+ 
 }
-add_action( 'after_setup_theme', 'kaya_customizer_settings' );
+add_action( 'wp_head', 'kaya_customizer_settings' );
 
 if ( ! function_exists( 'kaya_header_style' ) ) :
 /**

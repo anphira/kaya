@@ -397,7 +397,8 @@ hr {
 
 ul,
 ol {
-	margin: 0 0 1.5em 3em;
+	margin: 0 0 0.5em 0;
+	padding-left: 1.6em;
 }
 
 ul {

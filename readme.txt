@@ -1,5 +1,4 @@
 Thoughts: 
-- Google fonts?
 - Need to fix sidebar display & test cases
 - Sticky header need to set up option for height
 - Custom widgets?
@@ -9,9 +8,8 @@ Thoughts:
 - Notify on updates - Maybe done?
 - Featured Images
 - List of help options in customizer
-- RECOMMENDED: No reference to add_editor_style() was found in the theme. It is recommended that the theme implement editor styling, so as to make the editor content match the resulting post output in the theme, for a better user experience.
 - RECOMMENDED: Found the URL of a CDN in the code: maxcdn.bootstrapcdn.com/font-awesome. You should not load CSS or Javascript resources from a CDN, please bundle them with the theme.
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!- Broke the media library
+- use retina logo
 
 
 === Kaya ===
