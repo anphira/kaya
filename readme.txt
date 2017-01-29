@@ -1,5 +1,4 @@
 Thoughts: 
-- Need to fix sidebar display & test cases
 - Sticky header need to set up option for height
 - Custom widgets?
 - SEO: Schema markup - JSON LD started
@@ -9,7 +8,6 @@ Thoughts:
 - Featured Images
 - List of help options in customizer
 - RECOMMENDED: Found the URL of a CDN in the code: maxcdn.bootstrapcdn.com/font-awesome. You should not load CSS or Javascript resources from a CDN, please bundle them with the theme.
-- use retina logo
 
 
 === Kaya ===

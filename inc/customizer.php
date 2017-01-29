@@ -86,6 +86,27 @@ function kaya_add_colors($wp_customize) {
 		'settings'   => 'kaya_header_background_color',
 		) 
 	) );
+	$wp_customize->add_setting('kaya_footer_heading_color');
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_footer_heading_color', array(
+		'label'        => __( 'Footer Heading Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_footer_heading_color',
+		) 
+	) );
+	$wp_customize->add_setting('kaya_footer_text_color');
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_footer_text_color', array(
+		'label'        => __( 'Footer Text Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_footer_text_color',
+		) 
+	) );
+	$wp_customize->add_setting('kaya_lower_footer_text_color');
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_lower_footer_text_color', array(
+		'label'        => __( 'Lower Footer Text Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_lower_footer_text_color',
+		) 
+	) );
 	$wp_customize->add_setting('kaya_footer_background_color');
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_footer_background_color', array(
 		'label'        => __( 'Footer Background Color', 'kaya' ),

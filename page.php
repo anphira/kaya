@@ -12,20 +12,34 @@
  * @package Kaya
  */
 
-get_header(); ?>
+get_header(); 
 
-<?php 
-		$values = get_post_custom( $post->ID );
-		$var = $values['kaya_sidebar_setting'][0];
+
 ?>
 
-<?php if ((get_theme_mod( 'kaya_page_sidebar' ) == 'left_sidebar') && ($var !== 'no_sidebar')) get_sidebar(); ?>
+
+
+<?php 
+//get sidebar setting
+$sidebar_setting = get_post_meta($post->ID, 'kaya_sidebar_setting', true);
+switch ($sidebar_setting ) {
+	case 'use_default':
+		$sidebar_setting = get_theme_mod( 'kaya_page_sidebar' );
+		break;
+	case 'no_sidebar':
+	case 'left_sidebar':
+	case 'right_sidebar':
+		break;
+	default: 
+		$sidebar_setting = get_theme_mod( 'kaya_page_sidebar' );
+}
+
+
+	if ($sidebar_setting == 'left_sidebar') get_sidebar(); ?>
 
 	<div id="primary" class="content-area <?php 
-		if ( $var !== 'no_sidebar') {
-			if( (get_theme_mod( 'kaya_page_sidebar' ) !== 'no_sidebar') ) {
+		if( ($sidebar_setting !== 'no_sidebar') ) {
 				echo 'has-sidebar';
-			}
 		} ?>">
 		<main id="main" class="site-main" role="main">
 
@@ -46,5 +60,5 @@ get_header(); ?>
 	</div><!-- #primary -->
 
 
-<?php if ((get_theme_mod( 'kaya_page_sidebar' ) == 'right_sidebar') && ($var !== 'no_sidebar')) get_sidebar(); ?>
+<?php if ($sidebar_setting == 'right_sidebar') get_sidebar(); ?>
 <?php get_footer();

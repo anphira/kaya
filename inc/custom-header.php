@@ -102,11 +102,16 @@ body a:hover, body a:focus, body a:active {
 #masthead {
 	background: <?php echo get_theme_mod( 'kaya_header_background_color' ) ?>;
 }
-#colophon {
+#colophon, #colophon a {
 	background: <?php echo get_theme_mod( 'kaya_footer_background_color' ) ?>;
+	color: <?php echo get_theme_mod( 'kaya_footer_text_color' ) ?>;
 }
-#colophon .site-info {
+#colophon h3, #colophon h4, #colophon h5, #colophon h6 {
+	color: <?php echo get_theme_mod( 'kaya_footer_heading_color' ) ?>;
+}
+#colophon .site-info, #colophon .site-info a {
 	background: <?php echo get_theme_mod( 'kaya_lower_footer_background_color' ) ?>;
+	color: <?php echo get_theme_mod( 'kaya_lower_footer_text_color' ) ?>;
 }
 nav {
 	background: <?php echo get_theme_mod( 'kaya_menu_background_color' ) ?>;

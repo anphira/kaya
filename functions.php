@@ -162,6 +162,44 @@ function kaya_setup() {
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
+	
+	/**
+	 * Setup Theme Defaults for colors
+	 */
+	if( get_theme_mod( 'kaya_header_background_color') == '') 
+		set_theme_mod( 'kaya_header_background_color', '#ffffff' );
+	if( get_theme_mod( 'kaya_footer_heading_color') == '') 
+		set_theme_mod( 'kaya_footer_heading_color', '#000000' );
+	if( get_theme_mod( 'kaya_footer_text_color') == '') 
+		set_theme_mod( 'kaya_footer_text_color', '#000000' );
+	if( get_theme_mod( 'kaya_lower_footer_text_color') == '') 
+		set_theme_mod( 'kaya_lower_footer_text_color', '#ffffff' );
+	if( get_theme_mod( 'kaya_footer_background_color') == '') 
+		set_theme_mod( 'kaya_footer_background_color', '#ffffff' );
+	if( get_theme_mod( 'kaya_lower_footer_background_color') == '') 
+		set_theme_mod( 'kaya_lower_footer_background_color', '#000000' );
+	if( get_theme_mod( 'kaya_text_color') == '') 
+		set_theme_mod( 'kaya_text_color', '#000000' );
+	if( get_theme_mod( 'kaya_menu_background_color') == '') 
+		set_theme_mod( 'kaya_menu_background_color', '#ffffff' );
+	if( get_theme_mod( 'kaya_heading_color') == '') 
+		set_theme_mod( 'kaya_heading_color', '#000000' );
+	if( get_theme_mod( 'kaya_link_color') == '') 
+		set_theme_mod( 'kaya_link_color', '#000000' );
+	if( get_theme_mod( 'kaya_link_hover_color') == '') 
+		set_theme_mod( 'kaya_link_hover_color', '#000000' );
+	if( get_theme_mod( 'kaya_button_color') == '') 
+		set_theme_mod( 'kaya_button_color', '#000000' );
+	if( get_theme_mod( 'kaya_button_text_color') == '') 
+		set_theme_mod( 'kaya_button_text_color', '#ffffff' );
+	if( get_theme_mod( 'kaya_button_hover_color') == '') 
+		set_theme_mod( 'kaya_button_hover_color', '#ffffff' );
+	if( get_theme_mod( 'kaya_button_hover_text_color') == '') 
+		set_theme_mod( 'kaya_button_hover_text_color', '#000000' );
+	if( get_theme_mod( 'kaya_social_icon_color') == '') 
+		set_theme_mod( 'kaya_social_icon_color', '#ffffff' );
+	if( get_theme_mod( 'kaya_social_icon_background_color') == '') 
+		set_theme_mod( 'kaya_social_icon_background_color', '#000000' );
 }
 endif;
 add_action( 'after_setup_theme', 'kaya_setup' );
@@ -365,13 +403,12 @@ function kaya_page_settings_save_meta_box( $post_id ) {
 	// Sanitize the user input.
 	if( isset( $_POST['kaya_sidebar_setting'] ) )
         update_post_meta( $post_id, 'kaya_sidebar_setting', esc_attr( $_POST['kaya_sidebar_setting'] ) );
- 
-	// Update the meta field.
-	update_post_meta( $post_id, '_kaya_sidebar_setting', $mydata );
 	
-	update_post_meta( $post_id, '_kaya_full_width_check', ($_POST['kaya_full_width_check']) ? 'on' : 'off' );
+	if( isset( $_POST['kaya_full_width_check'] ) )
+		update_post_meta( $post_id, '_kaya_full_width_check', ($_POST['kaya_full_width_check']) ? 'on' : 'off' );
 	
-	update_post_meta( $post_id, '_kaya_hide_title_check', ($_POST['kaya_hide_title_check']) ? 'on' : 'off' );
+	if( isset( $_POST['kaya_hide_title_check'] ) )
+		update_post_meta( $post_id, '_kaya_hide_title_check', ($_POST['kaya_hide_title_check']) ? 'on' : 'off' );
 }
 add_action( 'save_post', 'kaya_page_settings_save_meta_box' );
 
@@ -380,7 +417,7 @@ add_action( 'save_post', 'kaya_page_settings_save_meta_box' );
  * Enqueue scripts and styles.
  */
 function kaya_scripts() {
-	wp_enqueue_style( 'kaya-style', get_stylesheet_uri(), false, get_theme_mod( 'kaya_stylesheet_version' ));
+	wp_enqueue_style( 'kaya-style', get_theme_file_uri('style.css'), false, filemtime( get_theme_file_path( 'style.css' )));
 
 	wp_enqueue_script( 'kaya-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20161215', true );
 
