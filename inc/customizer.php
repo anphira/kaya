@@ -237,6 +237,8 @@ function kaya_add_header_options($wp_customize) {
 								'two_column' => 'Two Columns',
 								'three_column' => 'Three Columns',
 								'four_column' => 'Four Columns',
+								'logo_menu' => 'Logo Left Menu Right',
+								'logo_left_right_content' => 'Logo Left Content Right',
 							 ),
 		'section'         => 'kaya_header',
 		'settings'   => 'kaya_header_columns',
@@ -250,6 +252,16 @@ function kaya_add_header_options($wp_customize) {
 		'type'            => 'checkbox',
 		'section'         => 'kaya_header',
 		'settings'   => 'kaya_sticky_header',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_top_header');
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
+'kaya_top_header', array(
+		'label'           => __( 'Use top header bar', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_header',
+		'settings'   => 'kaya_top_header',
 		)
 	) );
 	
@@ -340,6 +352,24 @@ function kaya_add_general($wp_customize) {
 		)
 	) );
 	
+	$wp_customize->add_setting('kaya_page_comments');
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_page_comments', array(
+		'label'           => __( 'Display Comments on Pages', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_page_comments',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_post_comments');
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_comments', array(
+		'label'           => __( 'Display Comments on Posts', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_post_comments',
+		)
+	) );
+	
 	$wp_customize->add_setting('kaya_blog_excerpt');
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_blog_excerpt', array(
 		'label'           => __( 'Limit the Blog Excerpts', 'kaya' ),
@@ -414,6 +444,15 @@ function kaya_add_footer($wp_customize) {
 							 ),
 		'section'         => 'kaya_footer',
 		'settings'   => 'kaya_footer_columns',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_show_footer_social');
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_show_footer_social', array(
+		'label'           => __( 'Display Social Media Icons in Footer', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_footer',
+		'settings'   => 'kaya_show_footer_social',
 		)
 	) );
 	

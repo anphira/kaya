@@ -49,7 +49,7 @@ switch ($sidebar_setting ) {
 				get_template_part( 'template-parts/content', 'page' );
 
 				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) :
+				if ( (get_theme_mod( 'kaya_page_comments' ) == 'on' ) && (comments_open() || get_comments_number() )) :
 					comments_template();
 				endif;
 

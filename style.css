@@ -917,6 +917,8 @@ object {
 	#primary.has-sidebar {
 		width: 72%;
 		float: left;
+		border-right: 1px solid #ebebeb;
+		padding-right: calc(2% - 1px);
 	}
 	#secondary {
 		margin-left: 3%;
@@ -932,7 +934,7 @@ object {
 --------------------------------------------------------------*/
 #masthead .container {
 	padding: 10px 15px 5px;
-	overflow: hidden;
+	overflow: visible;
 }
 #masthead nav .container {
 	padding: 0 15px;
@@ -1027,6 +1029,21 @@ body .carousel-anything-container .vc_row {
 }
 body .wpb_button, body .wpb_content_element, body ul.wpb_thumbnails-fluid>li {
 	margin-bottom: 0;
+}
+body .vc_row[data-vc-full-width="true"] > .wpb_column {
+	max-width: 1140px;
+	margin: auto;
+	float: none;
+}
+body .vc_row[data-vc-full-width="true"][data-vc-stretch-content="true"] > .wpb_column {
+	max-width: 100%;
+}
+body .vc_col-has-fill>.vc_column-inner, body .vc_row-has-fill+.vc_row-full-width+.vc_row>.vc_column_container>.vc_column-inner, body .vc_row-has-fill+.vc_row>.vc_column_container>.vc_column-inner, body .vc_row-has-fill+.vc_vc_row>.vc_row>.vc_vc_column>.vc_column_container>.vc_column-inner, body .vc_row-has-fill+.vc_vc_row_inner>.vc_row>.vc_vc_column_inner>.vc_column_container>.vc_column-inner, body .vc_row-has-fill>.vc_column_container>.vc_column-inner, body .vc_row-has-fill>.vc_row>.vc_vc_column>.vc_column_container>.vc_column-inner, body .vc_row-has-fill>.vc_vc_column_inner>.vc_column_container>.vc_column-inner, body .vc_section.vc_section-has-fill, body .vc_section.vc_section-has-fill+.vc_row-full-width+.vc_section, body .vc_section.vc_section-has-fill+.vc_section {
+	padding-top: 0;
+}
+body .wpb_wrapper > .vc_row.vc_inner {
+	margin-right: -15px;
+	margin-left: -15px;
 }
 
 

@@ -6,6 +6,19 @@
  *
  * @package Kaya
  */
+ 
+/**
+ * Enable shortcodes in text widgets
+ */
+add_filter('widget_text','do_shortcode');
+ 
+/**
+ * Add footer menu
+ */
+function kaya_register_footer_menu() {
+  register_nav_menu('footer-menu',__( 'Footer Menu' ));
+}
+add_action( 'init', 'kaya_register_footer_menu' );
 
 
 /**
@@ -200,6 +213,15 @@ function kaya_setup() {
 		set_theme_mod( 'kaya_social_icon_color', '#ffffff' );
 	if( get_theme_mod( 'kaya_social_icon_background_color') == '') 
 		set_theme_mod( 'kaya_social_icon_background_color', '#000000' );
+		
+	/**
+	 * Setup theme defaults for settings
+	 */
+	if( get_theme_mod( 'kaya_page_comments') === '') 
+		set_theme_mod( 'kaya_page_comments', 'off' );
+	if( get_theme_mod( 'kaya_post_comments') === '') 
+		set_theme_mod( 'kaya_post_comments', 'on' );
+	
 }
 endif;
 add_action( 'after_setup_theme', 'kaya_setup' );
@@ -483,5 +505,5 @@ function readableColour($bg){
     }else{
         return 'FFFFFF';
     }
-}
+} 
 

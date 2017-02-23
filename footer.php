@@ -56,13 +56,18 @@
 						dynamic_sidebar('Footer-4');
 						echo '</div>';
 						break;
+					default: 
+						echo '<div class="columns-12 last">';
+						dynamic_sidebar('Footer-1');
+						echo '</div>';
+						break;
 				}
 			} ?>
 		</div>
 		<div class="site-info">
 			<div class="container">
 				<div class="columns-6">
-					<?php kaya_social_icons(); ?>
+					<?php if(get_theme_mod( 'kaya_show_footer_social') == true) kaya_social_icons(); ?>
 					Copyright &copy; <?php echo date('Y'); ?>. All rights reserved. <?php bloginfo('name'); ?>.
 				</div>
 				<div class="columns-6 last text-right">

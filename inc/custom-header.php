@@ -42,11 +42,15 @@ function kaya_customizer_settings() {
 <!-- Load Customizer CSS settings -->
 <style>
 
+html {
+	background: <?php echo get_theme_mod( 'kaya_lower_footer_background_color' ) ?>;
+}
+
 body, p, button, input, select, textarea {
 	color: <?php echo get_theme_mod( 'kaya_text_color' ) ?>;
 	font-family: 
 		<?php if(get_theme_mod( 'kaya_custom_google_fonts_paragraph' ) != '')
-			echo kaya_font_family_lookup( get_theme_mod( 'kaya_custom_google_fonts_paragraph' ) );
+			echo get_theme_mod( 'kaya_custom_google_fonts_paragraph' );
 		else
 			echo kaya_font_family_lookup( get_theme_mod( 'kaya_paragraph_font' ) ); ?>;
 }
@@ -54,7 +58,7 @@ h1, h2, h3, h4, h5, h6 {
 	color: <?php echo get_theme_mod( 'kaya_heading_color' ) ?>;
 	font-family: 
 		<?php if(get_theme_mod( 'kaya_custom_google_fonts_heading' ) != '')
-			echo kaya_font_family_lookup( get_theme_mod( 'kaya_custom_google_fonts_heading' ) );
+			echo get_theme_mod( 'kaya_custom_google_fonts_heading' );
 		else
 			echo kaya_font_family_lookup( get_theme_mod( 'kaya_heading_font' ) ); ?>;
 }
@@ -102,8 +106,10 @@ body a:hover, body a:focus, body a:active {
 #masthead {
 	background: <?php echo get_theme_mod( 'kaya_header_background_color' ) ?>;
 }
-#colophon, #colophon a {
+#colophon {
 	background: <?php echo get_theme_mod( 'kaya_footer_background_color' ) ?>;
+}
+#colophon, #colophon a, #colophon p {
 	color: <?php echo get_theme_mod( 'kaya_footer_text_color' ) ?>;
 }
 #colophon h3, #colophon h4, #colophon h5, #colophon h6 {
