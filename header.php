@@ -115,6 +115,7 @@
 						echo '</a></div><!-- .site-branding -->';
 					echo '</div>';
 					echo '<div class="columns-9 last">';
+						dynamic_sidebar('Header-2');
 						echo '<nav id="site-navigation" class="main-navigation" role="navigation">';
 						if(get_theme_mod( 'kaya_hide_mobile_button_menu' ) == false) {
 							?><button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'kaya' ); ?></button><?php

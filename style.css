@@ -919,6 +919,7 @@ object {
 		float: left;
 		border-right: 1px solid #ebebeb;
 		padding-right: calc(2% - 1px);
+		padding-bottom: 30px;
 	}
 	#secondary {
 		margin-left: 3%;
@@ -1016,12 +1017,12 @@ body .fa {
 /*--------------------------------------------------------------
 # Visual Composer Support
 --------------------------------------------------------------*/
-.vc_row.vc_row-fluid {
+.full-width .vc_row.vc_row-fluid {
 	position: relative;
 	width: 100%;
 	margin: auto;
 }
-.vc_row.vc_row-fluid[data-vc-full-width] {
+.full-width .vc_row.vc_row-fluid[data-vc-full-width] {
 	max-width: 100%;
 }
 body .carousel-anything-container .vc_row {
@@ -1059,6 +1060,9 @@ body .white-text, body .white-text p, body .white-text h1, body .white-text h2, 
 .text-right {
 	text-align: right;
 }
+.text-justify {
+	text-align: justify;
+}
 
 /*--------------------------------------------------------------
 # 12 column grid CSS Classes
@@ -1069,12 +1073,12 @@ body .white-text, body .white-text p, body .white-text h1, body .white-text h2, 
 		margin-right: 2%;
 	}
 }
-.last {
-	margin-right: 0;
-}
 .columns-12-non-responsive, .columns-11-non-responsive, .columns-10-non-responsive, .columns-9-non-responsive, .columns-8-non-responsive, .columns-7-non-responsive, .columns-6-non-responsive, .columns-5-non-responsive, .columns-4-non-responsive, .columns-3-non-responsive, .columns-2-non-responsive, .columns-1-non-responsive, .columns-one-fifth-non-responsive, .columns-one-seventh-non-responsive, .columns-one-eighth-non-responsive, .columns-one-ninth-non-responsive {
 	float: left;
 	margin-right: 2%;
+}
+.last {
+	margin-right: 0;
 }
 
 .columns-12, .columns-12-non-responsive {
@@ -1145,5 +1149,6 @@ body .white-text, body .white-text p, body .white-text h1, body .white-text h2, 
 	.columns-12, .columns-11, .columns-10, .columns-9, .columns-8, .columns-7, .columns-6, .columns-5, .columns-4, .columns-3, .columns-2, .columns-1, .columns-one-fifth, .columns-one-seventh, .columns-one-eighth, .columns-one-ninth {
 		float: none;
 		width: 100%;
+		clear: both;
 	}
 }
