@@ -215,3 +215,110 @@ function kaya_build_fonts_from_google( $font1, $font2) {
 	}
 	return $custom_font;
 }
+
+
+/**
+ * Function for sanitizer callback on checkboxes
+ * 
+ * Sanitization callback for 'checkbox' type controls. This callback sanitizes `$checked`
+ * as a boolean value, either TRUE or FALSE.
+ *
+ * @param bool $checked Whether the checkbox is checked.
+ * @return bool Whether the checkbox is checked.
+ */
+function kaya_sanitize_checkbox( $checked ) {
+	// Boolean check.
+	return ( ( isset( $checked ) && true == $checked ) ? true : false );
+}
+
+
+/**
+ * Function for sanitizer callback on fonts
+ * 
+ * Sanitization callback for theme included fonts. This callback sanitizes `$font`
+ * and returns a valid theme supported font.
+ *
+ * @param string $font which is the user selected font.
+ * @return string which is a valid theme support font.
+ */
+function kaya_sanitize_font( $font ) {
+	// Font check
+	$font_list = kaya_fonts_list();
+	if(in_array($font, $font_list))
+		return $font;
+	else 
+		return 'arial';
+}
+
+
+/**
+ * Function for sanitizer callback on header columns
+ * 
+ * Sanitization callback for theme included fonts. This callback sanitizes `$column`
+ * and returns a valid theme supported column.
+ *
+ * @param string $column which is the user selected column.
+ * @return string which is a valid theme support column.
+ */
+function kaya_sanitize_header_columns( $column ) {
+	// Column check
+	$valid_columns = array(
+								'one_column',
+								'two_column',
+								'three_column',
+								'four_column',
+								'logo_menu',
+								'logo_left_right_content',
+							 );
+	if(in_array($column, $valid_columns))
+		return $column;
+	else 
+		return 'one_column';
+}
+
+
+/**
+ * Function for sanitizer callback on footer columns
+ * 
+ * Sanitization callback for theme included fonts. This callback sanitizes `$column`
+ * and returns a valid theme supported column.
+ *
+ * @param string $column which is the user selected column.
+ * @return string which is a valid theme support column.
+ */
+function kaya_sanitize_footer_columns( $column ) {
+	// Column check
+	$valid_columns = array(
+								'one_column',
+								'two_column',
+								'three_column',
+								'four_column',
+							 );
+	if(in_array($column, $valid_columns))
+		return $column;
+	else 
+		return 'one_column';
+}
+
+
+/**
+ * Function for sanitizer callback on sidebars
+ * 
+ * Sanitization callback for theme included fonts. This callback sanitizes `$sidebar`
+ * and returns a valid theme supported sidebar.
+ *
+ * @param string $column which is the user selected sidebar.
+ * @return string which is a valid theme support sidebar.
+ */
+function kaya_sanitize_sidebars( $sidebar ) {
+	// Sidebar check
+	$valid_sidebar = array(
+								'no_sidebar',
+								'left_sidebar',
+								'right_sidebar',
+							 );
+	if(in_array($sidebar, $valid_sidebar))
+		return $sidebar;
+	else 
+		return 'no_sidebar';
+}

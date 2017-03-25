@@ -3,7 +3,30 @@
  * Kaya Theme Customizer.
  *
  * @package Kaya
+ *
+ * Included with WordPress Sanitize Functions:
+ * sanitize_email()
+ * sanitize_file_name()
+ * sanitize_html_class()
+ * sanitize_key()
+ * sanitize_meta()
+ * sanitize_mime_type()
+ * sanitize_option()
+ * sanitize_sql_orderby()
+ * sanitize_text_field()
+ * sanitize_title()
+ * sanitize_title_for_query()
+ * sanitize_title_with_dashes()
+ * sanitize_user()
+ * esc_html
+ * esc_url
+ * esc_js
+ * esc_attr
+ * esc_textarea
+ 
  */
+ 
+$kaya_theme_setup_guide_url = 'https://www.anphira.com/kaya-wordpress-theme/kaya-setup-guide/';
 
 /**
  * Add postMessage support for site title and description for the Theme Customizer.
@@ -33,9 +56,8 @@ function kaya_add_help_options($wp_customize) {
 	$wp_customize->add_section('kaya_help', array(
 		'title' => 'Need Setup Help? Start Here',
 		'description' => '<strong>Kaya Setup Instructions</strong><br /><br />
-		<a href="https://www.anphira.com/kaya-wordpress-theme/kaya-setup-guide/">Cick here for Setup Guide</a><br /><br />
-		<strong>Kaya Help Forum</strong><br /><br />
-		If you have already read the full setup instructions above and still do not understand how to setup the theme, you can post a question in the forum. <br /></br />Make sure to read the pinned thread about how to post a request for help.<br /><br /><a href="https://www.anphira.com/kaya-wordpress-theme/kaya-setup-guide/">Forum</a>',
+		<a href="<?php echo  
+$kaya_theme_setup_guide_url; ?>">Cick here for Setup Guide</a>',
 		'priority' => 10
 	));
 }
@@ -79,42 +101,42 @@ function kaya_sanitize_logo( $value ) {
  * Adding Colors Options
  */
 function kaya_add_colors($wp_customize) {
-	$wp_customize->add_setting('kaya_header_background_color');
+	$wp_customize->add_setting('kaya_header_background_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_header_background_color', array(
 		'label'        => __( 'Header Background Color', 'kaya' ),
 		'section'    => 'colors',
 		'settings'   => 'kaya_header_background_color',
 		) 
 	) );
-	$wp_customize->add_setting('kaya_footer_heading_color');
+	$wp_customize->add_setting('kaya_footer_heading_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_footer_heading_color', array(
 		'label'        => __( 'Footer Heading Color', 'kaya' ),
 		'section'    => 'colors',
 		'settings'   => 'kaya_footer_heading_color',
 		) 
 	) );
-	$wp_customize->add_setting('kaya_footer_text_color');
+	$wp_customize->add_setting('kaya_footer_text_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_footer_text_color', array(
 		'label'        => __( 'Footer Text Color', 'kaya' ),
 		'section'    => 'colors',
 		'settings'   => 'kaya_footer_text_color',
 		) 
 	) );
-	$wp_customize->add_setting('kaya_lower_footer_text_color');
+	$wp_customize->add_setting('kaya_lower_footer_text_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_lower_footer_text_color', array(
 		'label'        => __( 'Lower Footer Text Color', 'kaya' ),
 		'section'    => 'colors',
 		'settings'   => 'kaya_lower_footer_text_color',
 		) 
 	) );
-	$wp_customize->add_setting('kaya_footer_background_color');
+	$wp_customize->add_setting('kaya_footer_background_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_footer_background_color', array(
 		'label'        => __( 'Footer Background Color', 'kaya' ),
 		'section'    => 'colors',
 		'settings'   => 'kaya_footer_background_color',
 		) 
 	) );
-	$wp_customize->add_setting('kaya_lower_footer_background_color');
+	$wp_customize->add_setting('kaya_lower_footer_background_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_lower_footer_background_color', array(
 		'label'        => __( 'Footer Copyright Area Background Color', 'kaya' ),
 		'section'    => 'colors',
@@ -122,7 +144,7 @@ function kaya_add_colors($wp_customize) {
 		) 
 	) );
 	// add a setting for the text color
-	$wp_customize->add_setting('kaya_text_color');
+	$wp_customize->add_setting('kaya_text_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_text_color', array(
 		'label'        => __( 'Text Color', 'kaya' ),
 		'section'    => 'colors',
@@ -131,7 +153,7 @@ function kaya_add_colors($wp_customize) {
 	) );
 
 	// add a setting for the text color
-	$wp_customize->add_setting('kaya_menu_background_color');
+	$wp_customize->add_setting('kaya_menu_background_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_menu_background_color', array(
 		'label'        => __( 'Menu Background Color', 'kaya' ),
 		'section'    => 'colors',
@@ -140,7 +162,7 @@ function kaya_add_colors($wp_customize) {
 	) );
 	
 	// add a setting for the text color
-	$wp_customize->add_setting('kaya_heading_color');
+	$wp_customize->add_setting('kaya_heading_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_heading_color', array(
 		'label'        => __( 'Heading Color', 'kaya' ),
 		'section'    => 'colors',
@@ -149,7 +171,7 @@ function kaya_add_colors($wp_customize) {
 	) );
 	
 	// add a setting for the text color
-	$wp_customize->add_setting('kaya_link_color');
+	$wp_customize->add_setting('kaya_link_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_link_color', array(
 		'label'        => __( 'Link Color', 'kaya' ),
 		'section'    => 'colors',
@@ -157,7 +179,7 @@ function kaya_add_colors($wp_customize) {
 		) 
 	) );
 	
-	$wp_customize->add_setting('kaya_link_hover_color');
+	$wp_customize->add_setting('kaya_link_hover_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_link_hover_color', array(
 		'label'        => __( 'Link Hover Color', 'kaya' ),
 		'section'    => 'colors',
@@ -165,7 +187,7 @@ function kaya_add_colors($wp_customize) {
 		) 
 	) );
 	
-	$wp_customize->add_setting('kaya_button_color');
+	$wp_customize->add_setting('kaya_button_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_button_color', array(
 		'label'        => __( 'Button Color', 'kaya' ),
 		'section'    => 'colors',
@@ -173,7 +195,7 @@ function kaya_add_colors($wp_customize) {
 		) 
 	) );
 	
-	$wp_customize->add_setting('kaya_button_text_color');
+	$wp_customize->add_setting('kaya_button_text_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
 'kaya_button_text_color', array(
 		'label'        => __( 'Button Text Color', 'kaya' ),
@@ -182,7 +204,7 @@ function kaya_add_colors($wp_customize) {
 		) 
 	) );
 	
-	$wp_customize->add_setting('kaya_button_hover_color');
+	$wp_customize->add_setting('kaya_button_hover_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_button_hover_color', array(
 		'label'        => __( 'Button Hover Color', 'kaya' ),
 		'section'    => 'colors',
@@ -190,7 +212,7 @@ function kaya_add_colors($wp_customize) {
 		) 
 	) );
 
-	$wp_customize->add_setting('kaya_button_hover_text_color');
+	$wp_customize->add_setting('kaya_button_hover_text_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
 'kaya_button_hover_text_color', array(
 		'label'        => __( 'Button Hover Text Color', 'kaya' ),
@@ -199,7 +221,7 @@ function kaya_add_colors($wp_customize) {
 		) 
 	) );
 	
-	$wp_customize->add_setting('kaya_social_icon_color');
+	$wp_customize->add_setting('kaya_social_icon_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_social_icon_color', array(
 		'label'        => __( 'Social Icon Color', 'kaya' ),
 		'section'    => 'colors',
@@ -207,7 +229,7 @@ function kaya_add_colors($wp_customize) {
 		) 
 	) );
 	
-	$wp_customize->add_setting('kaya_social_icon_background_color');
+	$wp_customize->add_setting('kaya_social_icon_background_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_social_icon_background_color', array(
 		'label'        => __( 'Social Icon Background Color', 'kaya' ),
 		'section'    => 'colors',
@@ -228,7 +250,7 @@ function kaya_add_header_options($wp_customize) {
 		'priority' => 60,
 	));
 	
-	$wp_customize->add_setting('kaya_header_columns');
+	$wp_customize->add_setting('kaya_header_columns', array('sanitize_callback' => 'kaya_sanitize_header_columns'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_header_columns', array(
 		'label'           => __( 'Number of Header Columns', 'kaya' ),
 		'type'            => 'select',
@@ -245,7 +267,7 @@ function kaya_add_header_options($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_sticky_header');
+	$wp_customize->add_setting('kaya_sticky_header', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
 'kaya_sticky_header', array(
 		'label'           => __( 'Make Header Sticky', 'kaya' ),
@@ -255,7 +277,7 @@ function kaya_add_header_options($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_transparent_header');
+	$wp_customize->add_setting('kaya_transparent_header', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
 'kaya_transparent_header', array(
 		'label'           => __( 'Make Header Transparent', 'kaya' ),
@@ -265,7 +287,7 @@ function kaya_add_header_options($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_top_header');
+	$wp_customize->add_setting('kaya_top_header', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
 'kaya_top_header', array(
 		'label'           => __( 'Use top header bar', 'kaya' ),
@@ -275,7 +297,7 @@ function kaya_add_header_options($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_hide_mobile_button_menu');
+	$wp_customize->add_setting('kaya_hide_mobile_button_menu', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_hide_mobile_button_menu', array(
 		'label'           => __( 'Hide Mobile Menu', 'kaya' ),
 		'description'	  => 'Check to hide the mobile menu, useful when using a third party menu plugin',
@@ -298,7 +320,7 @@ function kaya_add_general($wp_customize) {
 		'priority' => 20,
 	));
 	
-	$wp_customize->add_setting('kaya_grid_width');
+	$wp_customize->add_setting('kaya_grid_width', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_grid_width', array(
 		'label'           => __( 'Grid Width (default is 1140px)', 'kaya' ),
 		'type'            => 'number',
@@ -307,7 +329,7 @@ function kaya_add_general($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_content_in_grid');
+	$wp_customize->add_setting('kaya_content_in_grid', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_content_in_grid', array(
 		'label'           => __( 'Apply Grid to Main Site Content', 'kaya' ),
 		'type'            => 'checkbox',
@@ -316,7 +338,7 @@ function kaya_add_general($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_header_in_grid');
+	$wp_customize->add_setting('kaya_header_in_grid', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_header_in_grid', array(
 		'label'           => __( 'Apply Grid to Header', 'kaya' ),
 		'type'            => 'checkbox',
@@ -325,7 +347,7 @@ function kaya_add_general($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_footer_in_grid');
+	$wp_customize->add_setting('kaya_footer_in_grid', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_footer_in_grid', array(
 		'label'           => __( 'Apply Grid to Whole Footer', 'kaya' ),
 		'type'            => 'checkbox',
@@ -334,7 +356,7 @@ function kaya_add_general($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_page_sidebar');
+	$wp_customize->add_setting('kaya_page_sidebar', array('sanitize_callback' => 'kaya_sanitize_sidebars'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_page_sidebar', array(
 		'label'           => __( 'Default Sidebar Setting for Pages', 'kaya' ),
 		'type'            => 'select',
@@ -348,7 +370,7 @@ function kaya_add_general($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_post_sidebar');
+	$wp_customize->add_setting('kaya_post_sidebar', array('sanitize_callback' => 'kaya_sanitize_sidebars'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_sidebar', array(
 		'label'           => __( 'Default Sidebar Setting for Blog Posts', 'kaya' ),
 		'type'            => 'select',
@@ -362,7 +384,7 @@ function kaya_add_general($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_page_comments');
+	$wp_customize->add_setting('kaya_page_comments', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_page_comments', array(
 		'label'           => __( 'Display Comments on Pages', 'kaya' ),
 		'type'            => 'checkbox',
@@ -371,7 +393,7 @@ function kaya_add_general($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_post_comments');
+	$wp_customize->add_setting('kaya_post_comments', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_comments', array(
 		'label'           => __( 'Display Comments on Posts', 'kaya' ),
 		'type'            => 'checkbox',
@@ -380,7 +402,7 @@ function kaya_add_general($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_blog_excerpt');
+	$wp_customize->add_setting('kaya_blog_excerpt', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_blog_excerpt', array(
 		'label'           => __( 'Limit the Blog Excerpts', 'kaya' ),
 		'description'	  => __( 'Enter a value here to set the number of words used in an excerpt on the main blog archive pages. Leave blank to display full blog posts.', 'kaya'),
@@ -390,7 +412,7 @@ function kaya_add_general($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_stylesheet_version');
+	$wp_customize->add_setting('kaya_stylesheet_version', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_stylesheet_version', array(
 		'label'           => __( 'Stylesheet Version', 'kaya' ),
 		'description'	  => __( 'By default WordPress uses the current WP version as the stylesheet version. If you wish to alter that, enter a different value here', 'kaya'),
@@ -400,7 +422,7 @@ function kaya_add_general($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_google_analytics');
+	$wp_customize->add_setting('kaya_google_analytics', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_google_analytics', array(
 		'label'           => __( 'Google Analytics', 'kaya' ),
 		'description'	  => __( 'Enter your Google Analytics number here, it should be of the format UA-00000000-0', 'kaya'),
@@ -410,17 +432,17 @@ function kaya_add_general($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_cf7_redirect_url');
+	$wp_customize->add_setting('kaya_cf7_redirect_url', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_cf7_redirect_url', array(
 		'label'           => __( 'Contact Form 7 Redirect URL', 'kaya' ),
 		'description'	  => __( 'Enter a custom thank you page after contact form 7 forms are filled out', 'kaya'),
-		'type'            => 'text',
+		'type'            => 'url',
 		'section'         => 'kaya_general',
 		'settings'   => 'kaya_cf7_redirect_url',
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_add_to_head');
+	$wp_customize->add_setting('kaya_add_to_head', array('sanitize_callback' => 'esc_textarea'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_add_to_head', array(
 		'label'           => __( 'Add code before </head>', 'kaya' ),
 		'description'	  => __( 'Enter code to be added before &lt;/head&gt; tag -- useful for some scripts', 'kaya'),
@@ -430,7 +452,7 @@ function kaya_add_general($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_add_to_body_top');
+	$wp_customize->add_setting('kaya_add_to_body_top', array('sanitize_callback' => 'esc_textarea'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_add_to_body_top', array(
 		'label'           => __( 'Add code just after <body>', 'kaya' ),
 		'description'	  => __( 'Enter code to be added just after &lt;body&gt; tag -- useful for some scripts', 'kaya'),
@@ -440,7 +462,7 @@ function kaya_add_general($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_add_to_body_bottom');
+	$wp_customize->add_setting('kaya_add_to_body_bottom', array('sanitize_callback' => 'esc_textarea'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_add_to_body_bottom', array(
 		'label'           => __( 'Add code just before </body>', 'kaya' ),
 		'description'	  => __( 'Enter code to be added just before &lt;/body&gt; tag -- useful for some scripts', 'kaya'),
@@ -464,7 +486,7 @@ function kaya_add_footer($wp_customize) {
 	));
 	
 	// add a setting for the footer columns to show
-	$wp_customize->add_setting('kaya_show_footer_columns');
+	$wp_customize->add_setting('kaya_show_footer_columns', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_show_footer_columns', array(
 		'label'           => __( 'Show the Footer Columns', 'kaya' ),
 		'type'            => 'checkbox',
@@ -473,7 +495,7 @@ function kaya_add_footer($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_footer_columns_in_grid');
+	$wp_customize->add_setting('kaya_footer_columns_in_grid', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_footer_columns_in_grid', array(
 		'label'           => __( 'Apply Grid to Footer Columns', 'kaya' ),
 		'type'            => 'checkbox',
@@ -482,7 +504,7 @@ function kaya_add_footer($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_footer_columns');
+	$wp_customize->add_setting('kaya_footer_columns', array('sanitize_callback' => 'kaya_sanitize_footer_columns'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_footer_columns', array(
 		'label'           => __( 'Number of Footer Columns', 'kaya' ),
 		'type'            => 'select',
@@ -497,7 +519,7 @@ function kaya_add_footer($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_show_footer_social');
+	$wp_customize->add_setting('kaya_show_footer_social', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_show_footer_social', array(
 		'label'           => __( 'Display Social Media Icons in Footer', 'kaya' ),
 		'type'            => 'checkbox',
@@ -506,7 +528,7 @@ function kaya_add_footer($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_footer_right');
+	$wp_customize->add_setting('kaya_footer_right', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_footer_right', array(
 		'label'           => __( 'Content for Right side of Lower Footer', 'kaya' ),
 		'description'	  => __( 'Enter content to replace the credit info', 'kaya'),
@@ -529,7 +551,7 @@ function kaya_add_404($wp_customize) {
 		'priority' => 130,
 	));
 	
-	$wp_customize->add_setting('kaya_404_title');
+	$wp_customize->add_setting('kaya_404_title', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_404_title', array(
 		'label'           => __( '404 Page Title', 'kaya' ),
 		'type'            => 'text',
@@ -538,7 +560,7 @@ function kaya_add_404($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_404_content');
+	$wp_customize->add_setting('kaya_404_content', array('sanitize_callback' => 'esc_textarea'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_404_content', array(
 		'label'           => __( '404 Page Content', 'kaya' ),
 		'type'            => 'textarea',
@@ -554,9 +576,12 @@ add_action('customize_register', 'kaya_add_404');
  * Adding SEO Options
  */
 function kaya_add_seo($wp_customize) {
+	$kaya_json_ld_markup_guide = 'https://whitespark.ca/blog/the-json-ld-markup-guide-to-local-business-schema/';
+
 	$wp_customize->add_section('kaya_seo', array(
 		'title' => 'SEO Options',
-		'description' => 'Add Schema.org JSON LD markup to your site. Just enter your information into the sections below and the markup will automatically be added your site. Leave empty any content you do not have. If you would like more information on the schema, plesae see this <a href="https://whitespark.ca/blog/the-json-ld-markup-guide-to-local-business-schema/">blog article</a> on it.',
+		'description' => 'Add Schema.org JSON LD markup to your site. Just enter your information into the sections below and the markup will automatically be added your site. Leave empty any content you do not have. If you would like more information on the schema, plesae see this 
+		<a href="<?php echo kaya_json_ld_markup_guide; ?>">blog article</a> on it.',
 		'priority' => 140,
 	));
 	
@@ -946,7 +971,7 @@ function kaya_add_fonts($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_heading_font', array('sanitize_callback' => ''));
+	$wp_customize->add_setting('kaya_heading_font', array('sanitize_callback' => 'kaya_sanitize_font'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_heading_font', array(
 		'label'           => __( 'Heading Font', 'kaya' ),
 		'description'	  => __( 'If available, the normal weight, bold and italic will be loaded. If you want other font weights to be loaded, use the custom Google font adder below.', 'kaya' ),
@@ -957,7 +982,7 @@ function kaya_add_fonts($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_paragraph_font', array('sanitize_callback' => ''));
+	$wp_customize->add_setting('kaya_paragraph_font', array('sanitize_callback' => 'kaya_sanitize_font'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_paragraph_font', array(
 		'label'           => __( 'Regular Text Font', 'kaya' ),
 		'description'	  => __( 'If available, the normal weight, bold and italic will be loaded. If you want other font weights to be loaded, use the custom Google font adder below.', 'kaya' ),

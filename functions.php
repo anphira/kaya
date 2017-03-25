@@ -16,7 +16,7 @@ add_filter('widget_text','do_shortcode');
  * Add footer menu
  */
 function kaya_register_footer_menu() {
-  register_nav_menu('footer-menu',__( 'Footer Menu' ));
+  register_nav_menu('footer-menu',__( 'Footer Menu', 'kaya' ));
 }
 add_action( 'init', 'kaya_register_footer_menu' );
 
@@ -62,7 +62,8 @@ add_filter( 'excerpt_more', 'kaya_excerpt_more' );
 function kaya_welcome_notice() {
     ?>
     <div class="notice notice-success is-dismissible">
-        <p><?php _e( 'Thank you for installing the Kaya WordPress theme!<br />If you are new to the theme, please <a href="https://www.anphira.com/kaya-wordpress-theme/kaya-setup-guide/">click here to read the setup instructions</a>, if are already familiar with Kaya then click the x on the right to dismiss this notice. You can always view the setup instructions by going to the Customizer and selecting "Need Setup Help?"', 'kaya' ); ?></p>
+        <p><?php _e( 'Thank you for installing the Kaya WordPress theme!<br />If you are new to the theme, please <a href="<?php echo  
+$kaya_theme_setup_guide_url; ?>">click here to read the setup instructions</a>, if are already familiar with Kaya then click the x on the right to dismiss this notice. You can always view the setup instructions by going to the Customizer and selecting "Need Setup Help?"', 'kaya' ); ?></p>
     </div>
     <?php
 }
@@ -492,7 +493,7 @@ require get_template_directory() . '/inc/jetpack.php';
  * Enqueue Font Awesome Stylesheet
  */
 function enqueue_our_required_stylesheets(){
-	wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
+	wp_enqueue_style('font-awesome', 'inc/font-awesome-4.7.0/font-awesome.min.css'); 
 }
 add_action('wp_enqueue_scripts','enqueue_our_required_stylesheets');
 
@@ -551,10 +552,10 @@ class Kaya_Social_Widget extends WP_Widget {
 	 * @param array $instance The widget options
 	 */
 	public function form( $instance ) {
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Follow Us', 'text_domain' );
+		$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Follow Us', 'kaya' );
 		?>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'kaya' ); ?></label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
 		<?php 
