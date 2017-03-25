@@ -130,6 +130,20 @@
 </script>
 <!-- End Schema.org -->
 
+<?php if(get_theme_mod( 'kaya_cf7_redirect_url') !== '') { ?>
+	<script>
+	document.addEventListener( 'wpcf7mailsent', function( event ) {
+    location = '<?php echo get_theme_mod( 'kaya_cf7_redirect_url' ); ?>';
+	}, false );
+	</script>
+<?php } ?>
+
+
+
+<?php if(get_theme_mod( 'kaya_add_to_body_bottom' ) !== '')
+	echo get_theme_mod( 'kaya_add_to_body_bottom' );
+?>
+
 
 <?php wp_footer(); ?>
 

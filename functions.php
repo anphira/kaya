@@ -367,13 +367,13 @@ function kaya_page_settings_display_callback( $post ) {
     echo 'Pages are current set to display ';
     switch(get_theme_mod( 'kaya_post_sidebar' )) {
     	case 'no_sidebar';
-    		echo 'no Sidebar';
+    		echo 'No Sidebar';
     		break;
     	case  'left_sidebar':
-    		echo 'a left Sidebar';
+    		echo 'a Left Sidebar';
     		break;
     	case  'right_sidebar':
-    		echo 'a right Sidebar';
+    		echo 'a Right Sidebar';
     		break;
     }
     echo ' by default. To override that setting for this page, select your desired setting below:<br /><br />';
@@ -382,6 +382,7 @@ function kaya_page_settings_display_callback( $post ) {
     $selected = isset( $values['kaya_sidebar_setting'] ) ? esc_attr( $values['kaya_sidebar_setting'][0] ) : '';
     $check = get_post_meta($post->ID, '_kaya_full_width_check', true);
     $check_title = get_post_meta($post->ID, '_kaya_hide_title_check', true);
+    $google_experiments = get_post_meta($post->ID, '_kaya_google_experiments_code', true);
     
     ?>
     <select id="kaya_sidebar_setting" name="kaya_sidebar_setting">
@@ -399,6 +400,10 @@ function kaya_page_settings_display_callback( $post ) {
         <input type="checkbox" id="kaya_hide_title_check" name="kaya_hide_title_check" <?php checked( $check_title, 'on' ); ?> />
         <label for="kaya_hide_title_check">Hide the page title</label>
     </p>
+    
+    <p>Enter Google Experiments Code - make sure to ONLY enter code on the master page, not variations:</p>
+    <textarea rows="4" style="width: 100%;" id="kaya_google_experiments_code" name="kaya_google_experiments_code" ><?php echo $google_experiments; ?></textarea>
+    
 	<?php 
 }
  
@@ -431,6 +436,12 @@ function kaya_page_settings_save_meta_box( $post_id ) {
 	
 	if( isset( $_POST['kaya_hide_title_check'] ) )
 		update_post_meta( $post_id, '_kaya_hide_title_check', ($_POST['kaya_hide_title_check']) ? 'on' : 'off' );
+	
+	if( isset( $_POST['kaya_hide_title_check'] ) )
+		update_post_meta( $post_id, '_kaya_hide_title_check', ($_POST['kaya_hide_title_check']) ? 'on' : 'off' );
+		
+	if( isset( $_POST['kaya_google_experiments_code'] ) )
+		update_post_meta( $post_id, '_kaya_google_experiments_code', $_POST['kaya_google_experiments_code'] );
 }
 add_action( 'save_post', 'kaya_page_settings_save_meta_box' );
 

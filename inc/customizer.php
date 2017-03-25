@@ -255,6 +255,16 @@ function kaya_add_header_options($wp_customize) {
 		)
 	) );
 	
+	$wp_customize->add_setting('kaya_transparent_header');
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
+'kaya_transparent_header', array(
+		'label'           => __( 'Make Header Transparent', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_header',
+		'settings'   => 'kaya_transparent_header',
+		)
+	) );
+	
 	$wp_customize->add_setting('kaya_top_header');
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
 'kaya_top_header', array(
@@ -397,6 +407,46 @@ function kaya_add_general($wp_customize) {
 		'type'            => 'text',
 		'section'         => 'kaya_general',
 		'settings'   => 'kaya_google_analytics',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_cf7_redirect_url');
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_cf7_redirect_url', array(
+		'label'           => __( 'Contact Form 7 Redirect URL', 'kaya' ),
+		'description'	  => __( 'Enter a custom thank you page after contact form 7 forms are filled out', 'kaya'),
+		'type'            => 'text',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_cf7_redirect_url',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_add_to_head');
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_add_to_head', array(
+		'label'           => __( 'Add code before </head>', 'kaya' ),
+		'description'	  => __( 'Enter code to be added before &lt;/head&gt; tag -- useful for some scripts', 'kaya'),
+		'type'            => 'textarea',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_add_to_head',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_add_to_body_top');
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_add_to_body_top', array(
+		'label'           => __( 'Add code just after <body>', 'kaya' ),
+		'description'	  => __( 'Enter code to be added just after &lt;body&gt; tag -- useful for some scripts', 'kaya'),
+		'type'            => 'textarea',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_add_to_body_top',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_add_to_body_bottom');
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_add_to_body_bottom', array(
+		'label'           => __( 'Add code just before </body>', 'kaya' ),
+		'description'	  => __( 'Enter code to be added just before &lt;/body&gt; tag -- useful for some scripts', 'kaya'),
+		'type'            => 'textarea',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_add_to_body_bottom',
 		)
 	) );
 }

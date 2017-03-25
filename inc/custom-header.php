@@ -104,7 +104,10 @@ body a:hover, body a:focus, body a:active {
 	color: <?php echo get_theme_mod( 'kaya_link_hover_color' ) ?>;
 }
 #masthead {
-	background: <?php echo get_theme_mod( 'kaya_header_background_color' ) ?>;
+	background: <?php if(get_theme_mod( 'kaya_transparent_header' ) == true) {
+		echo 'transparent'; }
+		else {
+		echo get_theme_mod( 'kaya_header_background_color' ); } ?>;
 }
 #colophon {
 	background: <?php echo get_theme_mod( 'kaya_footer_background_color' ) ?>;
@@ -136,7 +139,7 @@ $kaya_grid_width = get_theme_mod( 'kaya_grid_width' );
 $kaya_grid_width = ($kaya_grid_width > 320) ? $kaya_grid_width : 1140;
 ?>
 <?php if(get_theme_mod( 'kaya_content_in_grid' ) == true) { ?>
-	#content {
+	#content, body .vc_row[data-vc-full-width="true"] > .wpb_column { {
 		max-width: <?php echo $kaya_grid_width; ?>px;
 		margin: auto;
 	}

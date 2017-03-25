@@ -12,20 +12,28 @@
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
+<?php echo get_post_meta($post->ID, '_kaya_google_experiments_code', true); ?>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 
-
+<?php if(get_theme_mod( 'kaya_add_to_head' ) !== '')
+	echo get_theme_mod( 'kaya_add_to_head' );
+?>
 
 <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
+
+<?php if(get_theme_mod( 'kaya_add_to_body_top' ) !== '')
+	echo get_theme_mod( 'kaya_add_to_body_top' );
+?>
+
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'kaya' ); ?></a>
 
-	<header id="masthead" class="site-header <?php if(get_theme_mod( 'kaya_sticky_header' ) == true ) echo 'sticky-header'; ?>" role="banner">
+	<header id="masthead" class="site-header <?php if(get_theme_mod( 'kaya_sticky_header' ) == true ) echo 'sticky-header'; ?> <?php if(get_theme_mod( 'kaya_transparent_header' ) == true ) echo 'transparent-header'; ?>" role="banner">
 		<?php if(get_theme_mod( 'kaya_top_header' ) == true) { ?>
 			<div class="top-header">
 				<div class="container">
