@@ -77,17 +77,6 @@ function kaya_add_logo($wp_customize) {
 			'settings' => 'kaya_logo',
 		) 
 	) );
-
-	// add a setting for the site retina logo
-	$wp_customize->add_setting('kaya_retina_logo', array('sanitize_callback' => 'kaya_sanitize_logo'));
-	// Add a control to upload the retina logo
-	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'kaya_retina_logo',
-		array(
-			'label' =>  __( 'Upload Retina Logo (twice size of regular logo)', 'kaya' ),
-			'section' => 'title_tagline',
-			'settings' => 'kaya_retina_logo',
-		) 
-	) );
 }
 add_action('customize_register', 'kaya_add_logo');
 
