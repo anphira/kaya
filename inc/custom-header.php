@@ -139,7 +139,7 @@ $kaya_grid_width = get_theme_mod( 'kaya_grid_width' );
 $kaya_grid_width = ($kaya_grid_width > 320) ? $kaya_grid_width : 1140;
 ?>
 <?php if(get_theme_mod( 'kaya_content_in_grid' ) == true) { ?>
-	#content, body .vc_row[data-vc-full-width="true"] > .wpb_column { {
+	#content, body .vc_row[data-vc-full-width="true"] > .wpb_column {
 		max-width: <?php echo $kaya_grid_width; ?>px;
 		margin: auto;
 	}
