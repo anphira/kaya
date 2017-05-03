@@ -23,7 +23,7 @@
  * esc_js
  * esc_attr
  * esc_textarea
- 
+ * 
  */
  
 $kaya_theme_setup_guide_url = 'https://www.anphira.com/kaya-wordpress-theme/kaya-setup-guide/';
@@ -431,7 +431,7 @@ function kaya_add_general($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_add_to_head', array('sanitize_callback' => 'esc_textarea'));
+	$wp_customize->add_setting('kaya_add_to_head', array('sanitize_callback' => 'esc_html'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_add_to_head', array(
 		'label'           => __( 'Add code before </head>', 'kaya' ),
 		'description'	  => __( 'Enter code to be added before &lt;/head&gt; tag -- useful for some scripts', 'kaya'),
@@ -441,7 +441,7 @@ function kaya_add_general($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_add_to_body_top', array('sanitize_callback' => 'esc_textarea'));
+	$wp_customize->add_setting('kaya_add_to_body_top', array('sanitize_callback' => 'esc_html'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_add_to_body_top', array(
 		'label'           => __( 'Add code just after <body>', 'kaya' ),
 		'description'	  => __( 'Enter code to be added just after &lt;body&gt; tag -- useful for some scripts', 'kaya'),
@@ -451,7 +451,7 @@ function kaya_add_general($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_add_to_body_bottom', array('sanitize_callback' => 'esc_textarea'));
+	$wp_customize->add_setting('kaya_add_to_body_bottom', array('sanitize_callback' => 'esc_html'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_add_to_body_bottom', array(
 		'label'           => __( 'Add code just before </body>', 'kaya' ),
 		'description'	  => __( 'Enter code to be added just before &lt;/body&gt; tag -- useful for some scripts', 'kaya'),

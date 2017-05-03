@@ -18,7 +18,7 @@
 <link rel="profile" href="http://gmpg.org/xfn/11">
 
 <?php if(get_theme_mod( 'kaya_add_to_head' ) !== '')
-	echo get_theme_mod( 'kaya_add_to_head' );
+	echo htmlspecialchars_decode(get_theme_mod( 'kaya_add_to_head' ));
 ?>
 
 <?php wp_head(); ?>
@@ -27,7 +27,7 @@
 <body <?php body_class(); ?>>
 
 <?php if(get_theme_mod( 'kaya_add_to_body_top' ) !== '')
-	echo get_theme_mod( 'kaya_add_to_body_top' );
+	echo htmlspecialchars_decode(get_theme_mod( 'kaya_add_to_body_top' ));
 ?>
 
 <div id="page" class="site">

@@ -140,9 +140,10 @@
 
 
 
-<?php if(get_theme_mod( 'kaya_add_to_body_bottom' ) !== '')
-	echo get_theme_mod( 'kaya_add_to_body_bottom' );
-?>
+<?php if(get_theme_mod( 'kaya_add_to_body_bottom' ) !== '') {
+	$tempy = get_theme_mod( 'kaya_add_to_body_bottom' );
+	echo htmlspecialchars_decode($tempy);
+} ?>
 
 
 <?php wp_footer(); ?>

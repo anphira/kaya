@@ -53,6 +53,54 @@ function kaya_fonts_list() {
 	return $kaya_font_family_options;
 }
 
+/**
+ * Adds font options for theme.
+ *
+ * @returns The simple list of available fonts for theme
+ */
+function kaya_fonts_simple_list() {
+	$kaya_font_family_options = array(
+		// web safe fonts
+		'arial',
+		'helvetica',
+		'times',
+		'courier',
+		
+		// Generally available
+		'arial_black',
+		'comic_sans',
+		'georgia',
+		'impact',
+		'tahoma',
+		'trebuchet',
+		'verdana',
+		
+		// Google fonts
+		'abril_fatface',
+		'arvo',
+		'bitter',
+		'droid_sans',
+		'droid_serif',
+		'josefin_slab',
+		'lato',
+		'lora',
+		'lobster',
+		'merriweather',
+		'montserrat',
+		'muli',
+		'oswald',
+		'open_sans',
+		'pt_sans',
+		'raleway',
+		'roboto',
+		'roboto_condensed',
+		'ubuntu',
+		'vollkorn',
+	);
+
+	return $kaya_font_family_options;
+}
+
 
 /**
  * Function to determine if font is from google
@@ -243,7 +291,7 @@ function kaya_sanitize_checkbox( $checked ) {
  */
 function kaya_sanitize_font( $font ) {
 	// Font check
-	$font_list = kaya_fonts_list();
+	$font_list = kaya_fonts_simple_list();
 	if(in_array($font, $font_list))
 		return $font;
 	else 
