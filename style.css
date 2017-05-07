@@ -771,7 +771,6 @@ a:active {
 	display: block;
 }
 
-.byline,
 .updated:not(.published) {
 	display: none;
 }
@@ -784,6 +783,27 @@ a:active {
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
+}
+
+.entry-meta, .site-info, .entry-footer, .post-navigation, nav-links {
+	font-size: 0.85em;
+}
+.cat-links, .tags-links, .comments-link {
+	display: block;
+}
+
+.blog .post, .archive .post {
+	padding: 30px 0;
+	border-bottom: 1px solid #e9e9e9;
+}
+.blog .post:last-child, .archive .post:last-child {
+	border-bottom: none;
+}
+.nav-previous::before {
+	content: '\00AB ';
+}
+.nav-next::after {
+	content: ' \00BB';
 }
 
 /*--------------------------------------------------------------

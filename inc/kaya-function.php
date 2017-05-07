@@ -5,6 +5,16 @@
  * @package Kaya
  */
 
+
+/**
+ * Sanitize Callback for logo
+ */
+function kaya_sanitize_logo( $value ) {
+    
+ 
+    return $value;
+}
+
 /**
  * Adds font options for theme.
  *
@@ -370,3 +380,31 @@ function kaya_sanitize_sidebars( $sidebar ) {
 	else 
 		return 'no_sidebar';
 }
+
+
+/**
+ * Customize login page with logo & URL
+ */
+function kaya_login_logo() { ?>
+    <style type="text/css">
+        #login h1 a, .login h1 a {
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/img/kaya-logo.png);
+		height:85px;
+		width:194px;
+		background-size: 194px 85px;
+		background-repeat: no-repeat;
+        	padding-bottom: 30px;
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'kaya_login_logo' );
+
+function kaya_login_logo_url() {
+    return esc_url( __( 'https://www.anphira.com/kaya-wordpress-theme/', 'kaya' ) );
+}
+add_filter( 'login_headerurl', 'kaya_login_logo_url' );
+
+function kaya_login_logo_url_title() {
+    return 'Kaya theme by Anphira Web Design & Development';
+}
+add_filter( 'login_headertitle', 'kaya_login_logo_url_title' );

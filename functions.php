@@ -56,6 +56,19 @@ function kaya_excerpt_more( $more ) {
 add_filter( 'excerpt_more', 'kaya_excerpt_more' );
 
 
+/**
+ * Always make "Remember me" box checked for login screen
+ */
+function login_checked_remember_me() {
+    add_filter( 'login_footer', 'rememberme_checked' );
+}
+add_action( 'init', 'login_checked_remember_me' );
+ 
+function rememberme_checked() {
+	echo "<script>document.getElementById('rememberme').checked = true;</script>";
+}
+
+
 /***
  * Add notice to admin to welcome people to theme
  */

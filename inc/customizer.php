@@ -36,7 +36,14 @@ $kaya_theme_setup_guide_url = 'https://www.anphira.com/kaya-wordpress-theme/kaya
 function kaya_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
-	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
+
+
+ $wp_customize->remove_control("header_image");
+ $wp_customize->remove_control("header_textcolor");
+ $wp_customize->remove_control("background_color");
+
+	// Remove Background image section from customizer 
+	$wp_customize->remove_section("background_image");
 }
 add_action( 'customize_register', 'kaya_customize_register' );
 
@@ -56,10 +63,21 @@ function kaya_add_help_options($wp_customize) {
 	$wp_customize->add_section('kaya_help', array(
 		'title' => 'Need Setup Help? Start Here',
 		'description' => '<strong>Kaya Setup Instructions</strong><br /><br />
-		<a href="<?php echo  
-$kaya_theme_setup_guide_url; ?>">Cick here for Setup Guide</a>',
+		<a href="https://www.anphira.com/kaya-wordpress-theme/kaya-setup-guide/">Cick here for Setup Guide</a><br /><br />
+		<a href="https://github.com/anphira/kaya">Click here for Kaya GitHub project</a><br />
+		If you have a theme error to report, you can do so on the Github project',
 		'priority' => 10
 	));
+	
+	$wp_customize->add_setting('kaya_help_textarea', array('sanitize_callback' => 'esc_html'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_help_textarea', array(
+		'label'           => __( 'Notes', 'kaya' ),
+		'description'	  => __( 'Enter any notes you would like to keep for yourself here', 'kaya'),
+		'type'            => 'textarea',
+		'section'         => 'kaya_help',
+		'settings'   => 'kaya_help_textarea',
+		)
+	) );
 }
 add_action('customize_register', 'kaya_add_help_options');
 
@@ -80,11 +98,7 @@ function kaya_add_logo($wp_customize) {
 }
 add_action('customize_register', 'kaya_add_logo');
 
-function kaya_sanitize_logo( $value ) {
-    
- 
-    return $value;
-}
+
 
 /**
  * Adding Colors Options
@@ -92,47 +106,25 @@ function kaya_sanitize_logo( $value ) {
 function kaya_add_colors($wp_customize) {
 	$wp_customize->add_setting('kaya_header_background_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_header_background_color', array(
-		'label'        => __( 'Header Background Color', 'kaya' ),
+		'label'        => __( 'Heading Section:<hr />Header Background Color', 'kaya' ),
 		'section'    => 'colors',
 		'settings'   => 'kaya_header_background_color',
 		) 
 	) );
-	$wp_customize->add_setting('kaya_footer_heading_color', array('sanitize_callback' => 'sanitize_hex_color'));
-	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_footer_heading_color', array(
-		'label'        => __( 'Footer Heading Color', 'kaya' ),
+	$wp_customize->add_setting('kaya_menu_background_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_menu_background_color', array(
+		'label'        => __( 'Menu Background Color', 'kaya' ),
 		'section'    => 'colors',
-		'settings'   => 'kaya_footer_heading_color',
+		'settings'   => 'kaya_menu_background_color',
 		) 
 	) );
-	$wp_customize->add_setting('kaya_footer_text_color', array('sanitize_callback' => 'sanitize_hex_color'));
-	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_footer_text_color', array(
-		'label'        => __( 'Footer Text Color', 'kaya' ),
+	$wp_customize->add_setting('kaya_heading_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_heading_color', array(
+		'label'        => __( 'Main Content Section:<hr />Heading Color', 'kaya' ),
 		'section'    => 'colors',
-		'settings'   => 'kaya_footer_text_color',
+		'settings'   => 'kaya_heading_color',
 		) 
 	) );
-	$wp_customize->add_setting('kaya_lower_footer_text_color', array('sanitize_callback' => 'sanitize_hex_color'));
-	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_lower_footer_text_color', array(
-		'label'        => __( 'Lower Footer Text Color', 'kaya' ),
-		'section'    => 'colors',
-		'settings'   => 'kaya_lower_footer_text_color',
-		) 
-	) );
-	$wp_customize->add_setting('kaya_footer_background_color', array('sanitize_callback' => 'sanitize_hex_color'));
-	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_footer_background_color', array(
-		'label'        => __( 'Footer Background Color', 'kaya' ),
-		'section'    => 'colors',
-		'settings'   => 'kaya_footer_background_color',
-		) 
-	) );
-	$wp_customize->add_setting('kaya_lower_footer_background_color', array('sanitize_callback' => 'sanitize_hex_color'));
-	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_lower_footer_background_color', array(
-		'label'        => __( 'Footer Copyright Area Background Color', 'kaya' ),
-		'section'    => 'colors',
-		'settings'   => 'kaya_lower_footer_background_color',
-		) 
-	) );
-	// add a setting for the text color
 	$wp_customize->add_setting('kaya_text_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_text_color', array(
 		'label'        => __( 'Text Color', 'kaya' ),
@@ -141,25 +133,7 @@ function kaya_add_colors($wp_customize) {
 		) 
 	) );
 
-	// add a setting for the text color
-	$wp_customize->add_setting('kaya_menu_background_color', array('sanitize_callback' => 'sanitize_hex_color'));
-	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_menu_background_color', array(
-		'label'        => __( 'Menu Background Color', 'kaya' ),
-		'section'    => 'colors',
-		'settings'   => 'kaya_menu_background_color',
-		) 
-	) );
 	
-	// add a setting for the text color
-	$wp_customize->add_setting('kaya_heading_color', array('sanitize_callback' => 'sanitize_hex_color'));
-	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_heading_color', array(
-		'label'        => __( 'Heading Color', 'kaya' ),
-		'section'    => 'colors',
-		'settings'   => 'kaya_heading_color',
-		) 
-	) );
-	
-	// add a setting for the text color
 	$wp_customize->add_setting('kaya_link_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_link_color', array(
 		'label'        => __( 'Link Color', 'kaya' ),
@@ -183,6 +157,13 @@ function kaya_add_colors($wp_customize) {
 		'settings'   => 'kaya_button_color',
 		) 
 	) );
+	$wp_customize->add_setting('kaya_button_hover_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_button_hover_color', array(
+		'label'        => __( 'Button Hover Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_button_hover_color',
+		) 
+	) );
 	
 	$wp_customize->add_setting('kaya_button_text_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
@@ -193,13 +174,6 @@ function kaya_add_colors($wp_customize) {
 		) 
 	) );
 	
-	$wp_customize->add_setting('kaya_button_hover_color', array('sanitize_callback' => 'sanitize_hex_color'));
-	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_button_hover_color', array(
-		'label'        => __( 'Button Hover Color', 'kaya' ),
-		'section'    => 'colors',
-		'settings'   => 'kaya_button_hover_color',
-		) 
-	) );
 
 	$wp_customize->add_setting('kaya_button_hover_text_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
@@ -210,6 +184,41 @@ function kaya_add_colors($wp_customize) {
 		) 
 	) );
 	
+	$wp_customize->add_setting('kaya_footer_background_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_footer_background_color', array(
+		'label'        => __( 'Footer Section:<hr />Footer Background Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_footer_background_color',
+		) 
+	) );
+	$wp_customize->add_setting('kaya_footer_heading_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_footer_heading_color', array(
+		'label'        => __( 'Footer Heading Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_footer_heading_color',
+		) 
+	) );
+	$wp_customize->add_setting('kaya_footer_text_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_footer_text_color', array(
+		'label'        => __( 'Footer Text Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_footer_text_color',
+		) 
+	) );
+	$wp_customize->add_setting('kaya_lower_footer_background_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_lower_footer_background_color', array(
+		'label'        => __( 'Footer Copyright Area Background Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_lower_footer_background_color',
+		) 
+	) );
+	$wp_customize->add_setting('kaya_lower_footer_text_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_lower_footer_text_color', array(
+		'label'        => __( 'Lower Footer Text Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_lower_footer_text_color',
+		) 
+	) );
 	$wp_customize->add_setting('kaya_social_icon_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_social_icon_color', array(
 		'label'        => __( 'Social Icon Color', 'kaya' ),
