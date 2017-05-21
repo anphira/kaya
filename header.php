@@ -52,24 +52,12 @@
 			switch(get_theme_mod( 'kaya_header_columns' )) {
 				case 'one_column': 
 					echo '<div class="columns-12 last">';
-						echo '<div class="site-branding"><a href="',  esc_url( home_url() )  , '">';
-							if ( get_theme_mod( 'kaya_logo' ) ) :
-								echo '<img src="', esc_url(get_theme_mod( 'kaya_logo' )), '" alt="' , esc_attr( get_bloginfo( 'name', 'display' ) ) , '" >';
-							else :
-								echo '<h1 class="site-title">' , bloginfo( 'name' ) , '</h1>';
-							endif;
-						echo '</a></div><!-- .site-branding -->';
+						kaya_logo_display();
 					echo '</div>';
 					break;
 				case 'two_column': 
 					echo '<div class="columns-6">';
-						echo '<div class="site-branding"><a href="', esc_url( home_url() ) , '">';
-							if ( get_theme_mod( 'kaya_logo' ) ) :
-								echo '<img src="', esc_url(get_theme_mod( 'kaya_logo' )), '" alt="' , esc_attr( get_bloginfo( 'name', 'display' ) ) , '" >';
-							else :
-								echo '<h1 class="site-title">' , bloginfo( 'name' ) , '</h1>';
-							endif;
-						echo '</a></div><!-- .site-branding -->';
+						kaya_logo_display();
 					echo '</div>';
 					echo '<div class="columns-6 last">';
 						dynamic_sidebar('Header-2');
@@ -77,13 +65,7 @@
 					break;
 				case 'three_column': 
 					echo '<div class="columns-4">';
-						echo '<div class="site-branding"><a href="' . esc_url( home_url() ) . '">';
-							if ( get_theme_mod( 'kaya_logo' ) ) :
-								echo '<img src="', esc_url(get_theme_mod( 'kaya_logo' )), '" alt="' , esc_attr( get_bloginfo( 'name', 'display' ) ) , '" >';
-							else :
-								echo '<h1 class="site-title">' , bloginfo( 'name' ) , '</h1>';
-							endif; 
-						echo '</a></div><!-- .site-branding -->';
+						kaya_logo_display();
 					echo '</div>';
 					echo '<div class="columns-4">';
 						dynamic_sidebar('Header-2');
@@ -94,13 +76,7 @@
 					break;
 				case 'four_column': 
 					echo '<div class="columns-3">';
-						echo '<div class="site-branding"><a href="', esc_url( home_url() ) , '">';
-							if ( get_theme_mod( 'kaya_logo' ) ) :
-								echo '<img src="', esc_url(get_theme_mod( 'kaya_logo' )), '" alt="' , esc_attr( get_bloginfo( 'name', 'display' ) ) , '" >';
-							else :
-								echo '<h1 class="site-title">' , bloginfo( 'name' ) , '</h1>';
-							endif;
-						echo '</a></div><!-- .site-branding -->';
+						kaya_logo_display();
 					echo '</div>';
 					echo '<div class="columns-3">';
 						dynamic_sidebar('Header-2');
@@ -114,13 +90,7 @@
 					break;
 				case 'logo_menu':
 					echo '<div class="columns-3">';
-						echo '<div class="site-branding"><a href="', esc_url( home_url() ) , '">';
-							if ( get_theme_mod( 'kaya_logo' ) ) :
-								echo '<img src="', esc_url(get_theme_mod( 'kaya_logo' )), '" alt="' , esc_attr( get_bloginfo( 'name', 'display' ) ) , '" >';
-							else :
-								echo '<h1 class="site-title">' , bloginfo( 'name' ) , '</h1>';
-							endif;
-						echo '</a></div><!-- .site-branding -->';
+						kaya_logo_display();
 					echo '</div>';
 					echo '<div class="columns-9 last">';
 						dynamic_sidebar('Header-2');
@@ -134,13 +104,7 @@
 					break;
 				case 'logo_left_right_content':
 					echo '<div class="columns-3">';
-						echo '<div class="site-branding"><a href="', esc_url( home_url() ) , '">';
-							if ( get_theme_mod( 'kaya_logo' ) ) :
-								echo '<img src="', esc_url(get_theme_mod( 'kaya_logo' )), '" alt="' , esc_attr( get_bloginfo( 'name', 'display' ) ) , '" >';
-							else :
-								echo '<h1 class="site-title">' , bloginfo( 'name' ) , '</h1>';
-							endif;
-						echo '</a></div><!-- .site-branding -->';
+						kaya_logo_display();
 					echo '</div>';
 					echo '<div class="columns-9 last">';
 						dynamic_sidebar('Header-2');
@@ -148,13 +112,7 @@
 					break;
 				default: 
 					echo '<div class="columns-12 last">';
-						echo '<div class="site-branding"><a href="',  esc_url( home_url() )  , '">';
-							if ( get_theme_mod( 'kaya_logo' ) ) :
-								echo '<img src="', esc_url(get_theme_mod( 'kaya_logo' )), '" alt="' , esc_attr( get_bloginfo( 'name', 'display' ) ) , '" >';
-							else :
-								echo '<h1 class="site-title">' , bloginfo( 'name' ) , '</h1>';
-							endif;
-						echo '</a></div><!-- .site-branding -->';
+						kaya_logo_display();
 					echo '</div>';
 					break;
 			} ?>

@@ -89,7 +89,16 @@ email
 
 == Changelog ==
 
+= 0.3 - 2017 =
+* Update widget styling on standard widgets
+* Add Google Optimize option to Google Analytics code
+* Improve PageSpeed
+* Add menu color options
+* Set defaults for customizer options
+
 = 0.2 - May 07 2017 =
+* Help info for customizer
+* Blog style improvements
 
 = 0.2-alpha - May 06 2017 =
 * Initial release

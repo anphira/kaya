@@ -119,14 +119,43 @@ body a:hover, body a:focus, body a:active {
 	background: <?php echo get_theme_mod( 'kaya_lower_footer_background_color' ) ?>;
 	color: <?php echo get_theme_mod( 'kaya_lower_footer_text_color' ) ?>;
 }
-#masthead nav {
+#masthead nav .page_item a, #masthead .menu-toggle {
 	background: <?php echo get_theme_mod( 'kaya_menu_background_color' ) ?>;
+	color: <?php echo get_theme_mod( 'kaya_menu_text_color' ) ?>;
 }
-body a.button, body a.button:visited, body input[type=submit] {
+#masthead nav .page_item a:hover,
+#masthead nav .page_item a:focus,
+#masthead nav .page_item a:active, 
+#masthead .menu-toggle:hover, 
+#masthead .menu-toggle:focus, 
+#masthead .menu-toggle:active {
+	color: <?php echo get_theme_mod( 'kaya_menu_text_hover_color' ) ?>;
+}
+body button,
+body button:visited,
+body a.button, 
+body a.button:visited, 
+body input[type=button],
+body input[type=reset],
+body input[type=submit] {
 	background: <?php echo get_theme_mod( 'kaya_button_color' ) ?>;
 	color: <?php echo get_theme_mod( 'kaya_button_text_color' ) ?>;
 }
-body a.button:hover, body a.button:focus, body a.button:active, body input[type=submit]:hover, body input[type=submit]:focus, body input[type=submit]:active {
+body button:active, 
+body button:focus, 
+body button:hover, 
+body a.button:hover, 
+body a.button:focus, 
+body a.button:active, 
+body input[type=button]:active, 
+body input[type=button]:focus, 
+body input[type=button]:hover, 
+body input[type=reset]:active, 
+body input[type=reset]:focus, 
+body input[type=reset]:hover, 
+body input[type=submit]:hover, 
+body input[type=submit]:focus, 
+body input[type=submit]:active {
 	background: <?php echo get_theme_mod( 'kaya_button_hover_color' ) ?>;
 	color: <?php echo get_theme_mod( 'kaya_button_hover_text_color' ) ?>;
 }
@@ -162,21 +191,23 @@ $kaya_grid_width = ($kaya_grid_width > 320) ? $kaya_grid_width : 1140;
 </style>
 <!-- End Load Customizer CSS settings -->
 <?php
-
-	echo '<!-- Add Google Analytics -->';
-	if(get_theme_mod( 'kaya_google_analytics' ) !== '') {
+	if(!empty(get_theme_mod( 'kaya_google_analytics' ))) {
+		echo '<!-- Add Google Analytics -->';
 		echo "<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  ga('create', '", get_theme_mod( 'kaya_google_analytics' ), "', 'auto');
-  ga('send', 'pageview');
+  ga('create', '", get_theme_mod( 'kaya_google_analytics' ), "', 'auto');";
+
+  if(get_theme_mod('kaya_google_optimize') !== '') echo "ga('require', '", get_theme_mod( 'kaya_google_optimize' ), "');";
+  
+  echo "ga('send', 'pageview');
 
 		</script>";
+		echo '<!-- End Add Google Analytics -->';
 	} 
-	echo '<!-- End Add Google Analytics -->';
  
 }
 add_action( 'wp_head', 'kaya_customizer_settings' );

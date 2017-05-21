@@ -32,7 +32,7 @@ include("inc/kaya-function.php");
  * Registers an editor stylesheet for the theme.
  */
 function kaya_theme_add_editor_styles() {
-    add_editor_style( 'style.css' );
+    add_editor_style( 'style.min.css' );
 }
 add_action( 'admin_init', 'kaya_theme_add_editor_styles' );
 
@@ -209,18 +209,22 @@ function kaya_setup() {
 		set_theme_mod( 'kaya_text_color', '#000000' );
 	if( get_theme_mod( 'kaya_menu_background_color') == '') 
 		set_theme_mod( 'kaya_menu_background_color', '#ffffff' );
+	if( get_theme_mod( 'kaya_menu_text_color') == '') 
+		set_theme_mod( 'kaya_menu_text_color', '#008dc4' );
+	if( get_theme_mod( 'kaya_menu_text_color') == '') 
+		set_theme_mod( 'kaya_menu_text_hover_color', '#005dc4' );
 	if( get_theme_mod( 'kaya_heading_color') == '') 
 		set_theme_mod( 'kaya_heading_color', '#000000' );
 	if( get_theme_mod( 'kaya_link_color') == '') 
-		set_theme_mod( 'kaya_link_color', '#000000' );
+		set_theme_mod( 'kaya_link_color', '#008dc4' );
 	if( get_theme_mod( 'kaya_link_hover_color') == '') 
-		set_theme_mod( 'kaya_link_hover_color', '#000000' );
+		set_theme_mod( 'kaya_link_hover_color', '#005dc4' );
 	if( get_theme_mod( 'kaya_button_color') == '') 
-		set_theme_mod( 'kaya_button_color', '#000000' );
+		set_theme_mod( 'kaya_button_color', '#008dc4' );
 	if( get_theme_mod( 'kaya_button_text_color') == '') 
 		set_theme_mod( 'kaya_button_text_color', '#ffffff' );
 	if( get_theme_mod( 'kaya_button_hover_color') == '') 
-		set_theme_mod( 'kaya_button_hover_color', '#ffffff' );
+		set_theme_mod( 'kaya_button_hover_color', '#005dc4' );
 	if( get_theme_mod( 'kaya_button_hover_text_color') == '') 
 		set_theme_mod( 'kaya_button_hover_text_color', '#000000' );
 	if( get_theme_mod( 'kaya_social_icon_color') == '') 
@@ -231,10 +235,57 @@ function kaya_setup() {
 	/**
 	 * Setup theme defaults for settings
 	 */
-	if( get_theme_mod( 'kaya_page_comments') === '') 
-		set_theme_mod( 'kaya_page_comments', 'off' );
-	if( get_theme_mod( 'kaya_post_comments') === '') 
+	if( empty(get_theme_mod( 'kaya_grid_width')) )
+		set_theme_mod( 'kaya_grid_width', '1140' );
+	if( empty(get_theme_mod( 'kaya_content_in_grid')) )
+		set_theme_mod( 'kaya_content_in_grid', 'on' );
+	if( empty(get_theme_mod( 'kaya_header_in_grid')) )
+		set_theme_mod( 'kaya_header_in_grid', 'on' );
+
+	if( empty(get_theme_mod( 'kaya_post_comments')) )
 		set_theme_mod( 'kaya_post_comments', 'on' );
+	if( empty(get_theme_mod('kaya_page_sidebar')) )
+		set_theme_mod( 'kaya_page_sidebar', 'right_sidebar' );
+	if( empty(get_theme_mod('kaya_post_sidebar')) )
+		set_theme_mod( 'kaya_post_sidebar', 'right_sidebar' );
+
+	if( empty(get_theme_mod('kaya_heading_font')) )
+		set_theme_mod( 'kaya_heading_font', 'arial' );
+	if( empty(get_theme_mod('kaya_paragraph_font')) )
+		set_theme_mod( 'kaya_paragraph_font', 'arial' );
+	if( empty(get_theme_mod('kaya_heading_1')) )
+		set_theme_mod( 'kaya_heading_1', '36' );
+	if( empty(get_theme_mod('kaya_heading_2')) )
+		set_theme_mod( 'kaya_heading_2', '27' );
+	if( empty(get_theme_mod('kaya_heading_3')) )
+		set_theme_mod( 'kaya_heading_3', '21' );
+	if( empty(get_theme_mod('kaya_heading_4')) )
+		set_theme_mod( 'kaya_heading_4', '18' );
+	if( empty(get_theme_mod('kaya_heading_5')) )
+		set_theme_mod( 'kaya_heading_5', '16' );
+	if( empty(get_theme_mod('kaya_heading_6')) )
+		set_theme_mod( 'kaya_heading_6', '16' );
+	if( empty(get_theme_mod('kaya_paragraph')) )
+		set_theme_mod( 'kaya_paragraph', '16' );
+	if( empty(get_theme_mod('kaya_social_icon_size')) )
+		set_theme_mod( 'kaya_social_icon_size', '18' );
+
+	if( empty(get_theme_mod('kaya_header_columns')) )
+		set_theme_mod( 'kaya_header_columns', 'one_column' );
+	
+	if( empty(get_theme_mod('kaya_show_footer_columns')) )
+		set_theme_mod( 'kaya_show_footer_columns', 'on' );
+	if( empty(get_theme_mod('kaya_footer_columns_in_grid')) )
+		set_theme_mod( 'kaya_footer_columns_in_grid', 'on' );
+	if( empty(get_theme_mod('kaya_footer_columns')) )
+		set_theme_mod( 'kaya_footer_columns', 'one_column' );
+	if( empty(get_theme_mod('kaya_show_footer_social')) )
+		set_theme_mod( 'kaya_show_footer_social', 'on' );
+	
+	if( empty(get_theme_mod('kaya_404_title')) )
+		set_theme_mod( 'kaya_404_title', 'Sorry, that page could not be found' );
+	if( empty(get_theme_mod('kaya_404_content')) )
+		set_theme_mod( 'kaya_404_content', 'You tried to reach a page which could not be found. Please <a href="/">click here to visit the home page</a> or use the main menu to navigate to your desired location.' );
 	
 }
 endif;
@@ -464,7 +515,7 @@ add_action( 'save_post', 'kaya_page_settings_save_meta_box' );
  * Enqueue scripts and styles.
  */
 function kaya_scripts() {
-	wp_enqueue_style( 'kaya-style', get_theme_file_uri('style.css'), false, filemtime( get_theme_file_path( 'style.css' )));
+	wp_enqueue_style( 'kaya-style', get_theme_file_uri('style.min.css'), false, filemtime( get_theme_file_path( 'style.min.css' )));
 
 	wp_enqueue_script( 'kaya-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20161215', true );
 
@@ -508,7 +559,7 @@ require get_template_directory() . '/inc/jetpack.php';
 function enqueue_our_required_stylesheets(){
 	wp_enqueue_style('font-awesome', 'inc/font-awesome-4.7.0/font-awesome.min.css'); 
 }
-add_action('wp_enqueue_scripts','enqueue_our_required_stylesheets');
+add_action('get_footer','enqueue_our_required_stylesheets');
 
 /**
  * Function to determine good contrast color (black or white)

@@ -118,6 +118,20 @@ function kaya_add_colors($wp_customize) {
 		'settings'   => 'kaya_menu_background_color',
 		) 
 	) );
+	$wp_customize->add_setting('kaya_menu_text_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_menu_text_color', array(
+		'label'        => __( 'Menu Text Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_menu_text_color',
+		) 
+	) );
+	$wp_customize->add_setting('kaya_menu_text_hover_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_menu_text_hover_color', array(
+		'label'        => __( 'Menu Text Hover Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_menu_text_hover_color',
+		) 
+	) );
 	$wp_customize->add_setting('kaya_heading_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_heading_color', array(
 		'label'        => __( 'Main Content Section:<hr />Heading Color', 'kaya' ),
@@ -427,6 +441,16 @@ function kaya_add_general($wp_customize) {
 		'type'            => 'text',
 		'section'         => 'kaya_general',
 		'settings'   => 'kaya_google_analytics',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_google_optimize', array('sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_google_optimize', array(
+		'label'           => __( 'Google Optimize', 'kaya' ),
+		'description'	  => __( 'Enter your Google Optimize number here, it should be of the format GTM-XXXXXX. To use Google Optimize you must have already entered a Google Analytics number above.', 'kaya'),
+		'type'            => 'text',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_google_optimize',
 		)
 	) );
 	
