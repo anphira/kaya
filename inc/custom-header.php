@@ -77,6 +77,26 @@ h5 {
 h6 {
 	font-size: <?php echo get_theme_mod( 'kaya_heading_6' ) ?>px;
 }
+@media screen and (max-width: 767px) {
+	h1 {
+		font-size: <?php echo get_theme_mod( 'kaya_heading_1' ) * 0.67 ?>px;
+	}
+	h2 {
+		font-size: <?php echo get_theme_mod( 'kaya_heading_2' ) * 0.67 ?>px;
+	}
+	h3 {
+		font-size: <?php echo get_theme_mod( 'kaya_heading_3' ) * 0.67 ?>px;
+	}
+	h4 {
+		font-size: <?php echo get_theme_mod( 'kaya_heading_4' ) * 0.67 ?>px;
+	}
+	h5 {
+		font-size: <?php echo get_theme_mod( 'kaya_heading_5' ) * 0.67 ?>px;
+	}
+	h6 {
+		font-size: <?php echo get_theme_mod( 'kaya_heading_6' ) * 0.67 ?>px;
+	}
+}
 p, body {
 	font-size: <?php echo get_theme_mod( 'kaya_paragraph' ) ?>px;
 }

@@ -515,7 +515,12 @@ add_action( 'save_post', 'kaya_page_settings_save_meta_box' );
  * Enqueue scripts and styles.
  */
 function kaya_scripts() {
-	wp_enqueue_style( 'kaya-style', get_theme_file_uri('style.min.css'), false, filemtime( get_theme_file_path( 'style.min.css' )));
+	if(get_theme_file_uri() == get_template_directory_uri()) {
+		wp_enqueue_style( 'kaya-style', get_theme_file_uri('style.min.css'), false, filemtime( get_theme_file_path( 'style.min.css' )));
+	}
+	else {
+		wp_enqueue_style( 'kaya-style', get_theme_file_uri('style.css'), false, filemtime( get_theme_file_path( 'style.css' )));
+	}
 
 	wp_enqueue_script( 'kaya-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20161215', true );
 

@@ -1,8 +1,6 @@
 Thoughts: 
 - Sticky header need to set up option for height
 - Custom widgets?
-- SEO: AMP - Accelerated Mobile Pages
-- Blog post formats
 
 
 === Kaya ===
