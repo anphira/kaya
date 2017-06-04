@@ -1,6 +1,6 @@
 Thoughts: 
 - Sticky header need to set up option for height
-- Custom widgets?
+- Custom widgets - pretty blog
 
 
 === Kaya ===
@@ -87,12 +87,13 @@ email
 
 == Changelog ==
 
-= 0.3 - 2017 =
+= 0.3 - Jun 03 2017 =
 * Update widget styling on standard widgets
 * Add Google Optimize option to Google Analytics code
 * Improve PageSpeed
 * Add menu color options
 * Set defaults for customizer options
+* 404 page updates
 
 = 0.2 - May 07 2017 =
 * Help info for customizer

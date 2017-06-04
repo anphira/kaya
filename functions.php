@@ -75,8 +75,7 @@ function rememberme_checked() {
 function kaya_welcome_notice() {
     ?>
     <div class="notice notice-success is-dismissible">
-        <p><?php _e( 'Thank you for installing the Kaya WordPress theme!<br />If you are new to the theme, please <a href="<?php echo  
-$kaya_theme_setup_guide_url; ?>">click here to read the setup instructions</a>, if are already familiar with Kaya then click the x on the right to dismiss this notice. You can always view the setup instructions by going to the Customizer and selecting "Need Setup Help?"', 'kaya' ); ?></p>
+        <p><?php _e( 'Thank you for installing the Kaya WordPress theme! View the setup instructions by going to the Customizer and selecting "Need Setup Help?"', 'kaya' ); ?></p>
     </div>
     <?php
 }

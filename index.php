@@ -15,7 +15,7 @@
 get_header(); ?>
 
 	<?php if (get_theme_mod( 'kaya_post_sidebar' ) == 'left_sidebar') get_sidebar(); ?>
-	<div id="primary" class="content-area <?php if( get_theme_mod( 'kaya_page_sidebar' ) !== 'no_sidebar' ) echo 'has-sidebar'; ?>">
+	<div id="primary" class="content-area <?php if( get_theme_mod( 'kaya_post_sidebar' ) !== 'no_sidebar' ) echo 'has-sidebar'; ?>">
 		<main id="main" class="site-main" role="main">
 
 		<?php

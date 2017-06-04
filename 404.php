@@ -18,7 +18,7 @@ get_header(); ?>
 				</header><!-- .page-header -->
 
 				<div class="page-content">
-					<p><?php echo get_theme_mod( 'kaya_404_content' ) ?></p>
+					<p><?php echo htmlspecialchars_decode(get_theme_mod( 'kaya_404_content' )) ?></p>
 
 					
 
