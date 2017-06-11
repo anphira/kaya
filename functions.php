@@ -123,7 +123,7 @@ function kaya_social_icons() {
 			echo '<a class="social-icon-single" href="' . get_theme_mod( 'kaya_rss' ) . '"><i class="fa fa-rss"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_email' ) != '' ) {
-			echo '<a class="social-icon-single" href="' . get_theme_mod( 'kaya_email' ) . '"><i class="fa fa-envelope"></i></a>';
+			echo '<a class="social-icon-single" href="mailto:' . get_theme_mod( 'kaya_email' ) . '"><i class="fa fa-envelope"></i></a>';
 		}
 	echo '</div>';
 }
@@ -514,11 +514,14 @@ add_action( 'save_post', 'kaya_page_settings_save_meta_box' );
  * Enqueue scripts and styles.
  */
 function kaya_scripts() {
-	if(get_theme_file_uri() == get_template_directory_uri()) {
-		wp_enqueue_style( 'kaya-style', get_theme_file_uri('style.min.css'), false, filemtime( get_theme_file_path( 'style.min.css' )));
+
+	// enqueue child theme if using child theme
+	if(get_theme_file_uri() != get_template_directory_uri()) {
+		wp_enqueue_style( 'kaya-child-style', get_theme_file_uri('style.css'), false, filemtime( get_theme_file_path( 'style.css' )));
+		wp_enqueue_style( 'kaya-style', get_template_directory_uri( '/style.min.css' ));
 	}
 	else {
-		wp_enqueue_style( 'kaya-style', get_theme_file_uri('style.css'), false, filemtime( get_theme_file_path( 'style.css' )));
+		wp_enqueue_style( 'kaya-style', get_theme_file_uri('style.min.css'), false, filemtime( get_theme_file_path( 'style.min.css' )));
 	}
 
 	wp_enqueue_script( 'kaya-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20161215', true );
