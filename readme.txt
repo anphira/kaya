@@ -10,7 +10,7 @@ Tags: translation-ready, custom-background, theme-options, custom-menu, post-for
 
 Requires at least: 4.7
 Tested up to: 4.7.4
-Stable tag: v0.2
+Stable tag: v0.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,59 +33,19 @@ Kaya is a flexible theme to build fabulous & functional websites. With a focus o
 Kaya includes support for Infinite Scroll in Jetpack.
 Kaya includes support for Visual Composer.
 
-= Customization Options =
+= Are there examples of theme being used? =
 
-From the Customizer a number of customization options exist:
-1. Site Identity
-- site title
-- site tagline
-- logo
-- site icon
+Examples of the theme being used are at https://www.anphira.com/kaya-wordpress-theme/
 
-2. General options
-- set if site content is in grid
+== Customization Options ==
 
-2. Colors
-- header text color
-- background color
-- text color
-- menu background
-- font color
-- link color
-- link hover color
-- button color
-- button hover color
-- social icon color
-- social icon background color
-- WooCommerce
-
-3. Fonts
-- font sizes for all headings & p
-
-4. Social Links
-- add URLs for:
-facebook
-twitter
-linkedin
-google+
-skype
-youtube
-vimeo
-rss
-instagram
-pinterest
-yelp
-email
-
-5. Footer options
-- set number of columns for footer (1 - 4)
-- 
-
-6. Header options
-
-7. Background options
+From the Customizer a number of customization options exist. Please see https://www.anphira.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 0.3.1 - Jun 11 2017 =
+* Update functions.php for loading of child theme css automatically
+* Fix 404 page to use standard HTML markup in textarea content box
 
 = 0.3 - Jun 03 2017 =
 * Update widget styling on standard widgets
