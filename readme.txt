@@ -43,6 +43,9 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
+= 0.3.2 - Jun 11 2017 =
+* Add [kaya_social_icons] shortcode
+
 = 0.3.1 - Jun 11 2017 =
 * Update functions.php for loading of child theme css automatically
 * Fix 404 page to use standard HTML markup in textarea content box
