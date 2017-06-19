@@ -131,6 +131,17 @@ function kaya_social_icons() {
 endif;
 
 
+/**
+ * Function for [kaya_social_icons] shortcode
+ */
+if ( ! function_exists( 'kaya_setup' ) ) :
+function kaya_social_icons_shortcode() {
+	kaya_social_icons();
+}
+add_shortcode('kaya_social_icons', 'kaya_social_icons_shortcode');
+endif;
+
+
 if ( ! function_exists( 'kaya_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
