@@ -1,6 +1,11 @@
 Thoughts: 
 - Sticky header need to set up option for height
 - Custom widgets - pretty blog
+- ADA complaint
+- Landing Page Templates
+- Beaver Builder
+- Gutenberg Builder
+- SiteOrigin Builder
 
 
 === Kaya ===
@@ -37,11 +42,20 @@ Kaya includes support for Visual Composer.
 
 Examples of the theme being used are at https://www.anphira.com/kaya-wordpress-theme/
 
+= Are there any recommended plugins? =
+
+Recommended plugins are available at https://www.anphira.com/kaya-wordpress-theme/
+
 == Customization Options ==
 
 From the Customizer a number of customization options exist. Please see https://www.anphira.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 0.3.3 - Jul 27 2017 =
+* add height & width to logo
+* add top header widget areas
+* fix left sidebar display issue
 
 = 0.3.2 - Jun 11 2017 =
 * Add [kaya_social_icons] shortcode

@@ -416,7 +416,12 @@ add_filter( 'login_headertitle', 'kaya_login_logo_url_title' );
 function kaya_logo_display() {
 	echo '<div class="site-branding"><a href="',  esc_url( home_url() )  , '">';
 		if ( get_theme_mod( 'kaya_logo' ) ) :
-			echo '<img src="', esc_url(get_theme_mod( 'kaya_logo' )), '" alt="' , esc_attr( get_bloginfo( 'name', 'display' ) ) , '" >';
+			$kaya_alt = esc_attr( get_bloginfo( 'name', 'display' ) );
+			$kaya_logo = esc_url(get_theme_mod( 'kaya_logo' ));
+			//list($width, $height) = getimagesize($kaya_logo);
+			$width = get_theme_mod( 'kaya_logo_width' );
+			$height = get_theme_mod( 'kaya_logo_height' );
+			echo "<img src='$kaya_logo' alt='$kaya_alt' width='$width' height='$height'>";
 		else :
 			echo '<h3 class="site-title">' , bloginfo( 'name' ) , '</h3>';
 		endif;

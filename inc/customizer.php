@@ -95,6 +95,24 @@ function kaya_add_logo($wp_customize) {
 			'settings' => 'kaya_logo',
 		) 
 	) );
+
+	$wp_customize->add_setting('kaya_logo_width', array('sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_logo_width', array(
+		'label'           => __( 'Logo Width (in pixels)', 'kaya' ),
+		'type'            => 'number',
+		'section'         => 'title_tagline',
+		'settings'   => 'kaya_logo_width',
+		)
+	) );
+
+	$wp_customize->add_setting('kaya_logo_height', array('sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_logo_height', array(
+		'label'           => __( 'Logo Height (in pixels)', 'kaya' ),
+		'type'            => 'number',
+		'section'         => 'title_tagline',
+		'settings'   => 'kaya_logo_height',
+		)
+	) );
 }
 add_action('customize_register', 'kaya_add_logo');
 

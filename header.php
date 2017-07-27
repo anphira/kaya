@@ -6,7 +6,10 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
+ * @author  Anphira
+ * @since   0.1
  * @package Kaya
+ * @version 0.3.3
  */
 
 ?><!DOCTYPE html>
@@ -131,4 +134,22 @@
 		<?php } ?>
 	</header><!-- #masthead -->
 
-	<div id="content" class="site-content <?php if(get_post_meta($post->ID, '_kaya_full_width_check', true) == 'on') echo 'full-width'; else echo 'normal-width'; ?>">
+
+	<?php 
+	/* Determine sidebar class */
+	$sidebar_class = '';
+	if(is_page()) {
+		if (get_theme_mod( 'kaya_page_sidebar' ) == 'left_sidebar') 
+			$sidebar_class = ' sidebar-left';
+		if (get_theme_mod( 'kaya_page_sidebar' ) == 'right_sidebar') 
+			$sidebar_class = ' sidebar-right';
+	}
+	else { // use post sidebar
+		if (get_theme_mod( 'kaya_post_sidebar' ) == 'left_sidebar') 
+			$sidebar_class = ' sidebar-left';
+		if (get_theme_mod( 'kaya_post_sidebar' ) == 'right_sidebar') 
+			$sidebar_class = ' sidebar-right';
+	}
+	?>
+
+	<div id="content" class="site-content <?php if(get_post_meta($post->ID, '_kaya_full_width_check', true) == 'on') echo 'full-width'; else echo 'normal-width'; echo $sidebar_class; ?>">
