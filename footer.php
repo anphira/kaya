@@ -6,7 +6,10 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
+ * @author  Anphira
+ * @since   0.1
  * @package Kaya
+ * @version 0.3.3
  */
 
 ?>

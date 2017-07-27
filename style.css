@@ -5,11 +5,11 @@ Author: Anphira, LLC
 Author URI: https://www.anphira.com/
 GitHub Theme URI: anphira/kaya
 Description: Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It's ready to work with your page builder and has built-in support for Visual Composer. You can view the setup instructions by going to the Customizer and selecting "Need Setup Help?".
-Version: 0.3.2
+Version: 0.3.3
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kaya
-Tags: one-column, two-columns, right-sidebar, left-sidebar, flexible-header, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, sticky-post, theme-options, translation-ready, custom-background, post-formats, threaded-comments, full-width-template
+Tags: one-column, two-columns, right-sidebar, left-sidebar, flexible-header, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, sticky-post, theme-options, translation-ready, custom-background, post-formats, threaded-comments, full-width-template, accessibility-ready
 
 This theme, like WordPress, is licensed under the GPL.
 
@@ -952,15 +952,31 @@ object {
 	max-width: 100%;
 }
 @media screen and (min-width: 768px) {
-	#primary.has-sidebar {
+	/* Right Sidebar */
+	.sidebar-right #primary.has-sidebar {
 		width: 72%;
 		float: left;
 		border-right: 1px solid #ebebeb;
 		padding-right: calc(2% - 1px);
 		padding-bottom: 30px;
 	}
-	#secondary {
+	.sidebar-right #secondary {
 		margin-left: 3%;
+		width: 25%;
+		float: left;
+		padding: 20px 0 0;
+	}
+
+	/* Left Sidebar */
+	.sidebar-left #primary.has-sidebar {
+		width: 72%;
+		float: left;
+		border-left: 1px solid #ebebeb;
+		padding-left: calc(2% - 1px);
+		padding-bottom: 30px;
+	}
+	.sidebar-left #secondary {
+		margin-right: 3%;
 		width: 25%;
 		float: left;
 		padding: 20px 0 0;
