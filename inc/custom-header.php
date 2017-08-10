@@ -12,7 +12,10 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
+ * @author  Anphira
+ * @since   0.1
  * @package Kaya
+ * @version 0.4
  */
 
 /**
@@ -43,8 +46,40 @@ html {
 	background: <?php echo get_theme_mod( 'kaya_lower_footer_background_color' ) ?>;
 }
 
+#page {
+	background-color: <?php echo get_theme_mod( 'kaya_background_color' ) ?>;
+	<?php if (get_theme_mod( 'kaya_background_image_type' ) != 'dont_use') {
+		echo "background-image: url(" , get_theme_mod( 'kaya_background_image' ), ");";
+		switch(get_theme_mod( 'kaya_background_image_type' )) {
+			case 'fix_to_bottom':
+				echo 'background-position: bottom center;';
+				echo 'background-repeat: no-repeat;';
+				break;
+			case 'fix_to_top':
+				echo 'background-position: top center;';
+				echo 'background-repeat: no-repeat;';
+				break;
+			case 'fixed_pos':
+				echo 'background-attachment: fixed;';
+				echo 'background-repeat: no-repeat;';
+				break;
+			case 'stretch':
+				echo 'background-position: center;';
+				echo 'background-size: 100%;';
+				echo 'background-repeat: no-repeat;';
+				break;
+			case 'tile_image':
+				echo 'background-repeat: repeat;';
+				break;
+			default:
+				break;
+		}
+	} ?>
+}
+
 body, p, button, input, select, textarea {
 	color: <?php echo get_theme_mod( 'kaya_text_color' ) ?>;
+	font-weight: <?php echo get_theme_mod( 'kaya_paragraph_font_weight' ) ?>;
 	font-family: 
 		<?php if(get_theme_mod( 'kaya_custom_google_fonts_paragraph' ) != '')
 			echo get_theme_mod( 'kaya_custom_google_fonts_paragraph' );
@@ -53,6 +88,7 @@ body, p, button, input, select, textarea {
 }
 h1, h2, h3, h4, h5, h6 {
 	color: <?php echo get_theme_mod( 'kaya_heading_color' ) ?>;
+	font-weight: <?php echo get_theme_mod( 'kaya_heading_font_weight' ) ?>;
 	font-family: 
 		<?php if(get_theme_mod( 'kaya_custom_google_fonts_heading' ) != '')
 			echo get_theme_mod( 'kaya_custom_google_fonts_heading' );
@@ -129,8 +165,11 @@ body a:hover, body a:focus, body a:active {
 #colophon {
 	background: <?php echo get_theme_mod( 'kaya_footer_background_color' ) ?>;
 }
-#colophon, #colophon a, #colophon p {
+#colophon, #colophon p {
 	color: <?php echo get_theme_mod( 'kaya_footer_text_color' ) ?>;
+}
+#colophon a {
+	color: <?php echo get_theme_mod( 'kaya_footer_link_color' ) ?>;
 }
 #colophon h3, #colophon h4, #colophon h5, #colophon h6 {
 	color: <?php echo get_theme_mod( 'kaya_footer_heading_color' ) ?>;

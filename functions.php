@@ -4,7 +4,10 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
+ * @author  Anphira
+ * @since   0.1
  * @package Kaya
+ * @version 0.4
  */
  
 /**
@@ -209,6 +212,8 @@ function kaya_setup() {
 		set_theme_mod( 'kaya_footer_heading_color', '#000000' );
 	if( get_theme_mod( 'kaya_footer_text_color') == '') 
 		set_theme_mod( 'kaya_footer_text_color', '#000000' );
+	if( get_theme_mod( 'kaya_footer_link_color') == '') 
+		set_theme_mod( 'kaya_footer_link_color', '#000080' );
 	if( get_theme_mod( 'kaya_lower_footer_text_color') == '') 
 		set_theme_mod( 'kaya_lower_footer_text_color', '#ffffff' );
 	if( get_theme_mod( 'kaya_footer_background_color') == '') 
@@ -223,6 +228,8 @@ function kaya_setup() {
 		set_theme_mod( 'kaya_menu_text_color', '#008dc4' );
 	if( get_theme_mod( 'kaya_menu_text_color') == '') 
 		set_theme_mod( 'kaya_menu_text_hover_color', '#005dc4' );
+	if( get_theme_mod( 'kaya_background_color') == '') 
+		set_theme_mod( 'kaya_background_color', '#ffffff' );
 	if( get_theme_mod( 'kaya_heading_color') == '') 
 		set_theme_mod( 'kaya_heading_color', '#000000' );
 	if( get_theme_mod( 'kaya_link_color') == '') 
@@ -247,13 +254,7 @@ function kaya_setup() {
 	 */
 	if( empty(get_theme_mod( 'kaya_grid_width')) )
 		set_theme_mod( 'kaya_grid_width', '1140' );
-	if( empty(get_theme_mod( 'kaya_content_in_grid')) )
-		set_theme_mod( 'kaya_content_in_grid', 'on' );
-	if( empty(get_theme_mod( 'kaya_header_in_grid')) )
-		set_theme_mod( 'kaya_header_in_grid', 'on' );
 
-	if( empty(get_theme_mod( 'kaya_post_comments')) )
-		set_theme_mod( 'kaya_post_comments', 'on' );
 	if( empty(get_theme_mod('kaya_page_sidebar')) )
 		set_theme_mod( 'kaya_page_sidebar', 'right_sidebar' );
 	if( empty(get_theme_mod('kaya_post_sidebar')) )
@@ -279,18 +280,18 @@ function kaya_setup() {
 		set_theme_mod( 'kaya_paragraph', '16' );
 	if( empty(get_theme_mod('kaya_social_icon_size')) )
 		set_theme_mod( 'kaya_social_icon_size', '18' );
+	if( empty(get_theme_mod('kaya_social_icon_size')) )
+		set_theme_mod( 'kaya_social_icon_size', '18' );
+	if( empty(get_theme_mod('kaya_heading_font_weight')) )
+		set_theme_mod( 'kaya_heading_font_weight', '400' );
+	if( empty(get_theme_mod('kaya_paragraph_font_weight')) )
+		set_theme_mod( 'kaya_paragraph_font_weight', '400' );
 
 	if( empty(get_theme_mod('kaya_header_columns')) )
 		set_theme_mod( 'kaya_header_columns', 'one_column' );
 	
-	if( empty(get_theme_mod('kaya_show_footer_columns')) )
-		set_theme_mod( 'kaya_show_footer_columns', 'on' );
-	if( empty(get_theme_mod('kaya_footer_columns_in_grid')) )
-		set_theme_mod( 'kaya_footer_columns_in_grid', 'on' );
 	if( empty(get_theme_mod('kaya_footer_columns')) )
 		set_theme_mod( 'kaya_footer_columns', 'one_column' );
-	if( empty(get_theme_mod('kaya_show_footer_social')) )
-		set_theme_mod( 'kaya_show_footer_social', 'on' );
 	
 	if( empty(get_theme_mod('kaya_404_title')) )
 		set_theme_mod( 'kaya_404_title', 'Sorry, that page could not be found' );
