@@ -52,6 +52,12 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
+= 0.4 - Aug 10 2017 =
+* add background color, background image/pattern
+* fix issue with checkboxes on customizer
+* add font color for footer links
+* add font weight settings
+
 = 0.3.3 - Jul 27 2017 =
 * add height & width to logo
 * add top header widget areas

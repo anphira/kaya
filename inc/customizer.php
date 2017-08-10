@@ -2,7 +2,10 @@
 /**
  * Kaya Theme Customizer.
  *
+ * @author  Anphira
+ * @since   0.1
  * @package Kaya
+ * @version 0.4
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -150,9 +153,45 @@ function kaya_add_colors($wp_customize) {
 		'settings'   => 'kaya_menu_text_hover_color',
 		) 
 	) );
+
+	$wp_customize->add_setting('kaya_background_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_background_color', array(
+		'label'        => __( 'Main Content Section:<hr />Background Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_background_color',
+		) 
+	) );
+
+	// add a setting for background image
+	$wp_customize->add_setting('kaya_background_image', array('sanitize_callback' => 'kaya_sanitize_logo'));
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'kaya_background_image',
+		array(
+			'label' =>  __( 'Upload Background Image', 'kaya' ),
+			'section' => 'colors',
+			'settings' => 'kaya_background_image',
+		) 
+	) );
+	
+	$wp_customize->add_setting('kaya_background_image_type', array('sanitize_callback' => 'kaya_sanitize_background_select'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_background_image_type', array(
+		'label'           => __( 'Style of Background Image', 'kaya' ),
+		'type'            => 'select',
+		'choices'		  => array(
+								'dont_use' => 'Dont use image',
+								'tile_image' => 'Tile image',
+								'fix_to_top' => 'Affix background image to top',
+								'fix_to_bottom' => 'Affix background image to bottom',
+								'stretch' => 'Stetch image to cover whole background',
+								'fixed_pos' => 'Fixed position so background doesnt scroll',
+							 ),
+		'section'         => 'colors',
+		'settings'   => 'kaya_background_image_type',
+		)
+	) );
+
 	$wp_customize->add_setting('kaya_heading_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_heading_color', array(
-		'label'        => __( 'Main Content Section:<hr />Heading Color', 'kaya' ),
+		'label'        => __( 'Heading Text Color', 'kaya' ),
 		'section'    => 'colors',
 		'settings'   => 'kaya_heading_color',
 		) 
@@ -235,6 +274,13 @@ function kaya_add_colors($wp_customize) {
 		'label'        => __( 'Footer Text Color', 'kaya' ),
 		'section'    => 'colors',
 		'settings'   => 'kaya_footer_text_color',
+		) 
+	) );
+	$wp_customize->add_setting('kaya_footer_link_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_footer_link_color', array(
+		'label'        => __( 'Footer Link Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_footer_link_color',
 		) 
 	) );
 	$wp_customize->add_setting('kaya_lower_footer_background_color', array('sanitize_callback' => 'sanitize_hex_color'));
@@ -559,13 +605,14 @@ function kaya_add_footer($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_show_footer_social', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_show_footer_social', array(
-		'label'           => __( 'Display Social Media Icons in Footer', 'kaya' ),
-		'type'            => 'checkbox',
-		'section'         => 'kaya_footer',
-		'settings'   => 'kaya_show_footer_social',
-		)
+	$wp_customize->add_setting( 'kaya_show_footer_social', array(
+	  'capability' => 'edit_theme_options',
+	  'sanitize_callback' => 'kaya_sanitize_checkbox',
+	) );
+	$wp_customize->add_control( 'kaya_show_footer_social', array(
+	  'type' => 'checkbox',
+	  'section' => 'kaya_footer', 
+	  'label' => __( 'Display Social Media Icons in Footer', 'kaya' ),
 	) );
 	
 	$wp_customize->add_setting('kaya_footer_right', array('sanitize_callback' => 'sanitize_text_field'));
@@ -1008,6 +1055,26 @@ function kaya_add_fonts($wp_customize) {
 		'type'            => 'number',
 		'section'         => 'kaya_fonts',
 		'settings'   => 'kaya_social_icon_size',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_heading_font_weight', array('sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_heading_font_weight', array(
+		'label'           => __( 'Heading Font Weight', 'kaya' ),
+		'description'	  => __( 'Enter font weight as a number, for example "300"', 'kaya' ),
+		'type'            => 'number',
+		'section'         => 'kaya_fonts',
+		'settings'   => 'kaya_heading_font_weight',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_paragraph_font_weight', array('sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_paragraph_font_weight', array(
+		'label'           => __( 'Heading Font Weight', 'kaya' ),
+		'description'	  => __( 'Enter font weight as a number, for example "300"', 'kaya' ),
+		'type'            => 'number',
+		'section'         => 'kaya_fonts',
+		'settings'   => 'kaya_paragraph_font_weight',
 		)
 	) );
 	

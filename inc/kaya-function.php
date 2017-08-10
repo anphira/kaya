@@ -338,7 +338,7 @@ function kaya_sanitize_header_columns( $column ) {
 /**
  * Function for sanitizer callback on footer columns
  * 
- * Sanitization callback for theme included fonts. This callback sanitizes `$column`
+ * Sanitization callback for footer column options. This callback sanitizes `$column`
  * and returns a valid theme supported column.
  *
  * @param string $column which is the user selected column.
@@ -360,12 +360,38 @@ function kaya_sanitize_footer_columns( $column ) {
 
 
 /**
+ * Function for sanitizer callback on background image
+ * 
+ * Sanitization callback for background image settings. This callback sanitizes `$option`
+ * and returns a valid theme supported background setting.
+ *
+ * @param string $option which is the user selected option.
+ * @return string which is a valid theme supported option.
+ */
+function kaya_sanitize_background_select( $option ) {
+	// Background check
+	$valid_options = array(
+								'dont_use',
+								'tile_image',
+								'fix_to_top',
+								'fix_to_bottom',
+								'stretch',
+								'fixed_pos',
+							 );
+	if(in_array($option, $valid_options))
+		return $option;
+	else 
+		return 'dont_use';
+}
+
+
+/**
  * Function for sanitizer callback on sidebars
  * 
- * Sanitization callback for theme included fonts. This callback sanitizes `$sidebar`
+ * Sanitization callback for theme sidebar options. This callback sanitizes `$sidebar`
  * and returns a valid theme supported sidebar.
  *
- * @param string $column which is the user selected sidebar.
+ * @param string $sidebar which is the user selected sidebar.
  * @return string which is a valid theme support sidebar.
  */
 function kaya_sanitize_sidebars( $sidebar ) {
