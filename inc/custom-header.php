@@ -178,7 +178,7 @@ body a:hover, body a:focus, body a:active {
 	background: <?php echo get_theme_mod( 'kaya_lower_footer_background_color' ) ?>;
 	color: <?php echo get_theme_mod( 'kaya_lower_footer_text_color' ) ?>;
 }
-#masthead nav .page_item a, #masthead .menu-toggle {
+#masthead #site-navigation .page_item a, #masthead .menu-toggle, #masthead #site-navigation {
 	background: <?php echo get_theme_mod( 'kaya_menu_background_color' ) ?>;
 	color: <?php echo get_theme_mod( 'kaya_menu_text_color' ) ?>;
 }
