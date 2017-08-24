@@ -5,7 +5,7 @@ Author: Anphira, LLC
 Author URI: https://www.anphira.com/
 GitHub Theme URI: anphira/kaya
 Description: Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It's ready to work with your page builder and has built-in support for Visual Composer. You can view the setup instructions by going to the Customizer and selecting "Need Setup Help?".
-Version: 0.4
+Version: 0.5
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kaya
@@ -230,6 +230,7 @@ input {
 
 input[type=text],
 input[type=email],
+input[type=search],
 input[type=tel] {
 	width: 100%;
 	max-width: 100%;
@@ -414,7 +415,10 @@ ol {
 li > ul,
 li > ol {
 	margin-bottom: 0;
-	margin-left: 1.5em;
+	margin-left: 0;
+}
+li > ol {
+	list-style: lower-alpha;
 }
 
 dt {
@@ -487,6 +491,7 @@ input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
 textarea {
+	max-width: 100%;
 	color: #666;
 	border: 1px solid #ccc;
 	border-radius: 3px;
@@ -770,7 +775,7 @@ a:active {
 }
 
 .widget_search label {
-	width: calc(100% - 3.5em - 30px);
+	width: calc(100% - 3.5em - 38px);
 	float: left;
 }
 .widget_search .search-submit {
@@ -1011,6 +1016,16 @@ object {
 --------------------------------------------------------------*/
 .main-navigation .menu-item {
 	margin-right: 20px;
+}
+
+
+/*--------------------------------------------------------------
+# Page Hero Area Settings
+--------------------------------------------------------------*/
+#page-hero-area .container {
+	padding: 25px 15px;
+	overflow: hidden;
+	margin: auto;
 }
 
 
