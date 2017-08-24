@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.4
+ * @version 0.5
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -446,9 +446,62 @@ function kaya_add_general($wp_customize) {
 		)
 	) );
 	
+	$wp_customize->add_setting('kaya_page_comments', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_page_comments', array(
+		'label'           => __( 'Display Comments on Pages', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_page_comments',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_page_hero', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_page_hero', array(
+		'label'           => __( 'Use Page Hero Area Sitewide', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_page_hero',
+		)
+	) );
+
+	$wp_customize->add_setting('kaya_page_hero_background_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_page_hero_background_color', array(
+		'label'        => __( 'Page Hero Default Background Color', 'kaya' ),
+		'section'    => 'kaya_general',
+		'settings'   => 'kaya_page_hero_background_color',
+		) 
+	) );
+
+	// add a setting for background image
+	$wp_customize->add_setting('kaya_page_hero_background_image', array('sanitize_callback' => 'kaya_sanitize_logo'));
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'kaya_page_hero_background_image',
+		array(
+			'label' =>  __( 'Upload Default Page Hero Area Background Image', 'kaya' ),
+			'section' => 'kaya_general',
+			'settings' => 'kaya_page_hero_background_image',
+		) 
+	) );
+	
+	$wp_customize->add_setting('kaya_page_hero_background_image_type', array('sanitize_callback' => 'kaya_sanitize_background_select'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_page_hero_background_image_type', array(
+		'label'           => __( 'Style of Page Hero Background Image', 'kaya' ),
+		'type'            => 'select',
+		'choices'		  => array(
+								'dont_use' => 'Use color instead of image',
+								'tile_image' => 'Tile image',
+								'fix_to_top' => 'Affix background image to top',
+								'fix_to_bottom' => 'Affix background image to bottom',
+								'stretch' => 'Stetch image to cover whole background',
+								'fixed_pos' => 'Fixed position so background doesnt scroll',
+							 ),
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_page_hero_background_image_type',
+		)
+	) );
+	
 	$wp_customize->add_setting('kaya_post_sidebar', array('sanitize_callback' => 'kaya_sanitize_sidebars'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_sidebar', array(
-		'label'           => __( 'Default Sidebar Setting for Blog Posts', 'kaya' ),
+		'label'           => __( 'Default Sidebar Setting for Blog &amp; Posts', 'kaya' ),
 		'type'            => 'select',
 		'choices'		  => array(
 								'no_sidebar' => 'No Sidebar',
@@ -457,15 +510,6 @@ function kaya_add_general($wp_customize) {
 							 ),
 		'section'         => 'kaya_general',
 		'settings'   => 'kaya_post_sidebar',
-		)
-	) );
-	
-	$wp_customize->add_setting('kaya_page_comments', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_page_comments', array(
-		'label'           => __( 'Display Comments on Pages', 'kaya' ),
-		'type'            => 'checkbox',
-		'section'         => 'kaya_general',
-		'settings'   => 'kaya_page_comments',
 		)
 	) );
 	

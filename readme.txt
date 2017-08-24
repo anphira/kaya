@@ -15,7 +15,7 @@ Tags: translation-ready, custom-background, theme-options, custom-menu, post-for
 
 Requires at least: 4.7
 Tested up to: 4.7.4
-Stable tag: v0.3.1
+Stable tag: v0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,6 +51,12 @@ Recommended plugins are available at https://www.anphira.com/kaya-wordpress-them
 From the Customizer a number of customization options exist. Please see https://www.anphira.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 0.5 - Aug 24 2017 =
+* modify social to open in new window
+* add hero banner for inside pages
+* add everywhere top and bottom sidebars to allow content to be added to every sidebar above and below the template specific sidebars
+* fix: single sidebar displays correctly on single posts
 
 = 0.4 - Aug 10 2017 =
 * add background color, background image/pattern

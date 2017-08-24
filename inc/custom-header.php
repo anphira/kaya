@@ -15,7 +15,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.4
+ * @version 0.5
  */
 
 /**
@@ -182,6 +182,57 @@ body a:hover, body a:focus, body a:active {
 	background: <?php echo get_theme_mod( 'kaya_menu_background_color' ) ?>;
 	color: <?php echo get_theme_mod( 'kaya_menu_text_color' ) ?>;
 }
+#page-hero-area {
+	<?php
+	$page_hero_background_color = get_post_meta(get_the_ID(), '_kaya_page_hero_header_color', true);
+	$page_hero_background_image = get_post_meta(get_the_ID(), '_kaya_page_hero_image', true);
+	$page_hero_background_setting = get_post_meta(get_the_ID(), 'kaya_page_hero_background_setting', true);
+	switch ($page_hero_background_setting ) {
+		case 'dont_use':
+			break;
+		case 'tile_image':
+			break;
+		case 'fix_to_top':
+			break;
+		case 'fix_to_bottom':
+			break;
+		case 'stretch':
+			break;
+		case 'fixed_pos':
+			break;
+		case 'use_page_default':
+			$page_hero_background_setting = get_theme_mod('kaya_page_hero_background_image_type');
+			$page_hero_background_color = get_theme_mod('kaya_page_hero_background_color');
+			$page_hero_background_image = get_theme_mod('kaya_page_hero_background_image');
+			break;
+		default: 
+			$page_hero_background_setting = get_theme_mod('kaya_page_hero_background_image_type');
+			$page_hero_background_color = get_theme_mod('kaya_page_hero_background_color');
+			$page_hero_background_image = get_theme_mod('kaya_page_hero_background_image');
+	}
+	switch($page_hero_background_setting) {
+		case 'dont_use':
+			echo 'background: '. $page_hero_background_color .';';
+			break;
+		case 'tile_image':
+			echo 'background: url('. $page_hero_background_image .') repeat;';
+			break;
+		case 'fix_to_top':
+			echo 'background: url('. $page_hero_background_image .') no-repeat center top;';
+			break;
+		case 'fix_to_bottom':
+			echo 'background: url('. $page_hero_background_image .') no-repeat center bottom;';
+			break;
+		case 'stretch':
+			echo 'background: url('. $page_hero_background_image .') no-repeat;';
+			echo 'background-size: cover;';
+			break;
+		case 'fixed_pos':
+			echo 'background: url('. $page_hero_background_image .') no-repeat center;';
+			echo 'background-attachment: fixed;';
+			break;
+	} ?>
+}
 #masthead nav .page_item a:hover,
 #masthead nav .page_item a:focus,
 #masthead nav .page_item a:active, 
@@ -224,7 +275,7 @@ $kaya_grid_width = get_theme_mod( 'kaya_grid_width' );
 $kaya_grid_width = ($kaya_grid_width > 320) ? $kaya_grid_width : 1140;
 ?>
 <?php if(get_theme_mod( 'kaya_content_in_grid' ) == true) { ?>
-	#content, body .vc_row[data-vc-full-width="true"] > .wpb_column {
+	#content, body .vc_row[data-vc-full-width="true"] > .wpb_column, #page-hero-area .container {
 		max-width: <?php echo $kaya_grid_width; ?>px;
 		margin: auto;
 	}

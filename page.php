@@ -9,7 +9,10 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
+ * @author  Anphira
+ * @since   0.1
  * @package Kaya
+ * @version 0.5
  */
 
 get_header(); 
@@ -23,12 +26,12 @@ get_header();
 //get sidebar setting
 $sidebar_setting = get_post_meta($post->ID, 'kaya_sidebar_setting', true);
 switch ($sidebar_setting ) {
+	case 'left_sidebar':
+	case 'no_sidebar':
+	case 'right_sidebar':
+		break;
 	case 'use_default':
 		$sidebar_setting = get_theme_mod( 'kaya_page_sidebar' );
-		break;
-	case 'no_sidebar':
-	case 'left_sidebar':
-	case 'right_sidebar':
 		break;
 	default: 
 		$sidebar_setting = get_theme_mod( 'kaya_page_sidebar' );

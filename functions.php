@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.4
+ * @version 0.5
  */
  
 /**
@@ -93,40 +93,40 @@ if( ! function_exists('kaya_social_icons') ) :
 function kaya_social_icons() {
 	echo '<div class="social-icons">';
 		if( get_theme_mod( 'kaya_facebook' ) != '' ) {
-			echo '<a class="social-icon-single" href="' . get_theme_mod( 'kaya_facebook' ) . '"><i class="fa fa-facebook"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_facebook' ) . '"><i class="fa fa-facebook"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_twitter' ) != '' ) {
-			echo '<a class="social-icon-single" href="' . get_theme_mod( 'kaya_twitter' ) . '"><i class="fa fa-twitter"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_twitter' ) . '"><i class="fa fa-twitter"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_linkedin' ) != '' ) {
-			echo '<a class="social-icon-single" href="' . get_theme_mod( 'kaya_linkedin' ) . '"><i class="fa fa-linkedin"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_linkedin' ) . '"><i class="fa fa-linkedin"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_google_plus' ) != '' ) {
-			echo '<a class="social-icon-single" href="' . get_theme_mod( 'kaya_google_plus' ) . '"><i class="fa fa-google-plus"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_google_plus' ) . '"><i class="fa fa-google-plus"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_skype' ) != '' ) {
-			echo '<a class="social-icon-single" href="' . get_theme_mod( 'kaya_skype' ) . '"><i class="fa fa-skype"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_skype' ) . '"><i class="fa fa-skype"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_youtube' ) != '' ) {
-			echo '<a class="social-icon-single" href="' . get_theme_mod( 'kaya_youtube' ) . '"><i class="fa fa-youtube"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_youtube' ) . '"><i class="fa fa-youtube"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_vimeo' ) != '' ) {
-			echo '<a class="social-icon-single" href="' . get_theme_mod( 'kaya_vimeo' ) . '"><i class="fa fa-vimeo"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_vimeo' ) . '"><i class="fa fa-vimeo"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_instagram' ) != '' ) {
-			echo '<a class="social-icon-single" href="' . get_theme_mod( 'kaya_instagram' ) . '"><i class="fa fa-instagram"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_instagram' ) . '"><i class="fa fa-instagram"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_pinterest' ) != '' ) {
-			echo '<a class="social-icon-single" href="' . get_theme_mod( 'kaya_pinterest' ) . '"><i class="fa fa-pinterest-p"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_pinterest' ) . '"><i class="fa fa-pinterest-p"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_yelp' ) != '' ) {
-			echo '<a class="social-icon-single" href="' . get_theme_mod( 'kaya_yelp' ) . '"><i class="fa fa-yelp"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_yelp' ) . '"><i class="fa fa-yelp"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_rss' ) != '' ) {
-			echo '<a class="social-icon-single" href="' . get_theme_mod( 'kaya_rss' ) . '"><i class="fa fa-rss"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_rss' ) . '"><i class="fa fa-rss"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_email' ) != '' ) {
-			echo '<a class="social-icon-single" href="mailto:' . get_theme_mod( 'kaya_email' ) . '"><i class="fa fa-envelope"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="mailto:' . get_theme_mod( 'kaya_email' ) . '"><i class="fa fa-envelope"></i></a>';
 		}
 	echo '</div>';
 }
@@ -321,6 +321,24 @@ add_action( 'after_setup_theme', 'kaya_content_width', 0 );
  */
 function kaya_widgets_init() {
 	register_sidebar( array(
+		'name'          => esc_html__( 'Everywhere Top Sidebar', 'kaya' ),
+		'id'            => 'everywhere-top-sidebar',
+		'description'   => esc_html__( 'Add widgets here which will display on all sidebars at the top.', 'kaya' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Everywhere Bottom Sidebar', 'kaya' ),
+		'id'            => 'everywhere-bottom-sidebar',
+		'description'   => esc_html__( 'Add widgets here which will display on all sidebars at the bottom.', 'kaya' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
+	) );
+	register_sidebar( array(
 		'name'          => esc_html__( 'Pages Sidebar', 'kaya' ),
 		'id'            => 'pages-sidebar',
 		'description'   => esc_html__( 'Add widgets here.', 'kaya' ),
@@ -498,7 +516,69 @@ function kaya_page_settings_display_callback( $post ) {
     <p>Enter Google Experiments Code - make sure to ONLY enter code on the master page, not variations:</p>
     <textarea rows="4" style="width: 100%;" id="kaya_google_experiments_code" name="kaya_google_experiments_code" ><?php echo $google_experiments; ?></textarea>
     
+    <?php 
+    echo '<hr />Pages are currently set to display ';
+    if(get_theme_mod( 'kaya_page_hero' ) == 'on') {
+    	echo 'the page hero area';
+    }
+    else {
+    	echo 'no page hero area';
+    }
+    echo ' by default. To override the page hero setting for this page, select your desired setting below:<br /><br />';
+    
+    $values = get_post_custom( $post->ID );
+    $hero_selected = isset( $values['kaya_page_hero_setting'] ) ? esc_attr( $values['kaya_page_hero_setting'][0] ) : '';
+    $page_hero_content = get_post_meta($post->ID, '_kaya_page_hero_content', true);
+    
+    ?>
+    <select id="kaya_page_hero_setting" name="kaya_page_hero_setting">
+		<option value="use_default">Use Page Default</option>
+		<option value="no_page_hero" <?php selected( $hero_selected, 'no_page_hero' ) ?>>No Page Hero</option>
+		<option value="use_page_hero" <?php selected( $hero_selected, 'use_page_hero' ) ?>>Use Page Hero</option>
+	</select>
+    
 	<?php 
+
+	echo '<p>Page Hero Background color</p>';
+	$kaya_page_hero_header_color = get_post_meta($post->ID, '_kaya_page_hero_header_color', true);
+	?>
+	<script>
+	jQuery(document).ready(function($){
+	    $('.color_field').each(function(){
+    		$(this).wpColorPicker();
+		    });
+	});
+	</script>
+	<input class="color_field" type="hidden" name="kaya_page_hero_header_color" value="<?php esc_attr_e( $kaya_page_hero_header_color ); ?>"/>
+	<?php
+
+	echo '<p>Page Hero Background image</p>';
+	$kaya_page_hero_image = get_post_meta($post->ID, '_kaya_page_hero_image', true);
+	?>
+
+	
+	<input style="width:100%" type="text" name="kaya_page_hero_image" id="kaya_page_hero_image" value="<?php esc_attr_e( $kaya_page_hero_image ); ?>" />
+    
+
+	<?php
+	echo '<p>Style of Page Hero Background: The page default is set to ', get_theme_mod('kaya_page_hero_background_image_type'),'</p>';
+	$selected = isset( $values['kaya_page_hero_background_setting'] ) ? esc_attr( $values['kaya_page_hero_background_setting'][0] ) : '';
+	?>
+    <select id="kaya_page_hero_background_setting" name="kaya_page_hero_background_setting">
+		<option value="use_page_default">Use page default setting</option>
+		<option value="dont_use" <?php selected( $selected, 'dont_use' ); ?>>Use color instead of image</option>
+		<option value="tile_image" <?php selected( $selected, 'tile_image' ); ?>>Tile image</option>
+		<option value="fix_to_top" <?php selected( $selected, 'fix_to_top' ) ?>>Affix background image to top</option>
+		<option value="fix_to_bottom" <?php selected( $selected, 'fix_to_bottom' ) ?>>Affix background image to bottom</option>
+		<option value="stretch" <?php selected( $selected, 'stretch' ) ?>>Stetch image to cover whole background</option>
+		<option value="fixed_pos" <?php selected( $selected, 'fixed_pos' ) ?>>Fixed position so background doesnt scroll</option>
+	</select>
+
+    
+    <p>Enter content for page hero area:<br /><em>This content area supports full HTML</em></p>
+    <textarea rows="4" style="width: 100%;" id="kaya_page_hero_content" name="kaya_page_hero_content" ><?php echo $page_hero_content; ?></textarea>
+
+    <?php 
 }
  
 /**
@@ -536,6 +616,23 @@ function kaya_page_settings_save_meta_box( $post_id ) {
 		
 	if( isset( $_POST['kaya_google_experiments_code'] ) )
 		update_post_meta( $post_id, '_kaya_google_experiments_code', $_POST['kaya_google_experiments_code'] );
+
+	if( isset( $_POST['kaya_page_hero_setting'] ) )
+        update_post_meta( $post_id, 'kaya_page_hero_setting', esc_attr( $_POST['kaya_page_hero_setting'] ) );
+
+	if( isset( $_POST['kaya_page_hero_header_color'] ) )
+        update_post_meta( $post_id, '_kaya_page_hero_header_color', esc_attr( $_POST['kaya_page_hero_header_color'] ) );
+
+    // Checks for input and saves if needed
+	if( isset( $_POST[ 'kaya_page_hero_image' ] ) ) {
+	    update_post_meta( $post_id, '_kaya_page_hero_image', $_POST[ 'kaya_page_hero_image' ] );
+	}
+
+	if( isset( $_POST['kaya_page_hero_background_setting'] ) )
+        update_post_meta( $post_id, 'kaya_page_hero_background_setting', esc_attr( $_POST['kaya_page_hero_background_setting'] ) );
+		
+	if( isset( $_POST['kaya_page_hero_content'] ) )
+		update_post_meta( $post_id, '_kaya_page_hero_content', htmlspecialchars_decode($_POST['kaya_page_hero_content']) );
 }
 add_action( 'save_post', 'kaya_page_settings_save_meta_box' );
 

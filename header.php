@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.3.3
+ * @version 0.5
  */
 
 ?><!DOCTYPE html>
@@ -150,6 +150,31 @@
 		if (get_theme_mod( 'kaya_post_sidebar' ) == 'right_sidebar') 
 			$sidebar_class = ' sidebar-right';
 	}
-	?>
+	
+
+	//get page hero area setting
+	$page_hero_setting = get_post_meta($post->ID, 'kaya_page_hero_setting', true);
+	switch ($page_hero_setting ) {
+		case 'no_page_hero':
+			$page_hero_setting = false;
+			break;
+		case 'use_default':
+			$page_hero_setting = get_theme_mod( 'kaya_page_hero' );
+			break;
+		case 'use_page_hero':
+			$page_hero_setting = true;
+			break;
+		default: 
+			$page_hero_setting = get_theme_mod( 'kaya_page_hero' );
+	}
+
+	if($page_hero_setting) { ?>
+	<div id="page-hero-area">
+		<div class="container">
+			<h1><?php the_title(); ?></h1>
+			<?php echo get_post_meta($post->ID, '_kaya_page_hero_content', true); ?>
+		</div>
+	</div>
+	<?php } ?>
 
 	<div id="content" class="site-content <?php if(get_post_meta($post->ID, '_kaya_full_width_check', true) == 'on') echo 'full-width'; else echo 'normal-width'; echo $sidebar_class; ?>">
