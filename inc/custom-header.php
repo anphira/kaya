@@ -15,7 +15,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.5
+ * @version 0.5.2
  */
 
 /**
@@ -178,7 +178,7 @@ body a:hover, body a:focus, body a:active {
 	background: <?php echo get_theme_mod( 'kaya_lower_footer_background_color' ) ?>;
 	color: <?php echo get_theme_mod( 'kaya_lower_footer_text_color' ) ?>;
 }
-#masthead #site-navigation .page_item a, #masthead .menu-toggle, #masthead #site-navigation {
+#masthead #site-navigation .menu-item a, #masthead .menu-toggle, #masthead #site-navigation {
 	background: <?php echo get_theme_mod( 'kaya_menu_background_color' ) ?>;
 	color: <?php echo get_theme_mod( 'kaya_menu_text_color' ) ?>;
 }
@@ -233,9 +233,9 @@ body a:hover, body a:focus, body a:active {
 			break;
 	} ?>
 }
-#masthead nav .page_item a:hover,
-#masthead nav .page_item a:focus,
-#masthead nav .page_item a:active, 
+#masthead #site-navigation .menu-item a:hover,
+#masthead #site-navigation .menu-item a:focus,
+#masthead #site-navigation .menu-item a:active, 
 #masthead .menu-toggle:hover, 
 #masthead .menu-toggle:focus, 
 #masthead .menu-toggle:active {

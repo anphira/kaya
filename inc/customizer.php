@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.5
+ * @version 0.5.2
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -659,11 +659,11 @@ function kaya_add_footer($wp_customize) {
 	  'label' => __( 'Display Social Media Icons in Footer', 'kaya' ),
 	) );
 	
-	$wp_customize->add_setting('kaya_footer_right', array('sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_setting('kaya_footer_right', array('sanitize_callback' => 'esc_textarea'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_footer_right', array(
 		'label'           => __( 'Content for Right side of Lower Footer', 'kaya' ),
 		'description'	  => __( 'Enter content to replace the credit info', 'kaya'),
-		'type'            => 'text',
+		'type'            => 'textarea',
 		'section'         => 'kaya_footer',
 		'settings'   => 'kaya_footer_right',
 		)

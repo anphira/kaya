@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.3.3
+ * @version 0.5.2
  */
 
 ?>
@@ -75,7 +75,7 @@
 				</div>
 				<div class="columns-6 last text-right">
 					<?php if(get_theme_mod( 'kaya_footer_right' ) != '') {
-						echo get_theme_mod( 'kaya_footer_right' ); 
+						echo htmlspecialchars_decode(get_theme_mod( 'kaya_footer_right' )); 
 					}
 					else { ?>
 					<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'kaya' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'kaya' ), 'WordPress' ); ?></a>
