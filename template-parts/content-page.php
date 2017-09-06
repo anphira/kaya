@@ -4,13 +4,31 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
+ * @author  Anphira
+ * @since   0.1
  * @package Kaya
+ * @version 0.5.1
  */
 
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php if(get_post_meta($post->ID, '_kaya_hide_title_check', true) !== 'on') { ?>
+	<?php
+	$page_hero_setting = get_post_meta($post->ID, 'kaya_page_hero_setting', true);
+	switch ($page_hero_setting ) {
+		case 'no_page_hero':
+			$page_hero_setting = false;
+			break;
+		case 'use_default':
+			$page_hero_setting = get_theme_mod( 'kaya_page_hero' );
+			break;
+		case 'use_page_hero':
+			$page_hero_setting = true;
+			break;
+		default: 
+			$page_hero_setting = get_theme_mod( 'kaya_page_hero' );
+	}
+	if((get_post_meta($post->ID, '_kaya_hide_title_check', true) !== 'on') && (!$page_hero_setting)) { ?>
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 	</header><!-- .entry-header -->

@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.5
+ * @version 0.5.2
  */
 
 ?><!DOCTYPE html>
@@ -168,13 +168,20 @@
 			$page_hero_setting = get_theme_mod( 'kaya_page_hero' );
 	}
 
-	if($page_hero_setting) { ?>
+	if($page_hero_setting && !is_single()) { ?>
 	<div id="page-hero-area">
 		<div class="container">
 			<h1><?php the_title(); ?></h1>
-			<?php echo get_post_meta($post->ID, '_kaya_page_hero_content', true); ?>
+			<?php
+				if(is_page()) {
+					echo get_post_meta($post->ID, '_kaya_page_hero_content', true); 
+				}
+				elseif(is_home()) {
+					echo get_post_meta(get_option( 'page_for_posts' ), '_kaya_page_hero_content', true); 
+				}
+			?>
 		</div>
 	</div>
 	<?php } ?>
 
-	<div id="content" class="site-content <?php if(get_post_meta($post->ID, '_kaya_full_width_check', true) == 'on') echo 'full-width'; else echo 'normal-width'; echo $sidebar_class; ?>">
+	<div id="content" class="site-content <?php if(get_post_meta($post->ID, '_kaya_full_width_check', true) == 'on') echo 'full-width'; else echo 'normal-width'; echo $sidebar_class; if($page_hero_setting) echo " has-page-hero"; ?>">
