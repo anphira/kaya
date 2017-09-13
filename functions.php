@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.5
+ * @version 0.5.3
  */
  
 /**
@@ -492,8 +492,10 @@ function kaya_page_settings_display_callback( $post ) {
     
     $values = get_post_custom( $post->ID );
     $selected = isset( $values['kaya_sidebar_setting'] ) ? esc_attr( $values['kaya_sidebar_setting'][0] ) : '';
-    $check = get_post_meta($post->ID, '_kaya_full_width_check', true);
+    $check_width = get_post_meta($post->ID, '_kaya_full_width_check', true);
     $check_title = get_post_meta($post->ID, '_kaya_hide_title_check', true);
+    $check_header = get_post_meta($post->ID, '_kaya_hide_header_check', true);
+    $check_footer = get_post_meta($post->ID, '_kaya_hide_footer_check', true);
     $google_experiments = get_post_meta($post->ID, '_kaya_google_experiments_code', true);
     
     ?>
@@ -505,12 +507,20 @@ function kaya_page_settings_display_callback( $post ) {
 	</select>
 	
 	<p>
-        <input type="checkbox" id="kaya_full_width_check" name="kaya_full_width_check" <?php checked( $check, 'on' ); ?> />
+        <input type="checkbox" id="kaya_full_width_check" name="kaya_full_width_check" <?php checked( $check_width, 'on' ); ?> />
         <label for="kaya_full_width_check">Make page full width (useful for Landing Pages)</label>
     </p>
 	<p>
         <input type="checkbox" id="kaya_hide_title_check" name="kaya_hide_title_check" <?php checked( $check_title, 'on' ); ?> />
         <label for="kaya_hide_title_check">Hide the page title</label>
+    </p>
+	<p>
+        <input type="checkbox" id="kaya_hide_header_check" name="kaya_hide_header_check" <?php checked( $check_header, 'on' ); ?> />
+        <label for="kaya_hide_header_check">Hide the page header</label>
+    </p>
+	<p>
+        <input type="checkbox" id="kaya_hide_footer_check" name="kaya_hide_footer_check" <?php checked( $check_footer, 'on' ); ?> />
+        <label for="kaya_hide_footer_check">Hide the page footer</label>
     </p>
     
     <p>Enter Google Experiments Code - make sure to ONLY enter code on the master page, not variations:</p>
@@ -606,13 +616,24 @@ function kaya_page_settings_save_meta_box( $post_id ) {
         update_post_meta( $post_id, 'kaya_sidebar_setting', esc_attr( $_POST['kaya_sidebar_setting'] ) );
 	
 	if( isset( $_POST['kaya_full_width_check'] ) )
-		update_post_meta( $post_id, '_kaya_full_width_check', ($_POST['kaya_full_width_check']) ? 'on' : 'off' );
+		update_post_meta( $post_id, '_kaya_full_width_check', $_POST['kaya_full_width_check']);
+	else
+		update_post_meta( $post_id, '_kaya_full_width_check', '');
 	
 	if( isset( $_POST['kaya_hide_title_check'] ) )
-		update_post_meta( $post_id, '_kaya_hide_title_check', ($_POST['kaya_hide_title_check']) ? 'on' : 'off' );
+		update_post_meta( $post_id, '_kaya_hide_title_check', $_POST['kaya_hide_title_check']);
+	else
+		update_post_meta( $post_id, '_kaya_hide_title_check', '');
 	
-	if( isset( $_POST['kaya_hide_title_check'] ) )
-		update_post_meta( $post_id, '_kaya_hide_title_check', ($_POST['kaya_hide_title_check']) ? 'on' : 'off' );
+	if( isset( $_POST['kaya_hide_header_check'] ) )
+		update_post_meta( $post_id, '_kaya_hide_header_check', $_POST['kaya_hide_header_check']);
+	else
+		update_post_meta( $post_id, '_kaya_hide_header_check', '');
+	
+	if( isset( $_POST['kaya_hide_footer_check'] ) )
+		update_post_meta( $post_id, '_kaya_hide_footer_check', $_POST['kaya_hide_footer_check']);
+	else
+		update_post_meta( $post_id, '_kaya_hide_footer_check', '');
 		
 	if( isset( $_POST['kaya_google_experiments_code'] ) )
 		update_post_meta( $post_id, '_kaya_google_experiments_code', $_POST['kaya_google_experiments_code'] );

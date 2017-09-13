@@ -9,13 +9,14 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.5.2
+ * @version 0.5.3
  */
 
 ?>
 
 	</div><!-- #content -->
 
+	<?php if( get_post_meta($post->ID, '_kaya_hide_footer_check', true) == '') { ?>
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="footer-columns <?php if(get_theme_mod( 'kaya_footer_columns_in_grid' ) == true) echo 'container'; ?>">
 			<?php 
@@ -86,6 +87,7 @@
 			</div>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
+	<?php } ?>
 </div><!-- #page -->
 
 
