@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.5.2
+ * @version 0.5.3
  */
 
 ?><!DOCTYPE html>
@@ -36,6 +36,7 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'kaya' ); ?></a>
 
+	<?php if( get_post_meta($post->ID, '_kaya_hide_header_check', true) == '') { ?>
 	<header id="masthead" class="site-header <?php if(get_theme_mod( 'kaya_sticky_header' ) == true ) echo 'sticky-header'; ?> <?php if(get_theme_mod( 'kaya_transparent_header' ) == true ) echo 'transparent-header'; ?>" role="banner">
 		<?php if(get_theme_mod( 'kaya_top_header' ) == true) { ?>
 			<div class="top-header">
@@ -133,6 +134,7 @@
 		</nav><!-- #site-navigation -->
 		<?php } ?>
 	</header><!-- #masthead -->
+	<?php } ?>
 
 
 	<?php 
