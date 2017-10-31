@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.5.3
+ * @version 0.5.4
  */
 
 ?><!DOCTYPE html>
@@ -186,4 +186,4 @@
 	</div>
 	<?php } ?>
 
-	<div id="content" class="site-content <?php if(get_post_meta($post->ID, '_kaya_full_width_check', true) == 'on') echo 'full-width'; else echo 'normal-width'; echo $sidebar_class; if($page_hero_setting) echo " has-page-hero"; ?>">
+	<div id="content" class="site-content <?php if(!is_search() && get_post_meta($post->ID, '_kaya_full_width_check', true) == 'on') echo 'full-width'; else echo 'normal-width'; echo $sidebar_class; if($page_hero_setting) echo " has-page-hero"; ?>">

@@ -5,7 +5,7 @@ Author: Anphira, LLC
 Author URI: https://www.anphira.com/
 GitHub Theme URI: anphira/kaya
 Description: Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It's ready to work with your page builder and has built-in support for Visual Composer. You can view the setup instructions by going to the Customizer and selecting "Need Setup Help?".
-Version: 0.5.3
+Version: 0.5.4
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kaya
@@ -275,10 +275,12 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
+tr:nth-child(even) {
+	background: rgba(240,240,240,0.7);
+}
 td,
 th {
-	padding: 0;
+	padding: 5px 0;
 }
 
 /*--------------------------------------------------------------
@@ -1060,6 +1062,7 @@ body .fa:before {
 	position: absolute;
 	font-family: FontAwesome;
 	left: 0;
+	margin-top: -1em;
 }
 body .fa {
 	padding-left: 1.5em;
@@ -1074,6 +1077,7 @@ body .fa {
 .social-icons .fa:before {
 	width: 1.5em;
 	text-align: center;
+	margin-top: 0;
 }
 .social-icons .fa {
 	width: 1.5em;
@@ -1082,6 +1086,9 @@ body .fa {
 }
 .social-icons .social-icon-single {
 	margin-right: 10px;
+}
+#main .social-icons {
+	margin-top: 1em;
 }
 
 
@@ -1139,7 +1146,22 @@ body .white-text, body .white-text p, body .white-text h1, body .white-text h2, 
 # 12 column grid CSS Classes
 --------------------------------------------------------------*/
 @media screen and (min-width: 768px) {
-	.columns-12, .columns-11, .columns-10, .columns-9, .columns-8, .columns-7, .columns-6, .columns-5, .columns-4, .columns-3, .columns-2, .columns-1, .columns-one-fifth, .columns-one-seventh, .columns-one-eighth, .columns-one-ninth {
+	.columns-12, 
+	.columns-11, 
+	.columns-10, 
+	.columns-9, 
+	.columns-8, 
+	.columns-7, 
+	.columns-6, 
+	.columns-5, 
+	.columns-4, 
+	.columns-3, 
+	.columns-2, 
+	.columns-1, 
+	.columns-one-fifth, 
+	.columns-one-seventh, 
+	.columns-one-eighth, 
+	.columns-one-ninth {
 		float: left;
 		margin-right: 2%;
 	}
@@ -1201,23 +1223,38 @@ body .white-text, body .white-text p, body .white-text h1, body .white-text h2, 
 }
 
 .columns-one-fifth, .columns-one-fifth-non-responsive {
-	width: 20%;
+	width: 18.4%;
 }
 
 .columns-one-seventh, .columns-one-seventh-non-responsive {
-	width: 14.28%;
-}
-
-.columns-one-eighth, .columns-one-eighth-non-responsive {
 	width: 12.5%;
 }
 
+.columns-one-eighth, .columns-one-eighth-non-responsive {
+	width: 10.5%;
+}
+
 .columns-one-ninth, .columns-one-ninth-non-responsive {
-	width: 11.11%;
+	width: 9.1%;
 }
 
 @media screen and (max-width: 767px) {
-	.columns-12, .columns-11, .columns-10, .columns-9, .columns-8, .columns-7, .columns-6, .columns-5, .columns-4, .columns-3, .columns-2, .columns-1, .columns-one-fifth, .columns-one-seventh, .columns-one-eighth, .columns-one-ninth {
+	.columns-12, 
+	.columns-11, 
+	.columns-10, 
+	.columns-9, 
+	.columns-8, 
+	.columns-7, 
+	.columns-6, 
+	.columns-5, 
+	.columns-4, 
+	.columns-3, 
+	.columns-2, 
+	.columns-1, 
+	.columns-one-fifth, 
+	.columns-one-seventh, 
+	.columns-one-eighth, 
+	.columns-one-ninth {
 		float: none;
 		width: 100%;
 		clear: both;
