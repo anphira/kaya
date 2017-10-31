@@ -4,12 +4,16 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  *
+ * @author  Anphira
+ * @since   0.1
  * @package Kaya
+ * @version 0.5.4
  */
 
 get_header(); ?>
 
-	<section id="primary" class="content-area">
+	<?php if (get_theme_mod( 'kaya_post_sidebar' ) == 'left_sidebar') get_sidebar(); ?>
+	<div id="primary" class="content-area <?php if( get_theme_mod( 'kaya_post_sidebar' ) !== 'no_sidebar' ) echo 'has-sidebar'; ?>">
 		<main id="main" class="site-main" role="main">
 
 		<?php
@@ -41,7 +45,8 @@ get_header(); ?>
 		endif; ?>
 
 		</main><!-- #main -->
-	</section><!-- #primary -->
+	</div><!-- #primary -->
+	<?php if (get_theme_mod( 'kaya_post_sidebar' ) == 'right_sidebar') get_sidebar(); ?>
 
 <?php
 get_sidebar();
