@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.5.2
+ * @version 0.6
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -343,16 +343,6 @@ function kaya_add_header_options($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_sticky_header', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
-'kaya_sticky_header', array(
-		'label'           => __( 'Make Header Sticky', 'kaya' ),
-		'type'            => 'checkbox',
-		'section'         => 'kaya_header',
-		'settings'   => 'kaya_sticky_header',
-		)
-	) );
-	
 	$wp_customize->add_setting('kaya_transparent_header', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize,
 'kaya_transparent_header', array(
@@ -532,6 +522,20 @@ function kaya_add_general($wp_customize) {
 		)
 	) );
 	
+	$wp_customize->add_setting('kaya_woo_sidebar', array('sanitize_callback' => 'kaya_sanitize_sidebars'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_woo_sidebar', array(
+		'label'           => __( 'Default Sidebar Setting for WooCommerce', 'kaya' ),
+		'type'            => 'select',
+		'choices'		  => array(
+								'no_sidebar' => 'No Sidebar',
+								'left_sidebar' => 'Left Sidebar',
+								'right_sidebar' => 'Right Sidebar',
+							 ),
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_woo_sidebar',
+		)
+	) );
+	
 	$wp_customize->add_setting('kaya_stylesheet_version', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_stylesheet_version', array(
 		'label'           => __( 'Stylesheet Version', 'kaya' ),
@@ -545,10 +549,19 @@ function kaya_add_general($wp_customize) {
 	$wp_customize->add_setting('kaya_google_analytics', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_google_analytics', array(
 		'label'           => __( 'Google Analytics', 'kaya' ),
-		'description'	  => __( 'Enter your Google Analytics number here, it should be of the format UA-00000000-0', 'kaya'),
+		'description'	  => __( 'Enter your Google Analytics number here, it should be of the format UA-00000000-0. Use either the Universal analytics or the Tag Manager, not both.<br><hr><strong>Universal Analytics: </strong>', 'kaya'),
 		'type'            => 'text',
 		'section'         => 'kaya_general',
 		'settings'   => 'kaya_google_analytics',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_google_tag_analytics', array('sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_google_tag_analytics', array(
+		'label'           => __( 'Tag Manager:', 'kaya' ),
+		'type'            => 'text',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_google_tag_analytics',
 		)
 	) );
 	

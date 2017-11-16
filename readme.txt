@@ -1,5 +1,4 @@
 Thoughts: 
-- Sticky header need to set up option for height
 - Custom widgets - pretty blog
 - ADA accessible
 - Landing Page Templates
@@ -11,11 +10,11 @@ Thoughts:
 === Kaya ===
 
 Contributors: Anphira, automattic
-Tags: translation-ready, custom-background, theme-options, custom-menu, post-formats, threaded-comments
+Tags: translation-ready, custom-background, theme-options, custom-menu, post-formats, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, custom-menu, featured-images, flexible-header, footer-widgets, full-width-template, blog
 
 Requires at least: 4.7
-Tested up to: 4.8.1
-Stable tag: v0.5.3
+Tested up to: 4.8.3
+Stable tag: v0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,6 +50,16 @@ Recommended plugins are available at https://www.anphira.com/kaya-wordpress-them
 From the Customizer a number of customization options exist. Please see https://www.anphira.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 0.6 - Nov 15 2017 =
+* add WooCommerce support
+* add Google Tag manager option
+* update for function to filter out VC shortcodes on Relevanssi plugin
+* update for minor CSS
+
+= 0.5.4 - Oct 31 2017 =
+* minor update to CSS styles
+* update to search page
 
 = 0.5.3 - Sept 13 2017 =
 * add hide footer and hide header to page settings

@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.5.3
+ * @version 0.6
  */
 
 ?><!DOCTYPE html>
@@ -37,7 +37,7 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'kaya' ); ?></a>
 
 	<?php if( get_post_meta($post->ID, '_kaya_hide_header_check', true) == '') { ?>
-	<header id="masthead" class="site-header <?php if(get_theme_mod( 'kaya_sticky_header' ) == true ) echo 'sticky-header'; ?> <?php if(get_theme_mod( 'kaya_transparent_header' ) == true ) echo 'transparent-header'; ?>" role="banner">
+	<header id="masthead" class="site-header <?php if(get_theme_mod( 'kaya_transparent_header' ) == true ) echo 'transparent-header'; ?>" role="banner">
 		<?php if(get_theme_mod( 'kaya_top_header' ) == true) { ?>
 			<div class="top-header">
 				<div class="container">
@@ -186,4 +186,4 @@
 	</div>
 	<?php } ?>
 
-	<div id="content" class="site-content <?php if(get_post_meta($post->ID, '_kaya_full_width_check', true) == 'on') echo 'full-width'; else echo 'normal-width'; echo $sidebar_class; if($page_hero_setting) echo " has-page-hero"; ?>">
+	<div id="content" class="site-content <?php if(!is_search() && get_post_meta($post->ID, '_kaya_full_width_check', true) == 'on') echo 'full-width'; else echo 'normal-width'; echo $sidebar_class; if($page_hero_setting) echo " has-page-hero"; ?>">

@@ -318,6 +318,24 @@ $kaya_grid_width = ($kaya_grid_width > 320) ? $kaya_grid_width : 1140;
 		</script>";
 		echo '<!-- End Add Google Analytics -->';
 	} 
+
+	/* Tag manager option */
+	if(!empty(get_theme_mod( 'kaya_google_tag_analytics' ))) {
+		echo '<!-- Global site tag (gtag.js) - Google Analytics -->';
+		echo '<script async src="https://www.googletagmanager.com/gtag/js?id=';
+		echo get_theme_mod( 'kaya_google_tag_analytics' );
+		echo '"></script>';
+		echo "<script>
+			window.dataLayer = window.dataLayer || [];
+		 	function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+		 	gtag('config', '";
+		 echo get_theme_mod( 'kaya_google_tag_analytics' );
+		 echo "');
+		</script>";
+		echo '<!-- End Global site tag (gtag.js) - Google Analytics -->';
+	} 
  
 }
 add_action( 'wp_head', 'kaya_customizer_settings' );

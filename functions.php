@@ -7,13 +7,51 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.5.3
+ * @version 0.6
  */
  
 /**
  * Enable shortcodes in text widgets
  */
 add_filter('widget_text','do_shortcode');
+
+
+/**
+ * Strip out Visual Composer specific shortcodes in search results
+ */
+add_filter('relevanssi_pre_excerpt_content', 'kaya_trim_vc_shortcodes');
+function kaya_trim_vc_shortcodes($content) {
+    $content = preg_replace('\[/vc(.*?)\]', '', $content);
+    return $content;
+}
+
+
+/**
+ * Declare WooCommerce Support
+ */
+add_action( 'after_setup_theme', 'woocommerce_support' );
+function woocommerce_support() {
+    add_theme_support( 'woocommerce' );
+}
+remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
+add_action('woocommerce_before_main_content', 'my_theme_wrapper_start', 10);
+add_action('woocommerce_after_main_content', 'my_theme_wrapper_end', 10);
+
+function my_theme_wrapper_start() {
+	$sidebar_setting = get_theme_mod( 'kaya_woo_sidebar' );
+	
+	echo '<div id="primary" class="content-area ';
+	if( ($sidebar_setting !== 'no_sidebar') ) { 
+		echo 'has-sidebar'; 
+	}
+	echo '">';
+}
+
+function my_theme_wrapper_end() {
+  echo '</div>';
+}
+
  
 /**
  * Add footer menu
@@ -259,6 +297,8 @@ function kaya_setup() {
 		set_theme_mod( 'kaya_page_sidebar', 'right_sidebar' );
 	if( empty(get_theme_mod('kaya_post_sidebar')) )
 		set_theme_mod( 'kaya_post_sidebar', 'right_sidebar' );
+	if( empty(get_theme_mod('kaya_woo_sidebar')) )
+		set_theme_mod( 'kaya_woo_sidebar', 'right_sidebar' );
 
 	if( empty(get_theme_mod('kaya_heading_font')) )
 		set_theme_mod( 'kaya_heading_font', 'arial' );
