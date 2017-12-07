@@ -1067,7 +1067,7 @@ body .fa:before {
 	font-family: FontAwesome;
 	left: 0;
 }
-body .social-icons .fa:before {
+#content .social-icons .fa:before {
 	margin-top: -1em;
 	padding-left: 1.5em;
 }

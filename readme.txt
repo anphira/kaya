@@ -51,6 +51,9 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
+= 0.6.2 - Dec 07 2017 =
+* update for minor CSS
+
 = 0.6.1 - Nov 18 2017 =
 * update for minor CSS
 
