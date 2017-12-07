@@ -13,8 +13,8 @@ Contributors: Anphira, automattic
 Tags: translation-ready, custom-background, theme-options, custom-menu, post-formats, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, custom-menu, featured-images, flexible-header, footer-widgets, full-width-template, blog
 
 Requires at least: 4.7
-Tested up to: 4.8.3
-Stable tag: v0.6.1
+Tested up to: 4.9.1
+Stable tag: v0.6.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,6 +50,9 @@ Recommended plugins are available at https://www.anphira.com/kaya-wordpress-them
 From the Customizer a number of customization options exist. Please see https://www.anphira.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 0.6.3 - Dec 07 2017 =
+* update for minor CSS
 
 = 0.6.2 - Dec 07 2017 =
 * update for minor CSS
