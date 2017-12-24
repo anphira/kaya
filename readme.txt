@@ -13,8 +13,8 @@ Contributors: Anphira, automattic
 Tags: translation-ready, custom-background, theme-options, custom-menu, post-formats, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, custom-menu, featured-images, flexible-header, footer-widgets, full-width-template, blog
 
 Requires at least: 4.7
-Tested up to: 4.8.3
-Stable tag: v0.6.2
+Tested up to: 4.9.1
+Stable tag: v0.6.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,8 +51,15 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
-= 0.6.2 - Dec 25 2017 =
+
+= 0.6.4 - Dec 25 2017 =
 * update to make info notice actually dismissible
+
+= 0.6.3 - Dec 07 2017 =
+* update for minor CSS
+
+= 0.6.2 - Dec 07 2017 =
+* update for minor CSS
 
 = 0.6.1 - Nov 18 2017 =
 * update for minor CSS

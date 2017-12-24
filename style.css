@@ -5,7 +5,7 @@ Author: Anphira, LLC
 Author URI: https://www.anphira.com/
 GitHub Theme URI: anphira/kaya
 Description: Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It's ready to work with your page builder and has built-in support for Visual Composer. You can view the setup instructions by going to the Customizer and selecting "Need Setup Help?".
-Version: 0.6.2
+Version: 0.6.4
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kaya
@@ -1067,7 +1067,7 @@ body .fa:before {
 	font-family: FontAwesome;
 	left: 0;
 }
-body .social-icons .fa:before {
+#content .social-icons .fa:before {
 	margin-top: -1em;
 	padding-left: 1.5em;
 }
@@ -1075,6 +1075,10 @@ body .fa {
 	font-size: 1rem;
 	line-height: 1.5;
 	position: relative;
+}
+#content .fa {
+	width: 1em;
+	height: 1em;
 }
 
 /*--------------------------------------------------------------
