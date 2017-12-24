@@ -14,7 +14,7 @@ Tags: translation-ready, custom-background, theme-options, custom-menu, post-for
 
 Requires at least: 4.7
 Tested up to: 4.8.3
-Stable tag: v0.6.1
+Stable tag: v0.6.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,6 +50,9 @@ Recommended plugins are available at https://www.anphira.com/kaya-wordpress-them
 From the Customizer a number of customization options exist. Please see https://www.anphira.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 0.6.2 - Dec 25 2017 =
+* update to make info notice actually dismissible
 
 = 0.6.1 - Nov 18 2017 =
 * update for minor CSS

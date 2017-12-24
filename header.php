@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.6
+ * @version 0.6.4
  */
 
 ?><!DOCTYPE html>
@@ -141,10 +141,30 @@
 	/* Determine sidebar class */
 	$sidebar_class = '';
 	if(is_page()) {
-		if (get_theme_mod( 'kaya_page_sidebar' ) == 'left_sidebar') 
-			$sidebar_class = ' sidebar-left';
-		if (get_theme_mod( 'kaya_page_sidebar' ) == 'right_sidebar') 
-			$sidebar_class = ' sidebar-right';
+		if(get_post_meta($post->ID, '_kaya_sidebar_setting', true) == 'use_default' ) {
+			if (get_theme_mod( 'kaya_page_sidebar' ) == 'left_sidebar') 
+				$sidebar_class = ' sidebar-left';
+			if (get_theme_mod( 'kaya_page_sidebar' ) == 'right_sidebar') 
+				$sidebar_class = ' sidebar-right';
+		}
+		else {
+			$sidebar_class_temp = get_post_meta($post->ID, '_kaya_sidebar_setting', true);
+			switch($sidebar_class_temp) {
+				case 'left_sidebar':
+					$sidebar_class = ' sidebar-left';
+					break;
+				case 'no_sidebar':
+					$sidebar_class = '';
+					break;
+				case 'right_sidebar':
+					$sidebar_class = ' sidebar-right';
+					break;
+				default:
+					$sidebar_class = '';
+					break;
+			}
+			$sidebar_class = get_post_meta($post->ID, '_kaya_sidebar_setting', true);
+		}
 	}
 	else { // use post sidebar
 		if (get_theme_mod( 'kaya_post_sidebar' ) == 'left_sidebar') 

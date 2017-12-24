@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.6
+ * @version 0.6.2
  */
  
 /**
@@ -115,12 +115,19 @@ function rememberme_checked() {
  */
 function kaya_welcome_notice() {
     ?>
-    <div class="notice notice-success is-dismissible">
+    <div class="notice updated is-dismissible kaya-welcome-notice-dismiss">
         <p><?php _e( 'Thank you for installing the Kaya WordPress theme! View the setup instructions by going to the Customizer and selecting "Need Setup Help?"', 'kaya' ); ?></p>
     </div>
     <?php
 }
-add_action( 'admin_notices', 'kaya_welcome_notice' );
+if(get_theme_mod('kaya_welcome_notice_dismissed') == '0') {
+	add_action( 'admin_notices', 'kaya_welcome_notice' );
+}
+
+function kaya_welcome_notice_dismiss() {
+	set_theme_mod( 'kaya_welcome_notice_dismissed', '1' );
+}
+add_action( 'wp_ajax_kaya_welcome_notice_dismiss', 'kaya_welcome_notice_dismiss' );
 
 
 if( ! function_exists('kaya_social_icons') ) :
@@ -240,6 +247,12 @@ function kaya_setup() {
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
+
+	/**
+	 * Setup default for theme notice
+	 */
+	if( get_theme_mod( 'kaya_welcome_notice_dismissed') == '') 
+		set_theme_mod( 'kaya_welcome_notice_dismissed', '0' );
 	
 	/**
 	 * Setup Theme Defaults for colors
@@ -721,6 +734,15 @@ function kaya_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'kaya_scripts' );
+
+/**
+ * Enqueue scripts and styles for WP dashboard (admin).
+ */
+function kaya_admin_scripts() {
+    wp_enqueue_script( 'kaya_notice_update', get_template_directory_uri() . '/js/dismissible-admin-notices.js' );
+}
+add_action('admin_enqueue_scripts', 'kaya_admin_scripts');
+
 
 /**
  * Implement the Custom Header feature.
