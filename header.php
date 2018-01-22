@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.6.4
+ * @version 0.6.5
  */
 
 ?><!DOCTYPE html>
@@ -138,39 +138,41 @@
 
 
 	<?php 
-	/* Determine sidebar class */
-	$sidebar_class = '';
+	/* Determine content classes */
+	$content_class = 'site-content ';
+	if(!is_search() && get_post_meta($post->ID, '_kaya_full_width_check', true) == 'on')  {
+		$content_class .= 'full-width ';
+	} else {
+		$content_class .= 'normal-width ';
+	}
 	if(is_page()) {
 		if(get_post_meta($post->ID, '_kaya_sidebar_setting', true) == 'use_default' ) {
 			if (get_theme_mod( 'kaya_page_sidebar' ) == 'left_sidebar') 
-				$sidebar_class = ' sidebar-left';
+				$content_class .= 'sidebar-left ';
 			if (get_theme_mod( 'kaya_page_sidebar' ) == 'right_sidebar') 
-				$sidebar_class = ' sidebar-right';
+				$content_class .= 'sidebar-right ';
 		}
 		else {
 			$sidebar_class_temp = get_post_meta($post->ID, '_kaya_sidebar_setting', true);
 			switch($sidebar_class_temp) {
 				case 'left_sidebar':
-					$sidebar_class = ' sidebar-left';
+					$content_class .= 'sidebar-left ';
 					break;
 				case 'no_sidebar':
-					$sidebar_class = '';
 					break;
 				case 'right_sidebar':
-					$sidebar_class = ' sidebar-right';
+					$content_class .= 'sidebar-right ';
 					break;
 				default:
-					$sidebar_class = '';
 					break;
 			}
-			$sidebar_class = get_post_meta($post->ID, '_kaya_sidebar_setting', true);
 		}
 	}
 	else { // use post sidebar
 		if (get_theme_mod( 'kaya_post_sidebar' ) == 'left_sidebar') 
-			$sidebar_class = ' sidebar-left';
+			$content_class .= 'sidebar-left ';
 		if (get_theme_mod( 'kaya_post_sidebar' ) == 'right_sidebar') 
-			$sidebar_class = ' sidebar-right';
+			$content_class .= 'sidebar-right ';
 	}
 	
 
@@ -189,6 +191,9 @@
 		default: 
 			$page_hero_setting = get_theme_mod( 'kaya_page_hero' );
 	}
+	if($page_hero_setting) {
+		$content_class .= 'has-page-hero ';
+	}
 
 	if($page_hero_setting && !is_single()) { ?>
 	<div id="page-hero-area">
@@ -206,4 +211,4 @@
 	</div>
 	<?php } ?>
 
-	<div id="content" class="site-content <?php if(!is_search() && get_post_meta($post->ID, '_kaya_full_width_check', true) == 'on') echo 'full-width'; else echo 'normal-width'; echo $sidebar_class; if($page_hero_setting) echo " has-page-hero"; ?>">
+	<div id="content" class="<?php  echo $content_class; ?>">
