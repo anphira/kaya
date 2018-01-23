@@ -51,6 +51,11 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
+= 0.6.6 - Jan 22 2018 =
+* update for minor CSS
+
+= 0.6.5 - Jan 22 2018 =
+* update for minor CSS
 
 = 0.6.4 - Dec 25 2017 =
 * update to make info notice actually dismissible

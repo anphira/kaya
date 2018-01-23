@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.6.5
+ * @version 0.6.6
  */
 
 ?><!DOCTYPE html>
@@ -146,7 +146,7 @@
 		$content_class .= 'normal-width ';
 	}
 	if(is_page()) {
-		if(get_post_meta($post->ID, '_kaya_sidebar_setting', true) == 'use_default' ) {
+		if(!get_post_meta($post->ID, '_kaya_sidebar_setting', true) || 'use_default' == get_post_meta($post->ID, '_kaya_sidebar_setting', true) ) {
 			if (get_theme_mod( 'kaya_page_sidebar' ) == 'left_sidebar') 
 				$content_class .= 'sidebar-left ';
 			if (get_theme_mod( 'kaya_page_sidebar' ) == 'right_sidebar') 
@@ -169,10 +169,12 @@
 		}
 	}
 	else { // use post sidebar
-		if (get_theme_mod( 'kaya_post_sidebar' ) == 'left_sidebar') 
+		if ('left_sidebar' == get_theme_mod( 'kaya_post_sidebar' )) {
 			$content_class .= 'sidebar-left ';
-		if (get_theme_mod( 'kaya_post_sidebar' ) == 'right_sidebar') 
+		}
+		if ('right_sidebar' == get_theme_mod( 'kaya_post_sidebar' )) {
 			$content_class .= 'sidebar-right ';
+		}
 	}
 	
 
