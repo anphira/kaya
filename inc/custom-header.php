@@ -15,7 +15,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.5.2
+ * @version 0.6.7
  */
 
 /**
@@ -184,9 +184,17 @@ body a:hover, body a:focus, body a:active {
 }
 #page-hero-area {
 	<?php
-	$page_hero_background_color = get_post_meta(get_the_ID(), '_kaya_page_hero_header_color', true);
-	$page_hero_background_image = get_post_meta(get_the_ID(), '_kaya_page_hero_image', true);
-	$page_hero_background_setting = get_post_meta(get_the_ID(), 'kaya_page_hero_background_setting', true);
+	if(is_home()) {
+		$page_for_posts = get_option( 'page_for_posts' );
+		$page_hero_background_color = get_post_meta($page_for_posts, '_kaya_page_hero_header_color', true);
+		$page_hero_background_image = get_post_meta($page_for_posts, '_kaya_page_hero_image', true);
+		$page_hero_background_setting = get_post_meta($page_for_posts, 'kaya_page_hero_background_setting', true);
+	}
+	else {
+		$page_hero_background_color = get_post_meta(get_the_ID(), '_kaya_page_hero_header_color', true);
+		$page_hero_background_image = get_post_meta(get_the_ID(), '_kaya_page_hero_image', true);
+		$page_hero_background_setting = get_post_meta(get_the_ID(), 'kaya_page_hero_background_setting', true);
+	}
 	switch ($page_hero_background_setting ) {
 		case 'dont_use':
 			break;

@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.6.6
+ * @version 0.6.7
  */
 
 ?><!DOCTYPE html>
@@ -179,7 +179,13 @@
 	
 
 	//get page hero area setting
-	$page_hero_setting = get_post_meta($post->ID, 'kaya_page_hero_setting', true);
+	if(is_home()) {
+		$page_for_posts = get_option( 'page_for_posts' );
+		$page_hero_setting = get_post_meta($page_for_posts, 'kaya_page_hero_setting', true);
+	}
+	else {
+		$page_hero_setting = get_post_meta($post->ID, 'kaya_page_hero_setting', true);
+	}
 	switch ($page_hero_setting ) {
 		case 'no_page_hero':
 			$page_hero_setting = false;
@@ -200,13 +206,14 @@
 	if($page_hero_setting && !is_single()) { ?>
 	<div id="page-hero-area">
 		<div class="container">
-			<h1><?php the_title(); ?></h1>
 			<?php
 				if(is_page()) {
+					echo '<h1>' . the_title() . '</h1>';
 					echo get_post_meta($post->ID, '_kaya_page_hero_content', true); 
 				}
 				elseif(is_home()) {
-					echo get_post_meta(get_option( 'page_for_posts' ), '_kaya_page_hero_content', true); 
+					echo '<h1>' . get_the_title($page_for_posts) . '</h1>';
+					echo get_post_meta($page_for_posts, '_kaya_page_hero_content', true); 
 				}
 			?>
 		</div>
