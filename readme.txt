@@ -51,6 +51,9 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
+= 0.6.8 - Jan 23 2018 =
+* update hero area
+
 = 0.6.7 - Jan 23 2018 =
 * update for blog page correctly rendering the hero area
 

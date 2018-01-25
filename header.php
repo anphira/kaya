@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.6.7
+ * @version 0.6.8
  */
 
 ?><!DOCTYPE html>
@@ -208,7 +208,7 @@
 		<div class="container">
 			<?php
 				if(is_page()) {
-					echo '<h1>' . the_title() . '</h1>';
+					echo '<h1>' . get_the_title() . '</h1>';
 					echo get_post_meta($post->ID, '_kaya_page_hero_content', true); 
 				}
 				elseif(is_home()) {
