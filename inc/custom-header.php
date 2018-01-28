@@ -1,21 +1,13 @@
 <?php
 /**
- * Sample implementation of the Custom Header feature.
- *
- * You can add an optional custom header image to header.php like so ...
- *
- *	<?php if ( get_header_image() ) : ?>
- *	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
- *		<img src="<?php header_image(); ?>" width="<?php echo esc_attr( get_custom_header()->width ); ?>" height="<?php echo esc_attr( get_custom_header()->height ); ?>" alt="">
- *	</a>
- *	<?php endif; // End header image check. ?>
+ * Customizations for CSS from theme options
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.6.7
+ * @version 0.6.9
  */
 
 /**
@@ -34,7 +26,7 @@ add_action( 'after_setup_theme', 'kaya_custom_header_setup' );
 
 function kaya_customizer_settings() {
 	
-	if(get_theme_mod( 'kaya_custom_google_fonts_url' ) != '') 
+	if( '' != get_theme_mod( 'kaya_custom_google_fonts_url' )) 
 		echo '<link href="', get_theme_mod( 'kaya_custom_google_fonts_url' ), '" rel="stylesheet">';
 	else 
 		echo kaya_build_fonts_from_google( get_theme_mod( 'kaya_heading_font' ), get_theme_mod( 'kaya_paragraph_font' ) );

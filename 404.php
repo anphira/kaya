@@ -4,7 +4,10 @@
  *
  * @link https://codex.wordpress.org/Creating_an_Error_404_Page
  *
+ * @author  Anphira
+ * @since   0.1
  * @package Kaya
+ * @version 0.1
  */
 
 get_header(); ?>

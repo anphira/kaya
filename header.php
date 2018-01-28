@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.6.8
+ * @version 0.6.9
  */
 
 ?><!DOCTYPE html>
@@ -36,9 +36,9 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'kaya' ); ?></a>
 
-	<?php if( get_post_meta($post->ID, '_kaya_hide_header_check', true) == '') { ?>
-	<header id="masthead" class="site-header <?php if(get_theme_mod( 'kaya_transparent_header' ) == true ) echo 'transparent-header'; ?>" role="banner">
-		<?php if(get_theme_mod( 'kaya_top_header' ) == true) { ?>
+	<?php if( '' == get_post_meta($post->ID, '_kaya_hide_header_check', true)) { ?>
+	<header id="masthead" class="site-header <?php if(get_theme_mod( 'kaya_transparent_header' ) ) echo 'transparent-header'; ?>" role="banner">
+		<?php if(get_theme_mod( 'kaya_top_header' )) { ?>
 			<div class="top-header">
 				<div class="container">
 					<div class="columns-6">
@@ -123,10 +123,10 @@
 			
 		</div><!-- .container -->
 
-		<?php if(get_theme_mod( 'kaya_header_columns' ) !== 'logo_menu') { ?>
+		<?php if( 'logo_menu' !== get_theme_mod( 'kaya_header_columns' )) { ?>
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 			<div class="container">
-				<?php if(get_theme_mod( 'kaya_hide_mobile_button_menu' ) == false) { ?>
+				<?php if( !get_theme_mod( 'kaya_hide_mobile_button_menu' )) { ?>
 					<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'kaya' ); ?></button>
 				<?php } ?>
 				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
@@ -140,16 +140,16 @@
 	<?php 
 	/* Determine content classes */
 	$content_class = 'site-content ';
-	if(!is_search() && get_post_meta($post->ID, '_kaya_full_width_check', true) == 'on')  {
+	if(!is_search() && ( 'on' == get_post_meta($post->ID, '_kaya_full_width_check', true)))  {
 		$content_class .= 'full-width ';
 	} else {
 		$content_class .= 'normal-width ';
 	}
 	if(is_page()) {
 		if(!get_post_meta($post->ID, '_kaya_sidebar_setting', true) || 'use_default' == get_post_meta($post->ID, '_kaya_sidebar_setting', true) ) {
-			if (get_theme_mod( 'kaya_page_sidebar' ) == 'left_sidebar') 
+			if ('left_sidebar' == get_theme_mod( 'kaya_page_sidebar' )) 
 				$content_class .= 'sidebar-left ';
-			if (get_theme_mod( 'kaya_page_sidebar' ) == 'right_sidebar') 
+			if ('right_sidebar' == get_theme_mod( 'kaya_page_sidebar' )) 
 				$content_class .= 'sidebar-right ';
 		}
 		else {

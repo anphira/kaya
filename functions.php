@@ -605,14 +605,7 @@ function kaya_page_settings_display_callback( $post ) {
 	echo '<p>Page Hero Background color</p>';
 	$kaya_page_hero_header_color = get_post_meta($post->ID, '_kaya_page_hero_header_color', true);
 	?>
-	<script>
-	jQuery(document).ready(function($){
-	    $('.color_field').each(function(){
-    		$(this).wpColorPicker();
-		    });
-	});
-	</script>
-	<input class="color_field" type="hidden" name="kaya_page_hero_header_color" value="<?php esc_attr_e( $kaya_page_hero_header_color ); ?>"/>
+	<input class="color_field" type="text" name="kaya_page_hero_header_color" value="<?php esc_attr_e( $kaya_page_hero_header_color ); ?>"/>
 	<?php
 
 	echo '<p>Page Hero Background image</p>';
@@ -774,7 +767,7 @@ require get_template_directory() . '/inc/jetpack.php';
  * Enqueue Font Awesome Stylesheet
  */
 function enqueue_our_required_stylesheets(){
-	wp_enqueue_style('font-awesome', 'inc/font-awesome-4.7.0/font-awesome.min.css'); 
+	wp_enqueue_style('font-awesome', get_template_directory_uri() . '/inc/font-awesome-4.7.0/css/font-awesome.min.css'); 
 }
 add_action('get_footer','enqueue_our_required_stylesheets');
 

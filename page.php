@@ -12,7 +12,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.5
+ * @version 0.6.9
  */
 
 get_header(); 
@@ -38,12 +38,17 @@ switch ($sidebar_setting ) {
 }
 
 
-	if ($sidebar_setting == 'left_sidebar') get_sidebar(); ?>
+	if ('left_sidebar' == $sidebar_setting) {
+		get_sidebar(); 
+	}
 
-	<div id="primary" class="content-area <?php 
-		if( ($sidebar_setting !== 'no_sidebar') ) {
-				echo 'has-sidebar';
-		} ?>">
+	$has_sidebar = '';
+	if( ($sidebar_setting !== 'no_sidebar') ) {
+		$has_sidebar = 'has-sidebar';
+	}
+	?>
+
+	<div id="primary" class="content-area <?php echo $has_sidebar; ?>">
 		<main id="main" class="site-main" role="main">
 
 			<?php
@@ -63,5 +68,8 @@ switch ($sidebar_setting ) {
 	</div><!-- #primary -->
 
 
-<?php if ($sidebar_setting == 'right_sidebar') get_sidebar(); ?>
-<?php get_footer();
+<?php 
+if ($sidebar_setting == 'right_sidebar') {
+	get_sidebar();
+}
+get_footer();

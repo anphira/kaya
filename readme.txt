@@ -1,24 +1,15 @@
-Thoughts: 
-- Custom widgets - pretty blog
-- ADA accessible
-- Landing Page Templates
-- Beaver Builder
-- Gutenberg Builder
-- SiteOrigin Builder
-
-
 === Kaya ===
 
 Contributors: Anphira, automattic
-Tags: translation-ready, custom-background, theme-options, custom-menu, post-formats, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, custom-menu, featured-images, flexible-header, footer-widgets, full-width-template, blog
+Tags: custom-background, theme-options, custom-menu, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, featured-images, flexible-header, footer-widgets, full-width-template, blog
 
 Requires at least: 4.7
 Tested up to: 4.9.1
-Stable tag: v0.6.4
+Stable tag: v0.6.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A starter theme called Kaya, built from underscores.
+A starter theme called Kaya designed for PSD to WordPress builds, built from underscores.
 
 == Description ==
 
@@ -50,6 +41,9 @@ Recommended plugins are available at https://www.anphira.com/kaya-wordpress-them
 From the Customizer a number of customization options exist. Please see https://www.anphira.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 0.6.9 - Jan 28 2018 =
+* updates to match WordPress PHP coding standards better
 
 = 0.6.8 - Jan 23 2018 =
 * update hero area

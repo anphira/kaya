@@ -7,7 +7,10 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
+ * @author  Anphira
+ * @since   0.1
  * @package Kaya
+ * @version 0.1
  */
 
 /*

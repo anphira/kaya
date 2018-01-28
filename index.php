@@ -9,24 +9,37 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
+ * @author  Anphira
+ * @since   0.1
  * @package Kaya
+ * @version 0.6.9
  */
 
 get_header(); ?>
 
-	<?php if (get_theme_mod( 'kaya_post_sidebar' ) == 'left_sidebar') get_sidebar(); ?>
-	<div id="primary" class="content-area <?php if( get_theme_mod( 'kaya_post_sidebar' ) !== 'no_sidebar' ) echo 'has-sidebar'; ?>">
+	<?php 
+	if (get_theme_mod( 'kaya_post_sidebar' ) == 'left_sidebar') {
+		get_sidebar();
+	}
+
+	$has_sidebar = '';
+	if( get_theme_mod( 'kaya_post_sidebar' ) !== 'no_sidebar' ) {
+		$has_sidebar = 'has-sidebar';
+	}
+	?>
+	<div id="primary" class="content-area <?php echo $has_sidebar; ?>">
 		<main id="main" class="site-main" role="main">
 
 		<?php
 		if ( have_posts() ) :
 
-			if ( is_home() && ! is_front_page() ) : ?>
+			if ( is_home() && ! is_front_page() ) : 
+				?>
 				<header>
 					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
 				</header>
 
-			<?php
+				<?php
 			endif;
 
 			/* Start the Loop */
@@ -47,11 +60,16 @@ get_header(); ?>
 
 			get_template_part( 'template-parts/content', 'none' );
 
-		endif; ?>
+		endif; 
+		?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
-	<?php if (get_theme_mod( 'kaya_post_sidebar' ) == 'right_sidebar') get_sidebar(); ?>
+	<?php 
+	if (get_theme_mod( 'kaya_post_sidebar' ) == 'right_sidebar') {
+		get_sidebar(); 
+	}
+	?>
 
 <?php
 get_sidebar();
