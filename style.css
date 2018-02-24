@@ -5,11 +5,11 @@ Author: Anphira, LLC
 Author URI: https://www.anphira.com/
 GitHub Theme URI: anphira/kaya
 Description: Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It's ready to work with your page builder and has built-in support for Visual Composer. You can view the setup instructions by going to the Customizer and selecting "Need Setup Help?".
-Version: 0.6.8
+Version: 0.6.9.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kaya
-Tags: one-column, two-columns, right-sidebar, left-sidebar, flexible-header, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, sticky-post, theme-options, translation-ready, custom-background, post-formats, threaded-comments, full-width-template, accessibility-ready
+Tags: custom-background, theme-options, custom-menu, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, featured-images, flexible-header, footer-widgets, full-width-template, blog
 
 This theme, like WordPress, is licensed under the GPL.
 
@@ -763,6 +763,7 @@ a:active {
 --------------------------------------------------------------*/
 .widget {
 	margin: 0 0 0.5em;
+	clear: both;
 }
 
 /* Make sure select elements fit in widgets. */
@@ -776,7 +777,7 @@ a:active {
 }
 
 .widget_search label {
-	width: calc(100% - 3.5em - 38px);
+	width: calc(100% - 3.5em - 42px);
 	float: left;
 }
 .widget_search .search-submit {
@@ -1280,4 +1281,27 @@ body .white-text h6 {
 		width: 100%;
 		clear: both;
 	}
+}
+
+
+
+
+/*--------------------------------------------------------------
+# WooCommerce Support
+--------------------------------------------------------------*/
+.products.columns-12, 
+.products.columns-11, 
+.products.columns-10, 
+.products.columns-9, 
+.products.columns-8, 
+.products.columns-7, 
+.products.columns-6, 
+.products.columns-5, 
+.products.columns-4, 
+.products.columns-3, 
+.products.columns-2, 
+.products.columns-1 {
+	float: none;
+	width: 100%;
+	clear: both;
 }

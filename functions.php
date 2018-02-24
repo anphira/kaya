@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.6.2
+ * @version 0.6.9.1
  */
  
 /**
@@ -605,7 +605,7 @@ function kaya_page_settings_display_callback( $post ) {
 	echo '<p>Page Hero Background color</p>';
 	$kaya_page_hero_header_color = get_post_meta($post->ID, '_kaya_page_hero_header_color', true);
 	?>
-	<input class="color_field" type="text" name="kaya_page_hero_header_color" value="<?php esc_attr_e( $kaya_page_hero_header_color ); ?>"/>
+	<input class="color_field" type="text" name="kaya_page_hero_header_color" value="<?php esc_attr( $kaya_page_hero_header_color ); ?>"/>
 	<?php
 
 	echo '<p>Page Hero Background image</p>';
@@ -613,7 +613,7 @@ function kaya_page_settings_display_callback( $post ) {
 	?>
 
 	
-	<input style="width:100%" type="text" name="kaya_page_hero_image" id="kaya_page_hero_image" value="<?php esc_attr_e( $kaya_page_hero_image ); ?>" />
+	<input style="width:100%" type="text" name="kaya_page_hero_image" id="kaya_page_hero_image" value="<?php esc_attr( $kaya_page_hero_image ); ?>" />
     
 
 	<?php

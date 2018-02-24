@@ -29,10 +29,8 @@ get_header( 'shop' ); ?>
 		 * @hooked woocommerce_get_sidebar - 10
 		 */
 		$sidebar_setting = get_theme_mod( 'kaya_woo_sidebar' );
-		echo $sidebar_setting;
 		if ($sidebar_setting == 'left_sidebar') {
 			do_action( 'woocommerce_sidebar' );
-		echo '<p>hi</p>';
 		}
 		
 	?>

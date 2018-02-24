@@ -57,7 +57,7 @@ switch ($sidebar_setting ) {
 				get_template_part( 'template-parts/content', 'page' );
 
 				// If comments are open or we have at least one comment, load up the comment template.
-				if ( (get_theme_mod( 'kaya_page_comments' ) == 'on' ) && (comments_open() || get_comments_number() )) :
+				if ( ( 'on' == get_theme_mod( 'kaya_page_comments' ) ) && (comments_open() || get_comments_number() )) :
 					comments_template();
 				endif;
 
@@ -69,7 +69,7 @@ switch ($sidebar_setting ) {
 
 
 <?php 
-if ($sidebar_setting == 'right_sidebar') {
+if ('right_sidebar' == $sidebar_setting) {
 	get_sidebar();
 }
 get_footer();

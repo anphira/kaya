@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.6.9
+ * @version 0.7
  */
 
 ?><!DOCTYPE html>
@@ -208,11 +208,15 @@
 		<div class="container">
 			<?php
 				if(is_page()) {
-					echo '<h1>' . get_the_title() . '</h1>';
+					if(get_post_meta($post->ID, '_kaya_hide_title_check', true) !== 'on') {
+						echo '<h1>' . get_the_title($page_for_posts) . '</h1>';
+					}
 					echo get_post_meta($post->ID, '_kaya_page_hero_content', true); 
 				}
 				elseif(is_home()) {
-					echo '<h1>' . get_the_title($page_for_posts) . '</h1>';
+					if(get_post_meta($page_for_posts, '_kaya_hide_title_check', true) !== 'on') {
+						echo '<h1>' . get_the_title($page_for_posts) . '</h1>';
+					}
 					echo get_post_meta($page_for_posts, '_kaya_page_hero_content', true); 
 				}
 			?>
