@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.1
+ * @version 0.7
  */
 
 get_header(); ?>
@@ -17,11 +17,11 @@ get_header(); ?>
 
 			<section class="error-404 not-found">
 				<header class="page-header">
-					<h1 class="page-title"><?php echo get_theme_mod( 'kaya_404_title' ) ?></h1>
+					<h1 class="page-title"><?php echo get_theme_mod( 'kaya_404_title', 'Sorry, that page could not be found' ) ?></h1>
 				</header><!-- .page-header -->
 
 				<div class="page-content">
-					<p><?php echo htmlspecialchars_decode(get_theme_mod( 'kaya_404_content' )) ?></p>
+					<p><?php echo htmlspecialchars_decode(get_theme_mod( 'kaya_404_content', 'You tried to reach a page which could not be found. Please <a href="/">click here to visit the home page</a> or use the main menu to navigate to your desired location.' )) ?></p>
 
 					
 

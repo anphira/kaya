@@ -20,10 +20,10 @@
 	if( '' == get_post_meta($post->ID, '_kaya_hide_footer_check', true)) { 
 		?>
 		<footer id="colophon" class="site-footer" role="contentinfo">
-			<div class="footer-columns <?php if(get_theme_mod( 'kaya_footer_columns_in_grid' ) == true) echo 'container'; ?>">
+			<div class="footer-columns <?php if(get_theme_mod( 'kaya_footer_columns_in_grid', false )) echo 'container'; ?>">
 				<?php 
-				if(true == get_theme_mod( 'kaya_show_footer_columns' )) {
-					switch(get_theme_mod( 'kaya_footer_columns' )) {
+				if(get_theme_mod( 'kaya_show_footer_columns', false )) {
+					switch(get_theme_mod( 'kaya_footer_columns', 'one_column' )) {
 						case 'one_column': 
 							echo '<div class="columns-12 last">';
 							dynamic_sidebar('Footer-1');
@@ -74,11 +74,11 @@
 			<div class="site-info">
 				<div class="container">
 					<div class="columns-6">
-						<?php if(true == get_theme_mod( 'kaya_show_footer_social')) kaya_social_icons(); ?>
+						<?php if(get_theme_mod( 'kaya_show_footer_social', false)) kaya_social_icons(); ?>
 						Copyright &copy; <?php echo date('Y'); ?>. All rights reserved. <?php bloginfo('name'); ?>.
 					</div>
 					<div class="columns-6 last text-right">
-						<?php if('' != get_theme_mod( 'kaya_footer_right' )) {
+						<?php if(get_theme_mod( 'kaya_footer_right', '' )) {
 							echo htmlspecialchars_decode(get_theme_mod( 'kaya_footer_right' )); 
 						}
 						else { ?>
@@ -141,7 +141,7 @@
 <!-- End Schema.org -->
 
 <?php 
-if('' != get_theme_mod( 'kaya_cf7_redirect_url')) { 
+if('' != get_theme_mod( 'kaya_cf7_redirect_url', '')) { 
 	?>
 	<script>
 	document.addEventListener( 'wpcf7mailsent', function( event ) {
@@ -155,7 +155,7 @@ if('' != get_theme_mod( 'kaya_cf7_redirect_url')) {
 
 
 <?php 
-if('' != get_theme_mod( 'kaya_add_to_body_bottom' )) {
+if('' != get_theme_mod( 'kaya_add_to_body_bottom', '' )) {
 	$tempy = get_theme_mod( 'kaya_add_to_body_bottom' );
 	echo htmlspecialchars_decode($tempy);
 }

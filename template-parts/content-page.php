@@ -20,13 +20,13 @@
 			$page_hero_setting = false;
 			break;
 		case 'use_default':
-			$page_hero_setting = get_theme_mod( 'kaya_page_hero' );
+			$page_hero_setting = get_theme_mod( 'kaya_page_hero', 'off' );
 			break;
 		case 'use_page_hero':
 			$page_hero_setting = true;
 			break;
 		default: 
-			$page_hero_setting = get_theme_mod( 'kaya_page_hero' );
+			$page_hero_setting = get_theme_mod( 'kaya_page_hero', 'off' );
 	}
 	if((get_post_meta($post->ID, '_kaya_hide_title_check', true) !== 'on') && (!$page_hero_setting)) { ?>
 	<header class="entry-header">

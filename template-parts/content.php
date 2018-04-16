@@ -29,7 +29,7 @@
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
-		<?php if(!is_single() && get_theme_mod( 'kaya_blog_excerpt' ) != '') {
+		<?php if(!is_single() && get_theme_mod( 'kaya_blog_excerpt', '' ) != '') {
 			the_excerpt( sprintf(
 				/* translators: %s: Name of current post. */
 				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'kaya' ), array( 'span' => array( 'class' => array() ) ) ),

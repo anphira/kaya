@@ -20,7 +20,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 
-<?php if(get_theme_mod( 'kaya_add_to_head' ) !== '')
+<?php if(get_theme_mod( 'kaya_add_to_head', '' ) !== '')
 	echo htmlspecialchars_decode(get_theme_mod( 'kaya_add_to_head' ));
 ?>
 
@@ -29,7 +29,7 @@
 
 <body <?php body_class(); ?>>
 
-<?php if(get_theme_mod( 'kaya_add_to_body_top' ) !== '')
+<?php if(get_theme_mod( 'kaya_add_to_body_top', '' ) !== '')
 	echo htmlspecialchars_decode(get_theme_mod( 'kaya_add_to_body_top' ));
 ?>
 
@@ -37,8 +37,8 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'kaya' ); ?></a>
 
 	<?php if( '' == get_post_meta($post->ID, '_kaya_hide_header_check', true)) { ?>
-	<header id="masthead" class="site-header <?php if(get_theme_mod( 'kaya_transparent_header' ) ) echo 'transparent-header'; ?>" role="banner">
-		<?php if(get_theme_mod( 'kaya_top_header' )) { ?>
+	<header id="masthead" class="site-header <?php if(get_theme_mod( 'kaya_transparent_header', false ) ) echo 'transparent-header'; ?>" role="banner">
+		<?php if(get_theme_mod( 'kaya_top_header', false )) { ?>
 			<div class="top-header">
 				<div class="container">
 					<div class="columns-6">
@@ -53,7 +53,7 @@
 		<?php } ?>
 		<div class="container">
 			<?php 
-			switch(get_theme_mod( 'kaya_header_columns' )) {
+			switch(get_theme_mod( 'kaya_header_columns', 'one_column' )) {
 				case 'one_column': 
 					echo '<div class="columns-12 last">';
 						kaya_logo_display();
@@ -99,7 +99,7 @@
 					echo '<div class="columns-9 last">';
 						dynamic_sidebar('Header-2');
 						echo '<nav id="site-navigation" class="main-navigation" role="navigation">';
-						if(get_theme_mod( 'kaya_hide_mobile_button_menu' ) == false) {
+						if( ! get_theme_mod( 'kaya_hide_mobile_button_menu', false ) ) {
 							?><button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'kaya' ); ?></button><?php
 						}
 						wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); 
@@ -123,10 +123,10 @@
 			
 		</div><!-- .container -->
 
-		<?php if( 'logo_menu' !== get_theme_mod( 'kaya_header_columns' )) { ?>
+		<?php if( 'logo_menu' !== get_theme_mod( 'kaya_header_columns', 'one_column' )) { ?>
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 			<div class="container">
-				<?php if( !get_theme_mod( 'kaya_hide_mobile_button_menu' )) { ?>
+				<?php if( !get_theme_mod( 'kaya_hide_mobile_button_menu', false )) { ?>
 					<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'kaya' ); ?></button>
 				<?php } ?>
 				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
@@ -147,9 +147,9 @@
 	}
 	if(is_page()) {
 		if(!get_post_meta($post->ID, '_kaya_sidebar_setting', true) || 'use_default' == get_post_meta($post->ID, '_kaya_sidebar_setting', true) ) {
-			if ('left_sidebar' == get_theme_mod( 'kaya_page_sidebar' )) 
+			if ('left_sidebar' == get_theme_mod( 'kaya_page_sidebar', 'right_sidebar' )) 
 				$content_class .= 'sidebar-left ';
-			if ('right_sidebar' == get_theme_mod( 'kaya_page_sidebar' )) 
+			if ('right_sidebar' == get_theme_mod( 'kaya_page_sidebar', 'right_sidebar' )) 
 				$content_class .= 'sidebar-right ';
 		}
 		else {
@@ -169,10 +169,10 @@
 		}
 	}
 	else { // use post sidebar
-		if ('left_sidebar' == get_theme_mod( 'kaya_post_sidebar' )) {
+		if ('left_sidebar' == get_theme_mod( 'kaya_post_sidebar', 'right_sidebar' )) {
 			$content_class .= 'sidebar-left ';
 		}
-		if ('right_sidebar' == get_theme_mod( 'kaya_post_sidebar' )) {
+		if ('right_sidebar' == get_theme_mod( 'kaya_post_sidebar', 'right_sidebar' )) {
 			$content_class .= 'sidebar-right ';
 		}
 	}
@@ -191,13 +191,13 @@
 			$page_hero_setting = false;
 			break;
 		case 'use_default':
-			$page_hero_setting = get_theme_mod( 'kaya_page_hero' );
+			$page_hero_setting = get_theme_mod( 'kaya_page_hero', false );
 			break;
 		case 'use_page_hero':
 			$page_hero_setting = true;
 			break;
 		default: 
-			$page_hero_setting = get_theme_mod( 'kaya_page_hero' );
+			$page_hero_setting = get_theme_mod( 'kaya_page_hero', false );
 	}
 	if($page_hero_setting) {
 		$content_class .= 'has-page-hero ';

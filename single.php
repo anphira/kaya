@@ -9,8 +9,8 @@
 
 get_header(); ?>
 
-	<?php if ('left_sidebar' == get_theme_mod( 'kaya_post_sidebar' )) get_sidebar(); ?>
-	<div id="primary" class="content-area <?php if( get_theme_mod( 'kaya_post_sidebar' ) !== 'no_sidebar' ) echo 'has-sidebar'; ?>">
+	<?php if ('left_sidebar' == get_theme_mod( 'kaya_post_sidebar', 'right_sidebar' )) get_sidebar(); ?>
+	<div id="primary" class="content-area <?php if( get_theme_mod( 'kaya_post_sidebar', 'right_sidebar' ) !== 'no_sidebar' ) echo 'has-sidebar'; ?>">
 		<main id="main" class="site-main" role="main">
 
 		<?php
@@ -21,7 +21,7 @@ get_header(); ?>
 			the_post_navigation();
 
 			// If comments are open or we have at least one comment, load up the comment template.
-			if ( (get_theme_mod( 'kaya_post_comments' ) == 'on' ) && (comments_open() || get_comments_number() )) :
+			if ( (get_theme_mod( 'kaya_post_comments', 'on' ) == 'on' ) && (comments_open() || get_comments_number() )) :
 				comments_template();
 			endif;
 
@@ -30,7 +30,7 @@ get_header(); ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
-	<?php if ('right_sidebar' == get_theme_mod( 'kaya_post_sidebar' )) get_sidebar(); ?>
+	<?php if ('right_sidebar' == get_theme_mod( 'kaya_post_sidebar', 'right_sidebar' )) get_sidebar(); ?>
 
 <?php
 get_footer();
