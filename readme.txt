@@ -42,6 +42,10 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
+= 0.7 - Feb  2018 =
+* add useful CSS classes
+* add support for Woo light boxes
+
 = 0.6.9 - Feb 07 2018 =
 * updates for hero area
 

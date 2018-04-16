@@ -5,7 +5,7 @@ Author: Anphira, LLC
 Author URI: https://www.anphira.com/
 GitHub Theme URI: anphira/kaya
 Description: Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It's ready to work with your page builder and has built-in support for Visual Composer. You can view the setup instructions by going to the Customizer and selecting "Need Setup Help?".
-Version: 0.6.9.1
+Version: 0.7
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kaya
@@ -43,6 +43,8 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 	## Galleries
 # Footer Settings
 # Visual Composer Support
+# WooCommerce Support
+# Other useful classes
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
@@ -1195,6 +1197,9 @@ body .white-text h6 {
 .last {
 	margin-right: 0;
 }
+.first {
+	clear: left;
+}
 
 .columns-12, .columns-12-non-responsive {
 	width: 100%;
@@ -1300,8 +1305,35 @@ body .white-text h6 {
 .products.columns-4, 
 .products.columns-3, 
 .products.columns-2, 
-.products.columns-1 {
+.products.columns-1,
+.woocommerce.columns-12,
+.woocommerce.columns-11,
+.woocommerce.columns-10,
+.woocommerce.columns-9,
+.woocommerce.columns-8,
+.woocommerce.columns-7,
+.woocommerce.columns-6,
+.woocommerce.columns-5,
+.woocommerce.columns-4,
+.woocommerce.columns-3,
+.woocommerce.columns-2,
+.woocommerce.columns-1 {
 	float: none;
 	width: 100%;
 	clear: both;
 }
+
+
+/*--------------------------------------------------------------
+# Other Useful Classes
+--------------------------------------------------------------*/
+.mt0 { margin-top: 0; }
+.mb0 { margin-bottom: 0; }
+.mr0 { margin-right: 0; }
+.ml0 { margin-left: 0; }
+
+
+.pt0 { padding-top: 0; }
+.pb0 { padding-bottom: 0; }
+.pr0 { padding-right: 0; }
+.pl0 { padding-left: 0; }
