@@ -42,6 +42,9 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
+= 0.7.1 - Apr 24 2018 =
+* add code to not load Woo content on non-woo pages
+
 = 0.7 - Feb  2018 =
 * add useful CSS classes
 * add support for Woo light boxes
