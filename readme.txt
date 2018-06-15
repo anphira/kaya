@@ -42,6 +42,9 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
+= 0.7.2 - Jun 15 2018 =
+* fix page title
+
 = 0.7.1 - Apr 24 2018 =
 * add code to not load Woo content on non-woo pages
 
