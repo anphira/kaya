@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.7.2
+ * @version 0.7.3
  */
 
 ?>
@@ -20,15 +20,15 @@
 			$page_hero_setting = false;
 			break;
 		case 'use_default':
-			$page_hero_setting = get_theme_mod( 'kaya_page_hero', 'off' );
+			$page_hero_setting = get_theme_mod( 'kaya_page_hero', false );
 			break;
 		case 'use_page_hero':
 			$page_hero_setting = true;
 			break;
 		default: 
-			$page_hero_setting = get_theme_mod( 'kaya_page_hero', 'off' );
+			$page_hero_setting = get_theme_mod( 'kaya_page_hero', false );
 	}
-	if((get_post_meta($post->ID, '_kaya_hide_title_check', true) !== 'on') && ('on' !== $page_hero_setting)) { ?>
+	if((get_post_meta($post->ID, '_kaya_hide_title_check', true) !== 'on') && (true != $page_hero_setting)) { ?>
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 	</header><!-- .entry-header -->
