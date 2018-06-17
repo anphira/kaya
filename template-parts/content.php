@@ -4,7 +4,10 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
+ * @author  Anphira
+ * @since   0.1
  * @package Kaya
+ * @version 0.7.4
  */
 
 ?>
@@ -14,11 +17,15 @@
 	<header class="entry-header">
 		<?php
 		the_post_thumbnail();
-		if ( is_single() ) :
-			the_title( '<h1 class="entry-title" itemprop="name">', '</h1>' );
-		else :
+		if ( is_single() ) {
+			$page_hero_blog = get_theme_mod( 'kaya_page_hero_blogs', false );
+			if(!$page_hero_blog) {
+				the_title( '<h1 class="entry-title" itemprop="name">', '</h1>' );
+			}
+		}
+		else {
 			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-		endif;
+		}
 
 		if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">

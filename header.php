@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.7
+ * @version 0.7.4
  */
 
 ?><!DOCTYPE html>
@@ -199,29 +199,39 @@
 		default: 
 			$page_hero_setting = get_theme_mod( 'kaya_page_hero', false );
 	}
-	if($page_hero_setting) {
+
+	$page_hero_blog = get_theme_mod( 'kaya_page_hero_blogs', false );
+	if((!is_single() && $page_hero_setting) || (is_single() && $page_hero_blog)) {
 		$content_class .= 'has-page-hero ';
 	}
 
 	if($page_hero_setting && !is_single()) { ?>
-	<div id="page-hero-area">
-		<div class="container">
-			<?php
-				if(is_page()) {
-					if(get_post_meta($post->ID, '_kaya_hide_title_check', true) !== 'on') {
-						echo '<h1>' . get_the_title($page_for_posts) . '</h1>';
+		<div id="page-hero-area">
+			<div class="container">
+				<?php
+					if(is_page()) {
+						if(get_post_meta($post->ID, '_kaya_hide_title_check', true) !== 'on') {
+							echo '<h1>' . get_the_title() . '</h1>';
+						}
+						echo get_post_meta($post->ID, '_kaya_page_hero_content', true); 
 					}
-					echo get_post_meta($post->ID, '_kaya_page_hero_content', true); 
-				}
-				elseif(is_home()) {
-					if(get_post_meta($page_for_posts, '_kaya_hide_title_check', true) !== 'on') {
-						echo '<h1>' . get_the_title($page_for_posts) . '</h1>';
+					elseif(is_home()) {
+						if(get_post_meta($page_for_posts, '_kaya_hide_title_check', true) !== 'on') {
+							echo '<h1>' . get_the_title($page_for_posts) . '</h1>';
+						}
+						echo get_post_meta($page_for_posts, '_kaya_page_hero_content', true); 
 					}
-					echo get_post_meta($page_for_posts, '_kaya_page_hero_content', true); 
-				}
-			?>
+					elseif(is_archive()) {
+						the_archive_title( '<h1 class="page-title">', '</h1>' );
+						the_archive_description( '<div class="archive-description">', '</div>' );
+					}
+				?>
+			</div>
 		</div>
-	</div>
-	<?php } ?>
+	<?php } elseif($page_hero_blog && is_single()) {
+		if($page_hero_blog) {
+			the_title( '<h1 class="entry-title" itemprop="name">', '</h1>' );
+		}
+	} ?>
 
 	<div id="content" class="<?php  echo $content_class; ?>">

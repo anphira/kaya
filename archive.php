@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.7
+ * @version 0.7.4
  */
 
 get_header(); 
@@ -29,12 +29,29 @@ get_header();
 		if ( have_posts() ) : 
 			?>
 
+			<?php
+			$page_hero_setting = get_post_meta($post->ID, 'kaya_page_hero_setting', true);
+			switch ($page_hero_setting ) {
+				case 'no_page_hero':
+					$page_hero_setting = false;
+					break;
+				case 'use_default':
+					$page_hero_setting = get_theme_mod( 'kaya_page_hero', false );
+					break;
+				case 'use_page_hero':
+					$page_hero_setting = true;
+					break;
+				default: 
+					$page_hero_setting = get_theme_mod( 'kaya_page_hero', false );
+			}
+			if((get_post_meta($post->ID, '_kaya_hide_title_check', true) !== 'on') && (true != $page_hero_setting)) { ?>
 			<header class="page-header">
 				<?php
 					the_archive_title( '<h1 class="page-title">', '</h1>' );
 					the_archive_description( '<div class="archive-description">', '</div>' );
 				?>
 			</header><!-- .page-header -->
+			<?php } ?>
 
 			<?php
 			/* Start the Loop */

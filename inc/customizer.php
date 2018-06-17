@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.6
+ * @version 0.7.4
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -447,10 +447,19 @@ function kaya_add_general($wp_customize) {
 	
 	$wp_customize->add_setting('kaya_page_hero', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_page_hero', array(
-		'label'           => __( 'Use Page Hero Area Sitewide', 'kaya' ),
+		'label'           => __( 'Use Page Hero Area Sitewide (Pages & Archives)', 'kaya' ),
 		'type'            => 'checkbox',
 		'section'         => 'kaya_general',
 		'settings'   => 'kaya_page_hero',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_page_hero_blogs', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_page_hero_blogs', array(
+		'label'           => __( 'Use Page Hero Area for Blogs', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_page_hero_blogs',
 		)
 	) );
 
