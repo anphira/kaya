@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.7.1
+ * @version 0.7.5
  */
  
 /**
@@ -64,10 +64,10 @@ function dequeue_woocommerce_styles_scripts() {
 	if ( function_exists( 'is_woocommerce' ) ) {
 		if ( ! is_woocommerce() && ! is_cart() && ! is_checkout() ) {
 			# Styles
-			wp_dequeue_style( 'woocommerce-general' );
-			wp_dequeue_style( 'woocommerce-layout' );
-			wp_dequeue_style( 'woocommerce-smallscreen' );
-			wp_dequeue_style( 'woocommerce_frontend_styles' );
+			//wp_dequeue_style( 'woocommerce-general' );
+			//wp_dequeue_style( 'woocommerce-layout' );
+			//wp_dequeue_style( 'woocommerce-smallscreen' );
+			//wp_dequeue_style( 'woocommerce_frontend_styles' );
 			wp_dequeue_style( 'woocommerce_fancybox_styles' );
 			wp_dequeue_style( 'woocommerce_chosen_styles' );
 			wp_dequeue_style( 'woocommerce_prettyPhoto_css' );

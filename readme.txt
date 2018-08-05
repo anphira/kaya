@@ -42,6 +42,9 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
+= 0.7.5 - Aug 05 2018 =
+* CSS update for buttons for WooCommerce
+
 = 0.7.4 - Jun 15 2018 =
 * fix page title on category archive
 

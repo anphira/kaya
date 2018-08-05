@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.6.9
+ * @version 0.7.5
  */
 
 /**
@@ -243,7 +243,11 @@ body a:hover, body a:focus, body a:active {
 }
 body button,
 body button:visited,
-body a.button, 
+body a.button,
+body.woocommerce a.button,
+body.woocommerce a.button:visited,
+body .woocommerce a.button,
+body .woocommerce a.button:visited,
 body a.button:visited, 
 body input[type=button],
 body input[type=reset],
