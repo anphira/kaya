@@ -5,7 +5,7 @@ Tags: custom-background, theme-options, custom-menu, threaded-comments, one-colu
 
 Requires at least: 4.7
 Tested up to: 4.9.1
-Stable tag: v0.7.7
+Stable tag: v0.7.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,9 @@ Recommended plugins are available at https://www.anphira.com/kaya-wordpress-them
 From the Customizer a number of customization options exist. Please see https://www.anphira.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 0.7.8 - Sep 07 2018 =
+* minor CSS updates
 
 = 0.7.7 - Sep 07 2018 =
 * fix display of hero on custom page hero
