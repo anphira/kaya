@@ -366,13 +366,6 @@ big {
 	font-size: 125%;
 }
 
-.large-text {
-	font-size: 1.2em;
-}
-.extra-large-text {
-	font-size: 1.5em;
-}
-
 /*--------------------------------------------------------------
 # Elements
 --------------------------------------------------------------*/
@@ -1160,6 +1153,27 @@ body .white-text h4,
 body .white-text h5, 
 body .white-text h6 {
 	color: white;
+}
+
+body .large-text, 
+body .large-text p, 
+body .large-text h1, 
+body .large-text h2, 
+body .large-text h3, 
+body .large-text h4, 
+body .large-text h5, 
+body .large-text h6 {
+	font-size: 1.2em;
+}
+body .extra-large-text, 
+body .extra-large-text p, 
+body .extra-large-text h1, 
+body .extra-large-text h2, 
+body .extra-large-text h3, 
+body .extra-large-text h4, 
+body .extra-large-text h5, 
+body .extra-large-text h6 {
+	font-size: 1.5em;
 }
 .text-center {
 	text-align: center;
