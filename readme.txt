@@ -42,6 +42,9 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
+= 0.7.7 - Sep 07 2018 =
+* fix display of hero on custom page hero
+
 = 0.7.6 - Sep 07 2018 =
 * minor CSS updates
 

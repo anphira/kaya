@@ -551,7 +551,7 @@ function kaya_page_settings_display_callback( $post ) {
 	?>
 
 	
-	<input style="width:100%" type="text" name="kaya_page_hero_image" id="kaya_page_hero_image" value="<?php esc_attr( $kaya_page_hero_image ); ?>" />
+	<input style="width:100%" type="text" name="kaya_page_hero_image" id="kaya_page_hero_image" value="<?php echo esc_attr( $kaya_page_hero_image ); ?>" />
     
 
 	<?php
