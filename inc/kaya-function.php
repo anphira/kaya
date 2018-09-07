@@ -2,7 +2,10 @@
 /**
  * Custom functions for Kaya theme.
  *
+ * @author  Anphira
+ * @since   0.1
  * @package Kaya
+ * @version 0.7.5
  */
 
 
@@ -154,6 +157,9 @@ function kaya_is_font_from_google( $input_font ) {
  * @returns string of google font link or empty string if neither font is from google
  */
 function kaya_font_family_lookup( $input_font) {
+	if(!isset($input_font)) {
+		$input_font = 'arial';
+	}
 	$font_list = kaya_fonts_list();
 	 
 	return $font_list[ $input_font ];

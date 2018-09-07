@@ -1136,7 +1136,7 @@ function kaya_add_fonts($wp_customize) {
 	
 	$wp_customize->add_setting('kaya_paragraph_font_weight', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_paragraph_font_weight', array(
-		'label'           => __( 'Heading Font Weight', 'kaya' ),
+		'label'           => __( 'Paragraph Font Weight', 'kaya' ),
 		'description'	  => __( 'Enter font weight as a number, for example "300"', 'kaya' ),
 		'type'            => 'number',
 		'section'         => 'kaya_fonts',

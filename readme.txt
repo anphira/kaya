@@ -5,7 +5,7 @@ Tags: custom-background, theme-options, custom-menu, threaded-comments, one-colu
 
 Requires at least: 4.7
 Tested up to: 4.9.1
-Stable tag: v0.7
+Stable tag: v0.7.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,9 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
+= 0.7.6 - Sep 07 2018 =
+* minor CSS updates
+
 = 0.7.5 - Aug 05 2018 =
 * CSS update for buttons for WooCommerce
 
@@ -57,7 +60,7 @@ From the Customizer a number of customization options exist. Please see https://
 = 0.7.1 - Apr 24 2018 =
 * add code to not load Woo content on non-woo pages
 
-= 0.7 - Feb  2018 =
+= 0.7 - Apr 16 2018 =
 * add useful CSS classes
 * add support for Woo light boxes
 

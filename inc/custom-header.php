@@ -87,42 +87,50 @@ h1, h2, h3, h4, h5, h6 {
 		else
 			echo kaya_font_family_lookup( get_theme_mod( 'kaya_heading_font', 'arial' ) ); ?>;
 }
-h1 {
+h1, .h1 {
 	font-size: <?php echo get_theme_mod( 'kaya_heading_1', '36' ) ?>px;
 }
-h2 {
+h2, .h2 {
 	font-size: <?php echo get_theme_mod( 'kaya_heading_2', '27' ) ?>px;
 }
-h3 {
+h3, .h3 {
 	font-size: <?php echo get_theme_mod( 'kaya_heading_3', '21' ) ?>px;
 }
-h4 {
+h4, .h4 {
 	font-size: <?php echo get_theme_mod( 'kaya_heading_4', '18' ) ?>px;
 }
-h5 {
+h5, .h5 {
 	font-size: <?php echo get_theme_mod( 'kaya_heading_5', '16' ) ?>px;
 }
-h6 {
+h6, .h6 {
 	font-size: <?php echo get_theme_mod( 'kaya_heading_6', '16' ) ?>px;
 }
 @media screen and (max-width: 767px) {
+	<?php 
+		$kaya_heading_1 = get_theme_mod( 'kaya_heading_1', '36' );
+		$kaya_heading_2 = get_theme_mod( 'kaya_heading_2', '27' );
+		$kaya_heading_3 = get_theme_mod( 'kaya_heading_3', '21' );
+		$kaya_heading_4 = get_theme_mod( 'kaya_heading_4', '18' );
+		$kaya_heading_5 = get_theme_mod( 'kaya_heading_5', '16' );
+		$kaya_heading_6 = get_theme_mod( 'kaya_heading_6', '16' );
+	?>
 	h1 {
-		font-size: <?php echo get_theme_mod( 'kaya_heading_1', '36' ) * 0.67 ?>px;
+		font-size: <?php echo $kaya_heading_1 * 0.67 ?>px;
 	}
 	h2 {
-		font-size: <?php echo get_theme_mod( 'kaya_heading_2', '27' ) * 0.67 ?>px;
+		font-size: <?php echo $kaya_heading_2 * 0.67 ?>px;
 	}
 	h3 {
-		font-size: <?php echo get_theme_mod( 'kaya_heading_3', '21' ) * 0.67 ?>px;
+		font-size: <?php echo $kaya_heading_3 * 0.75 ?>px;
 	}
 	h4 {
-		font-size: <?php echo get_theme_mod( 'kaya_heading_4', '18' ) * 0.67 ?>px;
+		font-size: <?php echo $kaya_heading_4 * 0.8 ?>px;
 	}
 	h5 {
-		font-size: <?php echo get_theme_mod( 'kaya_heading_5', '16' ) * 0.67 ?>px;
+		font-size: <?php echo $kaya_heading_5 * 0.9 ?>px;
 	}
 	h6 {
-		font-size: <?php echo get_theme_mod( 'kaya_heading_6', '16' ) * 0.67 ?>px;
+		font-size: <?php echo $kaya_heading_6 * 0.9 ?>px;
 	}
 }
 p, body {
