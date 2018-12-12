@@ -153,6 +153,9 @@ if('' != get_theme_mod( 'kaya_cf7_redirect_url', '')) {
 ?>
 
 
+<?php wp_footer(); ?>
+
+
 
 <?php 
 if('' != get_theme_mod( 'kaya_add_to_body_bottom', '' )) {
@@ -160,9 +163,6 @@ if('' != get_theme_mod( 'kaya_add_to_body_bottom', '' )) {
 	echo htmlspecialchars_decode($tempy);
 }
 ?>
-
-
-<?php wp_footer(); ?>
 
 </body>
 </html>

@@ -42,6 +42,9 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
+= 0.7.9 - Dec 12 2018 =
+* update location of code insertion in footer to just before </body>
+
 = 0.7.8 - Sep 07 2018 =
 * minor CSS updates
 
