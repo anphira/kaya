@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.7.4
+ * @version 0.7.11
  */
 
 ?><!DOCTYPE html>
@@ -178,31 +178,39 @@
 	}
 	
 
-	//get page hero area setting
-	if(is_home()) {
-		$page_for_posts = get_option( 'page_for_posts' );
-		$page_hero_setting = get_post_meta($page_for_posts, 'kaya_page_hero_setting', true);
-	}
-	else {
-		$page_hero_setting = get_post_meta($post->ID, 'kaya_page_hero_setting', true);
-	}
-	switch ($page_hero_setting ) {
-		case 'no_page_hero':
-			$page_hero_setting = false;
-			break;
-		case 'use_default':
-			$page_hero_setting = get_theme_mod( 'kaya_page_hero', false );
-			break;
-		case 'use_page_hero':
-			$page_hero_setting = true;
-			break;
-		default: 
-			$page_hero_setting = get_theme_mod( 'kaya_page_hero', false );
+	//get hero area setting for pages
+	if( is_home() || ( !is_single() && !is_archive() ) ) {
+		if(is_home()) {
+			$page_for_posts = get_option( 'page_for_posts' );
+			$page_hero_setting = get_post_meta($page_for_posts, 'kaya_page_hero_setting', true);
+		}
+		elseif (is_page()) {
+			$page_hero_setting = get_post_meta($post->ID, 'kaya_page_hero_setting', true);
+		}
+		switch ($page_hero_setting ) {
+			case 'no_page_hero':
+				$page_hero_setting = false;
+				break;
+			case 'use_default':
+				$page_hero_setting = get_theme_mod( 'kaya_page_hero', false );
+				break;
+			case 'use_page_hero':
+				$page_hero_setting = true;
+				break;
+			default: 
+				$page_hero_setting = get_theme_mod( 'kaya_page_hero', false );
+		}
+		if( $page_hero_setting ) {
+			$content_class .= 'has-page-hero ';
+		}
 	}
 
-	$page_hero_blog = get_theme_mod( 'kaya_page_hero_blogs', false );
-	if((!is_single() && $page_hero_setting) || (is_single() && $page_hero_blog)) {
-		$content_class .= 'has-page-hero ';
+	// get hero area setting for single blogs / archives
+	else {
+		$page_hero_blog = get_theme_mod( 'kaya_page_hero_blogs', false );
+		if( $page_hero_blog ) {
+			$content_class .= 'has-page-hero ';
+		}
 	}
 
 	if($page_hero_setting && !is_single()) { ?>
@@ -225,12 +233,22 @@
 						the_archive_title( '<h1 class="page-title">', '</h1>' );
 						the_archive_description( '<div class="archive-description">', '</div>' );
 					}
+					elseif(is_404()) {
+						echo '<h1>' . get_theme_mod( 'kaya_404_title', 'Sorry, that page could not be found' ) . '</h1>';
+						
+					}
 				?>
 			</div>
 		</div>
-	<?php } elseif($page_hero_blog && is_single()) {
+	<?php } elseif($page_hero_blog && is_single()) { 
 		if($page_hero_blog) {
-			the_title( '<h1 class="entry-title" itemprop="name">', '</h1>' );
+			?>
+			<div id="page-hero-area">
+				<div class="container">
+					<?php the_title( '<h1 class="entry-title" itemprop="name">', '</h1>' ); ?>
+				</div>
+			</div>
+		<?php
 		}
 	} ?>
 

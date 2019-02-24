@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.7.5
+ * @version 0.7.11
  */
  
 /**
@@ -152,7 +152,7 @@ function rememberme_checked() {
 
 /***
  * Add notice to admin to welcome people to theme
- */
+ *
 function kaya_welcome_notice() {
     ?>
     <div class="notice updated is-dismissible kaya-welcome-notice-dismiss">
@@ -160,7 +160,7 @@ function kaya_welcome_notice() {
     </div>
     <?php
 }
-if(get_theme_mod('kaya_welcome_notice_dismissed') == '0') {
+if(get_theme_mod('kaya_welcome_notice_dismissed', '0')) {
 	add_action( 'admin_notices', 'kaya_welcome_notice' );
 }
 
@@ -168,7 +168,7 @@ function kaya_welcome_notice_dismiss() {
 	set_theme_mod( 'kaya_welcome_notice_dismissed', '1' );
 }
 add_action( 'wp_ajax_kaya_welcome_notice_dismiss', 'kaya_welcome_notice_dismiss' );
-
+*/
 
 if( ! function_exists('kaya_social_icons') ) :
 
@@ -649,8 +649,8 @@ function kaya_scripts() {
 
 	// enqueue child theme if using child theme
 	if(get_theme_file_uri() != get_template_directory_uri()) {
-		wp_enqueue_style( 'kaya-child-style', get_theme_file_uri('style.css'), false, filemtime( get_theme_file_path( 'style.css' )));
 		wp_enqueue_style( 'kaya-style', get_template_directory_uri() . '/style.min.css', false, filemtime( get_theme_file_path( 'style.min.css' )));
+		wp_enqueue_style( 'kaya-child-style', get_theme_file_uri('style.css'), false, filemtime( get_theme_file_path( 'style.css' )));
 	}
 	else {
 		wp_enqueue_style( 'kaya-style', get_theme_file_uri('style.min.css'), false, filemtime( get_theme_file_path( 'style.min.css' )));

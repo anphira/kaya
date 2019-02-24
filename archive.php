@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.7.4
+ * @version 0.7.11
  */
 
 get_header(); 
@@ -18,7 +18,7 @@ get_header();
 		get_sidebar(); 
 	}
 	$has_sidebar = '';
-	if( get_theme_mod( 'kaya_page_sidebar', 'right_sidebar' ) !== 'no_sidebar' ) {
+	if( get_theme_mod( 'kaya_post_sidebar', 'right_sidebar' ) !== 'no_sidebar' ) {
 		$has_sidebar = 'has-sidebar';
 	}
 	?>
@@ -30,21 +30,8 @@ get_header();
 			?>
 
 			<?php
-			$page_hero_setting = get_post_meta($post->ID, 'kaya_page_hero_setting', true);
-			switch ($page_hero_setting ) {
-				case 'no_page_hero':
-					$page_hero_setting = false;
-					break;
-				case 'use_default':
-					$page_hero_setting = get_theme_mod( 'kaya_page_hero', false );
-					break;
-				case 'use_page_hero':
-					$page_hero_setting = true;
-					break;
-				default: 
-					$page_hero_setting = get_theme_mod( 'kaya_page_hero', false );
-			}
-			if((get_post_meta($post->ID, '_kaya_hide_title_check', true) !== 'on') && (true != $page_hero_setting)) { ?>
+			$page_hero_blog = get_theme_mod( 'kaya_page_hero_blogs', false );
+			if( ! $page_hero_blog ) { ?>
 			<header class="page-header">
 				<?php
 					the_archive_title( '<h1 class="page-title">', '</h1>' );
@@ -84,5 +71,4 @@ get_header();
 	?>
 
 <?php
-get_sidebar();
 get_footer();

@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.7.5
+ * @version 0.7.11
  */
 
 /**
@@ -304,7 +304,7 @@ $kaya_grid_width = ($kaya_grid_width > 320) ? $kaya_grid_width : 1140;
 		margin: auto;
 	}
 <?php } ?>
-.vc_row.vc_row-fluid, .footer-columns.container {
+:not(.normal-width) .vc_row.vc_row-fluid, .footer-columns.container {
 	max-width: <?php echo $kaya_grid_width; ?>px;
 }
 

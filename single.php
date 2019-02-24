@@ -4,7 +4,8 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package Kaya
+ * @package 
+ * @version 0.7.11
  */
 
 get_header(); ?>
@@ -21,7 +22,7 @@ get_header(); ?>
 			the_post_navigation();
 
 			// If comments are open or we have at least one comment, load up the comment template.
-			if ( (get_theme_mod( 'kaya_post_comments', 'on' ) == 'on' ) && (comments_open() || get_comments_number() )) :
+			if ( (get_theme_mod( 'kaya_post_comments', 'off' ) ) && (comments_open() || get_comments_number() )) :
 				comments_template();
 			endif;
 

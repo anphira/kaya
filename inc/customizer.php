@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.7.4
+ * @version 0.7.11
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -415,7 +415,7 @@ function kaya_add_general($wp_customize) {
 	
 	$wp_customize->add_setting('kaya_footer_in_grid', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_footer_in_grid', array(
-		'label'           => __( 'Apply Grid to Whole Footer', 'kaya' ),
+		'label'           => __( 'Apply Grid to Whole Footer <hr />', 'kaya' ),
 		'type'            => 'checkbox',
 		'section'         => 'kaya_general',
 		'settings'   => 'kaya_footer_in_grid',
@@ -438,7 +438,7 @@ function kaya_add_general($wp_customize) {
 	
 	$wp_customize->add_setting('kaya_page_comments', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_page_comments', array(
-		'label'           => __( 'Display Comments on Pages', 'kaya' ),
+		'label'           => __( 'Display Comments on Pages <hr />', 'kaya' ),
 		'type'            => 'checkbox',
 		'section'         => 'kaya_general',
 		'settings'   => 'kaya_page_comments',
@@ -447,7 +447,7 @@ function kaya_add_general($wp_customize) {
 	
 	$wp_customize->add_setting('kaya_page_hero', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_page_hero', array(
-		'label'           => __( 'Use Page Hero Area Sitewide (Pages & Archives)', 'kaya' ),
+		'label'           => __( 'Use Page Hero Area for Pages', 'kaya' ),
 		'type'            => 'checkbox',
 		'section'         => 'kaya_general',
 		'settings'   => 'kaya_page_hero',
@@ -456,7 +456,7 @@ function kaya_add_general($wp_customize) {
 	
 	$wp_customize->add_setting('kaya_page_hero_blogs', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_page_hero_blogs', array(
-		'label'           => __( 'Use Page Hero Area for Blogs', 'kaya' ),
+		'label'           => __( 'Use Page Hero Area for Blogs / Archives', 'kaya' ),
 		'type'            => 'checkbox',
 		'section'         => 'kaya_general',
 		'settings'   => 'kaya_page_hero_blogs',
@@ -483,7 +483,7 @@ function kaya_add_general($wp_customize) {
 	
 	$wp_customize->add_setting('kaya_page_hero_background_image_type', array('sanitize_callback' => 'kaya_sanitize_background_select'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_page_hero_background_image_type', array(
-		'label'           => __( 'Style of Page Hero Background Image', 'kaya' ),
+		'label'           => __( 'Style of Page Hero Background', 'kaya' ),
 		'type'            => 'select',
 		'choices'		  => array(
 								'dont_use' => 'Use color instead of image',
@@ -500,7 +500,7 @@ function kaya_add_general($wp_customize) {
 	
 	$wp_customize->add_setting('kaya_post_sidebar', array('sanitize_callback' => 'kaya_sanitize_sidebars'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_sidebar', array(
-		'label'           => __( 'Default Sidebar Setting for Blog &amp; Posts', 'kaya' ),
+		'label'           => __( '<hr />Default Sidebar Setting for Blog &amp; Posts', 'kaya' ),
 		'type'            => 'select',
 		'choices'		  => array(
 								'no_sidebar' => 'No Sidebar',
@@ -518,6 +518,24 @@ function kaya_add_general($wp_customize) {
 		'type'            => 'checkbox',
 		'section'         => 'kaya_general',
 		'settings'   => 'kaya_post_comments',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_post_hide_single_featured_image', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_hide_single_featured_image', array(
+		'label'           => __( 'Hide Featured Image on Single Posts', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_post_hide_single_featured_image',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_post_hide_archive_featured_image', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_hide_archive_featured_image', array(
+		'label'           => __( 'Hide Featured Image on Archives', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_post_hide_archive_featured_image',
 		)
 	) );
 	

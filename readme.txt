@@ -5,7 +5,7 @@ Tags: custom-background, theme-options, custom-menu, threaded-comments, one-colu
 
 Requires at least: 4.7
 Tested up to: 4.9.1
-Stable tag: v0.7.8
+Stable tag: v0.7.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,16 @@ Recommended plugins are available at https://www.anphira.com/kaya-wordpress-them
 From the Customizer a number of customization options exist. Please see https://www.anphira.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 0.7.11 - Feb 24 2019 =
+* update blog page (index.php) to allow page sidebar settings to override globally settings
+* update header to show proper hero area on single blog posts
+* update 404 page for hero area
+* hide welcome message
+* default to not show comments (to match default checkboxes)
+
+= 0.7.10 - Jan 16 2019 =
+* minor CSS updates for font awesome icons
 
 = 0.7.9 - Dec 12 2018 =
 * update location of code insertion in footer to just before </body>

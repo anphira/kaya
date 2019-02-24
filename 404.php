@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.7
+ * @version 0.7.11
  */
 
 get_header(); ?>
@@ -16,12 +16,29 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
 			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php echo get_theme_mod( 'kaya_404_title', 'Sorry, that page could not be found' ) ?></h1>
-				</header><!-- .page-header -->
+				<?php
+	$page_hero_setting = get_post_meta($post->ID, 'kaya_page_hero_setting', true);
+	switch ($page_hero_setting ) {
+		case 'no_page_hero':
+			$page_hero_setting = false;
+			break;
+		case 'use_default':
+			$page_hero_setting = get_theme_mod( 'kaya_page_hero', false );
+			break;
+		case 'use_page_hero':
+			$page_hero_setting = true;
+			break;
+		default: 
+			$page_hero_setting = get_theme_mod( 'kaya_page_hero', false );
+	}
+	if((get_post_meta($post->ID, '_kaya_hide_title_check', true) !== 'on') && (true != $page_hero_setting)) { ?>
+	<header class="entry-header">
+		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+	</header><!-- .entry-header -->
+	<?php } ?>
 
 				<div class="page-content">
-					<p><?php echo htmlspecialchars_decode(get_theme_mod( 'kaya_404_content', 'You tried to reach a page which could not be found. Please <a href="/">click here to visit the home page</a> or use the main menu to navigate to your desired location.' )) ?></p>
+					<p><?php echo htmlspecialchars_decode(get_theme_mod( 'kaya_404_content', 'You tried to reach a page which could not be found.<br /><br />Please <a href="/">click here to visit the home page</a> or use the main menu to navigate to your desired location.' )) ?></p>
 
 					
 

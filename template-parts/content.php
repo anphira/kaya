@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.7.4
+ * @version 0.7.11
  */
 
 ?>
@@ -16,7 +16,15 @@
 	
 	<header class="entry-header">
 		<?php
-		the_post_thumbnail();
+		$kaya_single_hide = get_theme_mod( 'kaya_post_hide_single_featured_image', 0 );
+		$kaya_archive_hide = get_theme_mod( 'kaya_post_hide_archive_featured_image', 0 );
+		if( is_single() && ! $kaya_single_hide ) {
+			the_post_thumbnail();
+		}
+		elseif( ( is_archive() || is_home() ) && ! $kaya_archive_hide  ) {
+			the_post_thumbnail();
+		}
+		
 		if ( is_single() ) {
 			$page_hero_blog = get_theme_mod( 'kaya_page_hero_blogs', false );
 			if(!$page_hero_blog) {

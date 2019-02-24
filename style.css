@@ -5,7 +5,7 @@ Author: Anphira, LLC
 Author URI: https://www.anphira.com/
 GitHub Theme URI: anphira/kaya
 Description: Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It's ready to work with your page builder and has built-in support for Visual Composer. You can view the setup instructions by going to the Customizer and selecting "Need Setup Help?".
-Version: 0.7.9
+Version: 0.7.10
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kaya
@@ -837,9 +837,11 @@ a:active {
 }
 .nav-previous::before {
 	content: '\00AB ';
+	padding-right: 0.3em;
 }
 .nav-next::after {
 	content: ' \00BB';
+	padding-left: 0.3em;
 }
 
 /*--------------------------------------------------------------
@@ -1064,9 +1066,7 @@ object {
 # Font Awesome Support
 --------------------------------------------------------------*/
 body .fa:before {
-	position: absolute;
 	font-family: FontAwesome;
-	left: 0;
 }
 #content .social-icons .fa:before {
 	margin-top: -1em;
@@ -1076,8 +1076,6 @@ body .fa {
 	font-size: 1em;
 	line-height: 1.5;
 	position: relative;
-}
-#content .fa {
 	width: 1em;
 	height: 1em;
 }
@@ -1087,13 +1085,13 @@ body .fa {
 --------------------------------------------------------------*/
 .social-icons .fa:before {
 	width: 1.5em;
-	text-align: center;
 	margin-top: 0;
 }
 .social-icons .fa {
 	width: 1.5em;
 	height: 1.5em;
 	border-radius: 50%;
+	text-align: center;
 }
 .social-icons .social-icon-single {
 	margin-right: 10px;
@@ -1131,12 +1129,7 @@ body .vc_row[data-vc-full-width="true"][data-vc-stretch-content="true"] > .wpb_c
 body .vc_col-has-fill>.vc_column-inner, body .vc_row-has-fill+.vc_row-full-width+.vc_row>.vc_column_container>.vc_column-inner, body .vc_row-has-fill+.vc_row>.vc_column_container>.vc_column-inner, body .vc_row-has-fill+.vc_vc_row>.vc_row>.vc_vc_column>.vc_column_container>.vc_column-inner, body .vc_row-has-fill+.vc_vc_row_inner>.vc_row>.vc_vc_column_inner>.vc_column_container>.vc_column-inner, body .vc_row-has-fill>.vc_column_container>.vc_column-inner, body .vc_row-has-fill>.vc_row>.vc_vc_column>.vc_column_container>.vc_column-inner, body .vc_row-has-fill>.vc_vc_column_inner>.vc_column_container>.vc_column-inner, body .vc_section.vc_section-has-fill, body .vc_section.vc_section-has-fill+.vc_row-full-width+.vc_section, body .vc_section.vc_section-has-fill+.vc_section {
 	padding-top: 0;
 }
-@media screen and (min-width: 768px) {
-	body .wpb_wrapper > .vc_row.vc_inner {
-		margin-right: -15px;
-		margin-left: -15px;
-	}
-}
+
 
 
 /*--------------------------------------------------------------
