@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.7.5
+ * @version 0.8
  */
 
 
@@ -417,10 +417,16 @@ function kaya_sanitize_sidebars( $sidebar ) {
 /**
  * Customize login page with logo & URL
  */
-function kaya_login_logo() { ?>
+function kaya_login_logo() { 
+	$default_kaya_logo = get_template_directory_uri() . '/img/kaya-logo.png';
+	$kaya_setting_logo = esc_url(get_theme_mod( 'kaya_logo' ));
+	if($kaya_setting_logo != '') {
+		$default_kaya_logo = $kaya_setting_logo;
+	}
+	?>
     <style type="text/css">
         #login h1 a, .login h1 a {
-            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/img/kaya-logo.png);
+            background-image: url(<?php echo $default_kaya_logo; ?>);
 		height:85px;
 		width:194px;
 		background-size: 194px 85px;
@@ -431,15 +437,10 @@ function kaya_login_logo() { ?>
 <?php }
 add_action( 'login_enqueue_scripts', 'kaya_login_logo' );
 
-function kaya_login_logo_url() {
-    return esc_url( __( 'https://www.anphira.com/kaya-wordpress-theme/', 'kaya' ) );
+function my_login_logo_url() {
+    return home_url();
 }
-add_filter( 'login_headerurl', 'kaya_login_logo_url' );
-
-function kaya_login_logo_url_title() {
-    return 'Kaya theme by Anphira Web Design & Development';
-}
-add_filter( 'login_headertitle', 'kaya_login_logo_url_title' );
+add_filter( 'login_headerurl', 'my_login_logo_url' );
 
 
 /**

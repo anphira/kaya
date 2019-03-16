@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.6.9
+ * @version 0.8
  */
 
 ?>
@@ -96,49 +96,7 @@
 </div><!-- #page -->
 
 
-<!-- Schema.org -->
-<script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "<?php echo get_theme_mod( 'kaya_schema_type' ); ?>",
-  "additionalType": "<?php echo get_theme_mod( 'kaya_schema_additional_type' ); ?>",
-  "name": "<?php if(get_theme_mod( 'kaya_schema_name' ) == '') { bloginfo('name'); } else { echo get_theme_mod( 'kaya_schema_name' ); } ?>",
-  "description": "<?php echo get_theme_mod( 'kaya_schema_description' ); ?>",
-  "logo": "<?php echo get_theme_mod( 'kaya_logo' ); ?>",
-  "url": "<?php echo esc_url( home_url() ); ?>",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "<?php echo get_theme_mod( 'kaya_schema_address_street' ); ?>",
-    "addressLocality": "<?php echo get_theme_mod( 'kaya_schema_address_locality' ); ?>",
-    "addressRegion": "<?php echo get_theme_mod( 'kaya_schema_address_region' ); ?>"
-    "postalCode": "<?php echo get_theme_mod( 'kaya_schema_address_postal' ); ?>",
-    "addressCountry": "<?php echo get_theme_mod( 'kaya_schema_address_country' ); ?>"
-  },
-  "hasMap": "<?php echo get_theme_mod( 'kaya_schema_map' ); ?>",
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "<?php echo get_theme_mod( 'kaya_schema_latitude' ); ?>",
-    "longitude": "<?php echo get_theme_mod( 'kaya_schema_longitude' ); ?>"
-  },
-  "telephone": "<?php echo get_theme_mod( 'kaya_schema_phone' ); ?>",
-  "openingHours": [ "<?php echo get_theme_mod( 'kaya_schema_open_hours_1' ); ?>", "<?php echo get_theme_mod( 'kaya_schema_open_hours_2' ); ?>" ],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "<?php echo get_theme_mod( 'kaya_schema_review_value' ); ?>",
-    "reviewCount": "<?php echo get_theme_mod( 'kaya_schema_review_count' ); ?>"
-  },
-  "sameAs" : [ <?php echo '"', get_theme_mod( 'kaya_facebook' ), '", '; ?>
-	<?php echo '"', get_theme_mod( 'kaya_twitter' ), '", '; ?>
-	<?php echo '"', get_theme_mod( 'kaya_linkedin' ), '", '; ?>
-	<?php echo '"', get_theme_mod( 'kaya_google_plus' ), '", '; ?>
-	<?php echo '"', get_theme_mod( 'kaya_youtube' ), '", '; ?>
-	<?php echo '"', get_theme_mod( 'kaya_vimeo' ), '", '; ?>
-	<?php echo '"', get_theme_mod( 'kaya_instagram' ), '", '; ?>
-	<?php echo '"', get_theme_mod( 'kaya_pinterest' ), '", '; ?>
-	<?php echo '"', get_theme_mod( 'kaya_yelp' ), '"'; ?>]
-}
-</script>
-<!-- End Schema.org -->
+
 
 <?php 
 if('' != get_theme_mod( 'kaya_cf7_redirect_url', '')) { 

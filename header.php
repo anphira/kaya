@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.7.11
+ * @version 0.8
  */
 
 ?><!DOCTYPE html>
@@ -207,40 +207,42 @@
 
 	// get hero area setting for single blogs / archives
 	else {
-		$page_hero_blog = get_theme_mod( 'kaya_page_hero_blogs', false );
+		$page_hero_blog = get_theme_mod( 'kaya_page_hero_blogs', 0 );
 		if( $page_hero_blog ) {
 			$content_class .= 'has-page-hero ';
 		}
 	}
 
-	if($page_hero_setting && !is_single()) { ?>
-		<div id="page-hero-area">
-			<div class="container">
-				<?php
-					if(is_page()) {
-						if(get_post_meta($post->ID, '_kaya_hide_title_check', true) !== 'on') {
-							echo '<h1>' . get_the_title() . '</h1>';
+	if(!is_single()) { 
+		if($page_hero_setting) { ?>
+			<div id="page-hero-area">
+				<div class="container">
+					<?php
+						if(is_page()) {
+							if(get_post_meta($post->ID, '_kaya_hide_title_check', true) !== 'on') {
+								echo '<h1>' . get_the_title() . '</h1>';
+							}
+							echo get_post_meta($post->ID, '_kaya_page_hero_content', true); 
 						}
-						echo get_post_meta($post->ID, '_kaya_page_hero_content', true); 
-					}
-					elseif(is_home()) {
-						if(get_post_meta($page_for_posts, '_kaya_hide_title_check', true) !== 'on') {
-							echo '<h1>' . get_the_title($page_for_posts) . '</h1>';
+						elseif(is_home()) {
+							if(get_post_meta($page_for_posts, '_kaya_hide_title_check', true) !== 'on') {
+								echo '<h1>' . get_the_title($page_for_posts) . '</h1>';
+							}
+							echo get_post_meta($page_for_posts, '_kaya_page_hero_content', true); 
 						}
-						echo get_post_meta($page_for_posts, '_kaya_page_hero_content', true); 
-					}
-					elseif(is_archive()) {
-						the_archive_title( '<h1 class="page-title">', '</h1>' );
-						the_archive_description( '<div class="archive-description">', '</div>' );
-					}
-					elseif(is_404()) {
-						echo '<h1>' . get_theme_mod( 'kaya_404_title', 'Sorry, that page could not be found' ) . '</h1>';
-						
-					}
-				?>
+						elseif(is_archive()) {
+							the_archive_title( '<h1 class="page-title">', '</h1>' );
+							the_archive_description( '<div class="archive-description">', '</div>' );
+						}
+						elseif(is_404()) {
+							echo '<h1>' . get_theme_mod( 'kaya_404_title', 'Sorry, that page could not be found' ) . '</h1>';
+							
+						}
+					?>
+				</div>
 			</div>
-		</div>
-	<?php } elseif($page_hero_blog && is_single()) { 
+		<?php }
+	} else { 
 		if($page_hero_blog) {
 			?>
 			<div id="page-hero-area">

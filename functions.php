@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.7.11
+ * @version 0.8.0
  */
  
 /**
@@ -91,6 +91,31 @@ function dequeue_woocommerce_styles_scripts() {
 		}
 	}
 }
+
+
+/**
+ * Move dashicons css to footer
+ */
+function kaya_add_footer_styles() {
+    wp_enqueue_style( 'dashicons' );
+};
+add_action( 'get_footer', 'kaya_add_footer_styles' );
+
+/**
+ * JQuery to Footer
+ */
+function kaya_starter_scripts() {
+    wp_deregister_script( 'jquery' );
+    wp_deregister_script( 'jquery-core' );
+    wp_deregister_script( 'jquery-migrate' );
+    
+    wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, NULL, true );
+    wp_enqueue_script( 'jquery' );
+
+    wp_register_script( 'jquery-migrate', includes_url( '/js/jquery/jquery-migrate.min.js' ), false, NULL, true );
+    wp_enqueue_script( 'jquery-migrate' );
+}
+add_action( 'wp_enqueue_scripts', 'kaya_starter_scripts' );
 
  
 /**
@@ -791,3 +816,12 @@ function register_Kaya_Social_Widget() {
     register_widget( 'Kaya_Social_Widget' );
 }
 add_action( 'widgets_init', 'register_Kaya_Social_Widget' );
+
+
+/* Remove website field from the comment form */
+add_filter('comment_form_default_fields', 'kaya_website_field_remove');
+function kaya_website_field_remove($fields) {
+	if(isset($fields['url']))
+	unset($fields['url']);
+	return $fields;
+}
