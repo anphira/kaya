@@ -5,7 +5,7 @@ Tags: custom-background, theme-options, custom-menu, threaded-comments, one-colu
 
 Requires at least: 4.7
 Tested up to: 5.1
-Stable tag: v0.8
+Stable tag: v0.8.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,13 @@ Recommended plugins are available at https://www.anphira.com/kaya-wordpress-them
 From the Customizer a number of customization options exist. Please see https://www.anphira.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 0.8.1 - Mar 24 2019 =
+* update size on "large-text" from 1.2em to 1.15em
+* add option for setting line-height on headings and p
+* update menu styling to be more compatible with menu plugins
+* add two new widget areas (extra areas -- see theme setup guide)
+* update Google Plus to Google Map URL (as Google plus has been shut down)
 
 = 0.8 - Mar 16 2019 =
 * minor CSS update for list styling

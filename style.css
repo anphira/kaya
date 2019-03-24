@@ -5,7 +5,7 @@ Author: Anphira, LLC
 Author URI: https://www.anphira.com/
 GitHub Theme URI: anphira/kaya
 Description: Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It's ready to work with your page builder and has built-in support for Visual Composer. You can view the setup instructions by going to the Customizer and selecting "Need Setup Help?".
-Version: 0.8
+Version: 0.8.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kaya
@@ -311,7 +311,7 @@ h6 {
 }
 
 p {
-	margin-bottom: 1.5em;
+	margin-bottom: 1em;
 }
 
 dfn,
@@ -331,11 +331,11 @@ address {
 
 pre {
 	background: #eee;
-	font-family: "Courier 10 Pitch", Courier, monospace;
+	font-family: "Courier New", Courier, monospace;
 	font-size: 15px;
-	font-size: 0.9375rem;
-	line-height: 1.6;
-	margin-bottom: 1.6em;
+	font-size: 0.95rem;
+	line-height: 1.4;
+	margin-bottom: 1.2em;
 	max-width: 100%;
 	overflow: auto;
 	padding: 1.6em;
@@ -577,10 +577,12 @@ a:active {
 }
 
 .main-navigation ul {
-	display: none;
 	list-style: none;
 	margin: 0;
 	padding-left: 0;
+}
+.main-navigation .menu-main-menu-container ul {
+	display: none;
 }
 
 .main-navigation li {
@@ -600,7 +602,7 @@ a:active {
 	position: absolute;
 	top: 1.5em;
 	left: -999em;
-	z-index: 99999;
+	z-index: 999;
 }
 
 .main-navigation ul ul ul {
@@ -612,22 +614,6 @@ a:active {
 	width: 200px;
 }
 
-.main-navigation ul ul li {
-
-}
-
-.main-navigation li:hover > a,
-.main-navigation li.focus > a {
-}
-
-.main-navigation ul ul :hover > a,
-.main-navigation ul ul .focus > a {
-}
-
-.main-navigation ul ul a:hover,
-.main-navigation ul ul a.focus {
-}
-
 .main-navigation ul li:hover > ul,
 .main-navigation ul li.focus > ul {
 	left: auto;
@@ -636,12 +622,6 @@ a:active {
 .main-navigation ul ul li:hover > ul,
 .main-navigation ul ul li.focus > ul {
 	left: 100%;
-}
-
-.main-navigation .current_page_item > a,
-.main-navigation .current-menu-item > a,
-.main-navigation .current_page_ancestor > a,
-.main-navigation .current-menu-ancestor > a {
 }
 
 /* Small menu. */
@@ -1163,6 +1143,16 @@ body .white-text h6 {
 	color: white;
 }
 
+body .medium-large-text, 
+body .medium-large-text p, 
+body .medium-large-text h1, 
+body .medium-large-text h2, 
+body .medium-large-text h3, 
+body .medium-large-text h4, 
+body .medium-large-text h5, 
+body .medium-large-text h6 {
+	font-size: 1.1em;
+}
 body .large-text, 
 body .large-text p, 
 body .large-text h1, 
@@ -1171,7 +1161,7 @@ body .large-text h3,
 body .large-text h4, 
 body .large-text h5, 
 body .large-text h6 {
-	font-size: 1.2em;
+	font-size: 1.15em;
 }
 body .extra-large-text, 
 body .extra-large-text p, 
@@ -1181,7 +1171,7 @@ body .extra-large-text h3,
 body .extra-large-text h4, 
 body .extra-large-text h5, 
 body .extra-large-text h6 {
-	font-size: 1.5em;
+	font-size: 1.4em;
 }
 .text-center {
 	text-align: center;

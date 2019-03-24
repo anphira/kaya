@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.8
+ * @version 0.8.1
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -724,7 +724,7 @@ function kaya_add_404($wp_customize) {
 	
 	$wp_customize->add_setting('kaya_404_title', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_404_title', array(
-		'label'           => __( '404 Page Title', 'kaya' ),
+		'label'           => __( '404 Page Heading', 'kaya' ),
 		'type'            => 'text',
 		'section'         => 'kaya_404',
 		'settings'   => 'kaya_404_title',
@@ -787,7 +787,7 @@ function kaya_add_social($wp_customize) {
 	// add a setting for the footer columns to show
 	$wp_customize->add_setting('kaya_google_plus', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_google_plus', array(
-		'label'           => __( 'Google Plus', 'kaya' ),
+		'label'           => __( 'Google Map URL', 'kaya' ),
 		'type'            => 'url',
 		'section'         => 'kaya_social',
 		'settings'   => 'kaya_google_plus',
@@ -956,6 +956,76 @@ function kaya_add_fonts($wp_customize) {
 		'type'            => 'number',
 		'section'         => 'kaya_fonts',
 		'settings'   => 'kaya_social_icon_size',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_heading_1_line_height', array('sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_heading_1_line_height', array(
+		'label'           => __( 'Heading 1 Line Height', 'kaya' ),
+		'description'	  => __( 'Enter the line height for headings in em units (ie: 1.5)', 'kaya' ),
+		'type'            => 'number',
+		'section'         => 'kaya_fonts',
+		'settings'   => 'kaya_heading_1_line_height',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_heading_2_line_height', array('sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_heading_2_line_height', array(
+		'label'           => __( 'Heading 2 Line Height', 'kaya' ),
+		'description'	  => __( 'Enter the line height for headings in em units (ie: 1.5)', 'kaya' ),
+		'type'            => 'number',
+		'section'         => 'kaya_fonts',
+		'settings'   => 'kaya_heading_2_line_height',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_heading_3_line_height', array('sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_heading_3_line_height', array(
+		'label'           => __( 'Heading 3 Line Height', 'kaya' ),
+		'description'	  => __( 'Enter the line height for headings in em units (ie: 1.5)', 'kaya' ),
+		'type'            => 'number',
+		'section'         => 'kaya_fonts',
+		'settings'   => 'kaya_heading_3_line_height',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_heading_4_line_height', array('sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_heading_4_line_height', array(
+		'label'           => __( 'Heading 4 Line Height', 'kaya' ),
+		'description'	  => __( 'Enter the line height for headings in em units (ie: 1.5)', 'kaya' ),
+		'type'            => 'number',
+		'section'         => 'kaya_fonts',
+		'settings'   => 'kaya_heading_4_line_height',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_heading_5_line_height', array('sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_heading_5_line_height', array(
+		'label'           => __( 'Heading 5 Line Height', 'kaya' ),
+		'description'	  => __( 'Enter the line height for headings in em units (ie: 1.5)', 'kaya' ),
+		'type'            => 'number',
+		'section'         => 'kaya_fonts',
+		'settings'   => 'kaya_heading_5_line_height',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_heading_6_line_height', array('sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_heading_6_line_height', array(
+		'label'           => __( 'Heading 6 Line Height', 'kaya' ),
+		'description'	  => __( 'Enter the line height for headings in em units (ie: 1.5)', 'kaya' ),
+		'type'            => 'number',
+		'section'         => 'kaya_fonts',
+		'settings'   => 'kaya_heading_6_line_height',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_paragraph_line_height', array('sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_paragraph_line_height', array(
+		'label'           => __( 'Paragraph Line Height', 'kaya' ),
+		'description'	  => __( 'Enter the line height for paragraphs in em units (ie: 1.5)', 'kaya' ),
+		'type'            => 'number',
+		'section'         => 'kaya_fonts',
+		'settings'   => 'kaya_paragraph_line_height',
 		)
 	) );
 	

@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.7.11
+ * @version 0.8.1
  */
 
 get_header(); ?>
@@ -33,7 +33,7 @@ get_header(); ?>
 	}
 	if((get_post_meta($post->ID, '_kaya_hide_title_check', true) !== 'on') && (true != $page_hero_setting)) { ?>
 	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+		<h1><?php echo htmlspecialchars_decode(get_theme_mod( 'kaya_404_title', 'Sorry, we couldn\'t find that page')); ?></h1>
 	</header><!-- .entry-header -->
 	<?php } ?>
 

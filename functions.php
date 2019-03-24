@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.8.0
+ * @version 0.8.1
  */
  
 /**
@@ -212,7 +212,7 @@ function kaya_social_icons() {
 			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_linkedin' ) . '"><i class="fa fa-linkedin"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_google_plus' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_google_plus' ) . '"><i class="fa fa-google-plus"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_google_plus' ) . '"><i class="fa fa-google"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_skype' ) != '' ) {
 			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_skype' ) . '"><i class="fa fa-skype"></i></a>';
@@ -331,7 +331,7 @@ function kaya_content_width() {
 add_action( 'after_setup_theme', 'kaya_content_width', 0 );
 
 /**
- * Register widget area.
+ * Register widget areas.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
@@ -357,16 +357,16 @@ function kaya_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Pages Sidebar', 'kaya' ),
 		'id'            => 'pages-sidebar',
-		'description'   => esc_html__( 'Add widgets here.', 'kaya' ),
+		'description'   => esc_html__( 'Add widgets here which will be display below the "Everywhere Top Sidebar" widgets and above the "Everywhere Bottom Sidebar" widgets on your pages.', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h4 class="widget-title">',
 		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
-		'name'          => esc_html__( 'Posts Sidebar', 'kaya' ),
+		'name'          => esc_html__( 'Post Archives Sidebar', 'kaya' ),
 		'id'            => 'posts-sidebar',
-		'description'   => esc_html__( 'Add widgets here.', 'kaya' ),
+		'description'   => esc_html__( 'Add widgets here which will be display below the "Everywhere Top Sidebar" widgets and above the "Everywhere Bottom Sidebar" widgets on your blog archive pages (categories, tags, and date archives) and primary blog page sidebar (the page you set under settings > reading as your posts page).', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h4 class="widget-title">',
@@ -375,7 +375,7 @@ function kaya_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Single Post Sidebar', 'kaya' ),
 		'id'            => 'single-post-sidebar',
-		'description'   => esc_html__( 'Add widgets here.', 'kaya' ),
+		'description'   => esc_html__( 'Add widgets here which will be display below the "Everywhere Top Sidebar" widgets and above the "Everywhere Bottom Sidebar" widgets on your individual blog posts.', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h4 class="widget-title">',
@@ -384,7 +384,7 @@ function kaya_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'WooCommerce Sidebar', 'kaya' ),
 		'id'            => 'woocommerce-sidebar',
-		'description'   => esc_html__( 'Add widgets here.', 'kaya' ),
+		'description'   => esc_html__( 'Add widgets here which will be display on your WooCommerce pages sidebar.', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h4 class="widget-title">',
@@ -393,7 +393,7 @@ function kaya_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Top Header Left', 'kaya' ),
 		'id'            => 'top-header-1',
-		'description'   => esc_html__( 'Add widgets here.', 'kaya' ),
+		'description'   => esc_html__( 'If you are using the top header area (turned on in the theme customizer under header), then this will be displayed on the left side.', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '',
@@ -402,7 +402,7 @@ function kaya_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Top Header Right', 'kaya' ),
 		'id'            => 'top-header-2',
-		'description'   => esc_html__( 'Add widgets here.', 'kaya' ),
+		'description'   => esc_html__( 'If you are using the top header area (turned on in the theme customizer under header), then this will be displayed on the right side.', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '',
@@ -411,7 +411,7 @@ function kaya_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Header Column 2', 'kaya' ),
 		'id'            => 'header-2',
-		'description'   => esc_html__( 'Add widgets here.', 'kaya' ),
+		'description'   => esc_html__( 'Add content here to be displayed in Header Column 2 widget area (see theme setup guide for where this widget is displayed depending on theme settings).', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h4 class="widget-title">',
@@ -420,7 +420,7 @@ function kaya_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Header Column 3', 'kaya' ),
 		'id'            => 'header-3',
-		'description'   => esc_html__( 'Add widgets here.', 'kaya' ),
+		'description'   => esc_html__( 'Add content here to be displayed in Header Column 3 widget area (see theme setup guide for where this widget is displayed depending on theme settings).', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h4 class="widget-title">',
@@ -429,7 +429,7 @@ function kaya_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Header Column 4', 'kaya' ),
 		'id'            => 'header-4',
-		'description'   => esc_html__( 'Add widgets here.', 'kaya' ),
+		'description'   => esc_html__( 'Add content here to be displayed in Header Column 4 widget area (see theme setup guide for where this widget is displayed depending on theme settings).', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h4 class="widget-title">',
@@ -438,7 +438,7 @@ function kaya_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer Column 1', 'kaya' ),
 		'id'            => 'footer-1',
-		'description'   => esc_html__( 'Add widgets here.', 'kaya' ),
+		'description'   => esc_html__( 'Content for 1st footer column (if used).', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h4 class="widget-title">',
@@ -447,7 +447,7 @@ function kaya_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer Column 2', 'kaya' ),
 		'id'            => 'footer-2',
-		'description'   => esc_html__( 'Add widgets here.', 'kaya' ),
+		'description'   => esc_html__( 'Content for 2nd footer column (if used).', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h4 class="widget-title">',
@@ -456,7 +456,7 @@ function kaya_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer Column 3', 'kaya' ),
 		'id'            => 'footer-3',
-		'description'   => esc_html__( 'Add widgets here.', 'kaya' ),
+		'description'   => esc_html__( 'Content for 3rd footer column (if used).', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h4 class="widget-title">',
@@ -465,7 +465,25 @@ function kaya_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer Column 4', 'kaya' ),
 		'id'            => 'footer-4',
-		'description'   => esc_html__( 'Add widgets here.', 'kaya' ),
+		'description'   => esc_html__( 'Content for 4th footer column (if used).', 'kaya' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Extra Widget Area 1', 'kaya' ),
+		'id'            => 'extra-area-1',
+		'description'   => esc_html__( 'This is a widget area which has no theme displayed location. The purpose of this widget area is to provide you with a spare widget area which can be used in child theme customization or in page builders.', 'kaya' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Extra Widget Area 2', 'kaya' ),
+		'id'            => 'extra-area-2',
+		'description'   => esc_html__( 'This is a widget area which has no theme displayed location. The purpose of this widget area is to provide you with a spare widget area which can be used in child theme customization or in page builders.', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h4 class="widget-title">',

@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.7.11
+ * @version 0.8.1
  */
 
 /**
@@ -72,6 +72,7 @@ html {
 body, p, button, input, select, textarea {
 	color: <?php echo get_theme_mod( 'kaya_text_color', '#000000' ) ?>;
 	font-weight: <?php echo get_theme_mod( 'kaya_paragraph_font_weight', '400' ) ?>;
+	line-height: <?php echo get_theme_mod( 'kaya_paragraph_line_height', '1.5' ) ?>em;
 	font-family: 
 		<?php if(get_theme_mod( 'kaya_custom_google_fonts_paragraph', '' ) != '')
 			echo get_theme_mod( 'kaya_custom_google_fonts_paragraph' );
@@ -89,21 +90,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 h1, .h1 {
 	font-size: <?php echo get_theme_mod( 'kaya_heading_1', '36' ) ?>px;
+	line-height: <?php echo get_theme_mod( 'kaya_heading_1_line_height', '1.5' ) ?>em;
 }
 h2, .h2 {
 	font-size: <?php echo get_theme_mod( 'kaya_heading_2', '27' ) ?>px;
+	line-height: <?php echo get_theme_mod( 'kaya_heading_2_line_height', '1.5' ) ?>em;
 }
 h3, .h3 {
 	font-size: <?php echo get_theme_mod( 'kaya_heading_3', '21' ) ?>px;
+	line-height: <?php echo get_theme_mod( 'kaya_heading_3_line_height', '1.5' ) ?>em;
 }
 h4, .h4 {
 	font-size: <?php echo get_theme_mod( 'kaya_heading_4', '18' ) ?>px;
+	line-height: <?php echo get_theme_mod( 'kaya_heading_4_line_height', '1.5' ) ?>em;
 }
 h5, .h5 {
 	font-size: <?php echo get_theme_mod( 'kaya_heading_5', '16' ) ?>px;
+	line-height: <?php echo get_theme_mod( 'kaya_heading_5_line_height', '1.5' ) ?>em;
 }
 h6, .h6 {
 	font-size: <?php echo get_theme_mod( 'kaya_heading_6', '16' ) ?>px;
+	line-height: <?php echo get_theme_mod( 'kaya_heading_6_line_height', '1.5' ) ?>em;
 }
 @media screen and (max-width: 767px) {
 	<?php 
@@ -111,20 +118,20 @@ h6, .h6 {
 		$kaya_heading_2 = get_theme_mod( 'kaya_heading_2', '27' );
 		$kaya_heading_3 = get_theme_mod( 'kaya_heading_3', '21' );
 		$kaya_heading_4 = get_theme_mod( 'kaya_heading_4', '18' );
-		$kaya_heading_5 = get_theme_mod( 'kaya_heading_5', '16' );
-		$kaya_heading_6 = get_theme_mod( 'kaya_heading_6', '16' );
+		$kaya_heading_5 = get_theme_mod( 'kaya_heading_5', '18' );
+		$kaya_heading_6 = get_theme_mod( 'kaya_heading_6', '18' );
 	?>
 	h1 {
-		font-size: <?php echo $kaya_heading_1 * 0.67 ?>px;
+		font-size: <?php echo $kaya_heading_1 * 0.7 ?>px;
 	}
 	h2 {
-		font-size: <?php echo $kaya_heading_2 * 0.67 ?>px;
+		font-size: <?php echo $kaya_heading_2 * 0.75 ?>px;
 	}
 	h3 {
-		font-size: <?php echo $kaya_heading_3 * 0.75 ?>px;
+		font-size: <?php echo $kaya_heading_3 * 0.8 ?>px;
 	}
 	h4 {
-		font-size: <?php echo $kaya_heading_4 * 0.8 ?>px;
+		font-size: <?php echo $kaya_heading_4 * 0.9 ?>px;
 	}
 	h5 {
 		font-size: <?php echo $kaya_heading_5 * 0.9 ?>px;
