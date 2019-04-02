@@ -5,7 +5,7 @@ Author: Anphira, LLC
 Author URI: https://www.anphira.com/
 GitHub Theme URI: anphira/kaya
 Description: Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It's ready to work with your page builder and has built-in support for Visual Composer. You can view the setup instructions by going to the Customizer and selecting "Need Setup Help?".
-Version: 0.8.1
+Version: 0.8.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kaya
@@ -42,7 +42,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 	## Captions
 	## Galleries
 # Footer Settings
-# Visual Composer Support
+# WPBakery Page Builder Support
 # WooCommerce Support
 # Other useful classes
 --------------------------------------------------------------*/
@@ -1084,7 +1084,7 @@ body .fa {
 
 
 /*--------------------------------------------------------------
-# Visual Composer Support
+# WPBakery Page Builder Support
 --------------------------------------------------------------*/
 .full-width .vc_row.vc_row-fluid {
 	position: relative;
@@ -1123,6 +1123,70 @@ body .vc_section.vc_section-has-fill,
 body .vc_section.vc_section-has-fill+.vc_row-full-width+.vc_section, 
 body .vc_section.vc_section-has-fill+.vc_section {
 	padding-top: 0;
+}
+
+/* Flexbox Row */
+@media (min-width: 768px) {
+    .flex-box-row {
+        display: flex !important;
+    }
+    .flex-box-row>.vc_column_container {
+        margin: 0 !important;
+    }
+
+	.flex-box-row .vc_row.vc_row-fluid.width-1-4-left-column,
+	.flex-box-row .vc_row.vc_row-fluid.width-1-3-left-column,
+	.flex-box-row .vc_row.vc_row-fluid.width-1-2-left-column,
+	.flex-box-row .vc_row.vc_row-fluid.width-2-3-left-column,
+	.flex-box-row .vc_row.vc_row-fluid.width-3-4-left-column {
+        float: right;
+        padding-right: 30px;
+		padding-left: 20px;
+	}
+	.flex-box-row .vc_row.vc_row-fluid.width-1-4-left-column,
+	.flex-box-row .vc_row.vc_row-fluid.width-1-4-right-column {
+		max-width: 285px;
+	}
+    .flex-box-row .vc_row.vc_row-fluid.width-1-3-left-column,
+    .flex-box-row .vc_row.vc_row-fluid.width-1-3-right-column {
+        max-width: 380px;
+    }
+    .flex-box-row .vc_row.vc_row-fluid.width-1-2-left-column,
+    .flex-box-row .vc_row.vc_row-fluid.width-1-2-right-column {
+        max-width: 570px;
+    }
+    .flex-box-row .vc_row.vc_row-fluid.width-2-3-left-column,
+    .flex-box-row .vc_row.vc_row-fluid.width-2-3-right-column {
+    	max-width: 760px;
+    }
+    .flex-box-row .vc_row.vc_row-fluid.width-3-4-left-column,
+    .flex-box-row .vc_row.vc_row-fluid.width-3-4-right-column {
+    	max-width: 855px;
+    }
+
+    .flex-box-row .vc_row.vc_row-fluid.width-1-4-right-column,
+	.flex-box-row .vc_row.vc_row-fluid.width-1-3-right-column,
+	.flex-box-row .vc_row.vc_row-fluid.width-1-2-right-column,
+	.flex-box-row .vc_row.vc_row-fluid.width-2-3-right-column,
+	.flex-box-row .vc_row.vc_row-fluid.width-3-4-right-column {
+            float: left;
+            padding-right: 20px;
+            padding-left: 30px;
+    }
+}
+@media (max-width: 767px) {
+	.flex-box-row .vc_row.vc_row-fluid.width-1-4-left-column,
+	.flex-box-row .vc_row.vc_row-fluid.width-1-3-left-column,
+	.flex-box-row .vc_row.vc_row-fluid.width-1-2-left-column,
+	.flex-box-row .vc_row.vc_row-fluid.width-2-3-left-column,
+	.flex-box-row .vc_row.vc_row-fluid.width-3-4-left-column,
+	.flex-box-row .vc_row.vc_row-fluid.width-1-4-right-column,
+	.flex-box-row .vc_row.vc_row-fluid.width-1-3-right-column,
+	.flex-box-row .vc_row.vc_row-fluid.width-1-2-right-column,
+	.flex-box-row .vc_row.vc_row-fluid.width-2-3-right-column,
+	.flex-box-row .vc_row.vc_row-fluid.width-3-4-right-column {
+		padding: 0 25px;
+	}
 }
 
 

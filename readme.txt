@@ -42,6 +42,9 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
+= 0.8.2 - Mar 27 2019 =
+* add flex box CSS code
+
 = 0.8.1 - Mar 24 2019 =
 * update size on "large-text" from 1.2em to 1.15em
 * add option for setting line-height on headings and p
