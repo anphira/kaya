@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.8.1
+ * @version 0.8.3
  */
 
 /**
@@ -69,7 +69,7 @@ html {
 	} ?>
 }
 
-body, p, button, input, select, textarea {
+body, p, button, input, select, textarea, .elementor-widget-text-editor {
 	color: <?php echo get_theme_mod( 'kaya_text_color', '#000000' ) ?>;
 	font-weight: <?php echo get_theme_mod( 'kaya_paragraph_font_weight', '400' ) ?>;
 	line-height: <?php echo get_theme_mod( 'kaya_paragraph_line_height', '1.5' ) ?>em;
@@ -88,27 +88,27 @@ h1, h2, h3, h4, h5, h6 {
 		else
 			echo kaya_font_family_lookup( get_theme_mod( 'kaya_heading_font', 'arial' ) ); ?>;
 }
-h1, .h1 {
+h1, .h1, .elementor-widget-heading h1.elementor-heading-title {
 	font-size: <?php echo get_theme_mod( 'kaya_heading_1', '36' ) ?>px;
 	line-height: <?php echo get_theme_mod( 'kaya_heading_1_line_height', '1.5' ) ?>em;
 }
-h2, .h2 {
+h2, .h2, .elementor-widget-heading h2.elementor-heading-title {
 	font-size: <?php echo get_theme_mod( 'kaya_heading_2', '27' ) ?>px;
 	line-height: <?php echo get_theme_mod( 'kaya_heading_2_line_height', '1.5' ) ?>em;
 }
-h3, .h3 {
+h3, .h3, .elementor-widget-heading h3.elementor-heading-title {
 	font-size: <?php echo get_theme_mod( 'kaya_heading_3', '21' ) ?>px;
 	line-height: <?php echo get_theme_mod( 'kaya_heading_3_line_height', '1.5' ) ?>em;
 }
-h4, .h4 {
+h4, .h4, .elementor-widget-heading h4.elementor-heading-title {
 	font-size: <?php echo get_theme_mod( 'kaya_heading_4', '18' ) ?>px;
 	line-height: <?php echo get_theme_mod( 'kaya_heading_4_line_height', '1.5' ) ?>em;
 }
-h5, .h5 {
+h5, .h5, .elementor-widget-heading h5.elementor-heading-title {
 	font-size: <?php echo get_theme_mod( 'kaya_heading_5', '16' ) ?>px;
 	line-height: <?php echo get_theme_mod( 'kaya_heading_5_line_height', '1.5' ) ?>em;
 }
-h6, .h6 {
+h6, .h6, .elementor-widget-heading h6.elementor-heading-title {
 	font-size: <?php echo get_theme_mod( 'kaya_heading_6', '16' ) ?>px;
 	line-height: <?php echo get_theme_mod( 'kaya_heading_6_line_height', '1.5' ) ?>em;
 }
@@ -121,22 +121,22 @@ h6, .h6 {
 		$kaya_heading_5 = get_theme_mod( 'kaya_heading_5', '18' );
 		$kaya_heading_6 = get_theme_mod( 'kaya_heading_6', '18' );
 	?>
-	h1 {
+	h1, .h1, .elementor-widget-heading h1.elementor-heading-title {
 		font-size: <?php echo $kaya_heading_1 * 0.7 ?>px;
 	}
-	h2 {
+	h2, .h2, .elementor-widget-heading h2.elementor-heading-title {
 		font-size: <?php echo $kaya_heading_2 * 0.75 ?>px;
 	}
-	h3 {
+	h3, .h3, .elementor-widget-heading h3.elementor-heading-title {
 		font-size: <?php echo $kaya_heading_3 * 0.8 ?>px;
 	}
-	h4 {
+	h4, .h4, .elementor-widget-heading h4.elementor-heading-title {
 		font-size: <?php echo $kaya_heading_4 * 0.9 ?>px;
 	}
-	h5 {
+	h5, .h5, .elementor-widget-heading h5.elementor-heading-title {
 		font-size: <?php echo $kaya_heading_5 * 0.9 ?>px;
 	}
-	h6 {
+	h6, .h6, .elementor-widget-heading h6.elementor-heading-title {
 		font-size: <?php echo $kaya_heading_6 * 0.9 ?>px;
 	}
 }
@@ -266,7 +266,9 @@ body .woocommerce a.button:visited,
 body a.button:visited, 
 body input[type=button],
 body input[type=reset],
-body input[type=submit] {
+body input[type=submit],
+body .elementor-button,
+body .elementor-button:visited {
 	background: <?php echo get_theme_mod( 'kaya_button_color', '#008dc4' ) ?>;
 	color: <?php echo get_theme_mod( 'kaya_button_text_color', '#ffffff' ) ?>;
 }
@@ -284,7 +286,10 @@ body input[type=reset]:focus,
 body input[type=reset]:hover, 
 body input[type=submit]:hover, 
 body input[type=submit]:focus, 
-body input[type=submit]:active {
+body input[type=submit]:active,
+body .elementor-button:focus,
+body .elementor-button:hover,
+body .elementor-button:active {
 	background: <?php echo get_theme_mod( 'kaya_button_hover_color', '#005dc4' ) ?>;
 	color: <?php echo get_theme_mod( 'kaya_button_hover_text_color', '#000000' ) ?>;
 }
@@ -294,7 +299,7 @@ $kaya_grid_width = get_theme_mod( 'kaya_grid_width', '1140' );
 $kaya_grid_width = ($kaya_grid_width > 320) ? $kaya_grid_width : 1140;
 ?>
 <?php if(get_theme_mod( 'kaya_content_in_grid', false )) { ?>
-	#content, body .vc_row[data-vc-full-width="true"] > .wpb_column, #page-hero-area .container {
+	#content, body .vc_row[data-vc-full-width="true"] > .wpb_column, .container {
 		max-width: <?php echo $kaya_grid_width; ?>px;
 		margin: auto;
 	}
