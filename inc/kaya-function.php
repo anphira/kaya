@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.8
+ * @version 0.8.4
  */
 
 
@@ -427,9 +427,9 @@ function kaya_login_logo() {
     <style type="text/css">
         #login h1 a, .login h1 a {
             background-image: url(<?php echo $default_kaya_logo; ?>);
-		height:85px;
+		height:auto;
 		width:194px;
-		background-size: 194px 85px;
+		background-size: 100%;
 		background-repeat: no-repeat;
         	padding-bottom: 30px;
         }

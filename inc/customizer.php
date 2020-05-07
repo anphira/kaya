@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.8.1
+ * @version 0.9
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -539,6 +539,15 @@ function kaya_add_general($wp_customize) {
 		)
 	) );
 	
+	$wp_customize->add_setting('kaya_post_use_last_updated_date', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_use_last_updated_date', array(
+		'label'           => __( 'Use Last Updated Date Instead of Published Date', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_post_use_last_updated_date',
+		)
+	) );
+	
 	$wp_customize->add_setting('kaya_blog_excerpt', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_blog_excerpt', array(
 		'label'           => __( 'Limit the Blog Excerpts', 'kaya' ),
@@ -560,6 +569,15 @@ function kaya_add_general($wp_customize) {
 							 ),
 		'section'         => 'kaya_general',
 		'settings'   => 'kaya_woo_sidebar',
+		)
+	) );
+
+	$wp_customize->add_setting('kaya_enable_cart_fragments', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_enable_cart_fragments', array(
+		'label'           => __( 'Enable Cart on Non-WooCommerce pages (used for cart widget in sidebar)', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_enable_cart_fragments',
 		)
 	) );
 	

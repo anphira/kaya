@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.8
+ * @version 0.8.4
  */
 
 ?><!DOCTYPE html>
@@ -149,7 +149,7 @@
 		if(!get_post_meta($post->ID, '_kaya_sidebar_setting', true) || 'use_default' == get_post_meta($post->ID, '_kaya_sidebar_setting', true) ) {
 			if ('left_sidebar' == get_theme_mod( 'kaya_page_sidebar', 'right_sidebar' )) 
 				$content_class .= 'sidebar-left ';
-			if ('right_sidebar' == get_theme_mod( 'kaya_page_sidebar', 'right_sidebar' )) 
+			elseif ('right_sidebar' == get_theme_mod( 'kaya_page_sidebar', 'right_sidebar' )) 
 				$content_class .= 'sidebar-right ';
 		}
 		else {
@@ -168,12 +168,44 @@
 			}
 		}
 	}
-	else { // use post sidebar
+	elseif(function_exists(is_woocommerce) && is_woocommerce()) {
+		if ('left_sidebar' == get_theme_mod( 'kaya_woo_sidebar', 'right_sidebar' )) {
+			$content_class .= 'sidebar-left ';
+		}
+		if ('right_sidebar' == get_theme_mod( 'kaya_woo_sidebar', 'right_sidebar' )) {
+			$content_class .= 'sidebar-right ';
+		}
+	}
+	elseif(is_archive() || is_single()) { // use post sidebar
 		if ('left_sidebar' == get_theme_mod( 'kaya_post_sidebar', 'right_sidebar' )) {
 			$content_class .= 'sidebar-left ';
 		}
 		if ('right_sidebar' == get_theme_mod( 'kaya_post_sidebar', 'right_sidebar' )) {
 			$content_class .= 'sidebar-right ';
+		}
+	}
+	//blog home page when using a page for the home
+	elseif(is_home()) {
+		if(!get_post_meta( get_option( 'page_for_posts' ), 'kaya_sidebar_setting', true) || 'use_default' == get_post_meta( get_option( 'page_for_posts' ), 'kaya_sidebar_setting', true)) {
+			if ('left_sidebar' == get_theme_mod( 'kaya_page_sidebar', 'right_sidebar' )) 
+				$content_class .= 'sidebar-left ';
+			elseif ('right_sidebar' == get_theme_mod( 'kaya_page_sidebar', 'right_sidebar' )) 
+				$content_class .= 'sidebar-right ';
+		}
+		else {
+			$sidebar_class_temp = get_post_meta( get_option( 'page_for_posts' ), 'kaya_sidebar_setting', true);
+			switch($sidebar_class_temp) {
+				case 'left_sidebar':
+					$content_class .= 'sidebar-left ';
+					break;
+				case 'no_sidebar':
+					break;
+				case 'right_sidebar':
+					$content_class .= 'sidebar-right ';
+					break;
+				default:
+					break;
+			}
 		}
 	}
 	

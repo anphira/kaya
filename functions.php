@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.8.1
+ * @version 0.9
  */
  
 /**
@@ -75,7 +75,9 @@ function dequeue_woocommerce_styles_scripts() {
 			wp_dequeue_script( 'wc_price_slider' );
 			wp_dequeue_script( 'wc-single-product' );
 			wp_dequeue_script( 'wc-add-to-cart' );
-			wp_dequeue_script( 'wc-cart-fragments' );
+			if( ! get_theme_mod( 'kaya_enable_cart_fragments', false ) ) {
+				wp_dequeue_script( 'wc-cart-fragments' );
+			}
 			wp_dequeue_script( 'wc-checkout' );
 			wp_dequeue_script( 'wc-add-to-cart-variation' );
 			wp_dequeue_script( 'wc-single-product' );
@@ -203,40 +205,40 @@ if( ! function_exists('kaya_social_icons') ) :
 function kaya_social_icons() {
 	echo '<div class="social-icons">';
 		if( get_theme_mod( 'kaya_facebook' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_facebook' ) . '"><i class="fa fa-facebook"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_facebook' ) . '"><i class="fab fa-facebook"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_twitter' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_twitter' ) . '"><i class="fa fa-twitter"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_twitter' ) . '"><i class="fab fa-twitter"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_linkedin' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_linkedin' ) . '"><i class="fa fa-linkedin"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_linkedin' ) . '"><i class="fab fa-linkedin"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_google_plus' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_google_plus' ) . '"><i class="fa fa-google"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_google_plus' ) . '"><i class="fab fa-google"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_skype' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_skype' ) . '"><i class="fa fa-skype"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_skype' ) . '"><i class="fab fa-skype"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_youtube' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_youtube' ) . '"><i class="fa fa-youtube"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_youtube' ) . '"><i class="fab fa-youtube"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_vimeo' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_vimeo' ) . '"><i class="fa fa-vimeo"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_vimeo' ) . '"><i class="fab fa-vimeo"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_instagram' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_instagram' ) . '"><i class="fa fa-instagram"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_instagram' ) . '"><i class="fab fa-instagram"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_pinterest' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_pinterest' ) . '"><i class="fa fa-pinterest-p"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_pinterest' ) . '"><i class="fab fa-pinterest-p"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_yelp' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_yelp' ) . '"><i class="fa fa-yelp"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_yelp' ) . '"><i class="fab fa-yelp"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_rss' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_rss' ) . '"><i class="fa fa-rss"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_rss' ) . '"><i class="fas fa-rss"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_email' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="mailto:' . get_theme_mod( 'kaya_email' ) . '"><i class="fa fa-envelope"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="mailto:' . get_theme_mod( 'kaya_email' ) . '"><i class="fas fa-envelope"></i></a>';
 		}
 	echo '</div>';
 }
@@ -690,6 +692,8 @@ add_action( 'save_post', 'kaya_page_settings_save_meta_box' );
  */
 function kaya_scripts() {
 
+	
+
 	// enqueue child theme if using child theme
 	if(get_theme_file_uri() != get_template_directory_uri()) {
 		wp_enqueue_style( 'kaya-style', get_template_directory_uri() . '/style.min.css', false, filemtime( get_theme_file_path( 'style.min.css' )));
@@ -747,10 +751,10 @@ require get_template_directory() . '/inc/jetpack.php';
 /**
  * Enqueue Font Awesome Stylesheet
  */
-function enqueue_our_required_stylesheets(){
-	wp_enqueue_style('font-awesome', get_template_directory_uri() . '/inc/font-awesome-4.7.0/css/font-awesome.min.css'); 
+function enqueue_kaya_font_awesome_stylesheet(){
+	wp_enqueue_style('font-awesome-kaya', get_template_directory_uri() . '/inc/fontawesome-free-5.13.0-web/css/all.min.css');
 }
-add_action('get_footer','enqueue_our_required_stylesheets');
+add_action('wp_enqueue_scripts','enqueue_kaya_font_awesome_stylesheet');
 
 /**
  * Function to determine good contrast color (black or white)

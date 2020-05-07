@@ -12,14 +12,14 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.7.11
+ * @version 0.8.4
  */
 
 get_header(); ?>
 
 	<?php 
 	//get sidebar setting
-	$sidebar_setting = get_post_meta($post->ID, 'kaya_sidebar_setting', true);
+	$sidebar_setting = get_post_meta( get_option( 'page_for_posts' ), 'kaya_sidebar_setting', true);
 	switch ($sidebar_setting ) {
 		case 'left_sidebar':
 		case 'no_sidebar':

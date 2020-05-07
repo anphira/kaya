@@ -5,7 +5,7 @@ Tags: custom-background, theme-options, custom-menu, threaded-comments, one-colu
 
 Requires at least: 4.7
 Tested up to: 5.1
-Stable tag: v0.8.3
+Stable tag: v0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,7 +42,12 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
-= 0.8.3 - Mar 10 2020 =
+= 0.9 - Arp 14 2020 =
+* updates for WooCommerce
+* update font awesome version - remove font awesome version 4
+* add option for setting 'posted on' date or 'updated on' date for blog posts
+
+= 0.8.3 - Mar 23 2020 =
 * add elementor support
 
 = 0.8.2 - Mar 27 2019 =

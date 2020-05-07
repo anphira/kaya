@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.8
+ * @version 0.9
  */
 
 if ( ! function_exists( 'kaya_posted_on' ) ) :
@@ -15,27 +15,44 @@ if ( ! function_exists( 'kaya_posted_on' ) ) :
  * Prints HTML with meta information for the current post-date/time and author.
  */
 function kaya_posted_on() {
-	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-		$time_string = '<time class="post-last-modified-td" itemprop="dateModified" datetime="%1$s">%2$s</time>';
+	
+	$time_string = '<time class="entry-date published updated" datetime="%1$s">' . get_the_date( '' ) . '</time>';
+
+	if( get_theme_mod( 'kaya_post_use_last_updated_date', false ) ) {
+		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+			$time_string = '<time class="post-last-modified-td" itemprop="dateModified" datetime="%1$s">%2$s</time>';
+		}
+		$time_string = sprintf( $time_string,
+			esc_attr( get_the_modified_date( 'c' ) ),
+			esc_html( get_the_modified_date() )
+		);
+
+		$posted_on = sprintf(
+			esc_html_x( 'Last Updated on %s', 'post date', 'kaya' ),
+			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+		);
+
+		$byline = sprintf(
+			esc_html_x( 'by %s', 'post author', 'kaya' ),
+			'<span  itemprop="author" class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+		);
+
+		echo '<span class="post-last-modified">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
 	}
+	else {
+		$posted_on = sprintf(
+			esc_html_x( 'Posted on %s', 'post date', 'kaya' ),
+			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+		);
 
-	$time_string = sprintf( $time_string,
-		esc_attr( get_the_modified_date( 'c' ) ),
-		esc_html( get_the_modified_date() )
-	);
+		$byline = sprintf(
+			esc_html_x( 'by %s', 'post author', 'kaya' ),
+			'<span  itemprop="author" class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+		);
 
-	$posted_on = sprintf(
-		esc_html_x( 'Last Updated on %s', 'post date', 'kaya' ),
-		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-	);
+		echo '<span class="post-last-modified">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
 
-	$byline = sprintf(
-		esc_html_x( 'by %s', 'post author', 'kaya' ),
-		'<span  itemprop="author" class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
-	);
-
-	echo '<span class="post-last-modified">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
+	}
 
 }
 endif;
