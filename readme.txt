@@ -4,8 +4,8 @@ Contributors: Anphira, automattic
 Tags: custom-background, theme-options, custom-menu, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, featured-images, flexible-header, footer-widgets, full-width-template, blog
 
 Requires at least: 4.7
-Tested up to: 5.1
-Stable tag: v0.9
+Tested up to: 5.4.1
+Stable tag: v0.10.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,7 +42,16 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
-= 0.9 - Arp 14 2020 =
+= 0.10.1 - Jul 15 2020 =
+* minor CSS update
+
+= 0.10.0 - May 30 2020 =
+* added setting for archive sidebars - now archive sidebars and single post sidebars have separate settings
+* updated sidebar defaults to default to NO sidebar
+* added feature to show related posts on single blogs
+* added social sharing for blogs (javascript free for fast loading)
+
+= 0.9 - May 07 2020 =
 * updates for WooCommerce
 * update font awesome version - remove font awesome version 4
 * add option for setting 'posted on' date or 'updated on' date for blog posts

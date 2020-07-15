@@ -5,7 +5,7 @@
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
  * @package 
- * @version 0.7.11
+ * @version 0.10.0
  */
 
 get_header(); ?>
@@ -32,6 +32,55 @@ get_header(); ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 	<?php if ('right_sidebar' == get_theme_mod( 'kaya_post_sidebar', 'right_sidebar' )) get_sidebar(); ?>
+
+	<?php if(get_theme_mod( 'kaya_show_related_posts', false)) : ?>
+	<div id="related-posts" class="clear mb50">
+		<h2>Related Articles</h2>
+		<?php 
+		$terms = get_the_terms( get_the_ID(), 'category' );
+		if( empty( $terms ) ) $terms = array();
+		$term_list = wp_list_pluck( $terms, 'slug' );
+
+		$related_args = array(
+			'post_type' => 'post',
+			'posts_per_page' => -1,
+			'post_status' => 'publish',
+			'posts_per_page' => 3,
+			'post__not_in' => array( get_the_ID() ),
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'category',
+					'field' => 'slug',
+					'terms' => $term_list
+				)
+			)
+		);
+		$related = new WP_Query( $related_args );
+
+		$counter = 0;
+
+		if( $related->have_posts() ) :
+				
+			while( $related->have_posts() ): $related->the_post(); ?>
+
+				<div class="columns-4 <?php if(2 == $counter) { echo 'last'; } ?>">
+					<?php the_post_thumbnail( 'related-posts-image' ); ?>
+					<div class="max-height-related-posts mt15">
+						<h3 class="mb0"><?php the_title(); ?></h3>
+						<?php the_excerpt(); ?>
+					</div>
+					<a class="button mt20" href="<?php the_permalink(); ?>">READ MORE</a>
+					
+				</div>
+				
+				<?php 
+				$counter++;
+			endwhile;
+		endif;
+		wp_reset_postdata();
+		?>
+	</div>
+	<?php endif; ?>
 
 <?php
 get_footer();

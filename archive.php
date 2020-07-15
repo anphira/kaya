@@ -7,18 +7,18 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.7.11
+ * @version 0.9.1
  */
 
 get_header(); 
 ?>
 
 	<?php 
-	if (get_theme_mod( 'kaya_post_sidebar', 'right_sidebar' ) == 'left_sidebar') {
+	if (get_theme_mod( 'kaya_post_sidebar', 'no_sidebar' ) == 'left_sidebar') {
 		get_sidebar(); 
 	}
 	$has_sidebar = '';
-	if( get_theme_mod( 'kaya_post_sidebar', 'right_sidebar' ) !== 'no_sidebar' ) {
+	if( get_theme_mod( 'kaya_post_sidebar', 'no_sidebar' ) !== 'no_sidebar' ) {
 		$has_sidebar = 'has-sidebar';
 	}
 	?>
@@ -65,7 +65,7 @@ get_header();
 		</main><!-- #main -->
 	</div><!-- #primary -->
 	<?php 
-	if (get_theme_mod( 'kaya_post_sidebar' ) == 'right_sidebar') {
+	if (get_theme_mod( 'kaya_post_sidebar', 'no_sidebar' ) == 'right_sidebar') {
 		get_sidebar(); 
 	}
 	?>

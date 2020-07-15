@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.8.4
+ * @version 0.10.0
  */
 
 ?><!DOCTYPE html>
@@ -145,9 +145,11 @@
 	} else {
 		$content_class .= 'normal-width ';
 	}
+
+	/* Sidebar classes */
 	if(is_page()) {
 		if(!get_post_meta($post->ID, '_kaya_sidebar_setting', true) || 'use_default' == get_post_meta($post->ID, '_kaya_sidebar_setting', true) ) {
-			if ('left_sidebar' == get_theme_mod( 'kaya_page_sidebar', 'right_sidebar' )) 
+			if ('left_sidebar' == get_theme_mod( 'kaya_page_sidebar', 'no_sidebar' )) 
 				$content_class .= 'sidebar-left ';
 			elseif ('right_sidebar' == get_theme_mod( 'kaya_page_sidebar', 'right_sidebar' )) 
 				$content_class .= 'sidebar-right ';
@@ -168,28 +170,36 @@
 			}
 		}
 	}
-	elseif(function_exists(is_woocommerce) && is_woocommerce()) {
-		if ('left_sidebar' == get_theme_mod( 'kaya_woo_sidebar', 'right_sidebar' )) {
+	elseif(function_exists('is_woocommerce') && is_woocommerce()) {
+		if ('left_sidebar' == get_theme_mod( 'kaya_woo_sidebar', 'no_sidebar' )) {
 			$content_class .= 'sidebar-left ';
 		}
-		if ('right_sidebar' == get_theme_mod( 'kaya_woo_sidebar', 'right_sidebar' )) {
+		if ('right_sidebar' == get_theme_mod( 'kaya_woo_sidebar', 'no_sidebar' )) {
 			$content_class .= 'sidebar-right ';
 		}
 	}
-	elseif(is_archive() || is_single()) { // use post sidebar
-		if ('left_sidebar' == get_theme_mod( 'kaya_post_sidebar', 'right_sidebar' )) {
+	elseif(is_archive()) { // use archive sidebar
+		if ('left_sidebar' == get_theme_mod( 'kaya_archive_sidebar', 'no_sidebar' )) {
 			$content_class .= 'sidebar-left ';
 		}
-		if ('right_sidebar' == get_theme_mod( 'kaya_post_sidebar', 'right_sidebar' )) {
+		if ('right_sidebar' == get_theme_mod( 'kaya_archive_sidebar', 'no_sidebar' )) {
+			$content_class .= 'sidebar-right ';
+		}
+	}
+	elseif(is_single()) { // use single post sidebar
+		if ('left_sidebar' == get_theme_mod( 'kaya_post_sidebar', 'no_sidebar' )) {
+			$content_class .= 'sidebar-left ';
+		}
+		if ('right_sidebar' == get_theme_mod( 'kaya_post_sidebar', 'no_sidebar' )) {
 			$content_class .= 'sidebar-right ';
 		}
 	}
 	//blog home page when using a page for the home
 	elseif(is_home()) {
 		if(!get_post_meta( get_option( 'page_for_posts' ), 'kaya_sidebar_setting', true) || 'use_default' == get_post_meta( get_option( 'page_for_posts' ), 'kaya_sidebar_setting', true)) {
-			if ('left_sidebar' == get_theme_mod( 'kaya_page_sidebar', 'right_sidebar' )) 
+			if ('left_sidebar' == get_theme_mod( 'kaya_archive_sidebar', 'no_sidebar' )) 
 				$content_class .= 'sidebar-left ';
-			elseif ('right_sidebar' == get_theme_mod( 'kaya_page_sidebar', 'right_sidebar' )) 
+			elseif ('right_sidebar' == get_theme_mod( 'kaya_archive_sidebar', 'no_sidebar' )) 
 				$content_class .= 'sidebar-right ';
 		}
 		else {

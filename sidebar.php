@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.5
+ * @version 0.9.1
  */
 
 ?>
@@ -17,8 +17,10 @@
 	if(is_active_sidebar('everywhere-top-sidebar')) {
 		dynamic_sidebar('everywhere-top-sidebar');
 	}
-	if ( is_single() && is_active_sidebar( 'single-post-sidebar' ) ) {
-		dynamic_sidebar( 'single-post-sidebar' );
+	if ( is_single() ) {
+		if( is_active_sidebar( 'single-post-sidebar' ) ) {
+			dynamic_sidebar( 'single-post-sidebar' );
+		}
 	} 
 	elseif ( (get_post_type() == 'post' || is_home()) && is_active_sidebar( 'posts-sidebar' ) ) {
 		dynamic_sidebar( 'posts-sidebar' );

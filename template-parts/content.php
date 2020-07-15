@@ -7,8 +7,12 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.7.11
+ * @version 0.10.0
  */
+
+
+$kaya_single_post_social_sharing = get_theme_mod( 'kaya_single_post_social_sharing', 'no_sharing' );
+$kaya_archive_social_sharing = get_theme_mod( 'kaya_archive_social_sharing', 'no_sharing' );
 
 ?>
 
@@ -30,9 +34,17 @@
 			if(!$page_hero_blog) {
 				the_title( '<h1 class="entry-title" itemprop="name">', '</h1>' );
 			}
+
+			if('before_post_sharing' == $kaya_single_post_social_sharing || 'before_and_after_post_sharing' == $kaya_single_post_social_sharing) {
+				kaya_display_social_sharing();
+			}
 		}
 		else {
 			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+
+			if('before_post_sharing' == $kaya_archive_social_sharing || 'before_and_after_post_sharing' == $kaya_archive_social_sharing) {
+				kaya_display_social_sharing();
+			}
 		}
 
 		if ( 'post' === get_post_type() ) : ?>
@@ -59,14 +71,24 @@
 			) );
 		}
 
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'kaya' ),
-				'after'  => '</div>',
-			) );
+		wp_link_pages( array(
+			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'kaya' ),
+			'after'  => '</div>',
+		) );
 		?>
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php kaya_entry_footer(); ?>
+		<?php if(is_single()) {
+			if('after_post_sharing' == $kaya_single_post_social_sharing || 'before_and_after_post_sharing' == $kaya_single_post_social_sharing) {
+				kaya_display_social_sharing();
+			}
+		}
+		else {
+			if('after_post_sharing' == $kaya_archive_social_sharing || 'before_and_after_post_sharing' == $kaya_archive_social_sharing) {
+				kaya_display_social_sharing();
+			}
+		}
+		kaya_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

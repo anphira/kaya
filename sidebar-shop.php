@@ -7,12 +7,12 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.8.4
+ * @version 0.9.1
  */
 
 ?>
 
-<?php if('right_sidebar' == get_theme_mod( 'kaya_woo_sidebar', 'right_sidebar' )) { ?>
+<?php if('no_sidebar' != get_theme_mod( 'kaya_woo_sidebar', 'right_sidebar' )) { ?>
 	<aside id="secondary" class="widget-area" role="complementary">
 		<?php 
 		if(is_active_sidebar('everywhere-top-sidebar')) {

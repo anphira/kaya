@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.9
+ * @version 0.10.0
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -326,6 +326,15 @@ function kaya_add_header_options($wp_customize) {
 		'priority' => 60,
 	));
 	
+	$wp_customize->add_setting('kaya_header_in_grid', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_header_in_grid', array(
+		'label'           => __( 'Apply Grid to Header', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_header',
+		'settings'   => 'kaya_header_in_grid',
+		)
+	) );
+	
 	$wp_customize->add_setting('kaya_header_columns', array('sanitize_callback' => 'kaya_sanitize_header_columns'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_header_columns', array(
 		'label'           => __( 'Number of Header Columns', 'kaya' ),
@@ -404,24 +413,6 @@ function kaya_add_general($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_header_in_grid', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_header_in_grid', array(
-		'label'           => __( 'Apply Grid to Header', 'kaya' ),
-		'type'            => 'checkbox',
-		'section'         => 'kaya_general',
-		'settings'   => 'kaya_header_in_grid',
-		)
-	) );
-	
-	$wp_customize->add_setting('kaya_footer_in_grid', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_footer_in_grid', array(
-		'label'           => __( 'Apply Grid to Whole Footer <hr />', 'kaya' ),
-		'type'            => 'checkbox',
-		'section'         => 'kaya_general',
-		'settings'   => 'kaya_footer_in_grid',
-		)
-	) );
-	
 	$wp_customize->add_setting('kaya_page_sidebar', array('sanitize_callback' => 'kaya_sanitize_sidebars'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_page_sidebar', array(
 		'label'           => __( 'Default Sidebar Setting for Pages', 'kaya' ),
@@ -438,7 +429,7 @@ function kaya_add_general($wp_customize) {
 	
 	$wp_customize->add_setting('kaya_page_comments', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_page_comments', array(
-		'label'           => __( 'Display Comments on Pages <hr />', 'kaya' ),
+		'label'           => __( 'Display Comments on Pages', 'kaya' ),
 		'type'            => 'checkbox',
 		'section'         => 'kaya_general',
 		'settings'   => 'kaya_page_comments',
@@ -498,9 +489,23 @@ function kaya_add_general($wp_customize) {
 		)
 	) );
 	
+	$wp_customize->add_setting('kaya_archive_sidebar', array('sanitize_callback' => 'kaya_sanitize_sidebars'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_archive_sidebar', array(
+		'label'           => __( 'Default Sidebar Setting for Blog Archives', 'kaya' ),
+		'type'            => 'select',
+		'choices'		  => array(
+								'no_sidebar' => 'No Sidebar',
+								'left_sidebar' => 'Left Sidebar',
+								'right_sidebar' => 'Right Sidebar',
+							 ),
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_archive_sidebar',
+		)
+	) );
+	
 	$wp_customize->add_setting('kaya_post_sidebar', array('sanitize_callback' => 'kaya_sanitize_sidebars'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_sidebar', array(
-		'label'           => __( '<hr />Default Sidebar Setting for Blog &amp; Posts', 'kaya' ),
+		'label'           => __( 'Default Sidebar Setting for Blog Posts', 'kaya' ),
 		'type'            => 'select',
 		'choices'		  => array(
 								'no_sidebar' => 'No Sidebar',
@@ -545,6 +550,25 @@ function kaya_add_general($wp_customize) {
 		'type'            => 'checkbox',
 		'section'         => 'kaya_general',
 		'settings'   => 'kaya_post_use_last_updated_date',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_show_related_posts', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_show_related_posts', array(
+		'label'           => __( 'Display Related Posts on Single Blog Posts', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_show_related_posts',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_turn_off_read_more', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_turn_off_read_more', array(
+		'label'           => __( 'Do NOT display a read more on blog excerpts', 'kaya' ),
+		'description'	  => __( 'This is very useful when using the Related Posts or when using any page builders which supply their own read more links', 'kaya'),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_turn_off_read_more',
 		)
 	) );
 	
@@ -668,10 +692,19 @@ add_action('customize_register', 'kaya_add_general');
  */
 function kaya_add_footer($wp_customize) {
 	$wp_customize->add_section('kaya_footer', array(
-		'title' => 'Footer',
+		'title' => 'Footer Options',
 		'description' => 'Footer Settings',
-		'priority' => 120,
+		'priority' => 65,
 	));
+	
+	$wp_customize->add_setting('kaya_footer_in_grid', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_footer_in_grid', array(
+		'label'           => __( 'Apply Grid to Whole Footer', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_footer',
+		'settings'   => 'kaya_footer_in_grid',
+		)
+	) );
 	
 	// add a setting for the footer columns to show
 	$wp_customize->add_setting('kaya_show_footer_columns', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
@@ -767,12 +800,121 @@ add_action('customize_register', 'kaya_add_404');
  */
 function kaya_add_social($wp_customize) {
 	$wp_customize->add_section('kaya_social', array(
-		'title' => 'Social Media URLs',
-		'description' => 'URLS for your social media accounts',
+		'title' => 'Social Media & Social Sharing',
+		'description' => 'Social media sharing button options & social media URLs',
 		'priority' => 110,
 	));
 	
-	// add a setting for the footer columns to show
+	$wp_customize->add_setting('kaya_archive_social_sharing', array('sanitize_callback' => 'kaya_sanitize_social_sharing'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_archive_social_sharing', array(
+		'label'           => __( 'Default Social Sharing Setting for Blog Archives', 'kaya' ),
+		'type'            => 'select',
+		'choices'		  => array(
+								'no_sharing' => 'No Social Sharing Buttons',
+								'before_post_sharing' => 'Sharing Before Post Content',
+								'after_post_sharing' => 'Sharing After Post Content',
+								'before_and_after_post_sharing' => 'Sharing Before &amp; After Post Content'
+							 ),
+		'section'         => 'kaya_social',
+		'settings'   => 'kaya_archive_social_sharing',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_single_post_social_sharing', array('sanitize_callback' => 'kaya_sanitize_social_sharing'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_single_post_social_sharing', array(
+		'label'           => __( 'Default Social Sharing Setting for Single Blog Posts', 'kaya' ),
+		'type'            => 'select',
+		'choices'		  => array(
+								'no_sharing' => 'No Social Sharing Buttons',
+								'before_post_sharing' => 'Sharing Before Post Content',
+								'after_post_sharing' => 'Sharing After Post Content',
+								'before_and_after_post_sharing' => 'Sharing Before &amp; After Post Content'
+							 ),
+		'section'         => 'kaya_social',
+		'settings'   => 'kaya_single_post_social_sharing',
+		)
+	) );
+
+	$wp_customize->add_setting( 'kaya_social_sharing_separator', array( 'sanitize_callback' => 'kaya_sanitize_separator' ) );
+	$wp_customize->add_control(
+		new Kaya_Separator_Control(	$wp_customize, 'kaya_social_sharing_separator', array(
+		'description'           => __( 'Check the boxes for the social media networks you would like to share on. If you wish to use sharing, the above settings or blog archives and/or single blog posts must be set to before, after, or before and after.', 'kaya' ),
+		'section' => 'kaya_social',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_social_sharing_text', array('sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_social_sharing_text', array(
+		'label'           => __( 'Text before sharing icons:', 'kaya' ),
+		'description'           => __( 'The default text is "Enjoy the article? Share it: ", if you want different text, enter it here.', 'kaya' ),
+		'type'            => 'text',
+		'section'         => 'kaya_social',
+		'settings'   => 'kaya_social_sharing_text',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_social_sharing_facebook', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_social_sharing_facebook', array(
+		'label'           => __( 'Share on Facebook', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_social',
+		'settings'   => 'kaya_social_sharing_facebook',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_social_sharing_twitter', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_social_sharing_twitter', array(
+		'label'           => __( 'Share on Twitter', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_social',
+		'settings'   => 'kaya_social_sharing_twitter',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_social_sharing_pinterest', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_social_sharing_pinterest', array(
+		'label'           => __( 'Share on Pinterest', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_social',
+		'settings'   => 'kaya_social_sharing_pinterest',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_social_sharing_linkedin', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_social_sharing_linkedin', array(
+		'label'           => __( 'Share on LinkedIn', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_social',
+		'settings'   => 'kaya_social_sharing_linkedin',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_social_sharing_reddit', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_social_sharing_reddit', array(
+		'label'           => __( 'Share on Reddit', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_social',
+		'settings'   => 'kaya_social_sharing_reddit',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_social_sharing_email', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_social_sharing_email', array(
+		'label'           => __( 'Share on Email', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_social',
+		'settings'   => 'kaya_social_sharing_email',
+		)
+	) );
+
+	$wp_customize->add_setting( 'kaya_social_media_separator', array( 'sanitize_callback' => 'kaya_sanitize_separator' ) );
+	$wp_customize->add_control(
+		new Kaya_Separator_Control(	$wp_customize, 'kaya_social_media_separator', array(
+		'label'           => __( 'Social Media URLs', 'kaya' ),
+		'section' => 'kaya_social',
+		)
+	) );
+	
 	$wp_customize->add_setting('kaya_facebook', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_facebook', array(
 		'label'           => __( 'Facebook', 'kaya' ),
@@ -782,7 +924,6 @@ function kaya_add_social($wp_customize) {
 		)
 	) );
 	
-	// add a setting for the footer columns to show
 	$wp_customize->add_setting('kaya_twitter', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_twitter', array(
 		'label'           => __( 'Twitter', 'kaya' ),
@@ -792,7 +933,6 @@ function kaya_add_social($wp_customize) {
 		)
 	) );
 	
-	// add a setting for the footer columns to show
 	$wp_customize->add_setting('kaya_linkedin', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_linkedin', array(
 		'label'           => __( 'LinkedIn', 'kaya' ),
@@ -802,7 +942,6 @@ function kaya_add_social($wp_customize) {
 		)
 	) );
 	
-	// add a setting for the footer columns to show
 	$wp_customize->add_setting('kaya_google_plus', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_google_plus', array(
 		'label'           => __( 'Google Map URL', 'kaya' ),
@@ -812,7 +951,6 @@ function kaya_add_social($wp_customize) {
 		)
 	) );
 	
-	// add a setting for the footer columns to show
 	$wp_customize->add_setting('kaya_skype', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_skype', array(
 		'label'           => __( 'Skype', 'kaya' ),
@@ -822,7 +960,6 @@ function kaya_add_social($wp_customize) {
 		)
 	) );
 	
-	// add a setting for the footer columns to show
 	$wp_customize->add_setting('kaya_youtube', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_youtube', array(
 		'label'           => __( 'YouTube', 'kaya' ),
@@ -832,7 +969,6 @@ function kaya_add_social($wp_customize) {
 		)
 	) );
 	
-	// add a setting for the footer columns to show
 	$wp_customize->add_setting('kaya_vimeo', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_vimeo', array(
 		'label'           => __( 'Vimeo', 'kaya' ),
@@ -842,7 +978,6 @@ function kaya_add_social($wp_customize) {
 		)
 	) );
 	
-	// add a setting for the footer columns to show
 	$wp_customize->add_setting('kaya_instagram', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_instagram', array(
 		'label'           => __( 'Instagram', 'kaya' ),
@@ -852,7 +987,6 @@ function kaya_add_social($wp_customize) {
 		)
 	) );
 	
-	// add a setting for the footer columns to show
 	$wp_customize->add_setting('kaya_pinterest', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_pinterest', array(
 		'label'           => __( 'Pinterest', 'kaya' ),
@@ -862,7 +996,6 @@ function kaya_add_social($wp_customize) {
 		)
 	) );
 	
-	// add a setting for the footer columns to show
 	$wp_customize->add_setting('kaya_yelp', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_yelp', array(
 		'label'           => __( 'Yelp', 'kaya' ),
@@ -872,7 +1005,6 @@ function kaya_add_social($wp_customize) {
 		)
 	) );
 	
-	// add a setting for the footer columns to show
 	$wp_customize->add_setting('kaya_rss', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_rss', array(
 		'label'           => __( 'RSS', 'kaya' ),
@@ -882,7 +1014,6 @@ function kaya_add_social($wp_customize) {
 		)
 	) );
 	
-	// add a setting for the footer columns to show
 	$wp_customize->add_setting('kaya_email', array('sanitize_callback' => 'is_email'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_email', array(
 		'label'           => __( 'E-mail Address', 'kaya' ),

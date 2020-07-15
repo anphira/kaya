@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.9
+ * @version 0.10.0
  */
  
 /**
@@ -24,6 +24,21 @@ function kaya_trim_vc_shortcodes($content) {
     $content = preg_replace('\[/vc(.*?)\]', '', $content);
     return $content;
 }
+
+
+/**
+ * Set blog to sort by most recently updated date if that option is set
+ */
+function kaya_orderby_modified_posts( $query ) {
+	if( get_theme_mod( 'kaya_post_use_last_updated_date', false ) ) {
+		if( $query->is_main_query()) {
+			if ( $query->is_home() || $query->is_category() || $query->is_tag() ) {
+				$query->set( 'orderby', 'modified' );
+			}
+		}
+	}
+}
+add_action( 'pre_get_posts', 'kaya_orderby_modified_posts' );
 
 
 /**
@@ -159,6 +174,9 @@ function kaya_excerpt_length( $length ) {
 add_filter( 'excerpt_length', 'kaya_excerpt_length', 999 );
 
 function kaya_excerpt_more( $more ) {
+	if(get_theme_mod( 'kaya_turn_off_read_more', false)) {
+		return '';
+	}
 	return ' </p><p><a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'kaya') . '</a>';
 }
 add_filter( 'excerpt_more', 'kaya_excerpt_more' );
@@ -319,6 +337,18 @@ function kaya_setup() {
 }
 endif;
 add_action( 'after_setup_theme', 'kaya_setup' );
+
+
+
+/**
+ * Add custom image size for related posts
+ */
+add_action( 'after_setup_theme', 'wpdocs_theme_setup' );
+function wpdocs_theme_setup() {
+    add_image_size( 'related-posts-image', 355, 180, true ); // (cropped)
+}
+
+
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
