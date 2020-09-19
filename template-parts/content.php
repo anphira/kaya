@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.10.0
+ * @version 0.10.2
  */
 
 
@@ -79,7 +79,12 @@ $kaya_archive_social_sharing = get_theme_mod( 'kaya_archive_social_sharing', 'no
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php if(is_single()) {
+		<?php if(get_theme_mod( 'kaya_show_categories_tags', 0 )) { ?>
+			<p>Categories: <?php wp_list_categories( array( 'orderby'    => 'name', 'style' => ', ' ) ); ?></p>
+			<p>Tags: <?php the_tags( 'Tags: ', ', ', '<br />' ); ?></p>
+		<?php
+		}
+		if(is_single()) {
 			if('after_post_sharing' == $kaya_single_post_social_sharing || 'before_and_after_post_sharing' == $kaya_single_post_social_sharing) {
 				kaya_display_social_sharing();
 			}

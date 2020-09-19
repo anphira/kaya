@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.10.0
+ * @version 0.10.2
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -514,6 +514,15 @@ function kaya_add_general($wp_customize) {
 							 ),
 		'section'         => 'kaya_general',
 		'settings'   => 'kaya_post_sidebar',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_show_categories_tags', array('sanitize_callback' => 'kaya_show_categories_tags'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_comments', array(
+		'label'           => __( 'Display Categories and Tags on Posts', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_show_categories_tags',
 		)
 	) );
 	

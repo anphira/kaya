@@ -12,7 +12,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.7.11
+ * @version 0.10.2
  */
 
 get_header(); 
@@ -57,7 +57,8 @@ switch ($sidebar_setting ) {
 				get_template_part( 'template-parts/content', 'page' );
 
 				// If comments are open or we have at least one comment, load up the comment template.
-				if ( ( get_theme_mod( 'kaya_page_comments', 'off' ) ) && (comments_open() || get_comments_number() )) :
+				$comments_value = get_theme_mod( 'kaya_page_comments', 'off' );
+				if ( ( 'on' == $comments_value ) && (comments_open() || get_comments_number() )) :
 					comments_template();
 				endif;
 

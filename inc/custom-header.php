@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.9
+ * @version 0.10.2
  */
 
 /**
@@ -143,18 +143,24 @@ h6, .h6, .elementor-widget-heading h6.elementor-heading-title {
 p, body {
 	font-size: <?php echo get_theme_mod( 'kaya_paragraph', '16' ) ?>px;
 }
-.social-icons .fa {
-	background: <?php echo get_theme_mod( 'kaya_social_icon_background_color', '#000000' ) ?>;
+.social-icons .social-icon-single {
 	font-size: <?php echo get_theme_mod( 'kaya_social_icon_size', '18' ) ?>px;
 }
-.social-icons .fa:hover {
+.social-icons .fab {
+	background: <?php echo get_theme_mod( 'kaya_social_icon_background_color', '#000000' ) ?>;
+	font-size: <?php echo get_theme_mod( 'kaya_social_icon_size', '18' ) ?>px;
+	padding: 10px;
+    border-radius: 50%;
+    width: calc(<?php echo get_theme_mod( 'kaya_social_icon_size', '18' ) ?>px + 20px);
+}
+.social-icons .fab:hover {
 	background: <?php echo get_theme_mod( 'kaya_social_icon_color', '#ffffff' ) ?>;
 }
-.social-icons .fa:before {
+.social-icons .fab:before {
 	font-size: <?php echo get_theme_mod( 'kaya_social_icon_size', '18' ) ?>px;
 	color: <?php echo get_theme_mod( 'kaya_social_icon_color', '#ffffff' ) ?>;
 }
-.social-icons .fa:hover:before {
+.social-icons .fab:hover:before {
 	color: <?php echo get_theme_mod( 'kaya_social_icon_background_color', '#000000' ) ?>;
 }
 body a, body a:visited {

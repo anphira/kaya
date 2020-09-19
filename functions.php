@@ -7,13 +7,9 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.10.0
+ * @version 0.10.2
  */
  
-/**
- * Enable shortcodes in text widgets
- */
-add_filter('widget_text','do_shortcode');
 
 
 /**
@@ -109,31 +105,6 @@ function dequeue_woocommerce_styles_scripts() {
 	}
 }
 
-
-/**
- * Move dashicons css to footer
- */
-function kaya_add_footer_styles() {
-    wp_enqueue_style( 'dashicons' );
-};
-add_action( 'get_footer', 'kaya_add_footer_styles' );
-
-/**
- * JQuery to Footer
- */
-function kaya_starter_scripts() {
-    wp_deregister_script( 'jquery' );
-    wp_deregister_script( 'jquery-core' );
-    wp_deregister_script( 'jquery-migrate' );
-    
-    wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, NULL, true );
-    wp_enqueue_script( 'jquery' );
-
-    wp_register_script( 'jquery-migrate', includes_url( '/js/jquery/jquery-migrate.min.js' ), false, NULL, true );
-    wp_enqueue_script( 'jquery-migrate' );
-}
-add_action( 'wp_enqueue_scripts', 'kaya_starter_scripts' );
-
  
 /**
  * Add footer menu
@@ -223,13 +194,13 @@ if( ! function_exists('kaya_social_icons') ) :
 function kaya_social_icons() {
 	echo '<div class="social-icons">';
 		if( get_theme_mod( 'kaya_facebook' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_facebook' ) . '"><i class="fab fa-facebook"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_facebook' ) . '"><i class="fab fa-facebook-f"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_twitter' ) != '' ) {
 			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_twitter' ) . '"><i class="fab fa-twitter"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_linkedin' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_linkedin' ) . '"><i class="fab fa-linkedin"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_linkedin' ) . '"><i class="fab fa-linkedin-in"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_google_plus' ) != '' ) {
 			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_google_plus' ) . '"><i class="fab fa-google"></i></a>';

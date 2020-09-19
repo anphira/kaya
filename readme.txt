@@ -3,9 +3,9 @@
 Contributors: Anphira, automattic
 Tags: custom-background, theme-options, custom-menu, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, featured-images, flexible-header, footer-widgets, full-width-template, blog
 
-Requires at least: 4.7
-Tested up to: 5.4.1
-Stable tag: v0.10.0
+Requires at least: 5.5
+Tested up to: 5.5.1
+Stable tag: v0.10.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,11 @@ Recommended plugins are available at https://www.anphira.com/kaya-wordpress-them
 From the Customizer a number of customization options exist. Please see https://www.anphira.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 0.10.2 - Sep 19 2020 =
+* update to add tags & categories to the single post template
+* fix issue with comments displaying on pages
+* Remove JQuery migrate code for WP 5.5
 
 = 0.10.1 - Jul 15 2020 =
 * minor CSS update
