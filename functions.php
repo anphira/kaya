@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.10.2
+ * @version 0.10.3
  */
  
 
@@ -212,7 +212,7 @@ function kaya_social_icons() {
 			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_youtube' ) . '"><i class="fab fa-youtube"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_vimeo' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_vimeo' ) . '"><i class="fab fa-vimeo"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_vimeo' ) . '"><i class="fab fa-vimeo-v"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_instagram' ) != '' ) {
 			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_instagram' ) . '"><i class="fab fa-instagram"></i></a>';
@@ -222,6 +222,9 @@ function kaya_social_icons() {
 		}
 		if( get_theme_mod( 'kaya_yelp' ) != '' ) {
 			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_yelp' ) . '"><i class="fab fa-yelp"></i></a>';
+		}
+		if( get_theme_mod( 'kaya_behance' ) != '' ) {
+			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_behance' ) . '"><i class="fab fa-behance"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_rss' ) != '' ) {
 			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_rss' ) . '"><i class="fas fa-rss"></i></a>';

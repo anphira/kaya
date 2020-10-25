@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.10.2
+ * @version 0.10.3
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -1011,6 +1011,15 @@ function kaya_add_social($wp_customize) {
 		'type'            => 'url',
 		'section'         => 'kaya_social',
 		'settings'   => 'kaya_yelp',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_behance', array('sanitize_callback' => 'esc_url_raw'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_behance', array(
+		'label'           => __( 'Behance', 'kaya' ),
+		'type'            => 'url',
+		'section'         => 'kaya_social',
+		'settings'   => 'kaya_behance',
 		)
 	) );
 	

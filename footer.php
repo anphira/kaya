@@ -75,7 +75,13 @@
 				<div class="container">
 					<div class="columns-6">
 						<?php if(get_theme_mod( 'kaya_show_footer_social', false)) kaya_social_icons(); ?>
-						Copyright &copy; <?php echo date('Y'); ?>. All rights reserved. <?php bloginfo('name'); ?>.
+						Copyright &copy; <?php echo date('Y'); ?>. All rights reserved. <?php bloginfo('name'); ?>. 
+						<?php $privacy_policy = '';
+						$privacy_policy = get_privacy_policy_url();
+						if('' != $privacy_policy) {
+							?>
+							<a href="<?php echo $privacy_policy; ?>">Privacy Policy</a>
+						<?php } ?>
 					</div>
 					<div class="columns-6 last text-right">
 						<?php if(get_theme_mod( 'kaya_footer_right', '' )) {
