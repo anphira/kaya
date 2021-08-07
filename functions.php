@@ -7,9 +7,16 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.10.3
+ * @version 0.11.1
  */
- 
+
+/**
+ * Prevent clickjacking
+ */
+add_action( 'send_headers', 'kaya_send_frame_options_header', 10, 0 );
+function kaya_send_frame_options_header() {
+	header( 'X-Frame-Options: SAMEORIGIN' );
+}
 
 
 /**
@@ -707,9 +714,11 @@ function kaya_scripts() {
 		wp_enqueue_style( 'kaya-style', get_theme_file_uri('style.min.css'), false, filemtime( get_theme_file_path( 'style.min.css' )));
 	}
 
-	wp_enqueue_script( 'kaya-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20161215', true );
+	if(!get_theme_mod('kaya_do_not_load_nav_js', false)) {
+		wp_enqueue_script( 'kaya-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20161216', true );
+	}
 
-	wp_enqueue_script( 'kaya-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20161215', true );
+	wp_enqueue_script( 'kaya-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20161216', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -850,4 +859,16 @@ function kaya_website_field_remove($fields) {
 	if(isset($fields['url']))
 	unset($fields['url']);
 	return $fields;
+}
+
+
+/* Display custom maintenance mode page */
+if ( ! function_exists( 'kaya_maintenance_mode' ) ) {
+    function kaya_maintenance_mode() {
+        if ( file_exists( ABSPATH . '.maintenance' ) ) {
+            include_once get_template_directory() . '/maintenance.php';
+            die();
+        }
+    }
+    add_action( 'wp', 'kaya_maintenance_mode' );
 }

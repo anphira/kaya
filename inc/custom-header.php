@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.10.2
+ * @version 0.11.2
  */
 
 /**
@@ -26,10 +26,12 @@ add_action( 'after_setup_theme', 'kaya_custom_header_setup' );
 
 function kaya_customizer_settings() {
 	
-	if( '' != get_theme_mod( 'kaya_custom_google_fonts_url', '' )) 
+	if( '' != get_theme_mod( 'kaya_custom_google_fonts_url', '' )) {
 		echo '<link href="', get_theme_mod( 'kaya_custom_google_fonts_url' ), '" rel="stylesheet">';
-	else 
+	}
+	elseif(!get_theme_mod( 'kaya_disable_google_fonts', false )) {
 		echo kaya_build_fonts_from_google( get_theme_mod( 'kaya_heading_font', 'arial' ), get_theme_mod( 'kaya_paragraph_font', 'arial' ) );
+	}
 	?>
 <!-- Load Customizer CSS settings -->
 <style>
@@ -149,8 +151,6 @@ p, body {
 .social-icons .fab {
 	background: <?php echo get_theme_mod( 'kaya_social_icon_background_color', '#000000' ) ?>;
 	font-size: <?php echo get_theme_mod( 'kaya_social_icon_size', '18' ) ?>px;
-	padding: 10px;
-    border-radius: 50%;
     width: calc(<?php echo get_theme_mod( 'kaya_social_icon_size', '18' ) ?>px + 20px);
 }
 .social-icons .fab:hover {
@@ -265,10 +265,6 @@ body a:hover, body a:focus, body a:active {
 body button,
 body button:visited,
 body a.button,
-body.woocommerce a.button,
-body.woocommerce a.button:visited,
-body .woocommerce a.button,
-body .woocommerce a.button:visited,
 body a.button:visited, 
 body input[type=button],
 body input[type=reset],
@@ -300,12 +296,51 @@ body .elementor-button:active {
 	color: <?php echo get_theme_mod( 'kaya_button_hover_text_color', '#000000' ) ?>;
 }
 
+html .woocommerce a.button,
+html .woocommerce a.button:visited,
+html .woocommerce #respond input#submit.alt, 
+html .woocommerce a.button.alt, 
+html .woocommerce button.button.alt, 
+html .woocommerce input.button.alt {
+	background: <?php echo get_theme_mod( 'kaya_woo_button_background_color', '#008dc4' ) ?>;
+	color: <?php echo get_theme_mod( 'kaya_woo_button_text_color', '#ffffff' ) ?>;
+}
+
+html .woocommerce a.button:hover,
+html .woocommerce a.button:focus,
+html .woocommerce a.button:active,
+html .woocommerce #respond input#submit.alt:hover, 
+html .woocommerce a.button.alt:hover, 
+html .woocommerce button.button.alt:hover, 
+html .woocommerce input.button.alt:hover,
+html .woocommerce #respond input#submit.alt:focus, 
+html .woocommerce a.button.alt:focus, 
+html .woocommerce button.button.alt:focus, 
+html .woocommerce input.button.alt:focus,
+html .woocommerce #respond input#submit.alt:active, 
+html .woocommerce a.button.alt:active, 
+html .woocommerce button.button.alt:active, 
+html .woocommerce input.button.alt:active {
+	background: <?php echo get_theme_mod( 'kaya_woo_button_background_hover_color', '#005dc4' ) ?>;
+	color: <?php echo get_theme_mod( 'kaya_woo_button_text_hover_color', '#000000' ) ?>;
+}
+
+html .woocommerce div.product p.price, 
+html .woocommerce div.product span.price,
+html .woocommerce ul.products li.product .price,
+html .woocommerce-message::before {
+	color: <?php echo get_theme_mod( 'kaya_woo_accent_color', '#77a464' ) ?>;
+}
+html .woocommerce-message {
+	border-top-color: <?php echo get_theme_mod( 'kaya_woo_accent_color', '#77a464' ) ?>;
+}
+
 <?php 
 $kaya_grid_width = get_theme_mod( 'kaya_grid_width', '1140' ); 
 $kaya_grid_width = ($kaya_grid_width > 320) ? $kaya_grid_width : 1140;
 ?>
 <?php if(get_theme_mod( 'kaya_content_in_grid', false )) { ?>
-	#content, body .vc_row[data-vc-full-width="true"] > .wpb_column, .container {
+	#content, body .vc_row[data-vc-full-width="true"] > .wpb_column, header:not(#masthead) .container {
 		max-width: <?php echo $kaya_grid_width; ?>px;
 		margin: auto;
 	}

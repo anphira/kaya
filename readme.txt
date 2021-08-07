@@ -42,6 +42,20 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
+= 0.11.2 - Aug 07 2021 =
+* add: color settings for WooCommerce
+
+= 0.11.1 - Apr 23 2021 =
+* add: checked to disable google fonts from being loaded
+* add: instant page preloading script
+* add: clickjacking prevention
+
+= 0.11.0 - Dec 24 2020 = 
+* add: move blog options to separate panel
+* add: checkbox to turn off page heading1 for all pages
+* fix: blog sidebar settings for main blog & archive pages
+* fix: proper name on Page with Sidebar page template
+
 = 0.10.3 - Oct 25 2020 =
 * add privacy policy link to footer by default
 * add behance social media link

@@ -12,7 +12,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.8.4
+ * @version 0.11
  */
 
 get_header(); ?>
@@ -26,12 +26,11 @@ get_header(); ?>
 		case 'right_sidebar':
 			break;
 		case 'use_default':
-			$sidebar_setting = get_theme_mod( 'kaya_page_sidebar', 'right_sidebar' );
+			$sidebar_setting = get_theme_mod( 'kaya_archive_sidebar', 'right_sidebar' );
 			break;
 		default: 
-			$sidebar_setting = get_theme_mod( 'kaya_page_sidebar', 'right_sidebar' );
+			$sidebar_setting = get_theme_mod( 'kaya_archive_sidebar', 'right_sidebar' );
 	}
-
 
 	if ('left_sidebar' == $sidebar_setting) {
 		get_sidebar(); 

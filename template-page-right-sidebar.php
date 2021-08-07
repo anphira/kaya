@@ -2,6 +2,8 @@
 /**
  * The template for displaying pages with sidebars.
  *
+ * Template Name: Page with Sidebar
+ *
  * This is the template that displays all pages by default.
  * Please note that this is the WordPress construct of pages
  * and that other 'pages' on your WordPress site may use a
@@ -10,11 +12,12 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package Kaya
+ * @version 0.11.0
  */
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
+	<div id="primary" class="content-area  has-sidebar">
 		<main id="main" class="site-main" role="main">
 
 			<?php

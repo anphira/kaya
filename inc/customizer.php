@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.10.3
+ * @version 0.11.2
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -255,6 +255,60 @@ function kaya_add_colors($wp_customize) {
 		) 
 	) );
 	
+	$wp_customize->add_setting('kaya_woo_button_background_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_woo_button_background_color', array(
+		'label'        => __( 'WooCommerce Section:<hr />Woo Button Background Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_woo_button_background_color',
+		) 
+	) );
+
+	$wp_customize->add_setting('kaya_woo_button_background_hover_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
+'kaya_woo_button_background_hover_color', array(
+		'label'        => __( 'Woo Button Background Hover Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_woo_button_background_hover_color',
+		) 
+	) );
+
+	$wp_customize->add_setting('kaya_woo_button_text_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
+'kaya_woo_button_text_color', array(
+		'label'        => __( 'Woo Button Text Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_woo_button_text_color',
+		) 
+	) );
+
+	$wp_customize->add_setting('kaya_woo_button_text_hover_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
+'kaya_woo_button_text_hover_color', array(
+		'label'        => __( 'Woo Button Text Hover Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_woo_button_text_hover_color',
+		) 
+	) );
+
+	$wp_customize->add_setting('kaya_woo_button_text_hover_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
+'kaya_woo_button_text_hover_color', array(
+		'label'        => __( 'Woo Button Text Hover Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_woo_button_text_hover_color',
+		) 
+	) );
+
+	$wp_customize->add_setting('kaya_woo_accent_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
+'kaya_woo_accent_color', array(
+		'label'        => __( 'Woo Accent Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_woo_accent_color',
+		) 
+	) );
+
+	
 	$wp_customize->add_setting('kaya_footer_background_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_footer_background_color', array(
 		'label'        => __( 'Footer Section:<hr />Footer Background Color', 'kaya' ),
@@ -381,6 +435,16 @@ function kaya_add_header_options($wp_customize) {
 		'settings'   => 'kaya_hide_mobile_button_menu',
 		)
 	) );
+	
+	$wp_customize->add_setting('kaya_do_not_load_nav_js', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_do_not_load_nav_js', array(
+		'label'           => __( 'Do NOT load Nav JS', 'kaya' ),
+		'description'	  => 'Check to NOT load Kaya navigation JS, useful when using a third party menu plugin',
+		'type'            => 'checkbox',
+		'section'         => 'kaya_header',
+		'settings'   => 'kaya_do_not_load_nav_js',
+		)
+	) );
 }
 add_action('customize_register', 'kaya_add_header_options');
 
@@ -424,6 +488,15 @@ function kaya_add_general($wp_customize) {
 							 ),
 		'section'         => 'kaya_general',
 		'settings'   => 'kaya_page_sidebar',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_page_hide_heading_1', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_page_hide_heading_1', array(
+		'label'           => __( 'Hide heading1 on ALL Pages', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_page_hide_heading_1',
 		)
 	) );
 	
@@ -486,108 +559,6 @@ function kaya_add_general($wp_customize) {
 							 ),
 		'section'         => 'kaya_general',
 		'settings'   => 'kaya_page_hero_background_image_type',
-		)
-	) );
-	
-	$wp_customize->add_setting('kaya_archive_sidebar', array('sanitize_callback' => 'kaya_sanitize_sidebars'));
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_archive_sidebar', array(
-		'label'           => __( 'Default Sidebar Setting for Blog Archives', 'kaya' ),
-		'type'            => 'select',
-		'choices'		  => array(
-								'no_sidebar' => 'No Sidebar',
-								'left_sidebar' => 'Left Sidebar',
-								'right_sidebar' => 'Right Sidebar',
-							 ),
-		'section'         => 'kaya_general',
-		'settings'   => 'kaya_archive_sidebar',
-		)
-	) );
-	
-	$wp_customize->add_setting('kaya_post_sidebar', array('sanitize_callback' => 'kaya_sanitize_sidebars'));
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_sidebar', array(
-		'label'           => __( 'Default Sidebar Setting for Blog Posts', 'kaya' ),
-		'type'            => 'select',
-		'choices'		  => array(
-								'no_sidebar' => 'No Sidebar',
-								'left_sidebar' => 'Left Sidebar',
-								'right_sidebar' => 'Right Sidebar',
-							 ),
-		'section'         => 'kaya_general',
-		'settings'   => 'kaya_post_sidebar',
-		)
-	) );
-	
-	$wp_customize->add_setting('kaya_show_categories_tags', array('sanitize_callback' => 'kaya_show_categories_tags'));
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_comments', array(
-		'label'           => __( 'Display Categories and Tags on Posts', 'kaya' ),
-		'type'            => 'checkbox',
-		'section'         => 'kaya_general',
-		'settings'   => 'kaya_show_categories_tags',
-		)
-	) );
-	
-	$wp_customize->add_setting('kaya_post_comments', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_comments', array(
-		'label'           => __( 'Display Comments on Posts', 'kaya' ),
-		'type'            => 'checkbox',
-		'section'         => 'kaya_general',
-		'settings'   => 'kaya_post_comments',
-		)
-	) );
-	
-	$wp_customize->add_setting('kaya_post_hide_single_featured_image', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_hide_single_featured_image', array(
-		'label'           => __( 'Hide Featured Image on Single Posts', 'kaya' ),
-		'type'            => 'checkbox',
-		'section'         => 'kaya_general',
-		'settings'   => 'kaya_post_hide_single_featured_image',
-		)
-	) );
-	
-	$wp_customize->add_setting('kaya_post_hide_archive_featured_image', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_hide_archive_featured_image', array(
-		'label'           => __( 'Hide Featured Image on Archives', 'kaya' ),
-		'type'            => 'checkbox',
-		'section'         => 'kaya_general',
-		'settings'   => 'kaya_post_hide_archive_featured_image',
-		)
-	) );
-	
-	$wp_customize->add_setting('kaya_post_use_last_updated_date', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_use_last_updated_date', array(
-		'label'           => __( 'Use Last Updated Date Instead of Published Date', 'kaya' ),
-		'type'            => 'checkbox',
-		'section'         => 'kaya_general',
-		'settings'   => 'kaya_post_use_last_updated_date',
-		)
-	) );
-	
-	$wp_customize->add_setting('kaya_show_related_posts', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_show_related_posts', array(
-		'label'           => __( 'Display Related Posts on Single Blog Posts', 'kaya' ),
-		'type'            => 'checkbox',
-		'section'         => 'kaya_general',
-		'settings'   => 'kaya_show_related_posts',
-		)
-	) );
-	
-	$wp_customize->add_setting('kaya_turn_off_read_more', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_turn_off_read_more', array(
-		'label'           => __( 'Do NOT display a read more on blog excerpts', 'kaya' ),
-		'description'	  => __( 'This is very useful when using the Related Posts or when using any page builders which supply their own read more links', 'kaya'),
-		'type'            => 'checkbox',
-		'section'         => 'kaya_general',
-		'settings'   => 'kaya_turn_off_read_more',
-		)
-	) );
-	
-	$wp_customize->add_setting('kaya_blog_excerpt', array('sanitize_callback' => 'sanitize_text_field'));
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_blog_excerpt', array(
-		'label'           => __( 'Limit the Blog Excerpts', 'kaya' ),
-		'description'	  => __( 'Enter a value here to set the number of words used in an excerpt on the main blog archive pages. Leave blank to display full blog posts.', 'kaya'),
-		'type'            => 'number',
-		'section'         => 'kaya_general',
-		'settings'   => 'kaya_blog_excerpt',
 		)
 	) );
 	
@@ -694,6 +665,121 @@ function kaya_add_general($wp_customize) {
 	) );
 }
 add_action('customize_register', 'kaya_add_general');
+
+
+/**
+ * Adding Blog Options
+ */
+
+function kaya_add_blog_options($wp_customize) {	
+	$wp_customize->add_section('kaya_blog_options', array(
+		'title' => 'Blog Options',
+		'description' => 'Blog Settings',
+		'priority' => 25,
+	));
+	$wp_customize->add_setting('kaya_archive_sidebar', array('sanitize_callback' => 'kaya_sanitize_sidebars'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_archive_sidebar', array(
+		'label'           => __( 'Default Sidebar Setting for Blog Archives', 'kaya' ),
+		'type'            => 'select',
+		'choices'		  => array(
+								'no_sidebar' => 'No Sidebar',
+								'left_sidebar' => 'Left Sidebar',
+								'right_sidebar' => 'Right Sidebar',
+							 ),
+		'section'         => 'kaya_blog_options',
+		'settings'   => 'kaya_archive_sidebar',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_post_sidebar', array('sanitize_callback' => 'kaya_sanitize_sidebars'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_sidebar', array(
+		'label'           => __( 'Default Sidebar Setting for Blog Posts', 'kaya' ),
+		'type'            => 'select',
+		'choices'		  => array(
+								'no_sidebar' => 'No Sidebar',
+								'left_sidebar' => 'Left Sidebar',
+								'right_sidebar' => 'Right Sidebar',
+							 ),
+		'section'         => 'kaya_blog_options',
+		'settings'   => 'kaya_post_sidebar',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_show_categories_tags', array('sanitize_callback' => 'kaya_show_categories_tags'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_comments', array(
+		'label'           => __( 'Display Categories and Tags on Posts', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_blog_options',
+		'settings'   => 'kaya_show_categories_tags',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_post_comments', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_comments', array(
+		'label'           => __( 'Display Comments on Posts', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_blog_options',
+		'settings'   => 'kaya_post_comments',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_post_hide_single_featured_image', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_hide_single_featured_image', array(
+		'label'           => __( 'Hide Featured Image on Single Posts', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_blog_options',
+		'settings'   => 'kaya_post_hide_single_featured_image',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_post_hide_archive_featured_image', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_hide_archive_featured_image', array(
+		'label'           => __( 'Hide Featured Image on Archives', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_blog_options',
+		'settings'   => 'kaya_post_hide_archive_featured_image',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_post_use_last_updated_date', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_use_last_updated_date', array(
+		'label'           => __( 'Use Last Updated Date Instead of Published Date', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_blog_options',
+		'settings'   => 'kaya_post_use_last_updated_date',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_show_related_posts', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_show_related_posts', array(
+		'label'           => __( 'Display Related Posts on Single Blog Posts', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_blog_options',
+		'settings'   => 'kaya_show_related_posts',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_turn_off_read_more', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_turn_off_read_more', array(
+		'label'           => __( 'Do NOT display a read more on blog excerpts', 'kaya' ),
+		'description'	  => __( 'This is very useful when using the Related Posts or when using any page builders which supply their own read more links', 'kaya'),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_blog_options',
+		'settings'   => 'kaya_turn_off_read_more',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_blog_excerpt', array('sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_blog_excerpt', array(
+		'label'           => __( 'Limit the Blog Excerpts', 'kaya' ),
+		'description'	  => __( 'Enter a value here to set the number of words used in an excerpt on the main blog archive pages. Leave blank to display full blog posts.', 'kaya'),
+		'type'            => 'number',
+		'section'         => 'kaya_blog_options',
+		'settings'   => 'kaya_blog_excerpt',
+		)
+	) );
+}
+add_action('customize_register', 'kaya_add_blog_options');
 
 
 /**
@@ -1235,6 +1321,15 @@ function kaya_add_fonts($wp_customize) {
 		'choices'		  => kaya_fonts_list(),
 		'section'         => 'kaya_fonts',
 		'settings'   => 'kaya_paragraph_font',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_disable_google_fonts', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_disable_google_fonts', array(
+		'label'           => __( 'Do not load Google fonts', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_fonts',
+		'settings'   => 'kaya_disable_google_fonts',
 		)
 	) );
 	

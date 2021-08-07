@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.10.0
+ * @version 0.11.0
  */
 
 ?><!DOCTYPE html>
@@ -219,7 +219,6 @@
 		}
 	}
 	
-
 	//get hero area setting for pages
 	if( is_home() || ( !is_single() && !is_archive() ) ) {
 		if(is_home()) {
@@ -261,7 +260,7 @@
 				<div class="container">
 					<?php
 						if(is_page()) {
-							if(get_post_meta($post->ID, '_kaya_hide_title_check', true) !== 'on') {
+							if( get_post_meta($post->ID, '_kaya_hide_title_check', true) !== 'on') {
 								echo '<h1>' . get_the_title() . '</h1>';
 							}
 							echo get_post_meta($post->ID, '_kaya_page_hero_content', true); 

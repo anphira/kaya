@@ -28,10 +28,11 @@
 		default: 
 			$page_hero_setting = get_theme_mod( 'kaya_page_hero', false );
 	}
-	if((get_post_meta($post->ID, '_kaya_hide_title_check', true) !== 'on') && (true != $page_hero_setting)) { ?>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
+	if( (!get_theme_mod('kaya_page_hide_heading_1', 0)) && 
+		(get_post_meta($post->ID, '_kaya_hide_title_check', true) !== 'on') && (true != $page_hero_setting)) { ?>
+		<header class="entry-header">
+			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+		</header><!-- .entry-header -->
 	<?php } ?>
 
 	<div class="entry-content">
