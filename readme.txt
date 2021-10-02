@@ -42,6 +42,20 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
+= 1.0 - Oct 02 2021 =
+* major update for accessibility
+* add option for setting accessibility statement
+* update for all font sizing - moving from px to em - this will break your old font sizes and you will have to resave
+* update to focus state
+* update list of fonts to include more accessible fonts
+* deleted: Arial Black, Impact, Comic Sans, Abril Fatface, Lobster, Montserrat, Muli, Oswald, Roboto Condensed
+* added: ABeeZee, Cabin, Eco, Merriweather Sans, Noto Sans, Nunito, Poppins, Quicksand, Roboto Slab, Sen, Work Sans
+* removed redundant ARIA roles
+* updated font sizing for accessibility
+* updated headings for sidebar and footer from h4 to h2
+* minor CSS updates for WooCommerce
+* added announcement bar to top of site
+
 = 0.11.2 - Aug 07 2021 =
 * add: color settings for WooCommerce
 

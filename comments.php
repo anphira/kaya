@@ -10,7 +10,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.1
+ * @version 1.0
  */
 
 /*
@@ -28,7 +28,7 @@ if ( post_password_required() ) {
 	<?php
 	// You can start editing here -- including this comment!
 	if ( have_comments() ) : ?>
-		<h4 class="comments-title">
+		<h2 class="comments-title">
 			<?php
 				printf( // WPCS: XSS OK.
 					esc_html( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'kaya' ) ),
@@ -36,11 +36,11 @@ if ( post_password_required() ) {
 					'<span>' . get_the_title() . '</span>'
 				);
 			?>
-		</h4>
+		</h2>
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
-		<nav id="comment-nav-above" class="navigation comment-navigation" role="navigation">
-			<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'kaya' ); ?></h2>
+		<nav id="comment-nav-above" class="navigation comment-navigation" aria-label="Comments">
+			<h3 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'kaya' ); ?></h3>
 			<div class="nav-links">
 
 				<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'kaya' ) ); ?></div>
@@ -60,8 +60,8 @@ if ( post_password_required() ) {
 		</ol><!-- .comment-list -->
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
-		<nav id="comment-nav-below" class="navigation comment-navigation" role="navigation">
-			<h4 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'kaya' ); ?></h4>
+		<nav id="comment-nav-below" class="navigation comment-navigation" aria-label="Comments">
+			<h3 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'kaya' ); ?></h3>
 			<div class="nav-links">
 
 				<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'kaya' ) ); ?></div>

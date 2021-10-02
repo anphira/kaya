@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.11.0
+ * @version 1.0
  */
 
 ?><!DOCTYPE html>
@@ -34,10 +34,20 @@
 ?>
 
 <div id="page" class="site">
+
+	<header id="masthead" class="site-header <?php if(get_theme_mod( 'kaya_transparent_header', false ) ) echo 'transparent-header'; ?>">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'kaya' ); ?></a>
 
+	<?php if(get_theme_mod( 'kaya_announce_bar_checkbox', false )) { ?>
+		<div class="announcement-bar">
+			<?php echo get_theme_mod( 'kaya_announce_bar_content', '' ); ?>
+			<?php if(get_theme_mod( 'kaya_announce_bar_button_show', false )) { ?>
+				<a class="announcement-button" href="<?php echo get_theme_mod( 'kaya_announce_bar_button_url', '' ); ?>"><?php echo get_theme_mod( 'kaya_announce_bar_button_text', '' ); ?></a>
+			<?php } ?>
+		</div>
+	<?php } ?>
+
 	<?php if( '' == get_post_meta($post->ID, '_kaya_hide_header_check', true)) { ?>
-	<header id="masthead" class="site-header <?php if(get_theme_mod( 'kaya_transparent_header', false ) ) echo 'transparent-header'; ?>" role="banner">
 		<?php if(get_theme_mod( 'kaya_top_header', false )) { ?>
 			<div class="top-header">
 				<div class="container">
@@ -98,7 +108,7 @@
 					echo '</div>';
 					echo '<div class="columns-9 last">';
 						dynamic_sidebar('Header-2');
-						echo '<nav id="site-navigation" class="main-navigation" role="navigation">';
+						echo '<nav id="site-navigation" class="main-navigation">';
 						if( ! get_theme_mod( 'kaya_hide_mobile_button_menu', false ) ) {
 							?><button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'kaya' ); ?></button><?php
 						}
@@ -124,7 +134,7 @@
 		</div><!-- .container -->
 
 		<?php if( 'logo_menu' !== get_theme_mod( 'kaya_header_columns', 'one_column' )) { ?>
-		<nav id="site-navigation" class="main-navigation" role="navigation">
+		<nav id="site-navigation" class="main-navigation">
 			<div class="container">
 				<?php if( !get_theme_mod( 'kaya_hide_mobile_button_menu', false )) { ?>
 					<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'kaya' ); ?></button>
@@ -133,8 +143,8 @@
 			</div> <!-- .container -->
 		</nav><!-- #site-navigation -->
 		<?php } ?>
-	</header><!-- #masthead -->
 	<?php } ?>
+	</header><!-- #masthead -->
 
 
 	<?php 
@@ -148,14 +158,14 @@
 
 	/* Sidebar classes */
 	if(is_page()) {
-		if(!get_post_meta($post->ID, '_kaya_sidebar_setting', true) || 'use_default' == get_post_meta($post->ID, '_kaya_sidebar_setting', true) ) {
+		if(!get_post_meta($post->ID, 'kaya_sidebar_setting', true) || 'use_default' == get_post_meta($post->ID, 'kaya_sidebar_setting', true) ) {
 			if ('left_sidebar' == get_theme_mod( 'kaya_page_sidebar', 'no_sidebar' )) 
 				$content_class .= 'sidebar-left ';
 			elseif ('right_sidebar' == get_theme_mod( 'kaya_page_sidebar', 'right_sidebar' )) 
 				$content_class .= 'sidebar-right ';
 		}
 		else {
-			$sidebar_class_temp = get_post_meta($post->ID, '_kaya_sidebar_setting', true);
+			$sidebar_class_temp = get_post_meta($post->ID, 'kaya_sidebar_setting', true);
 			switch($sidebar_class_temp) {
 				case 'left_sidebar':
 					$content_class .= 'sidebar-left ';
@@ -256,7 +266,7 @@
 
 	if(!is_single()) { 
 		if($page_hero_setting) { ?>
-			<div id="page-hero-area">
+			<header id="page-hero-area">
 				<div class="container">
 					<?php
 						if(is_page()) {
@@ -281,16 +291,16 @@
 						}
 					?>
 				</div>
-			</div>
+			</header>
 		<?php }
 	} else { 
 		if($page_hero_blog) {
 			?>
-			<div id="page-hero-area">
+			<header id="page-hero-area">
 				<div class="container">
 					<?php the_title( '<h1 class="entry-title" itemprop="name">', '</h1>' ); ?>
 				</div>
-			</div>
+			</header>
 		<?php
 		}
 	} ?>

@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.10.0
+ * @version 1.0
  */
 
 
@@ -32,35 +32,37 @@ function kaya_fonts_list() {
 		'courier' => 'Courier New, Courier, monospace',
 		
 		// Generally available
-		'arial_black' => 'Arial Black, Gadget, sans-serif',
-		'comic_sans' => 	'Comic Sans MS, Textile, cursive',
 		'georgia' => 'Georgia, Times New Roman, Times, serif',
-		'impact' => 'Impact, Charcoal, sans-serif',
 		'tahoma' => 'Tahoma, Geneva, sans-serif',
 		'trebuchet' => 'Trebuchet MS, Helvetica, sans-serif',
 		'verdana' => 'Verdana, sans-serif',
 		
 		// Google fonts
-		'abril_fatface' => 'Abril Fatface, cursive',
+		'abeezee' => 'ABeeZee, sans-serif',
 		'arvo' => 'Arvo, serif',
 		'bitter' => 'Bitter, serif',
+		'cabin' => 'Cabin, sans-serif',
 		'droid_sans' => '"Droid Sans", sans-serif',
 		'droid_serif' => '"Droid Serif", serif',
+		'exo' => 'Exo, sans-serif',
 		'josefin_slab' => '"Josefin Slab", serif',
 		'lato' => 'Lato, sans-serif',
 		'lora' => 'Lora, serif',
-		'lobster' => 'Lobster, cursive',
 		'merriweather' => 'Merriweather, serif',
-		'montserrat' => 'Montserrat, sans-serif',
-		'muli' => 'Muli, sans-serif',
-		'oswald' => 'Oswald, sans-serif',
+		'merriweather_sans' => '"Merriweather Sans", sans-serif',
+		'noto_sans' => '"Noto Sans", sans-serif',
+		'nunito' => 'Nunito, sans-serif',
 		'open_sans' => '"Open Sans", sans-serif',
+		'poppins' => 'Poppins, sans-serif',
 		'pt_sans' => '"PT Sans", sans-serif',
+		'quicksand' => 'Quicksand, sans-serif',
 		'raleway' => 'Raleway, sans-serif',
 		'roboto' => 'Roboto, sans-serif',
-		'roboto_condensed' => '"Roboto Condensed", sans-serif',
+		'roboto_slab' => '"Roboto Slab", sans-serif',
+		'sen' => 'Sen, sans-serif',
 		'ubuntu' => 'Ubuntu, sans-serif',
 		'vollkorn' => 'Vollkorn, serif',
+		'work_sans' => '"Work Sans", sans-serif',
 	);
 
 	return $kaya_font_family_options;
@@ -80,35 +82,37 @@ function kaya_fonts_simple_list() {
 		'courier',
 		
 		// Generally available
-		'arial_black',
-		'comic_sans',
 		'georgia',
-		'impact',
 		'tahoma',
 		'trebuchet',
 		'verdana',
 		
 		// Google fonts
-		'abril_fatface',
+		'abeezee',
 		'arvo',
 		'bitter',
+		'cabin',
 		'droid_sans',
 		'droid_serif',
+		'exo',
 		'josefin_slab',
 		'lato',
 		'lora',
-		'lobster',
 		'merriweather',
-		'montserrat',
-		'muli',
-		'oswald',
+		'merriweather_sans',
+		'noto_sans',
+		'nunito',
 		'open_sans',
+		'poppins',
 		'pt_sans',
+		'quicksand',
 		'raleway',
 		'roboto',
-		'roboto_condensed',
+		'roboto_slab',
+		'sen',
 		'ubuntu',
 		'vollkorn',
+		'work_sans',
 	);
 
 	return $kaya_font_family_options;
@@ -122,26 +126,31 @@ function kaya_fonts_simple_list() {
  */
 function kaya_is_font_from_google( $input_font ) {
 	$google_fonts = array(
-		'abril_fatface',
+		'abeezee',
 		'arvo',
 		'bitter',
+		'cabin',
 		'droid_sans',
 		'droid_serif',
+		'exo',
 		'josefin_slab',
 		'lato',
 		'lora',
-		'lobster',
 		'merriweather',
-		'montserrat',
-		'muli',
-		'oswald',
+		'merriweather_sans',
+		'noto_sans',
+		'nunito',
 		'open_sans',
+		'poppins',
 		'pt_sans',
+		'quicksand',
 		'raleway',
 		'roboto',
-		'roboto_condensed',
+		'roboto_slab',
+		'sen',
 		'ubuntu',
 		'vollkorn',
+		'work_sans',
 	);
 	
 	if( in_array( $input_font, $google_fonts) )
@@ -177,8 +186,8 @@ function kaya_font_lookup( $input_font) {
 	//make sure font is actually from google
 	if ( kaya_is_font_from_google( $input_font ) ) {
 		switch($input_font) {
-			case 'abril_fatface':
-				$google_value = 'Abril+Fatface';
+			case 'abeezee':
+				$google_value = 'ABeeZee:400,400i,700';
 				break;
 			case 'arvo':
 				$google_value = 'Arvo:400,400i,700';
@@ -186,11 +195,17 @@ function kaya_font_lookup( $input_font) {
 			case 'bitter':
 				$google_value = 'Bitter:400,400i,700';
 				break;
+			case 'cabin':
+				$google_value = 'Cabin:400,400i,700';
+				break;
 			case 'droid_sans':
 				$google_value = 'Droid+Sans:400,700';
 				break;
 			case 'droid_serif':
 				$google_value = 'Droid+Serif:400,400i,700';
+				break;
+			case 'exo':
+				$google_value = 'Exo:400,400i,700';
 				break;
 			case 'josefin_slab':
 				$google_value = 'Josefin+Slab:400,400i,700';
@@ -201,26 +216,29 @@ function kaya_font_lookup( $input_font) {
 			case 'lora':
 				$google_value = 'Lora:400,400i,700';
 				break;
-			case 'lobster':
-				$google_value = 'Lobster';
-				break;
 			case 'merriweather':
 				$google_value = 'Merriweather:400,400i,700';
 				break;
-			case 'montserrat':
-				$google_value = 'Montserrat:400,700';
+			case 'merriweather_sans':
+				$google_value = 'Merriweather+Sans:400,400i,700';
 				break;
-			case 'muli':
-				$google_value = 'Muli:400,400i,700';
+			case 'noto_sans':
+				$google_value = 'Noto+Sans:400,700';
 				break;
-			case 'oswald':
-				$google_value = 'Oswald:400,700';
+			case 'nunito':
+				$google_value = 'Nunito:400,400i,700';
 				break;
 			case 'open_sans':
 				$google_value = 'Open+Sans:400,400i,700';
 				break;
+			case 'poppins':
+				$google_value = 'Poppins:400,400i,700';
+				break;
 			case 'pt_sans':
 				$google_value = 'PT+Sans:400,400i,700';
+				break;
+			case 'quicksand':
+				$google_value = 'Quicksand:400,400i,700';
 				break;
 			case 'raleway':
 				$google_value = 'Raleway:400,400i,700';
@@ -228,14 +246,20 @@ function kaya_font_lookup( $input_font) {
 			case 'roboto':
 				$google_value = 'Roboto:400,400i,700';
 				break;
-			case 'roboto_condensed':
-				$google_value = 'Roboto+Condensed:400,400i,700';
+			case 'roboto_slab':
+				$google_value = 'Roboto+Slab:400,400i,700';
+				break;
+			case 'sen':
+				$google_value = 'Sen:400,400i,700';
 				break;
 			case 'ubuntu':
 				$google_value = 'Ubuntu:400,400i,700';
 				break;
 			case 'vollkorn':
 				$google_value = 'Vollkorn:400,400i,700';
+				break;
+			case 'work_sans':
+				$google_value = 'Work+Sans:400,400i,700';
 				break;
 		}
 	}
@@ -529,7 +553,7 @@ class Kaya_Separator_Control extends WP_Customize_Control {
 		$input_id = '_customize-input-' . $this->id;
 		if ( ! empty( $this->label ) ) : ?>
 			<hr>
-			<label style="background:black;color:white;padding: 4px 8px;" for="<?php echo esc_attr( $input_id ); ?>" class="customize-control-title"><?php echo esc_html( $this->label ); ?></label>
+			<label style="background:#222;color:#eee;padding: 4px 8px;" for="<?php echo esc_attr( $input_id ); ?>" class="customize-control-title"><?php echo esc_html( $this->label ); ?></label>
 		<?php endif; ?>
 		<?php if ( ! empty( $this->description ) ) : ?>
             <span class="description customize-control-description"><?php echo $this->description; ?></span>
@@ -574,16 +598,17 @@ add_filter( 'login_headerurl', 'my_login_logo_url' );
  * Kaya Logo Display
  */
 function kaya_logo_display() {
-	echo '<div class="site-branding"><a href="',  esc_url( home_url() )  , '">';
+	echo '<div class="site-branding">';
 		if ( get_theme_mod( 'kaya_logo', false ) ) :
+			echo '<a href="',  esc_url( home_url() )  , '">';
 			$kaya_alt = esc_attr( get_bloginfo( 'name', 'display' ) );
 			$kaya_logo = esc_url(get_theme_mod( 'kaya_logo' ));
-			//list($width, $height) = getimagesize($kaya_logo);
 			$width = get_theme_mod( 'kaya_logo_width', '' );
 			$height = get_theme_mod( 'kaya_logo_height', '' );
 			echo "<img src='$kaya_logo' alt='$kaya_alt' width='$width' height='$height'>";
+			echo '</a>';
 		else :
-			echo '<h3 class="site-title">' , bloginfo( 'name' ) , '</h3>';
+			echo '<h3 class="site-title"><a href="',  esc_url( home_url() )  , '">' , bloginfo( 'name' ) , '</a></h3>';
 		endif;
-	echo '</a></div><!-- .site-branding -->';
+	echo '</div><!-- .site-branding -->';
 }

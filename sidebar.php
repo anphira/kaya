@@ -7,12 +7,12 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.11.0
+ * @version 1.0
  */
 
 ?>
 
-<aside id="secondary" class="widget-area" role="complementary">
+<aside id="secondary" class="widget-area">
 	<?php 
 
 

@@ -7,14 +7,14 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.5.4
+ * @version 1.0
  */
 
 get_header(); ?>
 
 	<?php if (get_theme_mod( 'kaya_post_sidebar', 'right_sidebar' ) == 'left_sidebar') get_sidebar(); ?>
 	<div id="primary" class="content-area <?php if( get_theme_mod( 'kaya_post_sidebar', 'right_sidebar' ) !== 'no_sidebar' ) echo 'has-sidebar'; ?>">
-		<main id="main" class="site-main" role="main">
+		<main id="main" class="site-main">
 
 		<?php
 		if ( have_posts() ) : ?>

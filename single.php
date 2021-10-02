@@ -5,14 +5,14 @@
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
  * @package 
- * @version 0.10.2
+ * @version 1.0
  */
 
 get_header(); ?>
 
 	<?php if ('left_sidebar' == get_theme_mod( 'kaya_post_sidebar', 'right_sidebar' )) get_sidebar(); ?>
 	<div id="primary" class="content-area <?php if( get_theme_mod( 'kaya_post_sidebar', 'right_sidebar' ) !== 'no_sidebar' ) echo 'has-sidebar'; ?>">
-		<main id="main" class="site-main" role="main">
+		<main id="main" class="site-main">
 
 		<?php
 		while ( have_posts() ) : the_post();

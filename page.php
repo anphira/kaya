@@ -12,7 +12,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.10.2
+ * @version 1.0
  */
 
 get_header(); 
@@ -49,7 +49,7 @@ switch ($sidebar_setting ) {
 	?>
 
 	<div id="primary" class="content-area <?php echo $has_sidebar; ?>">
-		<main id="main" class="site-main" role="main">
+		<main id="main" class="site-main">
 
 			<?php
 			while ( have_posts() ) : the_post();

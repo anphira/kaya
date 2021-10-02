@@ -12,13 +12,13 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package Kaya
- * @version 0.11.0
+ * @version 1.0
  */
 
 get_header(); ?>
 
 	<div id="primary" class="content-area  has-sidebar">
-		<main id="main" class="site-main" role="main">
+		<main id="main" class="site-main">
 
 			<?php
 			while ( have_posts() ) : the_post();

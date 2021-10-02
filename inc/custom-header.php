@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.11.2
+ * @version 1.0
  */
 
 /**
@@ -30,7 +30,7 @@ function kaya_customizer_settings() {
 		echo '<link href="', get_theme_mod( 'kaya_custom_google_fonts_url' ), '" rel="stylesheet">';
 	}
 	elseif(!get_theme_mod( 'kaya_disable_google_fonts', false )) {
-		echo kaya_build_fonts_from_google( get_theme_mod( 'kaya_heading_font', 'arial' ), get_theme_mod( 'kaya_paragraph_font', 'arial' ) );
+		echo kaya_build_fonts_from_google( get_theme_mod( 'kaya_heading_font', 'verdana' ), get_theme_mod( 'kaya_paragraph_font', 'verdana' ) );
 	}
 	?>
 <!-- Load Customizer CSS settings -->
@@ -71,6 +71,21 @@ html {
 	} ?>
 }
 
+#masthead .announcement-bar {
+	background: <?php echo get_theme_mod( 'kaya_announcement_background_color', '#555555' ); ?>;
+	color: <?php echo get_theme_mod( 'kaya_announcement_text_color', '#ffffff' ); ?>;
+}
+#masthead .announcement-button,
+#masthead .announcement-button:visited {
+	background: <?php echo get_theme_mod( 'kaya_announcement_button_background_color', '#000000' ); ?>;
+	color: <?php echo get_theme_mod( 'kaya_announcement_button_text_color', '#ffffff' ); ?>;
+}
+#masthead .announcement-button:hover,
+#masthead .announcement-button:active {
+	background: <?php echo get_theme_mod( 'kaya_announcement_button_text_color', '#ffffff' ); ?>;
+	color: <?php echo get_theme_mod( 'kaya_announcement_button_background_color', '#000000' ); ?>;
+}
+
 body, p, button, input, select, textarea, .elementor-widget-text-editor {
 	color: <?php echo get_theme_mod( 'kaya_text_color', '#000000' ) ?>;
 	font-weight: <?php echo get_theme_mod( 'kaya_paragraph_font_weight', '400' ) ?>;
@@ -79,7 +94,7 @@ body, p, button, input, select, textarea, .elementor-widget-text-editor {
 		<?php if(get_theme_mod( 'kaya_custom_google_fonts_paragraph', '' ) != '')
 			echo get_theme_mod( 'kaya_custom_google_fonts_paragraph' );
 		else
-			echo kaya_font_family_lookup( get_theme_mod( 'kaya_paragraph_font', 'arial' ) ); ?>;
+			echo kaya_font_family_lookup( get_theme_mod( 'kaya_paragraph_font', 'verdana' ) ); ?>;
 }
 h1, h2, h3, h4, h5, h6 {
 	color: <?php echo get_theme_mod( 'kaya_heading_color', '#000000' ) ?>;
@@ -88,76 +103,76 @@ h1, h2, h3, h4, h5, h6 {
 		<?php if(get_theme_mod( 'kaya_custom_google_fonts_heading', '' ) != '')
 			echo get_theme_mod( 'kaya_custom_google_fonts_heading' );
 		else
-			echo kaya_font_family_lookup( get_theme_mod( 'kaya_heading_font', 'arial' ) ); ?>;
+			echo kaya_font_family_lookup( get_theme_mod( 'kaya_heading_font', 'verdana' ) ); ?>;
 }
 h1, .h1, .elementor-widget-heading h1.elementor-heading-title {
-	font-size: <?php echo get_theme_mod( 'kaya_heading_1', '36' ) ?>px;
+	font-size: <?php echo get_theme_mod( 'kaya_heading_1', '2' ) ?>em;
 	line-height: <?php echo get_theme_mod( 'kaya_heading_1_line_height', '1.5' ) ?>em;
 }
 h2, .h2, .elementor-widget-heading h2.elementor-heading-title {
-	font-size: <?php echo get_theme_mod( 'kaya_heading_2', '27' ) ?>px;
+	font-size: <?php echo get_theme_mod( 'kaya_heading_2', '1.8' ) ?>em;
 	line-height: <?php echo get_theme_mod( 'kaya_heading_2_line_height', '1.5' ) ?>em;
 }
 h3, .h3, .elementor-widget-heading h3.elementor-heading-title {
-	font-size: <?php echo get_theme_mod( 'kaya_heading_3', '21' ) ?>px;
+	font-size: <?php echo get_theme_mod( 'kaya_heading_3', '1.6' ) ?>em;
 	line-height: <?php echo get_theme_mod( 'kaya_heading_3_line_height', '1.5' ) ?>em;
 }
-h4, .h4, .elementor-widget-heading h4.elementor-heading-title {
-	font-size: <?php echo get_theme_mod( 'kaya_heading_4', '18' ) ?>px;
+h4, .widget-title, .h4, .elementor-widget-heading h4.elementor-heading-title {
+	font-size: <?php echo get_theme_mod( 'kaya_heading_4', '1.4' ) ?>em;
 	line-height: <?php echo get_theme_mod( 'kaya_heading_4_line_height', '1.5' ) ?>em;
 }
 h5, .h5, .elementor-widget-heading h5.elementor-heading-title {
-	font-size: <?php echo get_theme_mod( 'kaya_heading_5', '16' ) ?>px;
+	font-size: <?php echo get_theme_mod( 'kaya_heading_5', '1.25' ) ?>em;
 	line-height: <?php echo get_theme_mod( 'kaya_heading_5_line_height', '1.5' ) ?>em;
 }
 h6, .h6, .elementor-widget-heading h6.elementor-heading-title {
-	font-size: <?php echo get_theme_mod( 'kaya_heading_6', '16' ) ?>px;
+	font-size: <?php echo get_theme_mod( 'kaya_heading_6', '1.15' ) ?>em;
 	line-height: <?php echo get_theme_mod( 'kaya_heading_6_line_height', '1.5' ) ?>em;
 }
 @media screen and (max-width: 767px) {
 	<?php 
-		$kaya_heading_1 = get_theme_mod( 'kaya_heading_1', '36' );
-		$kaya_heading_2 = get_theme_mod( 'kaya_heading_2', '27' );
-		$kaya_heading_3 = get_theme_mod( 'kaya_heading_3', '21' );
-		$kaya_heading_4 = get_theme_mod( 'kaya_heading_4', '18' );
-		$kaya_heading_5 = get_theme_mod( 'kaya_heading_5', '18' );
-		$kaya_heading_6 = get_theme_mod( 'kaya_heading_6', '18' );
+		$kaya_heading_1 = get_theme_mod( 'kaya_heading_1', '2' );
+		$kaya_heading_2 = get_theme_mod( 'kaya_heading_2', '1.8' );
+		$kaya_heading_3 = get_theme_mod( 'kaya_heading_3', '1.6' );
+		$kaya_heading_4 = get_theme_mod( 'kaya_heading_4', '1.4' );
+		$kaya_heading_5 = get_theme_mod( 'kaya_heading_5', '1.25' );
+		$kaya_heading_6 = get_theme_mod( 'kaya_heading_6', '1.15' );
 	?>
 	h1, .h1, .elementor-widget-heading h1.elementor-heading-title {
-		font-size: <?php echo $kaya_heading_1 * 0.7 ?>px;
+		font-size: <?php echo $kaya_heading_1 * 0.7 ?>em;
 	}
 	h2, .h2, .elementor-widget-heading h2.elementor-heading-title {
-		font-size: <?php echo $kaya_heading_2 * 0.75 ?>px;
+		font-size: <?php echo $kaya_heading_2 * 0.75 ?>em;
 	}
 	h3, .h3, .elementor-widget-heading h3.elementor-heading-title {
-		font-size: <?php echo $kaya_heading_3 * 0.8 ?>px;
+		font-size: <?php echo $kaya_heading_3 * 0.8 ?>em;
 	}
 	h4, .h4, .elementor-widget-heading h4.elementor-heading-title {
-		font-size: <?php echo $kaya_heading_4 * 0.9 ?>px;
+		font-size: <?php echo $kaya_heading_4 * 0.9 ?>em;
 	}
 	h5, .h5, .elementor-widget-heading h5.elementor-heading-title {
-		font-size: <?php echo $kaya_heading_5 * 0.9 ?>px;
+		font-size: <?php echo $kaya_heading_5 * 0.9 ?>em;
 	}
 	h6, .h6, .elementor-widget-heading h6.elementor-heading-title {
-		font-size: <?php echo $kaya_heading_6 * 0.9 ?>px;
+		font-size: <?php echo $kaya_heading_6 * 0.9 ?>em;
 	}
 }
 p, body {
-	font-size: <?php echo get_theme_mod( 'kaya_paragraph', '16' ) ?>px;
+	font-size: <?php echo get_theme_mod( 'kaya_paragraph', '1' ) ?>em;
 }
 .social-icons .social-icon-single {
-	font-size: <?php echo get_theme_mod( 'kaya_social_icon_size', '18' ) ?>px;
+	font-size: <?php echo get_theme_mod( 'kaya_social_icon_size', '1.1' ) ?>em;
 }
 .social-icons .fab {
 	background: <?php echo get_theme_mod( 'kaya_social_icon_background_color', '#000000' ) ?>;
-	font-size: <?php echo get_theme_mod( 'kaya_social_icon_size', '18' ) ?>px;
-    width: calc(<?php echo get_theme_mod( 'kaya_social_icon_size', '18' ) ?>px + 20px);
+	font-size: <?php echo get_theme_mod( 'kaya_social_icon_size', '1.1' ) ?>em;
+    width: calc(<?php echo get_theme_mod( 'kaya_social_icon_size', '1.1' ) ?>em + 20px);
 }
 .social-icons .fab:hover {
 	background: <?php echo get_theme_mod( 'kaya_social_icon_color', '#ffffff' ) ?>;
 }
 .social-icons .fab:before {
-	font-size: <?php echo get_theme_mod( 'kaya_social_icon_size', '18' ) ?>px;
+	font-size: <?php echo get_theme_mod( 'kaya_social_icon_size', '1.1' ) ?>em;
 	color: <?php echo get_theme_mod( 'kaya_social_icon_color', '#ffffff' ) ?>;
 }
 .social-icons .fab:hover:before {
@@ -187,11 +202,19 @@ body a:hover, body a:focus, body a:active {
 #colophon h3, #colophon h4, #colophon h5, #colophon h6 {
 	color: <?php echo get_theme_mod( 'kaya_footer_heading_color', '#000000' ) ?>;
 }
-#colophon .site-info, #colophon .site-info a, #colophon .site-info p {
+#colophon .site-info, #colophon .site-info p {
 	background: <?php echo get_theme_mod( 'kaya_lower_footer_background_color', '#000000' ) ?>;
 	color: <?php echo get_theme_mod( 'kaya_lower_footer_text_color', '#ffffff' ) ?>;
 }
-#masthead #site-navigation .menu-item a, #masthead .menu-toggle, #masthead #site-navigation {
+#colophon .site-info a,
+#colophon .site-info a:visited {
+	color: <?php echo get_theme_mod( 'kaya_lower_footer_link_color', '#ffffff' ) ?>;
+}
+#colophon .site-info a:hover,
+#colophon .site-info a:active {
+	color: <?php echo get_theme_mod( 'kaya_lower_footer_link_hover_color', '#ffffff' ) ?>;
+}
+#masthead #site-navigation .menu-item a, #masthead .menu-toggle, #masthead #site-navigation, .main-navigation ul ul {
 	background: <?php echo get_theme_mod( 'kaya_menu_background_color', '#ffffff' ) ?>;
 	color: <?php echo get_theme_mod( 'kaya_menu_text_color', '#008dc4' ) ?>;
 }
