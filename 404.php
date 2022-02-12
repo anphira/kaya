@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.0
+ * @version 1.0.2
  */
 
 get_header(); ?>
@@ -33,12 +33,12 @@ get_header(); ?>
 	}
 	if((get_post_meta($post->ID, '_kaya_hide_title_check', true) !== 'on') && (true != $page_hero_setting)) { ?>
 	<header class="entry-header">
-		<h1><?php echo htmlspecialchars_decode(get_theme_mod( 'kaya_404_title', 'Sorry, we couldn\'t find that page')); ?></h1>
+		<h1><?php echo esc_html(get_theme_mod( 'kaya_404_title', 'Sorry, we couldn\'t find that page')); ?></h1>
 	</header><!-- .entry-header -->
 	<?php } ?>
 
 				<div class="page-content">
-					<p><?php echo htmlspecialchars_decode(get_theme_mod( 'kaya_404_content', 'You tried to reach a page which could not be found.<br /><br />Please <a href="/">click here to visit the home page</a> or use the main menu to navigate to your desired location.' )) ?></p>
+					<p><?php echo get_theme_mod( 'kaya_404_content', 'You tried to reach a page which could not be found.<br /><br />Please <a href="/">click here to visit the home page</a> or use the main menu to navigate to your desired location.' ) ?></p>
 
 					
 

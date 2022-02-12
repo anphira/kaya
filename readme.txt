@@ -1,11 +1,12 @@
-=== Kaya ===
+=== kaya ===
 
-Contributors: Anphira, automattic
+Contributors: anphira, automattic
 Tags: custom-background, theme-options, custom-menu, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, featured-images, flexible-header, footer-widgets, full-width-template, blog
 
 Requires at least: 5.5
-Tested up to: 5.5.1
-Stable tag: v0.10.3
+Tested up to: 5.9
+Requires PHP: 7.4
+Stable tag: v1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +14,7 @@ A starter theme called Kaya designed for PSD to WordPress builds, built from und
 
 == Description ==
 
-Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It’s ready to work with your page builder and has built-in support for Visual Composer. You can view the setup instructions by going to the Customizer and selecting “Need Setup Help?”.
+Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It’s ready to work with your page builder and has built-in support for Elementor. You can view the setup instructions by going to the Customizer and selecting “Need Setup Help?”.
 
 == Installation ==
 
@@ -27,6 +28,7 @@ Kaya is a flexible theme to build fabulous & functional websites. With a focus o
 
 Kaya includes support for Infinite Scroll in Jetpack.
 Kaya includes support for Visual Composer.
+Kaya includes support for Elementor Page Builder.
 
 = Are there examples of theme being used? =
 
@@ -42,16 +44,28 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
+= 1.1 - Feb 12 2022 =
+* Tested with PHP 8
+* added some settings to show font sytles in gutenberg
+
+= 1.0.2 - Dec 02 2021 =
+* corrected missing h1 on search.php
+
+= 1.0.1 - Oct 09 2021 = 
+* replaced .columns-* with .kaya-columns-* for compatibility with Gutenberg (ie: .columns-6 is now .kaya-columns-6)
+* kaya_social_icons shortcode removed
+* updated to pagination for the blog archives
+* correction to text sizing for p elements
+
 = 1.0 - Oct 02 2021 =
 * major update for accessibility
 * add option for setting accessibility statement
-* update for all font sizing - moving from px to em - this will break your old font sizes and you will have to resave
+* update for all font sizing - moving from px to em - this will break your old font sizes and you will have to update and resave in customizer (ie: if you have 36 for h1, you'd need to calculate 36/16 for a result of 2.25 and replace 36 with 2.25) Once you update any of the heading sizes you had set, you'll be fine.
 * update to focus state
 * update list of fonts to include more accessible fonts
 * deleted: Arial Black, Impact, Comic Sans, Abril Fatface, Lobster, Montserrat, Muli, Oswald, Roboto Condensed
 * added: ABeeZee, Cabin, Eco, Merriweather Sans, Noto Sans, Nunito, Poppins, Quicksand, Roboto Slab, Sen, Work Sans
 * removed redundant ARIA roles
-* updated font sizing for accessibility
 * updated headings for sidebar and footer from h4 to h2
 * minor CSS updates for WooCommerce
 * added announcement bar to top of site

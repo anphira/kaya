@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.0
+ * @version 1.1
  */
 
 /**
@@ -47,8 +47,8 @@ add_action( 'pre_get_posts', 'kaya_orderby_modified_posts' );
 /**
  * Declare WooCommerce Support
  */
-add_action( 'after_setup_theme', 'woocommerce_support' );
-function woocommerce_support() {
+add_action( 'after_setup_theme', 'kaya_woocommerce_support' );
+function kaya_woocommerce_support() {
     add_theme_support( 'woocommerce' );
     add_theme_support( 'wc-product-gallery-zoom' );
 	add_theme_support( 'wc-product-gallery-lightbox' );
@@ -56,10 +56,10 @@ function woocommerce_support() {
 }
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
-add_action('woocommerce_before_main_content', 'my_theme_wrapper_start', 10);
-add_action('woocommerce_after_main_content', 'my_theme_wrapper_end', 10);
+add_action('woocommerce_before_main_content', 'kaya_theme_wrapper_start', 10);
+add_action('woocommerce_after_main_content', 'kaya_theme_wrapper_end', 10);
 
-function my_theme_wrapper_start() {
+function kaya_theme_wrapper_start() {
 	$sidebar_setting = get_theme_mod( 'kaya_woo_sidebar' );
 	
 	echo '<div id="primary" class="content-area ';
@@ -69,7 +69,7 @@ function my_theme_wrapper_start() {
 	echo '">';
 }
 
-function my_theme_wrapper_end() {
+function kaya_theme_wrapper_end() {
   echo '</div>';
 }
 
@@ -77,8 +77,8 @@ function my_theme_wrapper_end() {
 /** 
  * Disable All WooCommerce  Styles and Scripts Except Shop Pages
  */
-add_action( 'wp_enqueue_scripts', 'dequeue_woocommerce_styles_scripts', 99 );
-function dequeue_woocommerce_styles_scripts() {
+add_action( 'wp_enqueue_scripts', 'kaya_dequeue_woocommerce_styles_scripts', 99 );
+function kaya_dequeue_woocommerce_styles_scripts() {
 	if ( function_exists( 'is_woocommerce' ) ) {
 		if ( ! is_woocommerce() && ! is_cart() && ! is_checkout() ) {
 			# Styles
@@ -163,12 +163,12 @@ add_filter( 'excerpt_more', 'kaya_excerpt_more' );
 /**
  * Always make "Remember me" box checked for login screen
  */
-function login_checked_remember_me() {
-    add_filter( 'login_footer', 'rememberme_checked' );
+function kaya_login_checked_remember_me() {
+    add_filter( 'login_footer', 'kaya_rememberme_checked' );
 }
-add_action( 'init', 'login_checked_remember_me' );
+add_action( 'init', 'kaya_login_checked_remember_me' );
  
-function rememberme_checked() {
+function kaya_rememberme_checked() {
 	echo "<script>document.getElementById('rememberme').checked = true;</script>";
 }
 
@@ -201,43 +201,43 @@ if( ! function_exists('kaya_social_icons') ) :
 function kaya_social_icons() {
 	echo '<div class="social-icons">';
 		if( get_theme_mod( 'kaya_facebook' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_facebook' ) . '"><i class="fab fa-facebook-f"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_facebook' )) . '"><i class="fab fa-facebook-f"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_twitter' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_twitter' ) . '"><i class="fab fa-twitter"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_twitter' )) . '"><i class="fab fa-twitter"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_linkedin' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_linkedin' ) . '"><i class="fab fa-linkedin-in"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_linkedin' )) . '"><i class="fab fa-linkedin-in"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_google_plus' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_google_plus' ) . '"><i class="fab fa-google"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_google_plus' )) . '"><i class="fab fa-google"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_skype' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_skype' ) . '"><i class="fab fa-skype"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_skype' )) . '"><i class="fab fa-skype"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_youtube' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_youtube' ) . '"><i class="fab fa-youtube"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_youtube' )) . '"><i class="fab fa-youtube"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_vimeo' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_vimeo' ) . '"><i class="fab fa-vimeo-v"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_vimeo' )) . '"><i class="fab fa-vimeo-v"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_instagram' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_instagram' ) . '"><i class="fab fa-instagram"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_instagram' )) . '"><i class="fab fa-instagram"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_pinterest' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_pinterest' ) . '"><i class="fab fa-pinterest-p"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_pinterest' )) . '"><i class="fab fa-pinterest-p"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_yelp' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_yelp' ) . '"><i class="fab fa-yelp"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_yelp' )) . '"><i class="fab fa-yelp"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_behance' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_behance' ) . '"><i class="fab fa-behance"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_behance' )) . '"><i class="fab fa-behance"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_rss' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . get_theme_mod( 'kaya_rss' ) . '"><i class="fas fa-rss"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_rss' )) . '"><i class="fas fa-rss"></i></a>';
 		}
 		if( get_theme_mod( 'kaya_email' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="mailto:' . get_theme_mod( 'kaya_email' ) . '"><i class="fas fa-envelope"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="mailto:' . esc_url(get_theme_mod( 'kaya_email' )) . '"><i class="fas fa-envelope"></i></a>';
 		}
 	echo '</div>';
 }
@@ -245,15 +245,7 @@ function kaya_social_icons() {
 endif;
 
 
-/**
- * Function for [kaya_social_icons] shortcode
- */
-if ( ! function_exists( 'kaya_setup' ) ) :
-function kaya_social_icons_shortcode() {
-	kaya_social_icons();
-}
-add_shortcode('kaya_social_icons', 'kaya_social_icons_shortcode');
-endif;
+
 
 
 if ( ! function_exists( 'kaya_setup' ) ) :
@@ -306,6 +298,8 @@ function kaya_setup() {
 		'comment-list',
 		'gallery',
 		'caption',
+		'style',
+		'script',
 	) );
 
 	// Set up the WordPress core custom background feature.
@@ -324,8 +318,8 @@ add_action( 'after_setup_theme', 'kaya_setup' );
 /**
  * Add custom image size for related posts
  */
-add_action( 'after_setup_theme', 'wpdocs_theme_setup' );
-function wpdocs_theme_setup() {
+add_action( 'after_setup_theme', 'kaya_image_sizes_setup' );
+function kaya_image_sizes_setup() {
     add_image_size( 'related-posts-image', 355, 180, true ); // (cropped)
 }
 
@@ -336,10 +330,10 @@ function wpdocs_theme_setup() {
  *
  * Priority 0 to make it available to lower priority callbacks.
  *
- * @global int $content_width
+ * @global int $kaya_content_width
  */
 function kaya_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'kaya_content_width', 1140 );
+	$GLOBALS['kaya_content_width'] = apply_filters( 'kaya_content_width', 1140 );
 }
 add_action( 'after_setup_theme', 'kaya_content_width', 0 );
 
@@ -396,7 +390,7 @@ function kaya_widgets_init() {
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'WooCommerce Sidebar', 'kaya' ),
-		'id'            => 'woocommerce-sidebar',
+		'id'            => 'kaya-woocommerce-sidebar',
 		'description'   => esc_html__( 'Add widgets here which will be display on your WooCommerce pages sidebar.', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
@@ -571,7 +565,7 @@ function kaya_page_settings_display_callback( $post ) {
     </p>
     
     <p>Enter Google Experiments Code - make sure to ONLY enter code on the master page, not variations:</p>
-    <textarea rows="4" style="width: 100%;" id="kaya_google_experiments_code" name="kaya_google_experiments_code" ><?php echo $google_experiments; ?></textarea>
+    <textarea rows="4" style="width: 100%;" id="kaya_google_experiments_code" name="kaya_google_experiments_code" ><?php echo esc_html($google_experiments); ?></textarea>
     
     <?php 
     echo '<hr />Pages are currently set to display ';
@@ -599,19 +593,18 @@ function kaya_page_settings_display_callback( $post ) {
 	echo '<p>Page Hero Background color</p>';
 	$kaya_page_hero_header_color = get_post_meta($post->ID, '_kaya_page_hero_header_color', true);
 	?>
-	<input class="color_field" type="text" name="kaya_page_hero_header_color" value="<?php esc_attr( $kaya_page_hero_header_color ); ?>"/>
+	<input class="color_field" type="text" name="kaya_page_hero_header_color" value="<?php echo esc_attr($kaya_page_hero_header_color); ?>"/>
 	<?php
 
 	echo '<p>Page Hero Background image</p>';
 	$kaya_page_hero_image = get_post_meta($post->ID, '_kaya_page_hero_image', true);
 	?>
 
-	
 	<input style="width:100%" type="text" name="kaya_page_hero_image" id="kaya_page_hero_image" value="<?php echo esc_attr( $kaya_page_hero_image ); ?>" />
     
 
 	<?php
-	echo '<p>Style of Page Hero Background: The page default is set to ', get_theme_mod('kaya_page_hero_background_image_type'),'</p>';
+	echo '<p>Style of Page Hero Background: The page default is set to ', esc_html(get_theme_mod('kaya_page_hero_background_image_type')),'</p>';
 	$selected = isset( $values['kaya_page_hero_background_setting'] ) ? esc_attr( $values['kaya_page_hero_background_setting'][0] ) : '';
 	?>
     <select id="kaya_page_hero_background_setting" name="kaya_page_hero_background_setting">
@@ -643,7 +636,8 @@ function kaya_page_settings_save_meta_box( $post_id ) {
  	 * We need to verify this came from the our screen and with proper authorization,
      * because save_post can be triggered at other times.
      */
-	if( !isset( $_POST['kaya_sidebar_setting_nonce'] ) || !wp_verify_nonce( $_POST['kaya_sidebar_setting_nonce'], 'kaya_sidebar_setting_nonce' ) ) return;
+
+	if( !isset( $_POST['kaya_sidebar_setting_nonce'] ) || !wp_verify_nonce( $_POST['kaya_sidebar_setting_nonce'], 'kaya_sidebar_setting_nonce' ) ) return; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
      
     
     // Check the user's permissions.
@@ -652,48 +646,62 @@ function kaya_page_settings_save_meta_box( $post_id ) {
 	/* OK, it's safe for us to save the data now. */
  
 	// Sanitize the user input.
-	if( isset( $_POST['kaya_sidebar_setting'] ) )
-        update_post_meta( $post_id, 'kaya_sidebar_setting', esc_attr( $_POST['kaya_sidebar_setting'] ) );
+	if( isset( $_POST['kaya_sidebar_setting'] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+        update_post_meta( $post_id, 'kaya_sidebar_setting', esc_attr( wp_unslash($_POST['kaya_sidebar_setting']) ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+	}
 	
-	if( isset( $_POST['kaya_full_width_check'] ) )
-		update_post_meta( $post_id, '_kaya_full_width_check', $_POST['kaya_full_width_check']);
-	else
+	if( isset( $_POST['kaya_full_width_check'] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		update_post_meta( $post_id, '_kaya_full_width_check', wp_unslash($_POST['kaya_full_width_check'])); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+	}
+	else {
 		update_post_meta( $post_id, '_kaya_full_width_check', '');
+	}
 	
-	if( isset( $_POST['kaya_hide_title_check'] ) )
-		update_post_meta( $post_id, '_kaya_hide_title_check', $_POST['kaya_hide_title_check']);
-	else
+	if( isset( $_POST['kaya_hide_title_check'] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		update_post_meta( $post_id, '_kaya_hide_title_check', wp_unslash($_POST['kaya_hide_title_check'])); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+	}
+	else {
 		update_post_meta( $post_id, '_kaya_hide_title_check', '');
+	}
 	
-	if( isset( $_POST['kaya_hide_header_check'] ) )
-		update_post_meta( $post_id, '_kaya_hide_header_check', $_POST['kaya_hide_header_check']);
-	else
+	if( isset( $_POST['kaya_hide_header_check'] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		update_post_meta( $post_id, '_kaya_hide_header_check', wp_unslash($_POST['kaya_hide_header_check'])); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+	}
+	else {
 		update_post_meta( $post_id, '_kaya_hide_header_check', '');
+	}
 	
-	if( isset( $_POST['kaya_hide_footer_check'] ) )
-		update_post_meta( $post_id, '_kaya_hide_footer_check', $_POST['kaya_hide_footer_check']);
-	else
+	if( isset( $_POST['kaya_hide_footer_check'] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		update_post_meta( $post_id, '_kaya_hide_footer_check', wp_unslash($_POST['kaya_hide_footer_check'])); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+	}
+	else {
 		update_post_meta( $post_id, '_kaya_hide_footer_check', '');
+	}
 		
-	if( isset( $_POST['kaya_google_experiments_code'] ) )
-		update_post_meta( $post_id, '_kaya_google_experiments_code', $_POST['kaya_google_experiments_code'] );
-
-	if( isset( $_POST['kaya_page_hero_setting'] ) )
-        update_post_meta( $post_id, 'kaya_page_hero_setting', esc_attr( $_POST['kaya_page_hero_setting'] ) );
-
-	if( isset( $_POST['kaya_page_hero_header_color'] ) )
-        update_post_meta( $post_id, '_kaya_page_hero_header_color', esc_attr( $_POST['kaya_page_hero_header_color'] ) );
-
-    // Checks for input and saves if needed
-	if( isset( $_POST[ 'kaya_page_hero_image' ] ) ) {
-	    update_post_meta( $post_id, '_kaya_page_hero_image', $_POST[ 'kaya_page_hero_image' ] );
+	if( isset( $_POST['kaya_google_experiments_code'] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		update_post_meta( $post_id, '_kaya_google_experiments_code', $_POST['kaya_google_experiments_code'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 	}
 
-	if( isset( $_POST['kaya_page_hero_background_setting'] ) )
-        update_post_meta( $post_id, 'kaya_page_hero_background_setting', esc_attr( $_POST['kaya_page_hero_background_setting'] ) );
+	if( isset( $_POST['kaya_page_hero_setting'] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+        update_post_meta( $post_id, 'kaya_page_hero_setting', esc_attr( wp_unslash($_POST['kaya_page_hero_setting']) ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+	}
+
+	if( isset( $_POST['kaya_page_hero_header_color'] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+        update_post_meta( $post_id, '_kaya_page_hero_header_color', esc_attr( wp_unslash($_POST['kaya_page_hero_header_color']) ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+	}
+
+    // Checks for input and saves if needed
+	if( isset( $_POST[ 'kaya_page_hero_image' ] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+	    update_post_meta( $post_id, '_kaya_page_hero_image', wp_unslash($_POST[ 'kaya_page_hero_image' ]) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+	}
+
+	if( isset( $_POST['kaya_page_hero_background_setting'] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+        update_post_meta( $post_id, 'kaya_page_hero_background_setting', esc_attr( wp_unslash($_POST['kaya_page_hero_background_setting']) ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+	}
 		
-	if( isset( $_POST['kaya_page_hero_content'] ) )
-		update_post_meta( $post_id, '_kaya_page_hero_content', htmlspecialchars_decode($_POST['kaya_page_hero_content']) );
+	if( isset( $_POST['kaya_page_hero_content'] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		update_post_meta( $post_id, '_kaya_page_hero_content', $_POST['kaya_page_hero_content'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+	}
 }
 add_action( 'save_post', 'kaya_page_settings_save_meta_box' );
 
@@ -764,15 +772,15 @@ require get_template_directory() . '/inc/jetpack.php';
 /**
  * Enqueue Font Awesome Stylesheet
  */
-function enqueue_kaya_font_awesome_stylesheet(){
+function kaya_enqueue_font_awesome_stylesheet(){
 	wp_enqueue_style('font-awesome-kaya', get_template_directory_uri() . '/inc/fontawesome-free-5.13.0-web/css/all.min.css');
 }
-add_action('wp_enqueue_scripts','enqueue_kaya_font_awesome_stylesheet');
+add_action('wp_enqueue_scripts','kaya_enqueue_font_awesome_stylesheet');
 
 /**
  * Function to determine good contrast color (black or white)
  */
-function readableColour($bg){
+function kaya_readableColour($bg){
     $r = hexdec(substr($bg,0,2));
     $g = hexdec(substr($bg,2,2));
     $b = hexdec(substr($bg,4,2));
@@ -810,12 +818,12 @@ class Kaya_Social_Widget extends WP_Widget {
 	 * @param array $instance
 	 */
 	public function widget( $args, $instance ) {
-		echo $args['before_widget'];
+		echo esc_html($args['before_widget']);
 		if ( ! empty( $instance['title'] ) ) {
-			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
+			echo esc_html($args['before_title']) . apply_filters( 'widget_title', esc_html($instance['title']) ). esc_html($args['after_title']);
 		}
 		kaya_social_icons();
-		echo $args['after_widget'];
+		echo esc_html($args['after_widget']);
 	}
 
 	/**
@@ -827,8 +835,8 @@ class Kaya_Social_Widget extends WP_Widget {
 		$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Follow Us', 'kaya' );
 		?>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'kaya' ); ?></label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+		<label for="<?php echo esc_html($this->get_field_id( 'title' )); ?>"><?php esc_html_e( 'Title:', 'kaya' ); ?></label> 
+		<input class="widefat" id="<?php echo esc_html($this->get_field_id( 'title' )); ?>" name="<?php echo esc_html($this->get_field_name( 'title' )); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
 		<?php 
 	}
@@ -847,10 +855,10 @@ class Kaya_Social_Widget extends WP_Widget {
 	}
 }
 
-function register_Kaya_Social_Widget() {
+function kaya_register_Social_Widget() {
     register_widget( 'Kaya_Social_Widget' );
 }
-add_action( 'widgets_init', 'register_Kaya_Social_Widget' );
+add_action( 'widgets_init', 'kaya_register_Social_Widget' );
 
 
 /* Remove website field from the comment form */
@@ -862,13 +870,8 @@ function kaya_website_field_remove($fields) {
 }
 
 
-/* Display custom maintenance mode page */
-if ( ! function_exists( 'kaya_maintenance_mode' ) ) {
-    function kaya_maintenance_mode() {
-        if ( file_exists( ABSPATH . '.maintenance' ) ) {
-            include_once get_template_directory() . '/maintenance.php';
-            die();
-        }
-    }
-    add_action( 'wp', 'kaya_maintenance_mode' );
+function kaya_instant_page_preloading_script() {
+	/* instant page preloading script */
+	wp_enqueue_script('kaya-instant-page-preloading', 'https://instant.page/5.1.0');
 }
+add_action('wp_enqueue_scripts','kaya_instant_page_preloading_script');

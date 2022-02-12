@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 0.7.3
+ * @version 1.0.1
  */
 
 ?>

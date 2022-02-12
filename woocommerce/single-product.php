@@ -30,7 +30,7 @@ get_header( 'shop' ); ?>
 		 */
 		$sidebar_setting = get_theme_mod( 'kaya_woo_sidebar', 'right_sidebar' );
 		if ($sidebar_setting == 'left_sidebar') {
-			do_action( 'woocommerce_sidebar' );
+			do_action( 'woocommerce_sidebar' ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
 		}
 		
 	?>
@@ -42,7 +42,7 @@ get_header( 'shop' ); ?>
 		 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
 		 * @hooked woocommerce_breadcrumb - 20
 		 */
-		do_action( 'woocommerce_before_main_content' );
+		do_action( 'woocommerce_before_main_content' ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
 	?>
 
 		<?php while ( have_posts() ) : the_post(); ?>
@@ -57,7 +57,7 @@ get_header( 'shop' ); ?>
 		 *
 		 * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
 		 */
-		do_action( 'woocommerce_after_main_content' );
+		do_action( 'woocommerce_after_main_content' ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
 	?>
 
 	<?php
@@ -66,7 +66,7 @@ get_header( 'shop' ); ?>
 		 *
 		 * @hooked woocommerce_get_sidebar - 10
 		 */
-		if ($sidebar_setting == 'right_sidebar') do_action( 'woocommerce_sidebar' );
+		if ($sidebar_setting == 'right_sidebar') do_action( 'woocommerce_sidebar' ); // phpcs:ignore WPThemeReview.CoreFunctionality.PrefixAllGlobals.NonPrefixedHooknameFound
 	?>
 
 <?php get_footer( 'shop' );

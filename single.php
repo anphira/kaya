@@ -5,7 +5,7 @@
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
  * @package 
- * @version 1.0
+ * @version 1.0.1
  */
 
 get_header(); ?>
@@ -44,7 +44,6 @@ get_header(); ?>
 
 		$related_args = array(
 			'post_type' => 'post',
-			'posts_per_page' => -1,
 			'post_status' => 'publish',
 			'posts_per_page' => 3,
 			'post__not_in' => array( get_the_ID() ),

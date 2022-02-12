@@ -5,10 +5,13 @@ Author: Anphira, LLC
 Author URI: https://www.anphira.com/
 GitHub Theme URI: anphira/kaya
 Description: Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It's ready to work with your page builder and has built-in support for Visual Composer. You can view the setup instructions by going to the Customizer and selecting "Need Setup Help?".
-Version: 1.0
+Version: 1.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kaya
+Requires at least: 5.5
+Tested up to: 5.8.1
+Requires PHP:  7.2
 Tags: custom-background, theme-options, custom-menu, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, featured-images, flexible-header, footer-widgets, full-width-template, blog
 
 This theme, like WordPress, is licensed under the GPL.
@@ -42,6 +45,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 	## Captions
 	## Galleries
 # Footer Settings
+# Gutenberg Fixes
 # WPBakery Page Builder Support
 # WooCommerce Support
 # Social sharing buttons
@@ -308,13 +312,19 @@ optgroup {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+	border: 1px solid #aaa;
 }
 tr:nth-child(even) {
 	background: rgba(240,240,240,0.7);
 }
 td,
 th {
-	padding: 5px 0;
+	padding: 5px;
+	border-right: 1px solid #aaa;
+}
+td:last-child,
+th:last-child {
+	border-right: none;
 }
 
 /*--------------------------------------------------------------
@@ -445,7 +455,8 @@ ol {
 	list-style: decimal;
 }
 
-#content li {
+#content li,
+#colophon li {
 	padding-bottom: 0.7em;
 }
 
@@ -618,8 +629,7 @@ a:active {
 .main-navigation li {
 	float: left;
 	position: relative;
-	padding-right: 10px;
-	padding-left:  10px;
+	padding: 4px 10px;
 }
 
 .main-navigation a {
@@ -632,7 +642,7 @@ a:active {
 	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
 	float: left;
 	position: absolute;
-	top: 2em;
+	top: calc(1.5em + 8px);
 	left: -999em;
 	z-index: 999;
 }
@@ -671,6 +681,15 @@ a:active {
 	}
 }
 
+
+.paged-links {
+	text-align: center;
+	margin-bottom: 30px;
+}
+.paged-links .page-numbers {
+	margin: 5px;
+	padding: 5px;
+}
 .site-main .comment-navigation,
 .site-main .posts-navigation,
 .site-main .post-navigation {
@@ -1077,6 +1096,25 @@ object {
 }
 
 
+
+/*--------------------------------------------------------------
+# Gutenberg Fixes
+--------------------------------------------------------------*/
+.wp-block-button {
+	margin-bottom: 15px;
+}
+.wp-block-button.is-style-squared .wp-block-button__link {
+	border-radius: 0;
+}
+.wp-block-cover.has-background-dim {
+	color:  white;
+}
+.alignfull {
+	clear:  both;
+}
+
+
+
 /*--------------------------------------------------------------
 # Font Awesome Support
 --------------------------------------------------------------*/
@@ -1282,27 +1320,42 @@ body .extra-large-text li {
 # 12 column grid CSS Classes
 --------------------------------------------------------------*/
 @media screen and (min-width: 768px) {
-	.columns-12, 
-	.columns-11, 
-	.columns-10, 
-	.columns-9, 
-	.columns-8, 
-	.columns-7, 
-	.columns-6, 
-	.columns-5, 
-	.columns-4, 
-	.columns-3, 
-	.columns-2, 
-	.columns-1, 
-	.columns-one-fifth, 
-	.columns-one-seventh, 
-	.columns-one-eighth, 
-	.columns-one-ninth {
+	.kaya-columns-12, 
+	.kaya-columns-11, 
+	.kaya-columns-10, 
+	.kaya-columns-9, 
+	.kaya-columns-8, 
+	.kaya-columns-7, 
+	.kaya-columns-6, 
+	.kaya-columns-5, 
+	.kaya-columns-4, 
+	.kaya-columns-3, 
+	.kaya-columns-2, 
+	.kaya-columns-1, 
+	.kaya-columns-one-fifth, 
+	.kaya-columns-one-seventh, 
+	.kaya-columns-one-eighth, 
+	.kaya-columns-one-ninth {
 		float: left;
 		margin-right: 2%;
 	}
 }
-.columns-12-non-responsive, .columns-11-non-responsive, .columns-10-non-responsive, .columns-9-non-responsive, .columns-8-non-responsive, .columns-7-non-responsive, .columns-6-non-responsive, .columns-5-non-responsive, .columns-4-non-responsive, .columns-3-non-responsive, .columns-2-non-responsive, .columns-1-non-responsive, .columns-one-fifth-non-responsive, .columns-one-seventh-non-responsive, .columns-one-eighth-non-responsive, .columns-one-ninth-non-responsive {
+.kaya-columns-12-non-responsive, 
+.kaya-columns-11-non-responsive, 
+.kaya-columns-10-non-responsive, 
+.kaya-columns-9-non-responsive, 
+.kaya-columns-8-non-responsive, 
+.kaya-columns-7-non-responsive, 
+.kaya-columns-6-non-responsive, 
+.kaya-columns-5-non-responsive, 
+.kaya-columns-4-non-responsive, 
+.kaya-columns-3-non-responsive, 
+.kaya-columns-2-non-responsive, 
+.kaya-columns-1-non-responsive, 
+.kaya-columns-one-fifth-non-responsive, 
+.kaya-columns-one-seventh-non-responsive, 
+.kaya-columns-one-eighth-non-responsive, 
+.kaya-columns-one-ninth-non-responsive {
 	float: left;
 	margin-right: 2%;
 }
@@ -1313,87 +1366,87 @@ body .extra-large-text li {
 	clear: left;
 }
 
-.columns-12, .columns-12-non-responsive {
+.kaya-columns-12, .kaya-columns-12-non-responsive {
 	width: 100%;
 }
 
-.columns-11, .columns-11-non-responsive {
+.kaya-columns-11, .kaya-columns-11-non-responsive {
 	width: 90.66%;
 }
 
-.columns-10, .columns-10-non-responsive {
+.kaya-columns-10, .kaya-columns-10-non-responsive {
 	width: 83%;
 }
 
-.columns-9, .columns-9-non-responsive {
+.kaya-columns-9, .kaya-columns-9-non-responsive {
 	width: 74.5%;
 }
 
-.columns-8, .columns-8-non-responsive {
+.kaya-columns-8, .kaya-columns-8-non-responsive {
 	width: 66%;
 }
 
-.columns-7, .columns-7-non-responsive {
+.kaya-columns-7, .kaya-columns-7-non-responsive {
 	width: 57.5%;
 }
 
-.columns-6, .columns-6-non-responsive {
+.kaya-columns-6, .kaya-columns-6-non-responsive {
 	width: 49%;
 }
 
-.columns-5, .columns-5-non-responsive {
+.kaya-columns-5, .kaya-columns-5-non-responsive {
 	width: 40.5%;
 }
 
-.columns-4, .columns-4-non-responsive {
+.kaya-columns-4, .kaya-columns-4-non-responsive {
 	width: 32%;
 }
 
-.columns-3, .columns-3-non-responsive {
+.kaya-columns-3, .kaya-columns-3-non-responsive {
 	width: 23.5%;
 }
 
-.columns-2, .columns-2-non-responsive {
+.kaya-columns-2, .kaya-columns-2-non-responsive {
 	width: 15%;
 }
 
-.columns-1, .columns-1-non-responsive {
+.kaya-columns-1, .kaya-columns-1-non-responsive {
 	width: 7.33%;
 }
 
-.columns-one-fifth, .columns-one-fifth-non-responsive {
+.kaya-columns-one-fifth, .kaya-columns-one-fifth-non-responsive {
 	width: 18.4%;
 }
 
-.columns-one-seventh, .columns-one-seventh-non-responsive {
+.kaya-columns-one-seventh, .kaya-columns-one-seventh-non-responsive {
 	width: 12.5%;
 }
 
-.columns-one-eighth, .columns-one-eighth-non-responsive {
+.kaya-columns-one-eighth, .kaya-columns-one-eighth-non-responsive {
 	width: 10.5%;
 }
 
-.columns-one-ninth, .columns-one-ninth-non-responsive {
+.kaya-columns-one-ninth, .kaya-columns-one-ninth-non-responsive {
 	width: 9.1%;
 }
 
 @media screen and (max-width: 767px) {
-	.columns-12, 
-	.columns-11, 
-	.columns-10, 
-	.columns-9, 
-	.columns-8, 
-	.columns-7, 
-	.columns-6, 
-	.columns-5, 
-	.columns-4, 
-	.columns-3, 
-	.columns-2, 
-	.columns-1, 
-	.columns-one-fifth, 
-	.columns-one-seventh, 
-	.columns-one-eighth, 
-	.columns-one-ninth {
+	.kaya-columns-12, 
+	.kaya-columns-11, 
+	.kaya-columns-10, 
+	.kaya-columns-9, 
+	.kaya-columns-8, 
+	.kaya-columns-7, 
+	.kaya-columns-6, 
+	.kaya-columns-5, 
+	.kaya-columns-4, 
+	.kaya-columns-3, 
+	.kaya-columns-2, 
+	.kaya-columns-1, 
+	.kaya-columns-one-fifth, 
+	.kaya-columns-one-seventh, 
+	.kaya-columns-one-eighth, 
+	.kaya-columns-one-ninth {
 		float: none;
 		width: 100%;
 		clear: both;
@@ -1404,44 +1457,11 @@ body .extra-large-text li {
 
 
 /*--------------------------------------------------------------
-# WooCommerce Support
---------------------------------------------------------------*/
-.products.columns-12, 
-.products.columns-11, 
-.products.columns-10, 
-.products.columns-9, 
-.products.columns-8, 
-.products.columns-7, 
-.products.columns-6, 
-.products.columns-5, 
-.products.columns-4, 
-.products.columns-3, 
-.products.columns-2, 
-.products.columns-1,
-.woocommerce.columns-12,
-.woocommerce.columns-11,
-.woocommerce.columns-10,
-.woocommerce.columns-9,
-.woocommerce.columns-8,
-.woocommerce.columns-7,
-.woocommerce.columns-6,
-.woocommerce.columns-5,
-.woocommerce.columns-4,
-.woocommerce.columns-3,
-.woocommerce.columns-2,
-.woocommerce.columns-1 {
-	float: none;
-	width: 100%;
-	clear: both;
-}
-
-
-
-/*--------------------------------------------------------------
 # Social Sharing Buttons
 --------------------------------------------------------------*/
 .resp-sharing-button__link,
-.resp-sharing-button__icon {
+.resp-sharing-button__icon,
+.resp-sharing-button {
   display: inline-block
 }
 .resp-sharing-button__link:hover,
@@ -1449,35 +1469,20 @@ body .extra-large-text li {
 .resp-sharing-button__link:focus {
 	color: white;
 }
-.resp-sharing-button__link:hover .resp-sharing-button--facebook,
-.resp-sharing-button__link:active .resp-sharing-button--facebook,
-.resp-sharing-button__link:focus .resp-sharing-button--facebook,
-.resp-sharing-button__link:hover .resp-sharing-button--twitter,
-.resp-sharing-button__link:active .resp-sharing-button--twitter,
-.resp-sharing-button__link:focus .resp-sharing-button--twitter,
-.resp-sharing-button__link:hover .resp-sharing-button--pinterest,
-.resp-sharing-button__link:active .resp-sharing-button--pinterest,
-.resp-sharing-button__link:focus .resp-sharing-button--pinterest,
-.resp-sharing-button__link:hover .resp-sharing-button--linkedin,
-.resp-sharing-button__link:active .resp-sharing-button--linkedin,
-.resp-sharing-button__link:focus .resp-sharing-button--linkedin,
-.resp-sharing-button__link:hover .resp-sharing-button--reddit,
-.resp-sharing-button__link:active .resp-sharing-button--reddit,
-.resp-sharing-button__link:focus .resp-sharing-button--reddit,
-.resp-sharing-button__link:hover .resp-sharing-button--email,
-.resp-sharing-button__link:active .resp-sharing-button--email,
-.resp-sharing-button__link:focus .resp-sharing-button--email {
+.resp-sharing-button__link:hover,
+.resp-sharing-button__link:active,
+.resp-sharing-button__link:focus {
 	background: #333;
+	text-decoration: underline;
 }
 
 .resp-sharing-button__link,
 .resp-sharing-button__link:visited {
-  text-decoration: none;
   color: #fff;
-  margin: .5em
+  margin: .5em;
 }
 
-.resp-sharing-button {
+.resp-sharing-button__link {
   border-radius: 5px;
   transition: 25ms ease-out;
   padding: 5px 10px;

@@ -12,7 +12,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.0
+ * @version 1.0.1
  */
 
 get_header(); 
@@ -48,7 +48,7 @@ switch ($sidebar_setting ) {
 	}
 	?>
 
-	<div id="primary" class="content-area <?php echo $has_sidebar; ?>">
+	<div id="primary" class="content-area <?php echo esc_html($has_sidebar); ?>">
 		<main id="main" class="site-main">
 
 			<?php

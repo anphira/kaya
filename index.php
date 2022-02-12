@@ -12,7 +12,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.0
+ * @version 1.0.1
  */
 
 get_header(); ?>
@@ -20,6 +20,7 @@ get_header(); ?>
 	<?php 
 	//get sidebar setting
 	$sidebar_setting = get_post_meta( get_option( 'page_for_posts' ), 'kaya_sidebar_setting', true);
+	
 	switch ($sidebar_setting ) {
 		case 'left_sidebar':
 		case 'no_sidebar':
@@ -41,7 +42,7 @@ get_header(); ?>
 		$has_sidebar = 'has-sidebar';
 	}
 	?>
-	<div id="primary" class="content-area <?php echo $has_sidebar; ?>">
+	<div id="primary" class="content-area <?php echo esc_html($has_sidebar); ?>">
 		<main id="main" class="site-main">
 
 		<?php
@@ -68,7 +69,9 @@ get_header(); ?>
 
 			endwhile;
 
-			the_posts_navigation();
+			echo '<nav class="paged-links clear">';
+			echo paginate_links();
+			echo '</nav>';
 
 		else :
 
