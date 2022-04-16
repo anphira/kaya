@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.1
+ * @version 1.2
  */
 
 /**
@@ -818,12 +818,12 @@ class Kaya_Social_Widget extends WP_Widget {
 	 * @param array $instance
 	 */
 	public function widget( $args, $instance ) {
-		echo esc_html($args['before_widget']);
+		echo $args['before_widget'];
 		if ( ! empty( $instance['title'] ) ) {
-			echo esc_html($args['before_title']) . apply_filters( 'widget_title', esc_html($instance['title']) ). esc_html($args['after_title']);
+			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 		}
 		kaya_social_icons();
-		echo esc_html($args['after_widget']);
+		echo $args['after_widget'];
 	}
 
 	/**
@@ -868,10 +868,3 @@ function kaya_website_field_remove($fields) {
 	unset($fields['url']);
 	return $fields;
 }
-
-
-function kaya_instant_page_preloading_script() {
-	/* instant page preloading script */
-	wp_enqueue_script('kaya-instant-page-preloading', 'https://instant.page/5.1.0');
-}
-add_action('wp_enqueue_scripts','kaya_instant_page_preloading_script');

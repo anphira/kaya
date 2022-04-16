@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.1
+ * @version 1.2
  */
 
 /**
@@ -106,27 +106,27 @@ h1, h2, h3, h4, h5, h6 {
 			echo kaya_font_family_lookup( esc_html(get_theme_mod( 'kaya_heading_font', 'verdana' )) ); ?>;
 }
 h1, .h1, .elementor-widget-heading h1.elementor-heading-title {
-	font-size: <?php echo esc_html(get_theme_mod( 'kaya_heading_1', '2' )) ?>em;
+	font-size: <?php echo esc_html(get_theme_mod( 'kaya_heading_1', '2' )) ?>rem;
 	line-height: <?php echo esc_html(get_theme_mod( 'kaya_heading_1_line_height', '1.5' )) ?>em;
 }
 h2, .h2, .elementor-widget-heading h2.elementor-heading-title {
-	font-size: <?php echo esc_html(get_theme_mod( 'kaya_heading_2', '1.8' )) ?>em;
+	font-size: <?php echo esc_html(get_theme_mod( 'kaya_heading_2', '1.8' )) ?>rem;
 	line-height: <?php echo esc_html(get_theme_mod( 'kaya_heading_2_line_height', '1.5' )) ?>em;
 }
 h3, .h3, .elementor-widget-heading h3.elementor-heading-title {
-	font-size: <?php echo esc_html(get_theme_mod( 'kaya_heading_3', '1.6' )) ?>em;
+	font-size: <?php echo esc_html(get_theme_mod( 'kaya_heading_3', '1.6' )) ?>rem;
 	line-height: <?php echo esc_html(get_theme_mod( 'kaya_heading_3_line_height', '1.5' )) ?>em;
 }
 h4, .widget-title, .h4, .elementor-widget-heading h4.elementor-heading-title {
-	font-size: <?php echo esc_html(get_theme_mod( 'kaya_heading_4', '1.4' )) ?>em;
+	font-size: <?php echo esc_html(get_theme_mod( 'kaya_heading_4', '1.4' )) ?>rem;
 	line-height: <?php echo esc_html(get_theme_mod( 'kaya_heading_4_line_height', '1.5' )) ?>em;
 }
 h5, .h5, .elementor-widget-heading h5.elementor-heading-title {
-	font-size: <?php echo esc_html(get_theme_mod( 'kaya_heading_5', '1.25' )) ?>em;
+	font-size: <?php echo esc_html(get_theme_mod( 'kaya_heading_5', '1.25' )) ?>rem;
 	line-height: <?php echo esc_html(get_theme_mod( 'kaya_heading_5_line_height', '1.5' )) ?>em;
 }
 h6, .h6, .elementor-widget-heading h6.elementor-heading-title {
-	font-size: <?php echo esc_html(get_theme_mod( 'kaya_heading_6', '1.15' )) ?>em;
+	font-size: <?php echo esc_html(get_theme_mod( 'kaya_heading_6', '1.15' )) ?>rem;
 	line-height: <?php echo esc_html(get_theme_mod( 'kaya_heading_6_line_height', '1.5' )) ?>em;
 }
 @media screen and (max-width: 767px) {
@@ -139,40 +139,35 @@ h6, .h6, .elementor-widget-heading h6.elementor-heading-title {
 		$kaya_heading_6 = esc_html(get_theme_mod( 'kaya_heading_6', '1.15' ));
 	?>
 	h1, .h1, .elementor-widget-heading h1.elementor-heading-title {
-		font-size: <?php echo $kaya_heading_1 * 0.7 ?>em;
+		font-size: <?php echo $kaya_heading_1 * 0.7 ?>rem;
 	}
 	h2, .h2, .elementor-widget-heading h2.elementor-heading-title {
-		font-size: <?php echo $kaya_heading_2 * 0.75 ?>em;
+		font-size: <?php echo $kaya_heading_2 * 0.75 ?>rem;
 	}
 	h3, .h3, .elementor-widget-heading h3.elementor-heading-title {
-		font-size: <?php echo $kaya_heading_3 * 0.8 ?>em;
+		font-size: <?php echo $kaya_heading_3 * 0.8 ?>rem;
 	}
 	h4, .h4, .elementor-widget-heading h4.elementor-heading-title {
-		font-size: <?php echo $kaya_heading_4 * 0.9 ?>em;
+		font-size: <?php echo $kaya_heading_4 * 0.9 ?>rem;
 	}
 	h5, .h5, .elementor-widget-heading h5.elementor-heading-title {
-		font-size: <?php echo $kaya_heading_5 * 0.9 ?>em;
+		font-size: <?php echo $kaya_heading_5 * 0.9 ?>rem;
 	}
 	h6, .h6, .elementor-widget-heading h6.elementor-heading-title {
-		font-size: <?php echo $kaya_heading_6 * 0.9 ?>em;
+		font-size: <?php echo $kaya_heading_6 * 0.9 ?>rem;
 	}
 }
 body {
-	font-size: <?php echo esc_html(get_theme_mod( 'kaya_paragraph', '1' )) ?>em;
-}
-.social-icons .social-icon-single {
-	font-size: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_size', '1.1' )) ?>em;
+	font-size: <?php echo esc_html(get_theme_mod( 'kaya_paragraph', '1' )) ?>rem;
 }
 .social-icons .fab {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_background_color', '#000000' )) ?>;
-	font-size: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_size', '1.1' )) ?>em;
-    width: calc(<?php echo esc_html(get_theme_mod( 'kaya_social_icon_size', '1.1' )) ?>em + 20px);
+	font-size: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_size', '1.1' )) ?>rem;
 }
 .social-icons .fab:hover {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_color', '#ffffff' )) ?>;
 }
 .social-icons .fab:before {
-	font-size: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_size', '1.1' )) ?>em;
 	color: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_color', '#ffffff' )) ?>;
 }
 .social-icons .fab:hover:before {
@@ -199,7 +194,7 @@ body a:hover, body a:focus, body a:active {
 #colophon a {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_footer_link_color', '#000080' )) ?>;
 }
-#colophon h3, #colophon h4, #colophon h5, #colophon h6 {
+#colophon h2, #colophon h3, #colophon h4, #colophon h5, #colophon h6 {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_footer_heading_color', '#000000' )) ?>;
 }
 #colophon .site-info, #colophon .site-info p {

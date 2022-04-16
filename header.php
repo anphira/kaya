@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.1
+ * @version 1.1.2
  */
 
 ?><!DOCTYPE html>
@@ -273,7 +273,7 @@
 	}
 
 	if(!is_single()) { 
-		if($page_hero_setting) { ?>
+		if($page_hero_setting == 'use_page_hero') { ?>
 			<header id="page-hero-area">
 				<div class="container">
 					<?php

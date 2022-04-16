@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.0
+ * @version 1.2
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -414,14 +414,14 @@ function kaya_add_colors($wp_customize) {
 	) );
 	$wp_customize->add_setting('kaya_lower_footer_background_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_lower_footer_background_color', array(
-		'label'        => __( 'Footer Copyright Area Background Color', 'kaya' ),
+		'label'        => __( 'Lower Footer Section:<hr>Footer Copyright Area Background Color', 'kaya' ),
 		'section'    => 'colors',
 		'settings'   => 'kaya_lower_footer_background_color',
 		) 
 	) );
 	$wp_customize->add_setting('kaya_lower_footer_text_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_lower_footer_text_color', array(
-		'label'        => __( 'Lower Footer Section:<hr>Lower Footer Text Color', 'kaya' ),
+		'label'        => __( 'Lower Footer Text Color', 'kaya' ),
 		'section'    => 'colors',
 		'settings'   => 'kaya_lower_footer_text_color',
 		) 
@@ -1302,7 +1302,7 @@ add_action('customize_register', 'kaya_add_social');
 function kaya_add_fonts($wp_customize) {
 	$wp_customize->add_section('kaya_fonts', array(
 		'title' => 'Font Options',
-		'description' => 'All custom font sizes need to be in em units. If you want your h1 to be 2em, then enter the number 2.',
+		'description' => 'All custom font sizes need to be in rem units. If you want your h1 to be 2rem, then enter the number 2.',
 		'priority' => 40,
 	));
 	

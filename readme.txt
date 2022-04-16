@@ -4,9 +4,9 @@ Contributors: anphira, automattic
 Tags: custom-background, theme-options, custom-menu, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, featured-images, flexible-header, footer-widgets, full-width-template, blog
 
 Requires at least: 5.5
-Tested up to: 5.9
+Tested up to: 5.9.3
 Requires PHP: 7.4
-Stable tag: v1.1
+Stable tag: v1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,16 @@ Recommended plugins are available at https://www.anphira.com/kaya-wordpress-them
 From the Customizer a number of customization options exist. Please see https://www.anphira.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 1.2 - Apr 16 2022 =
+* changed font unit from em to rem
+
+= 1.1.2 - Mar 09 2022 =
+* fix: update issue with page hero
+
+= 1.1.1 - Mar 07 2022 =
+* removed instant page script causing errors
+* correct sizing of social icons
 
 = 1.1 - Feb 12 2022 =
 * Tested with PHP 8

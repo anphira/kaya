@@ -5,13 +5,13 @@ Author: Anphira, LLC
 Author URI: https://www.anphira.com/
 GitHub Theme URI: anphira/kaya
 Description: Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It's ready to work with your page builder and has built-in support for Visual Composer. You can view the setup instructions by going to the Customizer and selecting "Need Setup Help?".
-Version: 1.1
+Version: 1.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kaya
 Requires at least: 5.5
-Tested up to: 5.8.1
-Requires PHP:  7.2
+Tested up to: 5.9.1
+Requires PHP:  7.4
 Tags: custom-background, theme-options, custom-menu, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, featured-images, flexible-header, footer-widgets, full-width-template, blog
 
 This theme, like WordPress, is licensed under the GPL.
@@ -144,30 +144,30 @@ dfn {
 
 h1,
 .h1 {
-	font-size: 2em;
-	margin: 0.67em 0;
+	font-size: 2rem;
+	margin: 0.67rem 0;
 }
 h2,
 .h2 {
-	font-size: 1.8em;
+	font-size: 1.8rem;
 }
 h3,
 .h3 {
-	font-size: 1.6em;
+	font-size: 1.6rem;
 }
 h4,
 .h4,
 .widget-title,
 .comments-title {
-	font-size: 1.4em;
+	font-size: 1.4rem;
 }
 h5,
 .h5 {
-	font-size: 1.25em;
+	font-size: 1.25rem;
 }
 h6,
 .h6 {
-	font-size: 1.15em;
+	font-size: 1.15rem;
 }
 
 mark {
@@ -221,7 +221,7 @@ kbd,
 pre,
 samp {
 	font-family: monospace, monospace;
-	font-size: 1em;
+	font-size: 1rem;
 }
 
 button,
@@ -337,7 +337,7 @@ select,
 textarea {
 	color: #404040;
 	font-family: Verdana, sans-serif;
-	font-size: 1em;
+	font-size: 1rem;
 	line-height: 1.5;
 }
 
@@ -449,6 +449,10 @@ ol {
 
 ul {
 	list-style: disc;
+}
+#colophon ul {
+	list-style: none;
+	padding-left:  0;
 }
 
 ol {
@@ -1129,15 +1133,15 @@ body .fas {
 # Social Media Icons
 --------------------------------------------------------------*/
 .social-icons .fa:before {
-	width: 1.5em;
+	width: 1.6em;
 	margin-top: 0;
 }
 .social-icons .fas,
 .social-icons .fab {
 	width: 1.5em;
-	height: 2em;
+	height: 1.5em;
 	text-align: center;
-	padding: 10px;
+	padding: 0.3em;
     border-radius: 50%;
 }
 .social-icons .social-icon-single {
@@ -1457,6 +1461,16 @@ body .extra-large-text li {
 
 
 /*--------------------------------------------------------------
+# WooCommerce Support
+--------------------------------------------------------------*/
+#content .page-numbers li {
+	padding-bottom: 0;
+}
+
+
+
+
+/*--------------------------------------------------------------
 # Social Sharing Buttons
 --------------------------------------------------------------*/
 .resp-sharing-button__link,
@@ -1679,7 +1693,7 @@ background-color: #FF6600
 --------------------------------------------------------------*/
 #masthead .announcement-bar {
 	text-align:  center;
-	padding:  0.3em;
+	padding:  0.5em;
 }
 #masthead .announcement-button {
 	padding: 0.3em 0.5em;
