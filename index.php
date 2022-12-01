@@ -12,7 +12,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.0.1
+ * @version 1.3
  */
 
 get_header(); ?>

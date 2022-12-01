@@ -7,12 +7,13 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.0
+ * @version 1.3
  */
 
 ?>
 
 <aside id="secondary" class="widget-area">
+	<h2 class="screen-reader-text">Sidebar</h2>
 	<?php 
 
 

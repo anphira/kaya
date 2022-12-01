@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.2
+ * @version 1.3
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -871,8 +871,17 @@ function kaya_add_blog_options($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_show_categories_tags', array('sanitize_callback' => 'kaya_show_categories_tags'));
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_comments', array(
+	$wp_customize->add_setting('kaya_show_author_bio', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_show_author_bio', array(
+		'label'           => __( 'Display Author Bio on Posts', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_blog_options',
+		'settings'   => 'kaya_show_author_bio',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_show_categories_tags', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_show_categories_tags', array(
 		'label'           => __( 'Display Categories and Tags on Posts', 'kaya' ),
 		'type'            => 'checkbox',
 		'section'         => 'kaya_blog_options',
@@ -1011,7 +1020,7 @@ function kaya_add_footer($wp_customize) {
 	  'label' => __( 'Display Social Media Icons in Footer', 'kaya' ),
 	) );
 	
-	$wp_customize->add_setting('kaya_footer_right', array('sanitize_callback' => 'esc_textarea'));
+	$wp_customize->add_setting('kaya_footer_right', array('sanitize_callback' => 'esc_js'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_footer_right', array(
 		'label'           => __( 'Content for Right side of Lower Footer', 'kaya' ),
 		'description'	  => __( 'Enter content to replace the credit info', 'kaya'),

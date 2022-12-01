@@ -9,13 +9,15 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.1.2
+ * @version 1.3
  */
+
+$postID = get_queried_object_id();
 
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-<?php echo esc_html(get_post_meta($post->ID, '_kaya_google_experiments_code', true)); ?>
+<?php echo esc_html(get_post_meta($postID, '_kaya_google_experiments_code', true)); ?>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
@@ -48,66 +50,66 @@
 		</div>
 	<?php } ?>
 
-	<?php if( '' == get_post_meta($post->ID, '_kaya_hide_header_check', true)) { ?>
+	<?php if( '' == get_post_meta($postID, '_kaya_hide_header_check', true)) { ?>
 		<?php if(get_theme_mod( 'kaya_top_header', false )) { ?>
 			<div class="top-header">
-				<div class="container">
-					<div class="kaya-columns-6">
+				<div class="container flexbox">
+					<div class="">
 						<?php dynamic_sidebar('top-header-1'); ?>
 					</div>
-					<div class="kaya-columns-6 last">
+					<div class="">
 						<?php dynamic_sidebar('top-header-2'); ?>
 					</div>
 				</div>
 			</div>
 			<div class="clear"></div>
 		<?php } ?>
-		<div class="container">
+		<div class="container flexbox">
 			<?php 
 			switch(get_theme_mod( 'kaya_header_columns', 'one_column' )) {
 				case 'one_column': 
-					echo '<div class="kaya-columns-12 last">';
+					echo '<div class="">';
 						kaya_logo_display();
 					echo '</div>';
 					break;
 				case 'two_column': 
-					echo '<div class="kaya-columns-6">';
+					echo '<div class="">';
 						kaya_logo_display();
 					echo '</div>';
-					echo '<div class="kaya-columns-6 last">';
+					echo '<div class="">';
 						dynamic_sidebar('Header-2');
 					echo '</div>';
 					break;
 				case 'three_column': 
-					echo '<div class="kaya-columns-4">';
+					echo '<div class="">';
 						kaya_logo_display();
 					echo '</div>';
-					echo '<div class="kaya-columns-4">';
+					echo '<div class="">';
 						dynamic_sidebar('Header-2');
 					echo '</div>';
-					echo '<div class="kaya-columns-4 last">';
+					echo '<div class="">';
 						dynamic_sidebar('Header-3');
 					echo '</div>';
 					break;
 				case 'four_column': 
-					echo '<div class="kaya-columns-3">';
+					echo '<div class="">';
 						kaya_logo_display();
 					echo '</div>';
-					echo '<div class="kaya-columns-3">';
+					echo '<div class="">';
 						dynamic_sidebar('Header-2');
 					echo '</div>';
-					echo '<div class="kaya-columns-3">';
+					echo '<div class="">';
 						dynamic_sidebar('Header-3');
 					echo '</div>';
-					echo '<div class="kaya-columns-3 last">';
+					echo '<div class="">';
 						dynamic_sidebar('Header-4');
 					echo '</div>';
 					break;
 				case 'logo_menu':
-					echo '<div class="kaya-columns-3">';
+					echo '<div class="">';
 						kaya_logo_display();
 					echo '</div>';
-					echo '<div class="kaya-columns-9 last">';
+					echo '<div class="">';
 						dynamic_sidebar('Header-2');
 						echo '<nav id="site-navigation" class="main-navigation">';
 						if( ! get_theme_mod( 'kaya_hide_mobile_button_menu', false ) ) {
@@ -118,15 +120,15 @@
 					echo '</div>';
 					break;
 				case 'logo_left_right_content':
-					echo '<div class="kaya-columns-3">';
+					echo '<div class="">';
 						kaya_logo_display();
 					echo '</div>';
-					echo '<div class="kaya-columns-9 last">';
+					echo '<div class="">';
 						dynamic_sidebar('Header-2');
 					echo '</div>';
 					break;
 				default: 
-					echo '<div class="kaya-columns-12 last">';
+					echo '<div class="">';
 						kaya_logo_display();
 					echo '</div>';
 					break;
@@ -151,7 +153,7 @@
 	<?php 
 	/* Determine content classes */
 	$content_class = 'site-content ';
-	if(!is_search() && ( 'on' == get_post_meta($post->ID, '_kaya_full_width_check', true)))  {
+	if(!is_search() && ( 'on' == get_post_meta($postID, '_kaya_full_width_check', true)))  {
 		$content_class .= 'full-width ';
 	} else {
 		$content_class .= 'normal-width ';
@@ -159,14 +161,14 @@
 
 	/* Sidebar classes */
 	if(is_page()) {
-		if(!get_post_meta($post->ID, 'kaya_sidebar_setting', true) || 'use_default' == get_post_meta($post->ID, 'kaya_sidebar_setting', true) ) {
+		if(!get_post_meta($postID, 'kaya_sidebar_setting', true) || 'use_default' == get_post_meta($postID, 'kaya_sidebar_setting', true) ) {
 			if ('left_sidebar' == get_theme_mod( 'kaya_page_sidebar', 'no_sidebar' )) 
 				$content_class .= 'sidebar-left ';
 			elseif ('right_sidebar' == get_theme_mod( 'kaya_page_sidebar', 'right_sidebar' )) 
 				$content_class .= 'sidebar-right ';
 		}
 		else {
-			$sidebar_class_temp = get_post_meta($post->ID, 'kaya_sidebar_setting', true);
+			$sidebar_class_temp = get_post_meta($postID, 'kaya_sidebar_setting', true);
 			switch($sidebar_class_temp) {
 				case 'left_sidebar':
 					$content_class .= 'sidebar-left ';
@@ -244,7 +246,7 @@
 			$page_hero_setting = get_post_meta($page_for_posts, 'kaya_page_hero_setting', true);
 		}
 		elseif (is_page()) {
-			$page_hero_setting = get_post_meta($post->ID, 'kaya_page_hero_setting', true);
+			$page_hero_setting = get_post_meta($postID, 'kaya_page_hero_setting', true);
 		}
 		switch ($page_hero_setting ) {
 			case 'no_page_hero':
@@ -278,10 +280,10 @@
 				<div class="container">
 					<?php
 						if(is_page()) {
-							if( get_post_meta($post->ID, '_kaya_hide_title_check', true) !== 'on') {
+							if( get_post_meta($postID, '_kaya_hide_title_check', true) !== 'on') {
 								echo '<h1>' . esc_html(get_the_title()) . '</h1>';
 							}
-							echo get_post_meta($post->ID, '_kaya_page_hero_content', true);
+							echo get_post_meta($postID, '_kaya_page_hero_content', true);
 						}
 						elseif(is_home()) {
 							if(get_post_meta($page_for_posts, '_kaya_hide_title_check', true) !== 'on') {

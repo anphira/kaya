@@ -9,61 +9,64 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.0.1
+ * @version 1.3
  */
+
+$postID = get_queried_object_id();
 
 ?>
 
 	</div><!-- #content -->
 
 	<?php 
-	if( '' == get_post_meta($post->ID, '_kaya_hide_footer_check', true)) { 
+	if( '' == get_post_meta($postID, '_kaya_hide_footer_check', true)) { 
 		?>
 		<footer id="colophon" class="site-footer">
-			<div class="footer-columns <?php if(get_theme_mod( 'kaya_footer_columns_in_grid', false )) echo 'container'; ?>">
+			<h2 class="screen-reader-text">Footer</h2>
+			<div class="footer-columns flexbox <?php if(get_theme_mod( 'kaya_footer_columns_in_grid', false )) echo 'container'; ?>">
 				<?php 
 				if(get_theme_mod( 'kaya_show_footer_columns', false )) {
 					switch(get_theme_mod( 'kaya_footer_columns', 'one_column' )) {
 						case 'one_column': 
-							echo '<div class="kaya-columns-12 last">';
+							echo '<div class="">';
 							dynamic_sidebar('Footer-1');
 							echo '</div>';
 							break;
 						case 'two_column': 
-							echo '<div class="kaya-columns-6">';
+							echo '<div class="">';
 							dynamic_sidebar('Footer-1');
 							echo '</div>';
-							echo '<div class="kaya-columns-6 last">';
+							echo '<div class="">';
 							dynamic_sidebar('Footer-2');
 							echo '</div>';
 							break;
 						case 'three_column': 
-							echo '<div class="kaya-columns-4">';
+							echo '<div class="">';
 							dynamic_sidebar('Footer-1');
 							echo '</div>';
-							echo '<div class="kaya-columns-4">';
+							echo '<div class="">';
 							dynamic_sidebar('Footer-2');
 							echo '</div>';
-							echo '<div class="kaya-columns-4 last">';
+							echo '<div class="">';
 							dynamic_sidebar('Footer-3');
 							echo '</div>';
 							break;
 						case 'four_column': 
-							echo '<div class="kaya-columns-3">';
+							echo '<div class="">';
 							dynamic_sidebar('Footer-1');
 							echo '</div>';
-							echo '<div class="kaya-columns-3">';
+							echo '<div class="">';
 							dynamic_sidebar('Footer-2');
 							echo '</div>';
-							echo '<div class="kaya-columns-3">';
+							echo '<div class="">';
 							dynamic_sidebar('Footer-3');
 							echo '</div>';
-							echo '<div class="kaya-columns-3 last">';
+							echo '<div class="">';
 							dynamic_sidebar('Footer-4');
 							echo '</div>';
 							break;
 						default: 
-							echo '<div class="kaya-columns-12 last">';
+							echo '<div class="">';
 							dynamic_sidebar('Footer-1');
 							echo '</div>';
 							break;
@@ -72,8 +75,8 @@
 				?>
 			</div>
 			<div class="site-info">
-				<div class="container">
-					<div class="kaya-columns-6">
+				<div class="container flexbox">
+					<div class="">
 						<?php if(get_theme_mod( 'kaya_show_footer_social', false)) kaya_social_icons(); ?>
 						Copyright &copy; <?php echo esc_html(date('Y')); ?>. All rights reserved. <?php bloginfo('name'); ?>. 
 						<?php $privacy_policy = '';
@@ -88,9 +91,9 @@
 							| <a href="<?php echo esc_html(get_theme_mod( 'kaya_accessibility_statement_url' )); ?>">Accessibility Statement</a>
 						<?php } ?>
 					</div>
-					<div class="kaya-columns-6 last text-right">
+					<div class="text-right">
 						<?php if(get_theme_mod( 'kaya_footer_right', '' )) {
-							echo esc_html(get_theme_mod( 'kaya_footer_right' )); 
+							echo get_theme_mod( 'kaya_footer_right' ); 
 						}
 						else { ?>
 						<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'kaya' ) ); ?>">
@@ -113,7 +116,7 @@
 			</div><!-- .site-info -->
 		</footer><!-- #colophon -->
 		<?php 
-	} // end if( '' == get_post_meta($post->ID, '_kaya_hide_footer_check', true))
+	} // end if( '' == get_post_meta($postID, '_kaya_hide_footer_check', true))
 	?>
 </div><!-- #page -->
 

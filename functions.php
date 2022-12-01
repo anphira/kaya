@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.2
+ * @version 1.3
  */
 
 /**
@@ -114,10 +114,11 @@ function kaya_dequeue_woocommerce_styles_scripts() {
 
  
 /**
- * Add footer menu
+ * Add footer & top menus
  */
 function kaya_register_footer_menu() {
   register_nav_menu('footer-menu',__( 'Footer Menu', 'kaya' ));
+  register_nav_menu('top-menu',__( 'Top Menu', 'kaya' ));
 }
 add_action( 'init', 'kaya_register_footer_menu' );
 
@@ -155,7 +156,7 @@ function kaya_excerpt_more( $more ) {
 	if(get_theme_mod( 'kaya_turn_off_read_more', false)) {
 		return '';
 	}
-	return ' </p><p><a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'kaya') . '</a>';
+	return ' </p><p><a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'kaya') . '<span class="screen-reader-text">' . get_the_title( get_the_ID() ) . '</span></a>';
 }
 add_filter( 'excerpt_more', 'kaya_excerpt_more' );
 
@@ -201,43 +202,43 @@ if( ! function_exists('kaya_social_icons') ) :
 function kaya_social_icons() {
 	echo '<div class="social-icons">';
 		if( get_theme_mod( 'kaya_facebook' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_facebook' )) . '"><i class="fab fa-facebook-f"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_facebook' )) . '"><i class="fab fa-facebook-f"></i><span class="screen-reader-text"> Visit us on Facebook</span></a>';
 		}
 		if( get_theme_mod( 'kaya_twitter' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_twitter' )) . '"><i class="fab fa-twitter"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_twitter' )) . '"><i class="fab fa-twitter"></i><span class="screen-reader-text"> Visit us on Twitter</span></a>';
 		}
 		if( get_theme_mod( 'kaya_linkedin' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_linkedin' )) . '"><i class="fab fa-linkedin-in"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_linkedin' )) . '"><i class="fab fa-linkedin-in"><span class="screen-reader-text"> Visit us on LinkedIn</span></i></a>';
 		}
 		if( get_theme_mod( 'kaya_google_plus' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_google_plus' )) . '"><i class="fab fa-google"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_google_plus' )) . '"><i class="fab fa-google"></i><span class="screen-reader-text"> Visit us on Google Maps</span></a>';
 		}
 		if( get_theme_mod( 'kaya_skype' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_skype' )) . '"><i class="fab fa-skype"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_skype' )) . '"><i class="fab fa-skype"></i><span class="screen-reader-text"> Contact us on Skype</span></a>';
 		}
 		if( get_theme_mod( 'kaya_youtube' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_youtube' )) . '"><i class="fab fa-youtube"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_youtube' )) . '"><i class="fab fa-youtube"></i><span class="screen-reader-text"> Visit us on Youtube</span></a>';
 		}
 		if( get_theme_mod( 'kaya_vimeo' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_vimeo' )) . '"><i class="fab fa-vimeo-v"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_vimeo' )) . '"><i class="fab fa-vimeo-v"></i><span class="screen-reader-text"> Visit us on Vimeo</span></a>';
 		}
 		if( get_theme_mod( 'kaya_instagram' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_instagram' )) . '"><i class="fab fa-instagram"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_instagram' )) . '"><i class="fab fa-instagram"></i><span class="screen-reader-text"> Visit us on Instagram</span></a>';
 		}
 		if( get_theme_mod( 'kaya_pinterest' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_pinterest' )) . '"><i class="fab fa-pinterest-p"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_pinterest' )) . '"><i class="fab fa-pinterest-p"></i><span class="screen-reader-text"> Visit us on Pinterest</span></a>';
 		}
 		if( get_theme_mod( 'kaya_yelp' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_yelp' )) . '"><i class="fab fa-yelp"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_yelp' )) . '"><i class="fab fa-yelp"></i><span class="screen-reader-text"> Visit us on Yelp</span></a>';
 		}
 		if( get_theme_mod( 'kaya_behance' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_behance' )) . '"><i class="fab fa-behance"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_behance' )) . '"><i class="fab fa-behance"></i><span class="screen-reader-text"> Visit us on Behance</span></a>';
 		}
 		if( get_theme_mod( 'kaya_rss' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_rss' )) . '"><i class="fas fa-rss"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_rss' )) . '"><i class="fas fa-rss"></i><span class="screen-reader-text"> View our RSS feed</span></a>';
 		}
 		if( get_theme_mod( 'kaya_email' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="mailto:' . esc_url(get_theme_mod( 'kaya_email' )) . '"><i class="fas fa-envelope"></i></a>';
+			echo '<a class="social-icon-single" target="_blank" href="mailto:' . esc_url(get_theme_mod( 'kaya_email' )) . '"><i class="fas fa-envelope"></i><span class="screen-reader-text"> Email us</span></a>';
 		}
 	echo '</div>';
 }
@@ -349,8 +350,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here which will display on all sidebars at the top.', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Everywhere Bottom Sidebar', 'kaya' ),
@@ -358,8 +359,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here which will display on all sidebars at the bottom.', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Pages Sidebar', 'kaya' ),
@@ -367,8 +368,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here which will be display below the "Everywhere Top Sidebar" widgets and above the "Everywhere Bottom Sidebar" widgets on your pages.', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Post Archives Sidebar', 'kaya' ),
@@ -376,8 +377,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here which will be display below the "Everywhere Top Sidebar" widgets and above the "Everywhere Bottom Sidebar" widgets on your blog archive pages (categories, tags, and date archives) and primary blog page sidebar (the page you set under settings > reading as your posts page).', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Single Post Sidebar', 'kaya' ),
@@ -385,8 +386,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here which will be display below the "Everywhere Top Sidebar" widgets and above the "Everywhere Bottom Sidebar" widgets on your individual blog posts.', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'WooCommerce Sidebar', 'kaya' ),
@@ -394,8 +395,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here which will be display on your WooCommerce pages sidebar.', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Top Header Left', 'kaya' ),
@@ -421,8 +422,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'Add content here to be displayed in Header Column 2 widget area (see theme setup guide for where this widget is displayed depending on theme settings).', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<div class="widget-title">',
+		'after_title'   => '</div>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Header Column 3', 'kaya' ),
@@ -430,8 +431,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'Add content here to be displayed in Header Column 3 widget area (see theme setup guide for where this widget is displayed depending on theme settings).', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<div class="widget-title">',
+		'after_title'   => '</div>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Header Column 4', 'kaya' ),
@@ -439,8 +440,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'Add content here to be displayed in Header Column 4 widget area (see theme setup guide for where this widget is displayed depending on theme settings).', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<div class="widget-title">',
+		'after_title'   => '</div>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer Column 1', 'kaya' ),
@@ -448,8 +449,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'Content for 1st footer column (if used).', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer Column 2', 'kaya' ),
@@ -457,8 +458,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'Content for 2nd footer column (if used).', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer Column 3', 'kaya' ),
@@ -466,8 +467,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'Content for 3rd footer column (if used).', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer Column 4', 'kaya' ),
@@ -475,8 +476,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'Content for 4th footer column (if used).', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Extra Widget Area 1', 'kaya' ),
@@ -484,8 +485,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'This is a widget area which has no theme displayed location. The purpose of this widget area is to provide you with a spare widget area which can be used in child theme customization or in page builders.', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<div class="widget-title">',
+		'after_title'   => '</div>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Extra Widget Area 2', 'kaya' ),
@@ -493,8 +494,8 @@ function kaya_widgets_init() {
 		'description'   => esc_html__( 'This is a widget area which has no theme displayed location. The purpose of this widget area is to provide you with a spare widget area which can be used in child theme customization or in page builders.', 'kaya' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<div class="widget-title">',
+		'after_title'   => '</div>',
 	) );
 }
 add_action( 'widgets_init', 'kaya_widgets_init' );

@@ -4,9 +4,9 @@ Contributors: anphira, automattic
 Tags: custom-background, theme-options, custom-menu, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, featured-images, flexible-header, footer-widgets, full-width-template, blog
 
 Requires at least: 5.5
-Tested up to: 5.9.3
+Tested up to: 6.0.3
 Requires PHP: 7.4
-Stable tag: v1.2
+Stable tag: v1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,19 @@ Recommended plugins are available at https://www.anphira.com/kaya-wordpress-them
 From the Customizer a number of customization options exist. Please see https://www.anphira.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 1.3 - Dec 1 2022 =
+* add flexbox for the header & footer -- this may be a breaking update for some sites as header & footer layouts are no longer using fixed column widths, but now using flexbox. CSS classes for kaya-columns are kept.
+* register top menu
+* update for PHP 8
+* improve accessibility (header & footer updates for screen reader h2, and widget headings to h3 - same CSS class used on widget headings as before)
+
+= 1.2.2 - Apr 20 2022 =
+* update search widget styling for blocks
+* update related articles columns
+
+= 1.2.1 - Apr 16 2022 =
+* added author bio to blog posts
 
 = 1.2 - Apr 16 2022 =
 * changed font unit from em to rem

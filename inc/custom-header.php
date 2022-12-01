@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.2
+ * @version 1.3
  */
 
 /**
@@ -81,7 +81,8 @@ html {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_announcement_button_text_color', '#ffffff' )); ?>;
 }
 #masthead .announcement-button:hover,
-#masthead .announcement-button:active {
+#masthead .announcement-button:active,
+#masthead .announcement-button:focus {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_announcement_button_text_color', '#ffffff' )); ?>;
 	color: <?php echo esc_html(get_theme_mod( 'kaya_announcement_button_background_color', '#000000' )); ?>;
 }
@@ -131,12 +132,12 @@ h6, .h6, .elementor-widget-heading h6.elementor-heading-title {
 }
 @media screen and (max-width: 767px) {
 	<?php 
-		$kaya_heading_1 = esc_html(get_theme_mod( 'kaya_heading_1', '2' ));
-		$kaya_heading_2 = esc_html(get_theme_mod( 'kaya_heading_2', '1.8' ));
-		$kaya_heading_3 = esc_html(get_theme_mod( 'kaya_heading_3', '1.6' ));
-		$kaya_heading_4 = esc_html(get_theme_mod( 'kaya_heading_4', '1.4' ));
-		$kaya_heading_5 = esc_html(get_theme_mod( 'kaya_heading_5', '1.25' ));
-		$kaya_heading_6 = esc_html(get_theme_mod( 'kaya_heading_6', '1.15' ));
+		$kaya_heading_1 = (float) esc_html(get_theme_mod( 'kaya_heading_1', '2' ));
+		$kaya_heading_2 = (float) esc_html(get_theme_mod( 'kaya_heading_2', '1.8' ));
+		$kaya_heading_3 = (float) esc_html(get_theme_mod( 'kaya_heading_3', '1.6' ));
+		$kaya_heading_4 = (float) esc_html(get_theme_mod( 'kaya_heading_4', '1.4' ));
+		$kaya_heading_5 = (float) esc_html(get_theme_mod( 'kaya_heading_5', '1.25' ));
+		$kaya_heading_6 = (float) esc_html(get_theme_mod( 'kaya_heading_6', '1.15' ));
 	?>
 	h1, .h1, .elementor-widget-heading h1.elementor-heading-title {
 		font-size: <?php echo $kaya_heading_1 * 0.7 ?>rem;
@@ -289,7 +290,10 @@ body input[type=reset],
 body input[type=submit],
 body .elementor-button,
 body .elementor-button:visited,
-body .wp-block-button__link {
+body .wp-block-button__link,
+body .wp-block-button__link:visited,
+body #colophon .wp-block-button__link,
+body #colophon .wp-block-button__link:visited {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_button_color', '#008dc4' )) ?>;
 	color: <?php echo esc_html(get_theme_mod( 'kaya_button_text_color', '#ffffff' )) ?>;
 }
@@ -313,7 +317,10 @@ body .elementor-button:hover,
 body .elementor-button:active,
 body .wp-block-button__link:focus,
 body .wp-block-button__link:hover,
-body .wp-block-button__link:active {
+body .wp-block-button__link:active,
+body #colophon .wp-block-button__link:focus,
+body #colophon .wp-block-button__link:hover,
+body #colophon .wp-block-button__link:active {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_button_hover_color', '#005dc4' )) ?>;
 	color: <?php echo esc_html(get_theme_mod( 'kaya_button_hover_text_color', '#000000' )) ?>;
 }
@@ -322,7 +329,9 @@ html .woocommerce a.button,
 html .woocommerce a.button:visited,
 html .woocommerce #respond input#submit.alt, 
 html .woocommerce a.button.alt, 
+html .woocommerce a.button.alt:visited, 
 html .woocommerce button.button.alt, 
+html .woocommerce button.button.alt:visited, 
 html .woocommerce input.button.alt {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_background_color', '#008dc4' )) ?>;
 	color: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_text_color', '#ffffff' )) ?>;

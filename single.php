@@ -5,7 +5,7 @@
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
  * @package 
- * @version 1.0.1
+ * @version 1.2.2
  */
 
 get_header(); ?>
@@ -63,7 +63,7 @@ get_header(); ?>
 				
 			while( $related->have_posts() ): $related->the_post(); ?>
 
-				<div class="columns-4 <?php if(2 == $counter) { echo 'last'; } ?>">
+				<div class="kaya-columns-4 <?php if(2 == $counter) { echo 'last'; } ?>">
 					<?php the_post_thumbnail( 'related-posts-image' ); ?>
 					<div class="max-height-related-posts mt15">
 						<h3 class="mb0"><?php the_title(); ?></h3>
