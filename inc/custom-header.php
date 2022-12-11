@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.3
+ * @version 1.3.1
  */
 
 /**
@@ -192,7 +192,7 @@ body a:hover, body a:focus, body a:active {
 #colophon, #colophon p {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_footer_text_color', '#000000' )) ?>;
 }
-#colophon a {
+#colophon a:not(.social-icon-single) {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_footer_link_color', '#000080' )) ?>;
 }
 #colophon h2, #colophon h3, #colophon h4, #colophon h5, #colophon h6 {

@@ -44,6 +44,9 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
+= 1.3.1 - Dec 11 2022 =
+* Fix: page hero on blog archive pages
+
 = 1.3 - Dec 1 2022 =
 * add flexbox for the header & footer -- this may be a breaking update for some sites as header & footer layouts are no longer using fixed column widths, but now using flexbox. CSS classes for kaya-columns are kept.
 * register top menu

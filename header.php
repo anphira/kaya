@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.3
+ * @version 1.3.1
  */
 
 $postID = get_queried_object_id();
@@ -268,14 +268,14 @@ $postID = get_queried_object_id();
 
 	// get hero area setting for single blogs / archives
 	elseif( (is_single() && 'post' == get_post_type()) || is_archive() ) {
-		$page_hero_blog = get_theme_mod( 'kaya_page_hero_blogs', 0 );
+		$page_hero_blog = get_theme_mod( 'kaya_page_hero_blogs', false );
 		if( $page_hero_blog ) {
 			$content_class .= 'has-page-hero ';
 		}
 	}
 
-	if(!is_single()) { 
-		if($page_hero_setting == 'use_page_hero') { ?>
+	if(!is_single() && !is_archive()) { 
+		if($page_hero_setting) { ?>
 			<header id="page-hero-area">
 				<div class="container">
 					<?php
