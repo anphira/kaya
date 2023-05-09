@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.3.1
+ * @version 1.4
  */
 
 $postID = get_queried_object_id();
@@ -236,10 +236,19 @@ $postID = get_queried_object_id();
 		}
 	}
 	
-	//get hero area setting for pages
+	//get hero area setting
 	// set a default
 	$page_hero_setting = 'no_page_hero';
-	if( is_home() || ( !is_single() && !is_archive() ) ) {
+
+	// woocommerce
+	if(function_exists('is_woocommerce') && is_woocommerce()) {
+		if(get_theme_mod( 'kaya_page_hero_woocommerce', false )) {
+			$content_class .= 'has-page-hero ';
+			$page_hero_setting = true;
+		}
+	}
+	//get hero area setting for pages
+	elseif( is_home() || ( !is_single() && !is_archive() ) ) {
 		
 		if(is_home()) {
 			$page_for_posts = get_option( 'page_for_posts' );
@@ -266,14 +275,44 @@ $postID = get_queried_object_id();
 		}
 	}
 
-	// get hero area setting for single blogs / archives
-	elseif( (is_single() && 'post' == get_post_type()) || is_archive() ) {
+	// get hero area setting for single blogs
+	elseif( (is_single() && 'post' == get_post_type()) ) {
 		$page_hero_blog = get_theme_mod( 'kaya_page_hero_blogs', false );
 		if( $page_hero_blog ) {
 			$content_class .= 'has-page-hero ';
 		}
 	}
+	// get hero area setting for blog archives
+	elseif( ('post' == get_post_type()) && is_archive() ) {
+		$page_hero_blog = get_theme_mod( 'kaya_page_hero_blog_archive', false );
+		if( $page_hero_blog ) {
+			$content_class .= 'has-page-hero ';
+		}
+	}
 
+
+	// display page hero
+	if(function_exists('is_woocommerce') && is_woocommerce()) {
+		if($page_hero_setting) { ?>
+			<header id="page-hero-area">
+				<div class="container">
+					<?php
+					woocommerce_breadcrumb();
+					if(is_shop()) {
+						echo '<h1 class="page-title">Shop Our Products</h1>';
+					}
+					elseif(is_archive()) {
+						the_archive_title( '<h1 class="page-title">', '</h1>' );
+					}
+					else {
+						echo '<h1 class="page-title">' . get_the_title() . '</h1>';
+					}
+					the_archive_description( '<div class="archive-description">', '</div>' );
+					?>
+				</div>
+			</header>
+		<?php }
+	}
 	if(!is_single() && !is_archive()) { 
 		if($page_hero_setting) { ?>
 			<header id="page-hero-area">
@@ -307,7 +346,14 @@ $postID = get_queried_object_id();
 			?>
 			<header id="page-hero-area">
 				<div class="container">
-					<?php the_title( '<h1 class="entry-title" itemprop="name">', '</h1>' ); ?>
+					<?php 
+					if(is_archive()) {
+						the_archive_title( '<h1 class="page-title">', '</h1>' );
+					}
+					else {
+						the_title( '<h1 class="entry-title" itemprop="name">', '</h1>' ); 
+					}
+					?>
 				</div>
 			</header>
 		<?php

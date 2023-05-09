@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.3
+ * @version 1.4
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -668,10 +668,28 @@ function kaya_add_general($wp_customize) {
 	
 	$wp_customize->add_setting('kaya_page_hero_blogs', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_page_hero_blogs', array(
-		'label'           => __( 'Use Page Hero Area for Blogs / Archives', 'kaya' ),
+		'label'           => __( 'Use Page Hero Area for Blog Posts', 'kaya' ),
 		'type'            => 'checkbox',
 		'section'         => 'kaya_general',
 		'settings'   => 'kaya_page_hero_blogs',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_page_hero_blog_archive', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_page_hero_blog_archive', array(
+		'label'           => __( 'Use Page Hero Area for Blog Archives', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_page_hero_blog_archive',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_page_hero_woocommerce', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_page_hero_woocommerce', array(
+		'label'           => __( 'Use Page Hero Area for WooCommerce', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_page_hero_woocommerce',
 		)
 	) );
 
@@ -1020,7 +1038,7 @@ function kaya_add_footer($wp_customize) {
 	  'label' => __( 'Display Social Media Icons in Footer', 'kaya' ),
 	) );
 	
-	$wp_customize->add_setting('kaya_footer_right', array('sanitize_callback' => 'esc_js'));
+	$wp_customize->add_setting('kaya_footer_right', array('sanitize_callback' => ''));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_footer_right', array(
 		'label'           => __( 'Content for Right side of Lower Footer', 'kaya' ),
 		'description'	  => __( 'Enter content to replace the credit info', 'kaya'),

@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.0.1
+ * @version 1.4
  */
 
 get_header(); 
@@ -30,7 +30,7 @@ get_header();
 			?>
 
 			<?php
-			$page_hero_blog = get_theme_mod( 'kaya_page_hero_blogs', false );
+			$page_hero_blog = get_theme_mod( 'kaya_page_hero_blog_archive', false );
 			if( ! $page_hero_blog ) { ?>
 			<header class="page-header">
 				<?php

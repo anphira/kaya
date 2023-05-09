@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.3
+ * @version 1.3.2
  */
 
 /**
@@ -570,7 +570,7 @@ function kaya_page_settings_display_callback( $post ) {
     
     <?php 
     echo '<hr />Pages are currently set to display ';
-    if(get_theme_mod( 'kaya_page_hero' ) == 'on') {
+    if(get_theme_mod( 'kaya_page_hero', 'off' ) == 'on') {
     	echo 'the page hero area';
     }
     else {
@@ -589,23 +589,15 @@ function kaya_page_settings_display_callback( $post ) {
 		<option value="use_page_hero" <?php selected( $hero_selected, 'use_page_hero' ) ?>>Use Page Hero</option>
 	</select>
     
-	<?php 
-
-	echo '<p>Page Hero Background color</p>';
-	$kaya_page_hero_header_color = get_post_meta($post->ID, '_kaya_page_hero_header_color', true);
-	?>
-	<input class="color_field" type="text" name="kaya_page_hero_header_color" value="<?php echo esc_attr($kaya_page_hero_header_color); ?>"/>
-	<?php
-
-	echo '<p>Page Hero Background image</p>';
-	$kaya_page_hero_image = get_post_meta($post->ID, '_kaya_page_hero_image', true);
-	?>
-
-	<input style="width:100%" type="text" name="kaya_page_hero_image" id="kaya_page_hero_image" value="<?php echo esc_attr( $kaya_page_hero_image ); ?>" />
-    
 
 	<?php
-	echo '<p>Style of Page Hero Background: The page default is set to ', esc_html(get_theme_mod('kaya_page_hero_background_image_type')),'</p>';
+	echo '<p>Style of Page Hero Background: The page default is ';
+	if('' == esc_html(get_theme_mod('kaya_page_hero_background_image_type')) ) {
+		echo 'not set.</p>';
+	}
+	else {
+		echo esc_html(get_theme_mod('kaya_page_hero_background_image_type')),'.</p>';
+	}
 	$selected = isset( $values['kaya_page_hero_background_setting'] ) ? esc_attr( $values['kaya_page_hero_background_setting'][0] ) : '';
 	?>
     <select id="kaya_page_hero_background_setting" name="kaya_page_hero_background_setting">
@@ -617,6 +609,20 @@ function kaya_page_settings_display_callback( $post ) {
 		<option value="stretch" <?php selected( $selected, 'stretch' ) ?>>Stetch image to cover whole background</option>
 		<option value="fixed_pos" <?php selected( $selected, 'fixed_pos' ) ?>>Fixed position so background doesnt scroll</option>
 	</select>
+    
+	<?php 
+
+	echo '<p>Page Hero Background color. Use a valid CSS color name or hex value (ie: aqua or #ff00ff).</p>';
+	$kaya_page_hero_header_color = get_post_meta($post->ID, '_kaya_page_hero_header_color', true);
+	?>
+	<input class="color_field" type="text" name="kaya_page_hero_header_color" value="<?php echo esc_attr($kaya_page_hero_header_color); ?>"/>
+	<?php
+
+	echo '<p>Page Hero Background image. Use a valid URL path (ie: https://example.com/wp-content/uploads/img.jpg).</p>';
+	$kaya_page_hero_image = get_post_meta($post->ID, '_kaya_page_hero_image', true);
+	?>
+
+	<input style="width:100%" type="text" name="kaya_page_hero_image" id="kaya_page_hero_image" value="<?php echo esc_attr( $kaya_page_hero_image ); ?>" />
 
     
     <p>Enter content for page hero area:<br /><em>This content area supports full HTML</em></p>
@@ -642,7 +648,7 @@ function kaya_page_settings_save_meta_box( $post_id ) {
      
     
     // Check the user's permissions.
-	if( !current_user_can( 'edit_post' ) ) return;
+	if( !current_user_can( 'edit_post', $post_id ) ) return;
  
 	/* OK, it's safe for us to save the data now. */
  
@@ -688,7 +694,7 @@ function kaya_page_settings_save_meta_box( $post_id ) {
 	}
 
 	if( isset( $_POST['kaya_page_hero_header_color'] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-        update_post_meta( $post_id, '_kaya_page_hero_header_color', esc_attr( wp_unslash($_POST['kaya_page_hero_header_color']) ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+        update_post_meta( $post_id, '_kaya_page_hero_header_color', wp_unslash($_POST['kaya_page_hero_header_color']) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 	}
 
     // Checks for input and saves if needed

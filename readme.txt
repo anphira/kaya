@@ -4,9 +4,9 @@ Contributors: anphira, automattic
 Tags: custom-background, theme-options, custom-menu, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, featured-images, flexible-header, footer-widgets, full-width-template, blog
 
 Requires at least: 5.5
-Tested up to: 6.0.3
+Tested up to: 6.1.1
 Requires PHP: 7.4
-Stable tag: v1.3
+Stable tag: v1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,16 @@ Recommended plugins are available at https://www.anphira.com/kaya-wordpress-them
 From the Customizer a number of customization options exist. Please see https://www.anphira.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 1.4 - May 09 2023 =
+* Change: hero area for blog posts & blog archive are now two separate settings. Existing setting will now only apply to blog posts. Check the new box under 'General Options' > Blog Archives for archive to use heros.
+* Change: links default to underlined for accessibility. You can override this in a child theme if desired.
+* Fix: author bio on single posts
+* Fix: page title on archives with hero
+* Fix: updating hero settings on individual pages
+* Fix: alignment of social media icons
+* Add: Page Hero for WooCommerce pages
+* Add: position-relative class for styling position
 
 = 1.3.1 - Dec 11 2022 =
 * Fix: page hero on blog archive pages
