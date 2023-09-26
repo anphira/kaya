@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.4
+ * @version 1.4.1
  */
 
 $postID = get_queried_object_id();
@@ -238,7 +238,7 @@ $postID = get_queried_object_id();
 	
 	//get hero area setting
 	// set a default
-	$page_hero_setting = 'no_page_hero';
+	$page_hero_setting = false;
 
 	// woocommerce
 	if(function_exists('is_woocommerce') && is_woocommerce()) {

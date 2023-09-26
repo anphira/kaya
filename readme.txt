@@ -4,9 +4,9 @@ Contributors: anphira, automattic
 Tags: custom-background, theme-options, custom-menu, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, featured-images, flexible-header, footer-widgets, full-width-template, blog
 
 Requires at least: 5.5
-Tested up to: 6.1.1
+Tested up to: 6.3.1
 Requires PHP: 7.4
-Stable tag: v1.4
+Stable tag: v1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,17 @@ Recommended plugins are available at https://www.anphira.com/kaya-wordpress-them
 From the Customizer a number of customization options exist. Please see https://www.anphira.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 1.5 - Sep 20 2023 =
+* Fix: remove hero from woocommerce pages when hero is not turned on.
+* Add: full-width-video CSS class for making a video full-width instead of stuck at 500px width.
+* Removed: Notes from "Need Setup Help?" section of customizer.
+* Removed: Contact Form 7 Redirect URL - we have not recommended CF7 for years now and are removing support for this feature. 
+* Update: Customizer has been reordered to alphabetical order to make options easier to find.
+* Update: Changed Universal Analytics to GA4.
+* Update: update border colors to #777 by default for accessibility.
+* Update: replaced "twitter" with "X".
+* Update: change flexbox gap to 30px.
 
 = 1.4 - May 09 2023 =
 * Change: hero area for blog posts & blog archive are now two separate settings. Existing setting will now only apply to blog posts. Check the new box under 'General Options' > Blog Archives for archive to use heros.

@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.3.1
+ * @version 1.5
  */
 
 /**
@@ -175,7 +175,7 @@ body {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_background_color', '#000000' )) ?>;
 }
 body a, body a:visited {
-	color: <?php echo esc_html(get_theme_mod( 'kaya_link_color', '#008dc4' )) ?>;
+	color: <?php echo esc_html(get_theme_mod( 'kaya_link_color', '#0075a5' )) ?>;
 }
 body a:hover, body a:focus, body a:active {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_link_hover_color', '#005dc4' )) ?>;
@@ -212,7 +212,7 @@ body a:hover, body a:focus, body a:active {
 }
 #masthead #site-navigation .menu-item a, #masthead .menu-toggle, #masthead #site-navigation, .main-navigation ul ul {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_menu_background_color', '#ffffff' )) ?>;
-	color: <?php echo esc_html(get_theme_mod( 'kaya_menu_text_color', '#008dc4' )) ?>;
+	color: <?php echo esc_html(get_theme_mod( 'kaya_menu_text_color', '#0075a5' )) ?>;
 }
 #page-hero-area {
 	<?php
@@ -279,7 +279,7 @@ body a:hover, body a:focus, body a:active {
 #masthead .menu-toggle:hover, 
 #masthead .menu-toggle:focus, 
 #masthead .menu-toggle:active {
-	color: <?php echo esc_html(get_theme_mod( 'kaya_menu_text_hover_color', '#008dc4' )) ?>;
+	color: <?php echo esc_html(get_theme_mod( 'kaya_menu_text_hover_color', '#0075a5' )) ?>;
 }
 body button,
 body button:visited,
@@ -294,7 +294,7 @@ body .wp-block-button__link,
 body .wp-block-button__link:visited,
 body #colophon .wp-block-button__link,
 body #colophon .wp-block-button__link:visited {
-	background: <?php echo esc_html(get_theme_mod( 'kaya_button_color', '#008dc4' )) ?>;
+	background: <?php echo esc_html(get_theme_mod( 'kaya_button_color', '#0075a5' )) ?>;
 	color: <?php echo esc_html(get_theme_mod( 'kaya_button_text_color', '#ffffff' )) ?>;
 }
 body button:active, 
@@ -333,7 +333,7 @@ html .woocommerce a.button.alt:visited,
 html .woocommerce button.button.alt, 
 html .woocommerce button.button.alt:visited, 
 html .woocommerce input.button.alt {
-	background: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_background_color', '#008dc4' )) ?>;
+	background: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_background_color', '#0075a5' )) ?>;
 	color: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_text_color', '#ffffff' )) ?>;
 }
 

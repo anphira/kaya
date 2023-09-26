@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.3.2
+ * @version 1.5
  */
 
 /**
@@ -205,7 +205,7 @@ function kaya_social_icons() {
 			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_facebook' )) . '"><i class="fab fa-facebook-f"></i><span class="screen-reader-text"> Visit us on Facebook</span></a>';
 		}
 		if( get_theme_mod( 'kaya_twitter' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_twitter' )) . '"><i class="fab fa-twitter"></i><span class="screen-reader-text"> Visit us on Twitter</span></a>';
+			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_twitter' )) . '"><i class="fab fa-twitter"></i><span class="screen-reader-text"> Visit us on X</span></a>';
 		}
 		if( get_theme_mod( 'kaya_linkedin' ) != '' ) {
 			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_linkedin' )) . '"><i class="fab fa-linkedin-in"><span class="screen-reader-text"> Visit us on LinkedIn</span></i></a>';

@@ -75,7 +75,7 @@ $postID = get_queried_object_id();
 				?>
 			</div>
 			<div class="site-info">
-				<div class="container flexbox">
+				<div class="container text-center">
 					<div class="">
 						<?php if(get_theme_mod( 'kaya_show_footer_social', false)) kaya_social_icons(); ?>
 						Copyright &copy; <?php echo esc_html(date('Y')); ?>. All rights reserved. <?php bloginfo('name'); ?>. 
@@ -90,27 +90,10 @@ $postID = get_queried_object_id();
 							?>
 							| <a href="<?php echo esc_html(get_theme_mod( 'kaya_accessibility_statement_url' )); ?>">Accessibility Statement</a>
 						<?php } ?>
-					</div>
-					<div class="text-right">
+
 						<?php if(get_theme_mod( 'kaya_footer_right', '' )) {
 							echo get_theme_mod( 'kaya_footer_right' ); 
-						}
-						else { ?>
-						<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'kaya' ) ); ?>">
-							<?php
-							/* translators: %s: CMS name, i.e. WordPress. */
-							printf( esc_html__( 'Proudly powered by %s', 'kaya' ), 'WordPress' );
-							?>
-						</a>
-						<br />
-						<a href="<?php echo esc_url( __( 'https://www.anphira.com/kaya-wordpress-theme/', 'kaya' ) ); ?>">
-							<?php 
-							/* translators: %s: Theme Author's name. */
-							printf( esc_html__( 'Theme: Kaya by %s', 'kaya' ), 'Anphira Web Design & Development' );
-							?>
-
-							</a>
-						<?php } ?>
+						} ?>
 					</div>
 				</div>
 			</div><!-- .site-info -->
@@ -120,20 +103,6 @@ $postID = get_queried_object_id();
 	?>
 </div><!-- #page -->
 
-
-
-
-<?php 
-if('' != get_theme_mod( 'kaya_cf7_redirect_url', '')) { 
-	?>
-	<script>
-	document.addEventListener( 'wpcf7mailsent', function( event ) {
-    location = '<?php echo esc_url(get_theme_mod( 'kaya_cf7_redirect_url' )); ?>';
-	}, false );
-	</script>
-	<?php 
-}
-?>
 
 
 <?php wp_footer(); ?>

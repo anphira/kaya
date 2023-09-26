@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.4
+ * @version 1.5
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -29,7 +29,7 @@
  * 
  */
  
-$kaya_theme_setup_guide_url = 'https://www.anphira.com/kaya-wordpress-theme/kaya-setup-guide/';
+$kaya_theme_setup_guide_url = 'https://easya11yguide.com/kaya-wordpress-theme/kaya-setup-guide/';
 
 /**
  * Add postMessage support for site title and description for the Theme Customizer.
@@ -66,19 +66,18 @@ function kaya_add_help_options($wp_customize) {
 	$wp_customize->add_section('kaya_help', array(
 		'title' => 'Need Setup Help? Start Here',
 		'description' => '<strong>Kaya Setup Instructions</strong><br /><br />
-		<a href="https://www.anphira.com/kaya-wordpress-theme/kaya-setup-guide/">Cick here for Setup Guide</a><br /><br />
+		<a href="https://easya11yguide.com/kaya-wordpress-theme/kaya-setup-guide/">Cick here for Setup Guide</a><br /><br />
 		<a href="https://github.com/anphira/kaya">Click here for Kaya GitHub project</a><br />
-		If you have a theme error to report, you can do so on the Github project',
+		If you have a theme error to report, you can do so on the Github project.',
 		'priority' => 10
 	));
-	
-	$wp_customize->add_setting('kaya_help_textarea', array('sanitize_callback' => 'esc_html'));
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_help_textarea', array(
-		'label'           => __( 'Notes', 'kaya' ),
-		'description'	  => __( 'Enter any notes you would like to keep for yourself here', 'kaya'),
-		'type'            => 'textarea',
-		'section'         => 'kaya_help',
-		'settings'   => 'kaya_help_textarea',
+
+
+	$wp_customize->add_setting( 'kaya_help_content_separator', array( 'sanitize_callback' => 'kaya_sanitize_separator' ) );
+	$wp_customize->add_control(
+		new Kaya_Separator_Control(	$wp_customize, 'kaya_help_content_separator', array(
+		'label'   => __( 'Thank you for choosing Kaya!', 'kaya' ),
+		'section' => 'kaya_help',
 		)
 	) );
 }
@@ -597,7 +596,7 @@ add_action('customize_register', 'kaya_add_header_options');
 function kaya_add_general($wp_customize) {
 	$wp_customize->add_section('kaya_general', array(
 		'title' => 'General Options',
-		'priority' => 20,
+		'priority' => 65,
 	));
 	$wp_customize->add_setting( 'kaya_general_content_separator', array( 'sanitize_callback' => 'kaya_sanitize_separator' ) );
 	$wp_customize->add_control(
@@ -782,7 +781,7 @@ function kaya_add_general($wp_customize) {
 	$wp_customize->add_setting('kaya_google_analytics', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_google_analytics', array(
 		'label'           => __( 'Google Analytics', 'kaya' ),
-		'description'	  => __( 'Enter your Google Analytics number here, it should be of the format UA-00000000-0 or G-XXXXXXXXX. Use either the Universal analytics or the Tag Manager, not both.<br><hr><strong>Universal Analytics: </strong>', 'kaya'),
+		'description'	  => __( 'Enter your Google Analytics number here, it should be of the format G-XXXXXXXXX. Use either the GA4 or the Tag Manager, not both.<br><hr><strong>GA4: </strong>', 'kaya'),
 		'type'            => 'text',
 		'section'         => 'kaya_general',
 		'settings'   => 'kaya_google_analytics',
@@ -805,16 +804,6 @@ function kaya_add_general($wp_customize) {
 		'type'            => 'text',
 		'section'         => 'kaya_general',
 		'settings'   => 'kaya_google_optimize',
-		)
-	) );
-	
-	$wp_customize->add_setting('kaya_cf7_redirect_url', array('sanitize_callback' => 'esc_url_raw'));
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_cf7_redirect_url', array(
-		'label'           => __( 'Contact Form 7 Redirect URL', 'kaya' ),
-		'description'	  => __( 'Enter a custom thank you page after contact form 7 forms are filled out', 'kaya'),
-		'type'            => 'url',
-		'section'         => 'kaya_general',
-		'settings'   => 'kaya_cf7_redirect_url',
 		)
 	) );
 	
@@ -982,7 +971,7 @@ function kaya_add_footer($wp_customize) {
 	$wp_customize->add_section('kaya_footer', array(
 		'title' => 'Footer Options',
 		'description' => 'Footer Settings',
-		'priority' => 65,
+		'priority' => 55,
 	));
 	
 	$wp_customize->add_setting('kaya_footer_in_grid', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
@@ -1058,7 +1047,7 @@ function kaya_add_404($wp_customize) {
 	$wp_customize->add_section('kaya_404', array(
 		'title' => '404 Error Page',
 		'description' => '404 Error Page',
-		'priority' => 130,
+		'priority' => 20,
 	));
 	
 	$wp_customize->add_setting('kaya_404_title', array('sanitize_callback' => 'sanitize_text_field'));
@@ -1090,7 +1079,7 @@ function kaya_add_social($wp_customize) {
 	$wp_customize->add_section('kaya_social', array(
 		'title' => 'Social Media & Social Sharing',
 		'description' => 'Social media sharing button options & social media URLs',
-		'priority' => 110,
+		'priority' => 100,
 	));
 	
 	$wp_customize->add_setting('kaya_archive_social_sharing', array('sanitize_callback' => 'kaya_sanitize_social_sharing'));
@@ -1152,7 +1141,7 @@ function kaya_add_social($wp_customize) {
 	
 	$wp_customize->add_setting('kaya_social_sharing_twitter', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_social_sharing_twitter', array(
-		'label'           => __( 'Share on Twitter', 'kaya' ),
+		'label'           => __( 'Share on X', 'kaya' ),
 		'type'            => 'checkbox',
 		'section'         => 'kaya_social',
 		'settings'   => 'kaya_social_sharing_twitter',
@@ -1214,7 +1203,7 @@ function kaya_add_social($wp_customize) {
 	
 	$wp_customize->add_setting('kaya_twitter', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_twitter', array(
-		'label'           => __( 'Twitter', 'kaya' ),
+		'label'           => __( 'X', 'kaya' ),
 		'type'            => 'url',
 		'section'         => 'kaya_social',
 		'settings'   => 'kaya_twitter',
