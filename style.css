@@ -5,7 +5,7 @@ Author: Anphira, LLC
 Author URI: https://www.anphira.com/
 GitHub Theme URI: anphira/kaya
 Description: Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It's ready to work with your page builder and has built-in support for Visual Composer. You can view the setup instructions by going to the Customizer and selecting "Need Setup Help?".
-Version: 1.5
+Version: 1.5.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kaya
@@ -26,6 +26,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
+# Variables
 # Normalize
 # Typography
 # Elements
@@ -51,7 +52,19 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Social sharing buttons
 # Announcement Bar
 # Other useful classes
+# Fluent Forms Fixes
+# Max Mega Menu Fixes
+# Elementor Fixes
 --------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+# Variables
+--------------------------------------------------------------*/
+:root {
+	--kaya-focus-color: #0075a5;
+}
+
 
 /*--------------------------------------------------------------
 # Normalize
@@ -126,7 +139,7 @@ a {
 a:active,
 a:hover {
 	outline: 0;
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 a.button, a.button:visited {
@@ -618,6 +631,7 @@ textarea {
 --------------------------------------------------------------*/
 a {
 	color: royalblue;
+	border: 2px solid transparent;
 }
 
 a:visited {
@@ -632,7 +646,8 @@ a:active {
 
 a:focus,
 button:focus {
-	outline: medium solid;
+	outline: 2px solid var(--kaya-focus-color);
+	border: 2px solid white;
 }
 
 a:hover,
@@ -781,6 +796,10 @@ button:active {
 /* Do not show the outline on the skip link target. */
 #content[tabindex="-1"]:focus {
 	outline: 0;
+}
+
+.site-branding a {
+	display: block;
 }
 
 /*--------------------------------------------------------------
@@ -2185,3 +2204,48 @@ background-color: #FF6600
 .height-150 {min-height: 150px!important;}
 .height-100 {min-height: 100px!important;}
 .height-50 {min-height: 50px!important;}
+
+
+
+/*--------------------------------------------------------------
+# Fluent Forms Fixes
+--------------------------------------------------------------*/
+body .fluentform .ff_btn_style:focus,
+body .fluentform .ff_btn_style:hover {
+	opacity: 1;
+}
+body .fluentform .ff-el-form-control {
+	border: 2px solid #999999;
+}
+body .fluentform form.frm-fluent-form .ff_btn_style {
+	border: 2px solid transparent;
+}
+body .fluentform form.frm-fluent-form .ff_btn_style:focus,
+body .fluentform .ff-el-form-control:focus {
+	outline: 2px solid var(--kaya-focus-color);
+	border: 2px solid white;
+}
+
+
+
+/*--------------------------------------------------------------
+# Max Mega Menu Fixes
+--------------------------------------------------------------*/
+body #mega-menu-wrap-primary.mega-keyboard-navigation #mega-menu-primary a:focus,
+body #mega-menu-wrap-primary.mega-keyboard-navigation #mega-menu-primary li.mega-menu-item a.mega-menu-link:focus {
+	outline-offset: 2px;
+}
+
+
+
+
+/*--------------------------------------------------------------
+# Elementor Fixes
+--------------------------------------------------------------*/
+body .elementor a {
+	text-decoration: underline;
+}
+body .elementor-button span,
+body .elementor .elementor-button {
+	text-decoration: none;
+}

@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.0.1
+ * @version 1.5.1
  */
 
 if ( ! function_exists( 'kaya_posted_on' ) ) :
@@ -29,29 +29,24 @@ function kaya_posted_on() {
 
 		$posted_on = sprintf(
 			/* translators: %s: post date. */
-			esc_html_x( 'Last Updated on %s', 'post date', 'kaya' ),
-			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-		);
+			esc_html_x( 'Last Updated on %s', 'post date', 'kaya' ), $time_string);
 
 		$byline = sprintf(
 			/* translators: %s: post author. */
 			esc_html_x( 'by %s', 'post author', 'kaya' ),
-			'<span  itemprop="author" class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
-		);
+			'<span itemprop="author" class="author vcard">' . esc_html( get_the_author() ) . '</span>');
 
 		echo '<span class="post-last-modified">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 	else {
 		$posted_on = sprintf(
 			/* translators: %s: post date. */
-			esc_html_x( 'Posted on %s', 'post date', 'kaya' ),
-			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-		);
+			esc_html_x( 'Posted on %s', 'post date', 'kaya' ), $time_string );
 
 		$byline = sprintf(
 			/* translators: %s: post author. */
 			esc_html_x( 'by %s', 'post author', 'kaya' ),
-			'<span  itemprop="author" class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+			'<span itemprop="author" class="author vcard">' . esc_html( get_the_author() ) . '</span>'
 		);
 
 		echo '<span class="post-last-modified">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

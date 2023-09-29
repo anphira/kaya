@@ -1,12 +1,12 @@
 === kaya ===
 
 Contributors: anphira, automattic
-Tags: custom-background, theme-options, custom-menu, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, featured-images, flexible-header, footer-widgets, full-width-template, blog
+Tags: custom-background, theme-options, custom-menu, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, featured-images, flexible-header, footer-widgets, full-width-template, blog, accessibility-ready
 
 Requires at least: 5.5
 Tested up to: 6.3.1
 Requires PHP: 7.4
-Stable tag: v1.5
+Stable tag: v1.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,35 +14,41 @@ A starter theme called Kaya designed for PSD to WordPress builds, built from und
 
 == Description ==
 
-Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It’s ready to work with your page builder and has built-in support for Elementor. You can view the setup instructions by going to the Customizer and selecting “Need Setup Help?”.
+Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It’s ready to work with your page builder and has built-in support for Elementor. Kaya is specifically designed for flexibility and accessibility, and receives periodic accessibilty testing from ThisAbled. You can view the setup instructions by going to the Customizer and selecting “Need Setup Help?”.
 
 == Installation ==
 
 1. In your admin panel, go to Appearance > Themes and click the Add New button.
 2. Click Upload and Choose File, then select the theme's .zip file. Click Install Now.
-3. Click Activate to use your new theme right away.
+3. Click Activate to use your new theme right away or install a child theme if you'd like to customize.
 
 == Frequently Asked Questions ==
 
 = Does this theme support any plugins? =
 
-Kaya includes support for Infinite Scroll in Jetpack.
-Kaya includes support for Visual Composer.
-Kaya includes support for Elementor Page Builder.
+Kaya includes support for Max Mega Menu, Fluent Forms, Elementor Page Builder, Gutenberg, GenerateBlocks, and WP Bakery.
 
 = Are there examples of theme being used? =
 
-Examples of the theme being used are at https://www.anphira.com/kaya-wordpress-theme/
+Examples of the theme being used are at https://easya11yguide.com/kaya-wordpress-theme/
 
 = Are there any recommended plugins? =
 
-Recommended plugins are available at https://www.anphira.com/kaya-wordpress-theme/
+Recommended plugins are available at https://easya11yguide.com/kaya-wordpress-theme/
 
 == Customization Options ==
 
-From the Customizer a number of customization options exist. Please see https://www.anphira.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
+From the Customizer a number of customization options exist. Please see https://easya11yguide.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 1.5.1 - Sep 27 2023 =
+* Fix: update focus style throughout to double. Inside is "outline" which is white. Outside is blue which is "border".
+* Fix: remove target="_blank" from theme.
+* Remove: Google optimize shut down, code has been removed.
+* Remove: link to post & author page from the post meta information. Removes redundant links.
+* Update: GA4 analytics code.
+
 
 = 1.5 - Sep 20 2023 =
 * Fix: remove hero from woocommerce pages when hero is not turned on.

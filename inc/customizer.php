@@ -797,16 +797,6 @@ function kaya_add_general($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_google_optimize', array('sanitize_callback' => 'sanitize_text_field'));
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_google_optimize', array(
-		'label'           => __( 'Google Optimize', 'kaya' ),
-		'description'	  => __( 'Enter your Google Optimize number here, it should be of the format GTM-XXXXXX. To use Google Optimize you must have already entered a Google Analytics number above.', 'kaya'),
-		'type'            => 'text',
-		'section'         => 'kaya_general',
-		'settings'   => 'kaya_google_optimize',
-		)
-	) );
-	
 	$wp_customize->add_setting('kaya_add_to_head', array('sanitize_callback' => 'esc_html'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_add_to_head', array(
 		'label'           => __( 'Add code before </head>', 'kaya' ),

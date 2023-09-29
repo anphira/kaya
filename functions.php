@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.5
+ * @version 1.5.1
  */
 
 /**
@@ -202,43 +202,43 @@ if( ! function_exists('kaya_social_icons') ) :
 function kaya_social_icons() {
 	echo '<div class="social-icons">';
 		if( get_theme_mod( 'kaya_facebook' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_facebook' )) . '"><i class="fab fa-facebook-f"></i><span class="screen-reader-text"> Visit us on Facebook</span></a>';
+			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_facebook' )) . '"><i class="fab fa-facebook-f"></i><span class="screen-reader-text"> Visit us on Facebook</span></a>';
 		}
 		if( get_theme_mod( 'kaya_twitter' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_twitter' )) . '"><i class="fab fa-twitter"></i><span class="screen-reader-text"> Visit us on X</span></a>';
+			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_twitter' )) . '"><i class="fab fa-twitter"></i><span class="screen-reader-text"> Visit us on X</span></a>';
 		}
 		if( get_theme_mod( 'kaya_linkedin' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_linkedin' )) . '"><i class="fab fa-linkedin-in"><span class="screen-reader-text"> Visit us on LinkedIn</span></i></a>';
+			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_linkedin' )) . '"><i class="fab fa-linkedin-in"><span class="screen-reader-text"> Visit us on LinkedIn</span></i></a>';
 		}
 		if( get_theme_mod( 'kaya_google_plus' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_google_plus' )) . '"><i class="fab fa-google"></i><span class="screen-reader-text"> Visit us on Google Maps</span></a>';
+			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_google_plus' )) . '"><i class="fab fa-google"></i><span class="screen-reader-text"> Visit us on Google Maps</span></a>';
 		}
 		if( get_theme_mod( 'kaya_skype' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_skype' )) . '"><i class="fab fa-skype"></i><span class="screen-reader-text"> Contact us on Skype</span></a>';
+			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_skype' )) . '"><i class="fab fa-skype"></i><span class="screen-reader-text"> Contact us on Skype</span></a>';
 		}
 		if( get_theme_mod( 'kaya_youtube' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_youtube' )) . '"><i class="fab fa-youtube"></i><span class="screen-reader-text"> Visit us on Youtube</span></a>';
+			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_youtube' )) . '"><i class="fab fa-youtube"></i><span class="screen-reader-text"> Visit us on Youtube</span></a>';
 		}
 		if( get_theme_mod( 'kaya_vimeo' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_vimeo' )) . '"><i class="fab fa-vimeo-v"></i><span class="screen-reader-text"> Visit us on Vimeo</span></a>';
+			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_vimeo' )) . '"><i class="fab fa-vimeo-v"></i><span class="screen-reader-text"> Visit us on Vimeo</span></a>';
 		}
 		if( get_theme_mod( 'kaya_instagram' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_instagram' )) . '"><i class="fab fa-instagram"></i><span class="screen-reader-text"> Visit us on Instagram</span></a>';
+			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_instagram' )) . '"><i class="fab fa-instagram"></i><span class="screen-reader-text"> Visit us on Instagram</span></a>';
 		}
 		if( get_theme_mod( 'kaya_pinterest' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_pinterest' )) . '"><i class="fab fa-pinterest-p"></i><span class="screen-reader-text"> Visit us on Pinterest</span></a>';
+			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_pinterest' )) . '"><i class="fab fa-pinterest-p"></i><span class="screen-reader-text"> Visit us on Pinterest</span></a>';
 		}
 		if( get_theme_mod( 'kaya_yelp' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_yelp' )) . '"><i class="fab fa-yelp"></i><span class="screen-reader-text"> Visit us on Yelp</span></a>';
+			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_yelp' )) . '"><i class="fab fa-yelp"></i><span class="screen-reader-text"> Visit us on Yelp</span></a>';
 		}
 		if( get_theme_mod( 'kaya_behance' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_behance' )) . '"><i class="fab fa-behance"></i><span class="screen-reader-text"> Visit us on Behance</span></a>';
+			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_behance' )) . '"><i class="fab fa-behance"></i><span class="screen-reader-text"> Visit us on Behance</span></a>';
 		}
 		if( get_theme_mod( 'kaya_rss' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="' . esc_url(get_theme_mod( 'kaya_rss' )) . '"><i class="fas fa-rss"></i><span class="screen-reader-text"> View our RSS feed</span></a>';
+			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_rss' )) . '"><i class="fas fa-rss"></i><span class="screen-reader-text"> View our RSS feed</span></a>';
 		}
 		if( get_theme_mod( 'kaya_email' ) != '' ) {
-			echo '<a class="social-icon-single" target="_blank" href="mailto:' . esc_url(get_theme_mod( 'kaya_email' )) . '"><i class="fas fa-envelope"></i><span class="screen-reader-text"> Email us</span></a>';
+			echo '<a class="social-icon-single" href="mailto:' . esc_url(get_theme_mod( 'kaya_email' )) . '"><i class="fas fa-envelope"></i><span class="screen-reader-text"> Email us</span></a>';
 		}
 	echo '</div>';
 }
@@ -538,7 +538,6 @@ function kaya_page_settings_display_callback( $post ) {
     $check_title = get_post_meta($post->ID, '_kaya_hide_title_check', true);
     $check_header = get_post_meta($post->ID, '_kaya_hide_header_check', true);
     $check_footer = get_post_meta($post->ID, '_kaya_hide_footer_check', true);
-    $google_experiments = get_post_meta($post->ID, '_kaya_google_experiments_code', true);
     
     ?>
     <select id="kaya_sidebar_setting" name="kaya_sidebar_setting">
@@ -564,9 +563,6 @@ function kaya_page_settings_display_callback( $post ) {
         <input type="checkbox" id="kaya_hide_footer_check" name="kaya_hide_footer_check" <?php checked( $check_footer, 'on' ); ?> />
         <label for="kaya_hide_footer_check">Hide the page footer</label>
     </p>
-    
-    <p>Enter Google Experiments Code - make sure to ONLY enter code on the master page, not variations:</p>
-    <textarea rows="4" style="width: 100%;" id="kaya_google_experiments_code" name="kaya_google_experiments_code" ><?php echo esc_html($google_experiments); ?></textarea>
     
     <?php 
     echo '<hr />Pages are currently set to display ';
@@ -683,10 +679,6 @@ function kaya_page_settings_save_meta_box( $post_id ) {
 	}
 	else {
 		update_post_meta( $post_id, '_kaya_hide_footer_check', '');
-	}
-		
-	if( isset( $_POST['kaya_google_experiments_code'] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-		update_post_meta( $post_id, '_kaya_google_experiments_code', $_POST['kaya_google_experiments_code'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 	}
 
 	if( isset( $_POST['kaya_page_hero_setting'] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized

@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.4.1
+ * @version 1.5.1
  */
 
 $postID = get_queried_object_id();
@@ -17,7 +17,6 @@ $postID = get_queried_object_id();
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-<?php echo esc_html(get_post_meta($postID, '_kaya_google_experiments_code', true)); ?>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">

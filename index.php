@@ -12,7 +12,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.3
+ * @version 1.5.1
  */
 
 get_header(); ?>
@@ -50,9 +50,14 @@ get_header(); ?>
 
 			if ( is_home() && ! is_front_page() ) : 
 				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
+
+				<?php
+				$page_hero_blog = get_theme_mod( 'kaya_page_hero_blog_archive', false );
+				if( ! $page_hero_blog ) { ?>
+					<header>
+						<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+					</header>
+				<?php } ?>
 
 				<?php
 			endif;

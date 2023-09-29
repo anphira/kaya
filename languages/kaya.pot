@@ -570,17 +570,6 @@ msgstr ""
 msgid "Tag Manager:"
 msgstr ""
 
-#: inc/customizer.php:785
-msgid "Google Optimize"
-msgstr ""
-
-#: inc/customizer.php:786
-msgid ""
-"Enter your Google Optimize number here, it should be of the format GTM-"
-"XXXXXX. To use Google Optimize you must have already entered a Google "
-"Analytics number above."
-msgstr ""
-
 #: inc/customizer.php:795
 msgid "Contact Form 7 Redirect URL"
 msgstr ""

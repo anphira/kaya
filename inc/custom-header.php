@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.5
+ * @version 1.5.1
  */
 
 /**
@@ -81,8 +81,7 @@ html {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_announcement_button_text_color', '#ffffff' )); ?>;
 }
 #masthead .announcement-button:hover,
-#masthead .announcement-button:active,
-#masthead .announcement-button:focus {
+#masthead .announcement-button:active {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_announcement_button_text_color', '#ffffff' )); ?>;
 	color: <?php echo esc_html(get_theme_mod( 'kaya_announcement_button_background_color', '#000000' )); ?>;
 }
@@ -177,7 +176,7 @@ body {
 body a, body a:visited {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_link_color', '#0075a5' )) ?>;
 }
-body a:hover, body a:focus, body a:active {
+body a:hover, body a:active {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_link_hover_color', '#005dc4' )) ?>;
 }
 #masthead {
@@ -210,9 +209,14 @@ body a:hover, body a:focus, body a:active {
 #colophon .site-info a:active {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_lower_footer_link_hover_color', '#ffffff' )) ?>;
 }
-#masthead #site-navigation .menu-item a, #masthead .menu-toggle, #masthead #site-navigation, .main-navigation ul ul {
+#masthead #site-navigation a, #masthead .menu-toggle, #masthead #site-navigation, .main-navigation ul ul {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_menu_background_color', '#ffffff' )) ?>;
 	color: <?php echo esc_html(get_theme_mod( 'kaya_menu_text_color', '#0075a5' )) ?>;
+}
+#masthead #site-navigation a:hover,
+#masthead #site-navigation a:active {
+	color: <?php echo esc_html(get_theme_mod( 'kaya_menu_background_color', '#ffffff' )) ?>;
+	background: <?php echo esc_html(get_theme_mod( 'kaya_menu_text_color', '#0075a5' )) ?>;
 }
 #page-hero-area {
 	<?php
@@ -298,31 +302,23 @@ body #colophon .wp-block-button__link:visited {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_button_text_color', '#ffffff' )) ?>;
 }
 body button:active, 
-body button:focus, 
 body button:hover, 
 body a.button:hover, 
-body a.button:focus, 
 body a.button:active, 
 body input[type=button]:active, 
-body input[type=button]:focus, 
 body input[type=button]:hover, 
 body input[type=reset]:active, 
-body input[type=reset]:focus, 
 body input[type=reset]:hover, 
 body input[type=submit]:hover, 
-body input[type=submit]:focus, 
 body input[type=submit]:active,
-body .elementor-button:focus,
 body .elementor-button:hover,
 body .elementor-button:active,
-body .wp-block-button__link:focus,
 body .wp-block-button__link:hover,
 body .wp-block-button__link:active,
-body #colophon .wp-block-button__link:focus,
 body #colophon .wp-block-button__link:hover,
 body #colophon .wp-block-button__link:active {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_button_hover_color', '#005dc4' )) ?>;
-	color: <?php echo esc_html(get_theme_mod( 'kaya_button_hover_text_color', '#000000' )) ?>;
+	color: <?php echo esc_html(get_theme_mod( 'kaya_button_hover_text_color', '#ffffff' )) ?>;
 }
 
 html .woocommerce a.button,
@@ -398,21 +394,16 @@ $kaya_grid_width = ($kaya_grid_width > 320) ? $kaya_grid_width : 1140;
 <!-- End Load Customizer CSS settings -->
 <?php
 	if(!empty(get_theme_mod( 'kaya_google_analytics' ))) {
-		echo '<!-- Add Google Analytics -->';
-		echo "<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		echo '<!-- Add Google analytics tag (gtag. js) -->';
+		echo '<script async src="https://www.googletagmanager.com/gtag/js?id=' . esc_html(get_theme_mod( 'kaya_google_analytics' )) . '"></script>';
+		echo '<script>';
+		echo 'window. dataLayer = window. dataLayer || [];';
+		echo 'function gtag() {datalayer.push(arguments) ;}';
+		echo "gtag( 'js', new Date());";
 
-  ga('create', '", esc_html(get_theme_mod( 'kaya_google_analytics' )), "', 'auto');";
-
-  if(get_theme_mod('kaya_google_optimize', '') !== '') echo "ga('require', '", esc_html(get_theme_mod( 'kaya_google_optimize' )), "');";
-  
-  echo "ga('send', 'pageview');
-
-		</script>";
-		echo '<!-- End Add Google Analytics -->';
+  		echo "gtag( 'config', '" . esc_html(get_theme_mod( 'kaya_google_analytics' )) . "') ;";
+		echo "</script>";
+		echo '<!-- End Google tag (gtag. js) -->';
 	} 
 
 	/* Tag manager option */
