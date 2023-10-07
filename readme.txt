@@ -6,7 +6,7 @@ Tags: custom-background, theme-options, custom-menu, threaded-comments, one-colu
 Requires at least: 5.5
 Tested up to: 6.3.1
 Requires PHP: 7.4
-Stable tag: v1.5.1
+Stable tag: v1.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,6 +15,8 @@ A starter theme called Kaya designed for PSD to WordPress builds, built from und
 == Description ==
 
 Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It’s ready to work with your page builder and has built-in support for Elementor. Kaya is specifically designed for flexibility and accessibility, and receives periodic accessibilty testing from ThisAbled. You can view the setup instructions by going to the Customizer and selecting “Need Setup Help?”.
+
+Special thanks to ThisAbled.ca for assistance with accessibility testing. Getting real testing from testers who not only live with challenges but are certified in accessibility is incredibly valuable for themes.
 
 == Installation ==
 
@@ -41,6 +43,11 @@ Recommended plugins are available at https://easya11yguide.com/kaya-wordpress-th
 From the Customizer a number of customization options exist. Please see https://easya11yguide.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 1.5.2 - Oct 07 2023 =
+* Update: lower footer text to add <p> tags.
+* Update: style buttons for woocommerce on my account and cart pages.
+* Update: styling for fluent forms to over some of the inaccessible defaults.
 
 = 1.5.1 - Sep 27 2023 =
 * Fix: update focus style throughout to double. Inside is "outline" which is white. Outside is blue which is "border".

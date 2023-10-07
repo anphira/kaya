@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.5.1
+ * @version 1.5.2
  */
 
 /**
@@ -328,26 +328,24 @@ html .woocommerce a.button.alt,
 html .woocommerce a.button.alt:visited, 
 html .woocommerce button.button.alt, 
 html .woocommerce button.button.alt:visited, 
-html .woocommerce input.button.alt {
+html .woocommerce input.button.alt,
+html :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_background_color', '#0075a5' )) ?>;
 	color: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_text_color', '#ffffff' )) ?>;
 }
 
 html .woocommerce a.button:hover,
-html .woocommerce a.button:focus,
 html .woocommerce a.button:active,
 html .woocommerce #respond input#submit.alt:hover, 
 html .woocommerce a.button.alt:hover, 
 html .woocommerce button.button.alt:hover, 
 html .woocommerce input.button.alt:hover,
-html .woocommerce #respond input#submit.alt:focus, 
-html .woocommerce a.button.alt:focus, 
-html .woocommerce button.button.alt:focus, 
-html .woocommerce input.button.alt:focus,
 html .woocommerce #respond input#submit.alt:active, 
 html .woocommerce a.button.alt:active, 
 html .woocommerce button.button.alt:active, 
-html .woocommerce input.button.alt:active {
+html .woocommerce input.button.alt:active,
+html :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button:hover,
+html :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button:active {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_background_hover_color', '#005dc4' )) ?>;
 	color: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_text_hover_color', '#000000' )) ?>;
 }
@@ -357,6 +355,10 @@ html .woocommerce div.product span.price,
 html .woocommerce ul.products li.product .price,
 html .woocommerce-message::before {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_woo_accent_color', '#77a464' )) ?>;
+}
+
+html .woocommerce span.onsale {
+	background: <?php echo esc_html(get_theme_mod( 'kaya_woo_accent_color', '#77a464' )) ?>;
 }
 html .woocommerce-message {
 	border-top-color: <?php echo esc_html(get_theme_mod( 'kaya_woo_accent_color', '#77a464' )) ?>;

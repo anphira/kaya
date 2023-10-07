@@ -5,7 +5,7 @@ Author: Anphira, LLC
 Author URI: https://www.anphira.com/
 GitHub Theme URI: anphira/kaya
 Description: Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It's ready to work with your page builder and has built-in support for Visual Composer. You can view the setup instructions by going to the Customizer and selecting "Need Setup Help?".
-Version: 1.5.1
+Version: 1.5.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kaya
@@ -108,13 +108,18 @@ video {
 	vertical-align: baseline;
 }
 
-figure.wp-block-embed.is-type-video.wp-embed-aspect-16-9.full-width-video .wp-block-embed__wrapper {
+figure.wp-block-embed.is-type-video.wp-embed-aspect-16-9.full-width-video .wp-block-embed__wrapper,
+figure.wp-block-embed.is-type-video.wp-embed-aspect-4-3.full-width-video .wp-block-embed__wrapper {
     position: relative;
     width: 100%;
     height: 0;
     padding-bottom: 56.25%; /*16:9*/
 }
-figure.wp-block-embed.is-type-video.wp-embed-aspect-16-9.full-width-video .wp-block-embed__wrapper iframe {
+figure.wp-block-embed.is-type-video.wp-embed-aspect-4-3.full-width-video .wp-block-embed__wrapper {
+    padding-bottom: 75%; /*4:3*/
+}
+figure.wp-block-embed.is-type-video.wp-embed-aspect-16-9.full-width-video .wp-block-embed__wrapper iframe,
+figure.wp-block-embed.is-type-video.wp-embed-aspect-4-3.full-width-video .wp-block-embed__wrapper iframe {
     position: absolute;
     top: 0;
     left: 0;
@@ -2224,6 +2229,9 @@ body .fluentform form.frm-fluent-form .ff_btn_style:focus,
 body .fluentform .ff-el-form-control:focus {
 	outline: 2px solid var(--kaya-focus-color);
 	border: 2px solid white;
+}
+body select.ff-el-form-control:not([size]):not([multiple]) {
+	height: calc(1.5rem + 22px);
 }
 
 

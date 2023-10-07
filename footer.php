@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.3
+ * @version 1.5.2
  */
 
 $postID = get_queried_object_id();
@@ -78,7 +78,7 @@ $postID = get_queried_object_id();
 				<div class="container text-center">
 					<div class="">
 						<?php if(get_theme_mod( 'kaya_show_footer_social', false)) kaya_social_icons(); ?>
-						Copyright &copy; <?php echo esc_html(date('Y')); ?>. All rights reserved. <?php bloginfo('name'); ?>. 
+						<p>Copyright &copy; <?php echo esc_html(date('Y')); ?>. All rights reserved. <?php bloginfo('name'); ?>. 
 						<?php $privacy_policy = '';
 						$privacy_policy = get_privacy_policy_url();
 						if('' != $privacy_policy) {
@@ -89,11 +89,11 @@ $postID = get_queried_object_id();
 						if(get_theme_mod('kaya_accessibility_statement_url', '')) {
 							?>
 							| <a href="<?php echo esc_html(get_theme_mod( 'kaya_accessibility_statement_url' )); ?>">Accessibility Statement</a>
-						<?php } ?>
+						<?php } ?></p>
 
-						<?php if(get_theme_mod( 'kaya_footer_right', '' )) {
+						<p><?php if(get_theme_mod( 'kaya_footer_right', '' )) {
 							echo get_theme_mod( 'kaya_footer_right' ); 
-						} ?>
+						} ?></p>
 					</div>
 				</div>
 			</div><!-- .site-info -->
