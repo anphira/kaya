@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.5.2
+ * @version 1.6
  */
 
 /**
@@ -90,6 +90,7 @@ body, p, button, input, select, textarea, .elementor-widget-text-editor {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_text_color', '#000000' )) ?>;
 	font-weight: <?php echo esc_html(get_theme_mod( 'kaya_paragraph_font_weight', '400' )) ?>;
 	line-height: <?php echo esc_html(get_theme_mod( 'kaya_paragraph_line_height', '1.5' )) ?>em;
+	letter-spacing: <?php echo esc_html(get_theme_mod( 'kaya_paragraph_letter_spacing', '0' )); ?>px;
 	font-family: 
 		<?php if(get_theme_mod( 'kaya_custom_google_fonts_paragraph', '' ) != '')
 			echo esc_html(get_theme_mod( 'kaya_custom_google_fonts_paragraph' ));
@@ -99,6 +100,7 @@ body, p, button, input, select, textarea, .elementor-widget-text-editor {
 h1, h2, h3, h4, h5, h6 {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_heading_color', '#000000' )); ?>;
 	font-weight: <?php echo esc_html(get_theme_mod( 'kaya_heading_font_weight', '400' )); ?>;
+	letter-spacing: <?php echo esc_html(get_theme_mod( 'kaya_heading_letter_spacing', '0' )); ?>px;
 	font-family: 
 		<?php if(get_theme_mod( 'kaya_custom_google_fonts_heading', '' ) != '')
 			echo esc_html(get_theme_mod( 'kaya_custom_google_fonts_heading' ));
@@ -353,7 +355,8 @@ html :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce b
 html .woocommerce div.product p.price, 
 html .woocommerce div.product span.price,
 html .woocommerce ul.products li.product .price,
-html .woocommerce-message::before {
+html .woocommerce-message::before,
+html .woocommerce div.product .stock {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_woo_accent_color', '#77a464' )) ?>;
 }
 
@@ -396,16 +399,16 @@ $kaya_grid_width = ($kaya_grid_width > 320) ? $kaya_grid_width : 1140;
 <!-- End Load Customizer CSS settings -->
 <?php
 	if(!empty(get_theme_mod( 'kaya_google_analytics' ))) {
-		echo '<!-- Add Google analytics tag (gtag. js) -->';
+		echo '<!-- Add Google analytics tag (gtag.js) -->';
 		echo '<script async src="https://www.googletagmanager.com/gtag/js?id=' . esc_html(get_theme_mod( 'kaya_google_analytics' )) . '"></script>';
 		echo '<script>';
-		echo 'window. dataLayer = window. dataLayer || [];';
-		echo 'function gtag() {datalayer.push(arguments) ;}';
-		echo "gtag( 'js', new Date());";
+		echo 'window.dataLayer = window.dataLayer || [];';
+		echo 'function gtag() {datalayer.push(arguments);}';
+		echo "gtag('js', new Date());";
 
-  		echo "gtag( 'config', '" . esc_html(get_theme_mod( 'kaya_google_analytics' )) . "') ;";
+  		echo "gtag('config', '" . esc_html(get_theme_mod( 'kaya_google_analytics' )) . "') ;";
 		echo "</script>";
-		echo '<!-- End Google tag (gtag. js) -->';
+		echo '<!-- End Google tag (gtag.js) -->';
 	} 
 
 	/* Tag manager option */

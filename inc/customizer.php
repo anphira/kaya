@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.5
+ * @version 1.6
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -796,36 +796,6 @@ function kaya_add_general($wp_customize) {
 		'settings'   => 'kaya_google_tag_analytics',
 		)
 	) );
-	
-	$wp_customize->add_setting('kaya_add_to_head', array('sanitize_callback' => 'esc_html'));
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_add_to_head', array(
-		'label'           => __( 'Add code before </head>', 'kaya' ),
-		'description'	  => __( 'Enter code to be added before &lt;/head&gt; tag -- useful for some scripts', 'kaya'),
-		'type'            => 'textarea',
-		'section'         => 'kaya_general',
-		'settings'   => 'kaya_add_to_head',
-		)
-	) );
-	
-	$wp_customize->add_setting('kaya_add_to_body_top', array('sanitize_callback' => 'esc_html'));
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_add_to_body_top', array(
-		'label'           => __( 'Add code just after <body>', 'kaya' ),
-		'description'	  => __( 'Enter code to be added just after &lt;body&gt; tag -- useful for some scripts', 'kaya'),
-		'type'            => 'textarea',
-		'section'         => 'kaya_general',
-		'settings'   => 'kaya_add_to_body_top',
-		)
-	) );
-	
-	$wp_customize->add_setting('kaya_add_to_body_bottom', array('sanitize_callback' => 'esc_html'));
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_add_to_body_bottom', array(
-		'label'           => __( 'Add code just before </body>', 'kaya' ),
-		'description'	  => __( 'Enter code to be added just before &lt;/body&gt; tag -- useful for some scripts', 'kaya'),
-		'type'            => 'textarea',
-		'section'         => 'kaya_general',
-		'settings'   => 'kaya_add_to_body_bottom',
-		)
-	) );
 }
 add_action('customize_register', 'kaya_add_general');
 
@@ -1471,6 +1441,26 @@ function kaya_add_fonts($wp_customize) {
 		'type'            => 'number',
 		'section'         => 'kaya_fonts',
 		'settings'   => 'kaya_paragraph_font_weight',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_heading_letter_spacing', array('sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_heading_letter_spacing', array(
+		'label'           => __( 'Heading Letter Spacing', 'kaya' ),
+		'description'	  => __( 'Enter letter spacing in pixels', 'kaya' ),
+		'type'            => 'number',
+		'section'         => 'kaya_fonts',
+		'settings'   => 'kaya_heading_letter_spacing',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_paragraph_letter_spacing', array('sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_paragraph_letter_spacing', array(
+		'label'           => __( 'Paragraph Letter Spacing', 'kaya' ),
+		'description'	  => __( 'Enter letter spacing in pixels', 'kaya' ),
+		'type'            => 'number',
+		'section'         => 'kaya_fonts',
+		'settings'   => 'kaya_paragraph_letter_spacing',
 		)
 	) );
 	

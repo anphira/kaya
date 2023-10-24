@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.5.1
+ * @version 1.6
  */
 
 $postID = get_queried_object_id();
@@ -21,19 +21,11 @@ $postID = get_queried_object_id();
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 
-<?php if(get_theme_mod( 'kaya_add_to_head', '' ) !== '')
-	echo esc_html(get_theme_mod( 'kaya_add_to_head' ));
-?>
-
 <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>
-
-<?php if(get_theme_mod( 'kaya_add_to_body_top', '' ) !== '')
-	echo esc_html(get_theme_mod( 'kaya_add_to_body_top' ));
-?>
 
 <div id="page" class="site">
 

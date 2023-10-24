@@ -11,7 +11,7 @@
  */
 
 /**
- * Prevent clickjacking
+ * Prevent clickjacking -- this only works on some hosting systems. On others you have contact support for how to.
  */
 add_action( 'send_headers', 'kaya_send_frame_options_header', 10, 0 );
 function kaya_send_frame_options_header() {

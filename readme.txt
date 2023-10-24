@@ -6,7 +6,7 @@ Tags: custom-background, theme-options, custom-menu, threaded-comments, one-colu
 Requires at least: 5.5
 Tested up to: 6.3.1
 Requires PHP: 7.4
-Stable tag: v1.5.2
+Stable tag: v1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,16 @@ Recommended plugins are available at https://easya11yguide.com/kaya-wordpress-th
 From the Customizer a number of customization options exist. Please see https://easya11yguide.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 1.6 - Oct 24 2023 =
+* Removed: "Add code before </head>" from General page of Customizer.
+* Removed: "Add code just after </body>" from General page of Customizer.
+* Removed: "Add code just before </body>" from General page of Customizer.
+* Add: Letting spacing for heading and paragraph text.
+* Fix: extra space in the GA4 tag was preventing tracking. Corrected now.
+
+= 1.5.3 - Oct 08 2023 =
+* Update: correct in stock WooCommerce text to use WooCommerce color.
 
 = 1.5.2 - Oct 07 2023 =
 * Update: lower footer text to add <p> tags.

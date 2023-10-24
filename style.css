@@ -5,7 +5,7 @@ Author: Anphira, LLC
 Author URI: https://www.anphira.com/
 GitHub Theme URI: anphira/kaya
 Description: Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It's ready to work with your page builder and has built-in support for Visual Composer. You can view the setup instructions by going to the Customizer and selecting "Need Setup Help?".
-Version: 1.5.2
+Version: 1.6
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kaya
@@ -1111,6 +1111,9 @@ object {
 #masthead nav .container {
 	padding: 0 15px;
 	overflow: visible;
+}
+#masthead .site-branding a {
+	display: inline-block;
 }
 
 
@@ -2242,6 +2245,19 @@ body select.ff-el-form-control:not([size]):not([multiple]) {
 body #mega-menu-wrap-primary.mega-keyboard-navigation #mega-menu-primary a:focus,
 body #mega-menu-wrap-primary.mega-keyboard-navigation #mega-menu-primary li.mega-menu-item a.mega-menu-link:focus {
 	outline-offset: 2px;
+	z-index: 10;
+}
+body #mega-menu-wrap-primary.mega-keyboard-navigation .mega-menu-toggle:focus, 
+body #mega-menu-wrap-primary.mega-keyboard-navigation .mega-toggle-block:focus, 
+body #mega-menu-wrap-primary.mega-keyboard-navigation .mega-toggle-block a:focus, 
+body #mega-menu-wrap-primary.mega-keyboard-navigation .mega-toggle-block .mega-search input[type=text]:focus, 
+body #mega-menu-wrap-primary.mega-keyboard-navigation .mega-toggle-block button.mega-toggle-animated:focus, 
+body #mega-menu-wrap-primary.mega-keyboard-navigation #mega-menu-primary a:focus, 
+body #mega-menu-wrap-primary.mega-keyboard-navigation #mega-menu-primary span:focus, 
+body #mega-menu-wrap-primary.mega-keyboard-navigation #mega-menu-primary input:focus, 
+body #mega-menu-wrap-primary.mega-keyboard-navigation #mega-menu-primary li.mega-menu-item a.mega-menu-link:focus, 
+body #mega-menu-wrap-primary.mega-keyboard-navigation #mega-menu-primary form.mega-search-open:has(input[type=text]:focus) {
+	outline-color: var(--kaya-focus-color);
 }
 
 

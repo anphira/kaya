@@ -108,12 +108,5 @@ $postID = get_queried_object_id();
 <?php wp_footer(); ?>
 
 
-
-<?php 
-if('' != get_theme_mod( 'kaya_add_to_body_bottom', '' )) {
-	echo esc_html(get_theme_mod( 'kaya_add_to_body_bottom' ));
-}
-?>
-
 </body>
 </html>
