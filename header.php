@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.6
+ * @version 1.6.1
  */
 
 $postID = get_queried_object_id();
@@ -232,7 +232,7 @@ $postID = get_queried_object_id();
 	$page_hero_setting = false;
 
 	// woocommerce
-	if(function_exists('is_woocommerce') && is_woocommerce()) {
+	if(function_exists('is_woocommerce') && (is_shop() || is_woocommerce() ) ) {
 		if(get_theme_mod( 'kaya_page_hero_woocommerce', false )) {
 			$content_class .= 'has-page-hero ';
 			$page_hero_setting = true;
@@ -271,6 +271,7 @@ $postID = get_queried_object_id();
 		$page_hero_blog = get_theme_mod( 'kaya_page_hero_blogs', false );
 		if( $page_hero_blog ) {
 			$content_class .= 'has-page-hero ';
+			$page_hero_setting = true;
 		}
 	}
 	// get hero area setting for blog archives
@@ -278,6 +279,7 @@ $postID = get_queried_object_id();
 		$page_hero_blog = get_theme_mod( 'kaya_page_hero_blog_archive', false );
 		if( $page_hero_blog ) {
 			$content_class .= 'has-page-hero ';
+			$page_hero_setting = true;
 		}
 	}
 
@@ -304,7 +306,7 @@ $postID = get_queried_object_id();
 			</header>
 		<?php }
 	}
-	if(!is_single() && !is_archive()) { 
+	elseif(!is_single() && !is_archive()) { 
 		if($page_hero_setting) { ?>
 			<header id="page-hero-area">
 				<div class="container">
@@ -333,7 +335,7 @@ $postID = get_queried_object_id();
 			</header>
 		<?php }
 	} else { 
-		if($page_hero_blog) {
+		if($page_hero_setting) {
 			?>
 			<header id="page-hero-area">
 				<div class="container">

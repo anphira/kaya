@@ -4,9 +4,9 @@ Contributors: anphira, automattic
 Tags: custom-background, theme-options, custom-menu, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, featured-images, flexible-header, footer-widgets, full-width-template, blog, accessibility-ready
 
 Requires at least: 5.5
-Tested up to: 6.3.1
+Tested up to: 6.4.1
 Requires PHP: 7.4
-Stable tag: v1.6
+Stable tag: v1.6.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,12 +44,23 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
+= 1.6.3 - Dec 13 2023 =
+* Update: add "Share on" screen reader text to sharing buttons.
+
+= 1.6.2 - Nov 13 2023 =
+* Fix: update postID for get_queried_object_id() in 404 template.
+
+= 1.6.1 - Oct 27 2023 =
+* Fix: extra space in the GA4 tag was preventing tracking. Corrected now.
+* Update: default text color to #181818 instead of #000000.
+* Fix: Font family was being rendered incorrectly when a custom font family was set. Corrected.
+* Fix: remove duplicate heading1 on WooCommerce page when hero active.
+
 = 1.6 - Oct 24 2023 =
 * Removed: "Add code before </head>" from General page of Customizer.
 * Removed: "Add code just after </body>" from General page of Customizer.
 * Removed: "Add code just before </body>" from General page of Customizer.
 * Add: Letting spacing for heading and paragraph text.
-* Fix: extra space in the GA4 tag was preventing tracking. Corrected now.
 
 = 1.5.3 - Oct 08 2023 =
 * Update: correct in stock WooCommerce text to use WooCommerce color.

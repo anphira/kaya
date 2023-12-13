@@ -7,8 +7,10 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.0.2
+ * @version 1.6.2
  */
+
+$postID = get_queried_object_id();
 
 get_header(); ?>
 
@@ -17,7 +19,7 @@ get_header(); ?>
 
 			<section class="error-404 not-found">
 				<?php
-	$page_hero_setting = get_post_meta($post->ID, 'kaya_page_hero_setting', true);
+	$page_hero_setting = get_post_meta($postID, 'kaya_page_hero_setting', true);
 	switch ($page_hero_setting ) {
 		case 'no_page_hero':
 			$page_hero_setting = false;
@@ -31,7 +33,7 @@ get_header(); ?>
 		default: 
 			$page_hero_setting = get_theme_mod( 'kaya_page_hero', false );
 	}
-	if((get_post_meta($post->ID, '_kaya_hide_title_check', true) !== 'on') && (true != $page_hero_setting)) { ?>
+	if((get_post_meta($postID, '_kaya_hide_title_check', true) !== 'on') && (true != $page_hero_setting)) { ?>
 	<header class="entry-header">
 		<h1><?php echo esc_html(get_theme_mod( 'kaya_404_title', 'Sorry, we couldn\'t find that page')); ?></h1>
 	</header><!-- .entry-header -->

@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.6
+ * @version 1.6.1
  */
 
 /**
@@ -16,7 +16,7 @@
 function kaya_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'kaya_custom_header_args', array(
 		'default-image'          => '',
-		'default-text-color'     => '000000',
+		'default-text-color'     => '181818',
 		'width'                  => 1000,
 		'height'                 => 250,
 		'flex-height'            => true,
@@ -37,7 +37,7 @@ function kaya_customizer_settings() {
 <style>
 
 html {
-	background: <?php echo esc_html(get_theme_mod( 'kaya_lower_footer_background_color', '#000000' )) ?>;
+	background: <?php echo esc_html(get_theme_mod( 'kaya_lower_footer_background_color', '#181818' )) ?>;
 }
 
 #page {
@@ -77,17 +77,17 @@ html {
 }
 #masthead .announcement-button,
 #masthead .announcement-button:visited {
-	background: <?php echo esc_html(get_theme_mod( 'kaya_announcement_button_background_color', '#000000' )); ?>;
+	background: <?php echo esc_html(get_theme_mod( 'kaya_announcement_button_background_color', '#181818' )); ?>;
 	color: <?php echo esc_html(get_theme_mod( 'kaya_announcement_button_text_color', '#ffffff' )); ?>;
 }
 #masthead .announcement-button:hover,
 #masthead .announcement-button:active {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_announcement_button_text_color', '#ffffff' )); ?>;
-	color: <?php echo esc_html(get_theme_mod( 'kaya_announcement_button_background_color', '#000000' )); ?>;
+	color: <?php echo esc_html(get_theme_mod( 'kaya_announcement_button_background_color', '#181818' )); ?>;
 }
 
 body, p, button, input, select, textarea, .elementor-widget-text-editor {
-	color: <?php echo esc_html(get_theme_mod( 'kaya_text_color', '#000000' )) ?>;
+	color: <?php echo esc_html(get_theme_mod( 'kaya_text_color', '#181818' )) ?>;
 	font-weight: <?php echo esc_html(get_theme_mod( 'kaya_paragraph_font_weight', '400' )) ?>;
 	line-height: <?php echo esc_html(get_theme_mod( 'kaya_paragraph_line_height', '1.5' )) ?>em;
 	letter-spacing: <?php echo esc_html(get_theme_mod( 'kaya_paragraph_letter_spacing', '0' )); ?>px;
@@ -98,12 +98,12 @@ body, p, button, input, select, textarea, .elementor-widget-text-editor {
 			echo kaya_font_family_lookup( esc_html(get_theme_mod( 'kaya_paragraph_font', 'verdana' )) ); ?>;
 }
 h1, h2, h3, h4, h5, h6 {
-	color: <?php echo esc_html(get_theme_mod( 'kaya_heading_color', '#000000' )); ?>;
+	color: <?php echo esc_html(get_theme_mod( 'kaya_heading_color', '#181818' )); ?>;
 	font-weight: <?php echo esc_html(get_theme_mod( 'kaya_heading_font_weight', '400' )); ?>;
 	letter-spacing: <?php echo esc_html(get_theme_mod( 'kaya_heading_letter_spacing', '0' )); ?>px;
 	font-family: 
 		<?php if(get_theme_mod( 'kaya_custom_google_fonts_heading', '' ) != '')
-			echo esc_html(get_theme_mod( 'kaya_custom_google_fonts_heading' ));
+			echo '"' . esc_html(get_theme_mod( 'kaya_custom_google_fonts_heading' )) . '"';
 		else
 			echo kaya_font_family_lookup( esc_html(get_theme_mod( 'kaya_heading_font', 'verdana' )) ); ?>;
 }
@@ -163,7 +163,7 @@ body {
 	font-size: <?php echo esc_html(get_theme_mod( 'kaya_paragraph', '1' )) ?>rem;
 }
 .social-icons .fab {
-	background: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_background_color', '#000000' )) ?>;
+	background: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_background_color', '#181818' )) ?>;
 	font-size: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_size', '1.1' )) ?>rem;
 }
 .social-icons .fab:hover {
@@ -173,7 +173,7 @@ body {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_color', '#ffffff' )) ?>;
 }
 .social-icons .fab:hover:before {
-	color: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_background_color', '#000000' )) ?>;
+	color: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_background_color', '#181818' )) ?>;
 }
 body a, body a:visited {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_link_color', '#0075a5' )) ?>;
@@ -191,16 +191,16 @@ body a:hover, body a:active {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_footer_background_color', '#ffffff' )) ?>;
 }
 #colophon, #colophon p {
-	color: <?php echo esc_html(get_theme_mod( 'kaya_footer_text_color', '#000000' )) ?>;
+	color: <?php echo esc_html(get_theme_mod( 'kaya_footer_text_color', '#181818' )) ?>;
 }
 #colophon a:not(.social-icon-single) {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_footer_link_color', '#000080' )) ?>;
 }
 #colophon h2, #colophon h3, #colophon h4, #colophon h5, #colophon h6 {
-	color: <?php echo esc_html(get_theme_mod( 'kaya_footer_heading_color', '#000000' )) ?>;
+	color: <?php echo esc_html(get_theme_mod( 'kaya_footer_heading_color', '#181818' )) ?>;
 }
 #colophon .site-info, #colophon .site-info p {
-	background: <?php echo esc_html(get_theme_mod( 'kaya_lower_footer_background_color', '#000000' )) ?>;
+	background: <?php echo esc_html(get_theme_mod( 'kaya_lower_footer_background_color', '#181818' )) ?>;
 	color: <?php echo esc_html(get_theme_mod( 'kaya_lower_footer_text_color', '#ffffff' )) ?>;
 }
 #colophon .site-info a,
@@ -349,7 +349,7 @@ html .woocommerce input.button.alt:active,
 html :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button:hover,
 html :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button:active {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_background_hover_color', '#005dc4' )) ?>;
-	color: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_text_hover_color', '#000000' )) ?>;
+	color: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_text_hover_color', '#181818' )) ?>;
 }
 
 html .woocommerce div.product p.price, 
@@ -372,7 +372,7 @@ $kaya_grid_width = esc_html(get_theme_mod( 'kaya_grid_width', '1140' ));
 $kaya_grid_width = ($kaya_grid_width > 320) ? $kaya_grid_width : 1140;
 ?>
 <?php if(get_theme_mod( 'kaya_content_in_grid', false )) { ?>
-	#content, body .vc_row[data-vc-full-width="true"] > .wpb_column, header:not(#masthead) .container {
+	#content, body .vc_row[data-vc-full-width="true"] > .wpb_column, header:not(#masthead) .container, #content .container {
 		max-width: <?php echo $kaya_grid_width; ?>px;
 		margin: auto;
 	}
@@ -403,10 +403,10 @@ $kaya_grid_width = ($kaya_grid_width > 320) ? $kaya_grid_width : 1140;
 		echo '<script async src="https://www.googletagmanager.com/gtag/js?id=' . esc_html(get_theme_mod( 'kaya_google_analytics' )) . '"></script>';
 		echo '<script>';
 		echo 'window.dataLayer = window.dataLayer || [];';
-		echo 'function gtag() {datalayer.push(arguments);}';
+		echo 'function gtag(){dataLayer.push(arguments);}';
 		echo "gtag('js', new Date());";
 
-  		echo "gtag('config', '" . esc_html(get_theme_mod( 'kaya_google_analytics' )) . "') ;";
+  		echo "gtag('config', '" . esc_html(get_theme_mod( 'kaya_google_analytics' )) . "');";
 		echo "</script>";
 		echo '<!-- End Google tag (gtag.js) -->';
 	} 

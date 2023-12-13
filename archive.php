@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.4
+ * @version 1.6.1
  */
 
 get_header(); 

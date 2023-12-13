@@ -5,12 +5,12 @@ Author: Anphira, LLC
 Author URI: https://www.anphira.com/
 GitHub Theme URI: anphira/kaya
 Description: Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It's ready to work with your page builder and has built-in support for Visual Composer. You can view the setup instructions by going to the Customizer and selecting "Need Setup Help?".
-Version: 1.6
+Version: 1.6.3
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kaya
 Requires at least: 5.5
-Tested up to: 6.3.1
+Tested up to: 6.4.1
 Requires PHP:  7.4
 Tags: custom-background, theme-options, custom-menu, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, featured-images, flexible-header, footer-widgets, full-width-template, blog, accessibility-ready
 
@@ -539,6 +539,9 @@ table {
 }
 /* When you apply the above CSS to a text element, all you have to do is sneak in the following text inside of that element: &shy; */
 
+.inline-block {
+	display: inline-block;
+}
 
 
 
@@ -637,6 +640,7 @@ textarea {
 a {
 	color: royalblue;
 	border: 2px solid transparent;
+	word-break: break-word;
 }
 
 a:visited {
@@ -939,6 +943,10 @@ button:active {
 .nav-next::after {
 	content: ' \00BB';
 	padding-left: 0.3em;
+}
+#content .container {
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 /*--------------------------------------------------------------
@@ -1566,7 +1574,7 @@ body .extra-large-text li {
 .resp-sharing-button__link,
 .resp-sharing-button__icon,
 .resp-sharing-button {
-  display: inline-block
+  display: inline-block;
 }
 .resp-sharing-button__link:hover,
 .resp-sharing-button__link:active,
@@ -1584,6 +1592,7 @@ body .extra-large-text li {
 .resp-sharing-button__link:visited {
   color: #fff;
   margin: .5em;
+  text-decoration: none;
 }
 
 .resp-sharing-button__link {
@@ -1592,17 +1601,12 @@ body .extra-large-text li {
   padding: 5px 10px;
 }
 
-.resp-sharing-button__icon svg {
+svg.resp-sharing-button__icon  {
   width: 18px;
   height: 18px;
   margin-right: 0.4em;
   margin-top: 3px;
   vertical-align: top
-}
-
-.resp-sharing-button--small svg {
-  margin: 0;
-  vertical-align: middle
 }
 
 /* Non solid icons get a stroke */
@@ -2242,23 +2246,7 @@ body select.ff-el-form-control:not([size]):not([multiple]) {
 /*--------------------------------------------------------------
 # Max Mega Menu Fixes
 --------------------------------------------------------------*/
-body #mega-menu-wrap-primary.mega-keyboard-navigation #mega-menu-primary a:focus,
-body #mega-menu-wrap-primary.mega-keyboard-navigation #mega-menu-primary li.mega-menu-item a.mega-menu-link:focus {
-	outline-offset: 2px;
-	z-index: 10;
-}
-body #mega-menu-wrap-primary.mega-keyboard-navigation .mega-menu-toggle:focus, 
-body #mega-menu-wrap-primary.mega-keyboard-navigation .mega-toggle-block:focus, 
-body #mega-menu-wrap-primary.mega-keyboard-navigation .mega-toggle-block a:focus, 
-body #mega-menu-wrap-primary.mega-keyboard-navigation .mega-toggle-block .mega-search input[type=text]:focus, 
-body #mega-menu-wrap-primary.mega-keyboard-navigation .mega-toggle-block button.mega-toggle-animated:focus, 
-body #mega-menu-wrap-primary.mega-keyboard-navigation #mega-menu-primary a:focus, 
-body #mega-menu-wrap-primary.mega-keyboard-navigation #mega-menu-primary span:focus, 
-body #mega-menu-wrap-primary.mega-keyboard-navigation #mega-menu-primary input:focus, 
-body #mega-menu-wrap-primary.mega-keyboard-navigation #mega-menu-primary li.mega-menu-item a.mega-menu-link:focus, 
-body #mega-menu-wrap-primary.mega-keyboard-navigation #mega-menu-primary form.mega-search-open:has(input[type=text]:focus) {
-	outline-color: var(--kaya-focus-color);
-}
+
 
 
 
