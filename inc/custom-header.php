@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.6.1
+ * @version 1.7
  */
 
 /**
@@ -162,17 +162,21 @@ h6, .h6, .elementor-widget-heading h6.elementor-heading-title {
 body {
 	font-size: <?php echo esc_html(get_theme_mod( 'kaya_paragraph', '1' )) ?>rem;
 }
-.social-icons .fab {
+.social-icons .fab,
+.social-icons .fas {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_background_color', '#181818' )) ?>;
 	font-size: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_size', '1.1' )) ?>rem;
 }
-.social-icons .fab:hover {
+.social-icons .fab:hover,
+.social-icons .fas:hover {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_color', '#ffffff' )) ?>;
 }
-.social-icons .fab:before {
+.social-icons .fab:before,
+.social-icons .fas:before  {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_color', '#ffffff' )) ?>;
 }
-.social-icons .fab:hover:before {
+.social-icons .fab:hover:before,
+.social-icons .fas:hover:before {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_background_color', '#181818' )) ?>;
 }
 body a, body a:visited {
@@ -186,6 +190,16 @@ body a:hover, body a:active {
 		echo 'transparent'; }
 		else {
 		echo esc_html(get_theme_mod( 'kaya_header_background_color', '#ffffff' )); } ?>;
+}
+.top-header {
+	background: <?php echo esc_html(get_theme_mod( 'kaya_top_bar_background_color', '#ffffff' )); ?>;
+	color: <?php echo esc_html(get_theme_mod( 'kaya_top_bar_text_color', '#ffffff' )); ?>;
+}
+.top-header p,
+.top-header a,
+.top-header a:visited,
+.top-header a:hover {
+	color: <?php echo esc_html(get_theme_mod( 'kaya_top_bar_text_color', '#ffffff' )); ?>;
 }
 #colophon {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_footer_background_color', '#ffffff' )) ?>;
@@ -295,6 +309,9 @@ body input[type=button],
 body input[type=reset],
 body input[type=submit],
 body .elementor-button,
+body .elementor-button.elementor-size-sm,
+body .elementor-button.elementor-size-md,
+body .elementor-button.elementor-size-lg,
 body .elementor-button:visited,
 body .wp-block-button__link,
 body .wp-block-button__link:visited,
@@ -302,6 +319,12 @@ body #colophon .wp-block-button__link,
 body #colophon .wp-block-button__link:visited {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_button_color', '#0075a5' )) ?>;
 	color: <?php echo esc_html(get_theme_mod( 'kaya_button_text_color', '#ffffff' )) ?>;
+	border-color: <?php echo esc_html(get_theme_mod( 'kaya_button_border_color', '#005dc4' )) ?>;
+	border-width: <?php echo esc_html(get_theme_mod( 'kaya_border_width', '0' )) ?>px;
+	<?php if( esc_html(get_theme_mod( 'kaya_border_radius', '' )) != '' ) { ?>
+		border-radius: <?php echo esc_html(get_theme_mod( 'kaya_border_radius', '0' )) ?>px;
+	<?php } ?>
+	border-style: solid;
 }
 body button:active, 
 body button:hover, 
@@ -321,6 +344,7 @@ body #colophon .wp-block-button__link:hover,
 body #colophon .wp-block-button__link:active {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_button_hover_color', '#005dc4' )) ?>;
 	color: <?php echo esc_html(get_theme_mod( 'kaya_button_hover_text_color', '#ffffff' )) ?>;
+	border-color: <?php echo esc_html(get_theme_mod( 'kaya_button_border_hover_color', '#005dc4' )) ?>;
 }
 
 html .woocommerce a.button,

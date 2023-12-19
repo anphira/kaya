@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.5.1
+ * @version 1.7
  */
 
 /**
@@ -238,7 +238,7 @@ function kaya_social_icons() {
 			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_rss' )) . '"><i class="fas fa-rss"></i><span class="screen-reader-text"> View our RSS feed</span></a>';
 		}
 		if( get_theme_mod( 'kaya_email' ) != '' ) {
-			echo '<a class="social-icon-single" href="mailto:' . esc_url(get_theme_mod( 'kaya_email' )) . '"><i class="fas fa-envelope"></i><span class="screen-reader-text"> Email us</span></a>';
+			echo '<a class="social-icon-single" href="mailto:' . sanitize_email(get_theme_mod( 'kaya_email' )) . '"><i class="fas fa-envelope"></i><span class="screen-reader-text"> Email us</span></a>';
 		}
 	echo '</div>';
 }

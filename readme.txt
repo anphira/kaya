@@ -44,6 +44,14 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
+= 1.7 - Dec 19 2023 =
+* Fix: email for social icons color fix.
+* Fix: email for social icons address fix.
+* Add: Border radius for elements. 
+* Add: Button border color.
+* Add: Button border width.
+* Add: top bar coloring.
+
 = 1.6.3 - Dec 13 2023 =
 * Update: add "Share on" screen reader text to sharing buttons.
 

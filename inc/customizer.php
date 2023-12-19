@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.6
+ * @version 1.7
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -130,6 +130,20 @@ function kaya_add_colors($wp_customize) {
 		'label'           => __( 'Heading Section', 'kaya' ),
 		'section' => 'colors',
 		)
+	) );
+	$wp_customize->add_setting('kaya_top_bar_background_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_top_bar_background_color', array(
+		'label'        => __( 'Top Bar Background Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_top_bar_background_color',
+		) 
+	) );
+	$wp_customize->add_setting('kaya_top_bar_text_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_top_bar_text_color', array(
+		'label'        => __( 'Top Bar Text Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_top_bar_text_color',
+		) 
 	) );
 	$wp_customize->add_setting('kaya_header_background_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_header_background_color', array(
@@ -280,16 +294,9 @@ function kaya_add_colors($wp_customize) {
 	
 	$wp_customize->add_setting('kaya_button_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_button_color', array(
-		'label'        => __( 'Button Color', 'kaya' ),
+		'label'        => __( 'Button Background Color', 'kaya' ),
 		'section'    => 'colors',
 		'settings'   => 'kaya_button_color',
-		) 
-	) );
-	$wp_customize->add_setting('kaya_button_hover_color', array('sanitize_callback' => 'sanitize_hex_color'));
-	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_button_hover_color', array(
-		'label'        => __( 'Button Hover Color', 'kaya' ),
-		'section'    => 'colors',
-		'settings'   => 'kaya_button_hover_color',
 		) 
 	) );
 	
@@ -301,7 +308,23 @@ function kaya_add_colors($wp_customize) {
 		'settings'   => 'kaya_button_text_color',
 		) 
 	) );
-	
+
+	$wp_customize->add_setting('kaya_button_border_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
+'kaya_button_border_color', array(
+		'label'        => __( 'Button Border Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_button_border_color',
+		) 
+	) );
+
+	$wp_customize->add_setting('kaya_button_hover_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_button_hover_color', array(
+		'label'        => __( 'Button Hover Background Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_button_hover_color',
+		) 
+	) );
 
 	$wp_customize->add_setting('kaya_button_hover_text_color', array('sanitize_callback' => 'sanitize_hex_color'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
@@ -309,6 +332,15 @@ function kaya_add_colors($wp_customize) {
 		'label'        => __( 'Button Hover Text Color', 'kaya' ),
 		'section'    => 'colors',
 		'settings'   => 'kaya_button_hover_text_color',
+		) 
+	) );
+
+	$wp_customize->add_setting('kaya_button_border_hover_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
+'kaya_button_border_hover_color', array(
+		'label'        => __( 'Button Hover Border Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_button_border_hover_color',
 		) 
 	) );
 
@@ -621,6 +653,24 @@ function kaya_add_general($wp_customize) {
 		'type'            => 'checkbox',
 		'section'         => 'kaya_general',
 		'settings'   => 'kaya_content_in_grid',
+		)
+	) );
+
+	$wp_customize->add_setting('kaya_border_radius', array('sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_border_radius', array(
+		'label'           => __( 'Border radius for elements (buttons & inputs). Unit is px.', 'kaya' ),
+		'type'            => 'number',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_border_radius',
+		)
+	) );
+
+	$wp_customize->add_setting('kaya_border_width', array('sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_border_width', array(
+		'label'           => __( 'Border width for elements (buttons & inputs). Unit is px.', 'kaya' ),
+		'type'            => 'number',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_border_width',
 		)
 	) );
 	
