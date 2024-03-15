@@ -353,4 +353,4 @@ $postID = get_queried_object_id();
 		}
 	} ?>
 
-	<div id="content" class="<?php  echo esc_html($content_class); ?>">
+	<div id="content" tabindex="-1" class="<?php  echo esc_html($content_class); ?>">

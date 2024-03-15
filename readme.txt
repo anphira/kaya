@@ -6,7 +6,7 @@ Tags: custom-background, theme-options, custom-menu, threaded-comments, one-colu
 Requires at least: 5.5
 Tested up to: 6.4.1
 Requires PHP: 7.4
-Stable tag: v1.6.3
+Stable tag: v1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,14 @@ Recommended plugins are available at https://easya11yguide.com/kaya-wordpress-th
 From the Customizer a number of customization options exist. Please see https://easya11yguide.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 1.8 - Mar 15 2024 =
+* Add: is-layout-flex set to display:flex for use of default wp columns.
+* Add: Cookie Policy URL option under General settings in customerizer.
+* Update: picture & anchor link to display: inline-block to allow better focus states and control of sizing.
+* Update: fluent forms to inherit styling of buttons from theme.
+* Update: focus border is dotted white to handle white button on blue background.
+* Update: text-underline-offset set to 4px to prevent decending characters from breaking up the link underline.
 
 = 1.7 - Dec 19 2023 =
 * Fix: email for social icons color fix.

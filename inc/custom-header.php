@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.7
+ * @version 1.7.1
  */
 
 /**
@@ -301,6 +301,11 @@ body a:hover, body a:active {
 #masthead .menu-toggle:active {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_menu_text_hover_color', '#0075a5' )) ?>;
 }
+body .ff-default .ff-el-form-control {
+	<?php if( esc_html(get_theme_mod( 'kaya_border_radius', '' )) != '' ) { ?>
+		border-radius: <?php echo esc_html(get_theme_mod( 'kaya_border_radius', '0' )) ?>px;
+	<?php } ?>
+}
 body button,
 body button:visited,
 body a.button,
@@ -316,7 +321,10 @@ body .elementor-button:visited,
 body .wp-block-button__link,
 body .wp-block-button__link:visited,
 body #colophon .wp-block-button__link,
-body #colophon .wp-block-button__link:visited {
+body #colophon .wp-block-button__link:visited,
+body .fluentform .ff_upload_btn.ff-btn,
+body form.frm-fluent-form .ff-btn-submit:not(.ff_btn_no_style),
+body form.frm-fluent-form .ff-btn-submit {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_button_color', '#0075a5' )) ?>;
 	color: <?php echo esc_html(get_theme_mod( 'kaya_button_text_color', '#ffffff' )) ?>;
 	border-color: <?php echo esc_html(get_theme_mod( 'kaya_button_border_color', '#005dc4' )) ?>;
@@ -341,7 +349,11 @@ body .elementor-button:active,
 body .wp-block-button__link:hover,
 body .wp-block-button__link:active,
 body #colophon .wp-block-button__link:hover,
-body #colophon .wp-block-button__link:active {
+body #colophon .wp-block-button__link:active,
+body .fluentform .ff_upload_btn.ff-btn:hover,
+body form.frm-fluent-form .ff-btn-submit:hover,
+body .fluentform .ff_upload_btn.ff-btn:active,
+body form.frm-fluent-form .ff-btn-submit:active {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_button_hover_color', '#005dc4' )) ?>;
 	color: <?php echo esc_html(get_theme_mod( 'kaya_button_hover_text_color', '#ffffff' )) ?>;
 	border-color: <?php echo esc_html(get_theme_mod( 'kaya_button_border_hover_color', '#005dc4' )) ?>;

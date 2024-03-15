@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.7
+ * @version 1.8
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -806,6 +806,15 @@ function kaya_add_general($wp_customize) {
 		new Kaya_Separator_Control(	$wp_customize, 'kaya_general_other_separator', array(
 		'label'           => __( 'Other Settings', 'kaya' ),
 		'section' => 'kaya_general',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_cookie_policy_url', array('sanitize_callback' => 'esc_url_raw'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_cookie_policy_url', array(
+		'label'           => __( 'To automatically include your cookie policy in the default footer, enter the URL here', 'kaya' ),
+		'type'            => 'url',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_cookie_policy_url',
 		)
 	) );
 	

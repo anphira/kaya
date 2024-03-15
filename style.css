@@ -5,7 +5,7 @@ Author: Anphira, LLC
 Author URI: https://www.anphira.com/
 GitHub Theme URI: anphira/kaya
 Description: Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It's ready to work with your page builder and has built-in support for Visual Composer. You can view the setup instructions by going to the Customizer and selecting "Need Setup Help?".
-Version: 1.7
+Version: 1.7.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kaya
@@ -139,6 +139,8 @@ template {
 
 a {
 	background-color: transparent;
+	display: inline-block;
+	text-underline-offset: 4px;
 }
 
 a:active,
@@ -524,6 +526,9 @@ img {
 	height: auto; /* Make sure images are scaled correctly. */
 	max-width: 100%; /* Adhere to container width. */
 }
+picture {
+	display: inline-block;
+}
 
 figure {
 	margin: 1em 0; /* Extra wide images within figure tags don't overflow the content area. */
@@ -653,10 +658,10 @@ a:active {
 	color: midnightblue;
 }
 
-a:focus,
-button:focus {
+body a:focus,
+body button:focus {
 	outline: 2px solid var(--kaya-focus-color);
-	border: 2px solid white;
+	border: 2px dashed white;
 }
 
 a:hover,
@@ -1555,6 +1560,9 @@ body .extra-large-text li {
 	justify-content: space-between;
 	gap: 30px;
 }
+.is-layout-flex {
+	display: flex;
+}
 
 
 
@@ -2216,6 +2224,11 @@ background-color: #FF6600
 .height-150 {min-height: 150px!important;}
 .height-100 {min-height: 100px!important;}
 .height-50 {min-height: 50px!important;}
+
+/*Z Index */
+.z0 {z-index: 0}
+.z1 {z-index: 1}
+.z10 {z-index: 10}
 
 
 

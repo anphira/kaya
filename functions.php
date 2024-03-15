@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.7
+ * @version 1.7.1
  */
 
 /**
@@ -159,19 +159,6 @@ function kaya_excerpt_more( $more ) {
 	return ' </p><p><a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'kaya') . '<span class="screen-reader-text">' . get_the_title( get_the_ID() ) . '</span></a>';
 }
 add_filter( 'excerpt_more', 'kaya_excerpt_more' );
-
-
-/**
- * Always make "Remember me" box checked for login screen
- */
-function kaya_login_checked_remember_me() {
-    add_filter( 'login_footer', 'kaya_rememberme_checked' );
-}
-add_action( 'init', 'kaya_login_checked_remember_me' );
- 
-function kaya_rememberme_checked() {
-	echo "<script>document.getElementById('rememberme').checked = true;</script>";
-}
 
 
 /***
