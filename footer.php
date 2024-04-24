@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.8
+ * @version 1.9
  */
 
 $postID = get_queried_object_id();
@@ -18,11 +18,12 @@ $postID = get_queried_object_id();
 
 	</div><!-- #content -->
 
-	<?php 
-	if( '' == get_post_meta($postID, '_kaya_hide_footer_check', true)) { 
-		?>
-		<footer id="colophon" class="site-footer">
-			<h2 class="screen-reader-text">Footer</h2>
+	
+	<footer id="colophon" class="site-footer">
+		<h2 class="screen-reader-text">Footer</h2>
+		<?php // hide the upper footer if set on page
+		if( '' == get_post_meta($postID, '_kaya_hide_footer_check', true)) { 
+			?>
 			<div class="footer-columns flexbox <?php if(get_theme_mod( 'kaya_footer_columns_in_grid', false )) echo 'container'; ?>">
 				<?php 
 				if(get_theme_mod( 'kaya_show_footer_columns', false )) {
@@ -74,38 +75,39 @@ $postID = get_queried_object_id();
 				}  // end if(true == get_theme_mod( 'kaya_show_footer_columns' ))
 				?>
 			</div>
-			<div class="site-info">
-				<div class="container text-center">
-					<div class="">
-						<?php if(get_theme_mod( 'kaya_show_footer_social', false)) kaya_social_icons(); ?>
-						<p>Copyright &copy; <?php echo esc_html(date('Y')); ?>. All rights reserved. <?php bloginfo('name'); ?>. 
-							<?php $privacy_policy = '';
-							$privacy_policy = get_privacy_policy_url();
-							if('' != $privacy_policy) {
-								?>
-								<a href="<?php echo esc_url($privacy_policy); ?>">Privacy Policy</a> 
-							<?php 
-							}
-							if(get_theme_mod('kaya_cookie_policy_url', '')) {
-								?>
-								| <a href="<?php echo esc_html(get_theme_mod( 'kaya_cookie_policy_url' )); ?>">Cookie Policy</a>
-							<?php }
-							if(get_theme_mod('kaya_accessibility_statement_url', '')) {
-								?>
-								| <a href="<?php echo esc_html(get_theme_mod( 'kaya_accessibility_statement_url' )); ?>">Accessibility Statement</a>
-							<?php } ?>
-						</p>
-
-						<p><?php if(get_theme_mod( 'kaya_footer_right', '' )) {
-							echo get_theme_mod( 'kaya_footer_right' ); 
-						} ?></p>
-					</div>
-				</div>
-			</div><!-- .site-info -->
-		</footer><!-- #colophon -->
 		<?php 
-	} // end if( '' == get_post_meta($postID, '_kaya_hide_footer_check', true))
-	?>
+		} // end if( '' == get_post_meta($postID, '_kaya_hide_footer_check', true))
+		?>
+		<div class="site-info">
+			<div class="container text-center">
+				<div class="">
+					<?php if(get_theme_mod( 'kaya_show_footer_social', false)) kaya_social_icons(); ?>
+					<p>Copyright &copy; <?php echo esc_html(date('Y')); ?>. All rights reserved. <?php bloginfo('name'); ?>. 
+						<?php $privacy_policy = '';
+						$privacy_policy = get_privacy_policy_url();
+						if('' != $privacy_policy) {
+							?>
+							<a href="<?php echo esc_url($privacy_policy); ?>">Privacy Policy</a> 
+						<?php 
+						}
+						if(get_theme_mod('kaya_cookie_policy_url', '')) {
+							?>
+							| <a href="<?php echo esc_html(get_theme_mod( 'kaya_cookie_policy_url' )); ?>">Cookie Policy</a>
+						<?php }
+						if(get_theme_mod('kaya_accessibility_statement_url', '')) {
+							?>
+							| <a href="<?php echo esc_html(get_theme_mod( 'kaya_accessibility_statement_url' )); ?>">Accessibility Statement</a>
+						<?php } ?>
+					</p>
+
+					<p><?php if(get_theme_mod( 'kaya_footer_right', '' )) {
+						echo get_theme_mod( 'kaya_footer_right' ); 
+					} ?></p>
+				</div>
+			</div>
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+		
 </div><!-- #page -->
 
 

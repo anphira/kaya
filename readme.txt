@@ -4,9 +4,9 @@ Contributors: anphira, automattic
 Tags: custom-background, theme-options, custom-menu, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, featured-images, flexible-header, footer-widgets, full-width-template, blog, accessibility-ready
 
 Requires at least: 5.5
-Tested up to: 6.4.1
+Tested up to: 6.5.2
 Requires PHP: 7.4
-Stable tag: v1.8
+Stable tag: v1.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,16 @@ Recommended plugins are available at https://easya11yguide.com/kaya-wordpress-th
 From the Customizer a number of customization options exist. Please see https://easya11yguide.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 1.9 - Apr 24 2024 =
+* Update: make "hide the page footer" option NOT hide the whole footer. For legal reasons, hiding privacy & copyright of the lower footer is no longer possible without custom coding it in a child theme. 
+* Update: theme stylesheet loaded into block editor.
+* Add: black-text CSS class to make text black.
+* Update: woocommerce/archive-product.php to version 8.6.0.
+
+= 1.8.1 - Mar 23 2024 =
+* Add: function to set perfmatters to use large thumbnails.
+* Add: CSS gap:30px property for default block editor columns module.
 
 = 1.8 - Mar 15 2024 =
 * Add: is-layout-flex set to display:flex for use of default wp columns.

@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.7.1
+ * @version 1.9
  */
 
 /**
@@ -26,6 +26,19 @@ add_filter('relevanssi_pre_excerpt_content', 'kaya_trim_vc_shortcodes');
 function kaya_trim_vc_shortcodes($content) {
     $content = preg_replace('\[/vc(.*?)\]', '', $content);
     return $content;
+}
+
+
+/**
+ * Set perfmatters youtube thumbnail to large
+ */
+if(function_exists('perfmatters_plugins_loaded')) {
+	add_filter('perfmatters_lazyload_youtube_thumbnail_resolution', function($resolution) {
+		if(!wp_is_mobile()) {
+			$resolution = 'maxresdefault';
+		}
+		return $resolution;
+	});
 }
 
 
@@ -134,9 +147,15 @@ include("inc/kaya-function.php");
  * Registers an editor stylesheet for the theme.
  */
 function kaya_theme_add_editor_styles() {
-    add_editor_style( 'style.min.css' );
+	add_theme_support('editor-styles');
+    add_editor_style( get_template_directory_uri() . '/style.min.css' );
+
+    // also add the child theme styles
+    if(get_theme_file_uri() != get_template_directory_uri()) {
+    	add_editor_style( get_theme_file_uri('style.css') );
+    }
 }
-add_action( 'admin_init', 'kaya_theme_add_editor_styles' );
+add_action( 'after_setup_theme', 'kaya_theme_add_editor_styles' );
 
 
 /**
