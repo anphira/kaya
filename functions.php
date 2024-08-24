@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.9
+ * @version 1.10
  */
 
 /**
@@ -315,6 +315,11 @@ function kaya_setup() {
 		'default-image' => '',
 	) ) );
 
+	// Theme support for alignwide and alignfull
+	add_theme_support( "align-wide" );
+
+	// Theme support for responsive emebds
+	add_theme_support( 'responsive-embeds' );
 	
 }
 endif;
@@ -716,7 +721,10 @@ add_action( 'save_post', 'kaya_page_settings_save_meta_box' );
  */
 function kaya_scripts() {
 
-	
+	// enqueue accessibility options panel stylesheet
+	if( get_theme_mod( 'kaya_a11y_enable_checkbox', false ) ) {
+		wp_enqueue_style( 'kaya-a11y', get_template_directory_uri() . '/accessibility.css', false, filemtime( get_theme_file_path( 'accessibility.css' )));
+	}
 
 	// enqueue child theme if using child theme
 	if(get_theme_file_uri() != get_template_directory_uri()) {
@@ -732,6 +740,7 @@ function kaya_scripts() {
 	}
 
 	wp_enqueue_script( 'kaya-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20161216', true );
+	wp_enqueue_script( 'kaya-accessibility', get_template_directory_uri() . '/js/accessibility.js', array(), '20240708', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

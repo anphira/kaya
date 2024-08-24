@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.6.2
+ * @version 1.10
  */
 
 $postID = get_queried_object_id();
@@ -40,7 +40,7 @@ get_header(); ?>
 	<?php } ?>
 
 				<div class="page-content">
-					<p><?php echo get_theme_mod( 'kaya_404_content', 'You tried to reach a page which could not be found.<br /><br />Please <a href="/">click here to visit the home page</a> or use the main menu to navigate to your desired location.' ) ?></p>
+					<p><?php echo wp_kses_post( get_theme_mod( 'kaya_404_content', 'You tried to reach a page which could not be found.<br /><br />Please <a href="/">click here to visit the home page</a> or use the main menu to navigate to your desired location.' ) ); ?></p>
 
 					
 

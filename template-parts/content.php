@@ -7,12 +7,13 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.3.2
+ * @version 1.10
  */
 
 
 $kaya_single_post_social_sharing = get_theme_mod( 'kaya_single_post_social_sharing', 'no_sharing' );
 $kaya_archive_social_sharing = get_theme_mod( 'kaya_archive_social_sharing', 'no_sharing' );
+$kaya_reading_time = get_theme_mod( 'kaya_post_show_reading_time', false );
 
 ?>
 
@@ -47,11 +48,12 @@ $kaya_archive_social_sharing = get_theme_mod( 'kaya_archive_social_sharing', 'no
 			}
 		}
 
-		if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php kaya_posted_on(); ?>
-		</div><!-- .entry-meta -->
-		<?php
+		if ( 'post' === get_post_type() ) : 
+			if(is_single() && !get_theme_mod( 'kaya_page_hero_blogs', false ) ) : ?>
+				<div class="entry-meta">
+					<?php kaya_posted_on(); ?>
+				</div><!-- .entry-meta -->
+		<?php endif;
 		endif; ?>
 	</header><!-- .entry-header -->
 

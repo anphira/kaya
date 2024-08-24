@@ -5,12 +5,12 @@ Author: Anphira, LLC
 Author URI: https://www.anphira.com/
 GitHub Theme URI: anphira/kaya
 Description: Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It's ready to work with your page builder and has built-in support for Visual Composer. You can view the setup instructions by going to the Customizer and selecting "Need Setup Help?".
-Version: 1.9
+Version: 1.10
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kaya
 Requires at least: 5.5
-Tested up to: 6.4.1
+Tested up to: 6.5
 Requires PHP:  7.4
 Tags: custom-background, theme-options, custom-menu, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, featured-images, flexible-header, footer-widgets, full-width-template, blog, accessibility-ready
 
@@ -144,7 +144,9 @@ a {
 }
 
 a:active,
-a:hover {
+a:hover,
+body .elementor a:active,
+body .elementor a:hover  {
 	outline: 0;
 	text-decoration: none;
 }
@@ -287,6 +289,7 @@ input[type="submit"] {
 button[disabled],
 html input[disabled] {
 	cursor: default;
+	opacity:0.5;
 }
 
 button::-moz-focus-inner,
@@ -311,6 +314,7 @@ input[type="checkbox"],
 input[type="radio"] {
 	box-sizing: border-box;
 	padding: 0;
+	margin-right: 5px;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -659,9 +663,10 @@ a:active {
 }
 
 body a:focus,
+body a:visited:focus,
 body button:focus {
 	outline: 2px solid var(--kaya-focus-color);
-	border: 2px dashed white;
+	border: 2px dashed white !important;
 }
 
 a:hover,
@@ -836,6 +841,35 @@ button:active {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.site-content.no-sidebar .alignfull {
+	margin: 32px calc(50% - 50vw);
+	max-width: 100vw;
+	width: 100vw;
+}
+
+.site-content.no-sidebar .alignwide {
+	margin: 32px calc(-50vw + 50% - 8px);
+	max-width: 1800px;
+	width: 100vw;
+}
+@media (min-width: 1800px) {
+	.site-content.no-sidebar .alignwide {
+		margin: 32px calc(-900px + 50%);
+	}
+}
+@media (max-width: 768px) {
+	.site-content.no-sidebar .alignwide {
+		margin: 32px 0;
+	}
+}
+
+.site-content.sidebar-left .alignfull,
+.site-content.sidebar-right .alignfull,
+.site-content.sidebar-left .alignwide,
+.site-content.sidebar-right .alignwide {
+	width: 100%;
 }
 
 .position-relative {
@@ -1198,6 +1232,16 @@ object {
 	gap: 30px;
 }
 
+
+
+/*--------------------------------------------------------------
+# GenerateBlocks Fixes
+--------------------------------------------------------------*/
+/* add padding on block rows for full-width */
+.full-width .entry-content > .gb-container {
+	padding-left: 15px;
+	padding-right: 15px;
+}
 
 
 /*--------------------------------------------------------------

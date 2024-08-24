@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.8
+ * @version 1.10
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -809,6 +809,15 @@ function kaya_add_general($wp_customize) {
 		)
 	) );
 	
+	$wp_customize->add_setting('kaya_terms_of_service_url', array('sanitize_callback' => 'esc_url_raw'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_terms_of_service_url', array(
+		'label'           => __( 'To automatically include your terms of service in the default footer, enter the URL here', 'kaya' ),
+		'type'            => 'url',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_terms_of_service_url',
+		)
+	) );
+	
 	$wp_customize->add_setting('kaya_cookie_policy_url', array('sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_cookie_policy_url', array(
 		'label'           => __( 'To automatically include your cookie policy in the default footer, enter the URL here', 'kaya' ),
@@ -824,6 +833,15 @@ function kaya_add_general($wp_customize) {
 		'type'            => 'url',
 		'section'         => 'kaya_general',
 		'settings'   => 'kaya_accessibility_statement_url',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_sitemap_url', array('sanitize_callback' => 'esc_url_raw'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_sitemap_url', array(
+		'label'           => __( 'To automatically include your HTML sitemap in the default footer, enter the URL here', 'kaya' ),
+		'type'            => 'url',
+		'section'         => 'kaya_general',
+		'settings'   => 'kaya_sitemap_url',
 		)
 	) );
 	
@@ -944,10 +962,19 @@ function kaya_add_blog_options($wp_customize) {
 	
 	$wp_customize->add_setting('kaya_post_use_last_updated_date', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_use_last_updated_date', array(
-		'label'           => __( 'Use Last Updated Date Instead of Published Date', 'kaya' ),
+		'label'           => __( 'Display Last Updated Date in addition to Published Date', 'kaya' ),
 		'type'            => 'checkbox',
 		'section'         => 'kaya_blog_options',
 		'settings'   => 'kaya_post_use_last_updated_date',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_post_show_reading_time', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_show_reading_time', array(
+		'label'           => __( 'Show estimated reading time on blog posts', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_blog_options',
+		'settings'   => 'kaya_post_show_reading_time',
 		)
 	) );
 	
@@ -963,7 +990,7 @@ function kaya_add_blog_options($wp_customize) {
 	$wp_customize->add_setting('kaya_turn_off_read_more', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_turn_off_read_more', array(
 		'label'           => __( 'Do NOT display a read more on blog excerpts', 'kaya' ),
-		'description'	  => __( 'This is very useful when using the Related Posts or when using any page builders which supply their own read more links', 'kaya'),
+		'description'	  => __( 'This is useful when using any page builders which supply their own read more links', 'kaya'),
 		'type'            => 'checkbox',
 		'section'         => 'kaya_blog_options',
 		'settings'   => 'kaya_turn_off_read_more',
@@ -1046,7 +1073,7 @@ function kaya_add_footer($wp_customize) {
 	  'label' => __( 'Display Social Media Icons in Footer', 'kaya' ),
 	) );
 	
-	$wp_customize->add_setting('kaya_footer_right', array('sanitize_callback' => ''));
+	$wp_customize->add_setting('kaya_footer_right', array('sanitize_callback' => 'wp_kses_post'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_footer_right', array(
 		'label'           => __( 'Content for Right side of Lower Footer', 'kaya' ),
 		'description'	  => __( 'Enter content to replace the credit info', 'kaya'),
@@ -1078,7 +1105,7 @@ function kaya_add_404($wp_customize) {
 		)
 	) );
 	
-	$wp_customize->add_setting('kaya_404_content', array('sanitize_callback' => 'esc_textarea'));
+	$wp_customize->add_setting('kaya_404_content', array('sanitize_callback' => 'wp_kses_post'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_404_content', array(
 		'label'           => __( '404 Page Content', 'kaya' ),
 		'type'            => 'textarea',
@@ -1088,6 +1115,75 @@ function kaya_add_404($wp_customize) {
 	) );
 }
 add_action('customize_register', 'kaya_add_404');
+
+
+
+/**
+ * Adding Accessibility Options
+ */
+function kaya_add_a11y($wp_customize) {
+	$wp_customize->add_section('kaya_a11y', array(
+		'title' => 'Accessibility Options',
+		'description' => 'Accessibility Options: These options are intended to work with the coding of the Kaya theme. Third party addons may not function as intended. If you have written your own customizations those may also need adjusting.',
+		'priority' => 21,
+	));
+
+	$wp_customize->add_setting('kaya_a11y_enable_checkbox', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_a11y_enable_checkbox', array(
+		'label'        => __( 'Enable accessibility preferences. This enables the region, yout must select which options you want from the checkboxes below.', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'    => 'kaya_a11y',
+		'settings'   => 'kaya_a11y_enable_checkbox',
+		) 
+	) );
+
+	$wp_customize->add_setting('kaya_a11y_textresize_checkbox', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_a11y_textresize_checkbox', array(
+		'label'        => __( 'Show text resizer: requires all fonts to be coded in rems.', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'    => 'kaya_a11y',
+		'settings'   => 'kaya_a11y_textresize_checkbox',
+		) 
+	) );
+
+	$wp_customize->add_setting('kaya_a11y_font_checkbox', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_a11y_font_checkbox', array(
+		'label'        => __( 'Show font changer: allows for replacement of fonts set in kaya customizer.', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'    => 'kaya_a11y',
+		'settings'   => 'kaya_a11y_font_checkbox',
+		) 
+	) );
+
+	$wp_customize->add_setting('kaya_a11y_lineheight_checkbox', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_a11y_lineheight_checkbox', array(
+		'label'        => __( 'Show line height changer: allows for changing of line height from what is set in kaya customizer.', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'    => 'kaya_a11y',
+		'settings'   => 'kaya_a11y_lineheight_checkbox',
+		) 
+	) );
+
+	$wp_customize->add_setting('kaya_a11y_contrast_checkbox', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_a11y_contrast_checkbox', array(
+		'label'        => __( 'Show contrast changer: will override defaults set in kaya theme, you will need to test with your builder and any custom CSS you have written.', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'    => 'kaya_a11y',
+		'settings'   => 'kaya_a11y_contrast_checkbox',
+		) 
+	) );
+
+	$wp_customize->add_setting('kaya_a11y_inputs_checkbox', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_a11y_inputs_checkbox', array(
+		'label'        => __( 'Show enhance inputs: On/off switch to emphasize input areas.', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'    => 'kaya_a11y',
+		'settings'   => 'kaya_a11y_inputs_checkbox',
+		) 
+	) );
+	
+}
+add_action('customize_register', 'kaya_add_a11y');
 
 
 
@@ -1416,7 +1512,7 @@ function kaya_add_fonts($wp_customize) {
 	$wp_customize->add_setting('kaya_heading_1_line_height', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_heading_1_line_height', array(
 		'label'           => __( 'Heading 1 Line Height', 'kaya' ),
-		'description'	  => __( 'Enter the line height for headings in em units (ie: 1.5)', 'kaya' ),
+		'description'	  => __( 'Enter the line height for headings as a number (ie: 1.5)', 'kaya' ),
 		'type'            => 'number',
 		'section'         => 'kaya_fonts',
 		'settings'   => 'kaya_heading_1_line_height',
@@ -1426,7 +1522,7 @@ function kaya_add_fonts($wp_customize) {
 	$wp_customize->add_setting('kaya_heading_2_line_height', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_heading_2_line_height', array(
 		'label'           => __( 'Heading 2 Line Height', 'kaya' ),
-		'description'	  => __( 'Enter the line height for headings in em units (ie: 1.5)', 'kaya' ),
+		'description'	  => __( 'Enter the line height for headings as a number (ie: 1.5)', 'kaya' ),
 		'type'            => 'number',
 		'section'         => 'kaya_fonts',
 		'settings'   => 'kaya_heading_2_line_height',
@@ -1436,7 +1532,7 @@ function kaya_add_fonts($wp_customize) {
 	$wp_customize->add_setting('kaya_heading_3_line_height', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_heading_3_line_height', array(
 		'label'           => __( 'Heading 3 Line Height', 'kaya' ),
-		'description'	  => __( 'Enter the line height for headings in em units (ie: 1.5)', 'kaya' ),
+		'description'	  => __( 'Enter the line height for headings as a number (ie: 1.5)', 'kaya' ),
 		'type'            => 'number',
 		'section'         => 'kaya_fonts',
 		'settings'   => 'kaya_heading_3_line_height',
@@ -1446,7 +1542,7 @@ function kaya_add_fonts($wp_customize) {
 	$wp_customize->add_setting('kaya_heading_4_line_height', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_heading_4_line_height', array(
 		'label'           => __( 'Heading 4 Line Height', 'kaya' ),
-		'description'	  => __( 'Enter the line height for headings in em units (ie: 1.5)', 'kaya' ),
+		'description'	  => __( 'Enter the line height for headings as a number (ie: 1.5)', 'kaya' ),
 		'type'            => 'number',
 		'section'         => 'kaya_fonts',
 		'settings'   => 'kaya_heading_4_line_height',
@@ -1456,7 +1552,7 @@ function kaya_add_fonts($wp_customize) {
 	$wp_customize->add_setting('kaya_heading_5_line_height', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_heading_5_line_height', array(
 		'label'           => __( 'Heading 5 Line Height', 'kaya' ),
-		'description'	  => __( 'Enter the line height for headings in em units (ie: 1.5)', 'kaya' ),
+		'description'	  => __( 'Enter the line height for headings as a number (ie: 1.5)', 'kaya' ),
 		'type'            => 'number',
 		'section'         => 'kaya_fonts',
 		'settings'   => 'kaya_heading_5_line_height',
@@ -1466,7 +1562,7 @@ function kaya_add_fonts($wp_customize) {
 	$wp_customize->add_setting('kaya_heading_6_line_height', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_heading_6_line_height', array(
 		'label'           => __( 'Heading 6 Line Height', 'kaya' ),
-		'description'	  => __( 'Enter the line height for headings in em units (ie: 1.5)', 'kaya' ),
+		'description'	  => __( 'Enter the line height for headings as a number (ie: 1.5)', 'kaya' ),
 		'type'            => 'number',
 		'section'         => 'kaya_fonts',
 		'settings'   => 'kaya_heading_6_line_height',
@@ -1476,7 +1572,7 @@ function kaya_add_fonts($wp_customize) {
 	$wp_customize->add_setting('kaya_paragraph_line_height', array('sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_paragraph_line_height', array(
 		'label'           => __( 'Paragraph Line Height', 'kaya' ),
-		'description'	  => __( 'Enter the line height for paragraphs in em units (ie: 1.5)', 'kaya' ),
+		'description'	  => __( 'Enter the line height for paragraphs as a number (ie: 1.5)', 'kaya' ),
 		'type'            => 'number',
 		'section'         => 'kaya_fonts',
 		'settings'   => 'kaya_paragraph_line_height',

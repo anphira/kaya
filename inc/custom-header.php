@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.7.1
+ * @version 1.10
  */
 
 /**
@@ -89,7 +89,7 @@ html {
 body, p, button, input, select, textarea, .elementor-widget-text-editor {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_text_color', '#181818' )) ?>;
 	font-weight: <?php echo esc_html(get_theme_mod( 'kaya_paragraph_font_weight', '400' )) ?>;
-	line-height: <?php echo esc_html(get_theme_mod( 'kaya_paragraph_line_height', '1.5' )) ?>em;
+	line-height: <?php echo esc_html(get_theme_mod( 'kaya_paragraph_line_height', '1.5' )) ?>;
 	letter-spacing: <?php echo esc_html(get_theme_mod( 'kaya_paragraph_letter_spacing', '0' )); ?>px;
 	font-family: 
 		<?php if(get_theme_mod( 'kaya_custom_google_fonts_paragraph', '' ) != '')
@@ -109,27 +109,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 h1, .h1, .elementor-widget-heading h1.elementor-heading-title {
 	font-size: <?php echo esc_html(get_theme_mod( 'kaya_heading_1', '2' )) ?>rem;
-	line-height: <?php echo esc_html(get_theme_mod( 'kaya_heading_1_line_height', '1.5' )) ?>em;
+	line-height: <?php echo esc_html(get_theme_mod( 'kaya_heading_1_line_height', '1.5' )) ?>;
 }
 h2, .h2, .elementor-widget-heading h2.elementor-heading-title {
 	font-size: <?php echo esc_html(get_theme_mod( 'kaya_heading_2', '1.8' )) ?>rem;
-	line-height: <?php echo esc_html(get_theme_mod( 'kaya_heading_2_line_height', '1.5' )) ?>em;
+	line-height: <?php echo esc_html(get_theme_mod( 'kaya_heading_2_line_height', '1.5' )) ?>;
 }
 h3, .h3, .elementor-widget-heading h3.elementor-heading-title {
 	font-size: <?php echo esc_html(get_theme_mod( 'kaya_heading_3', '1.6' )) ?>rem;
-	line-height: <?php echo esc_html(get_theme_mod( 'kaya_heading_3_line_height', '1.5' )) ?>em;
+	line-height: <?php echo esc_html(get_theme_mod( 'kaya_heading_3_line_height', '1.5' )) ?>;
 }
 h4, .widget-title, .h4, .elementor-widget-heading h4.elementor-heading-title {
 	font-size: <?php echo esc_html(get_theme_mod( 'kaya_heading_4', '1.4' )) ?>rem;
-	line-height: <?php echo esc_html(get_theme_mod( 'kaya_heading_4_line_height', '1.5' )) ?>em;
+	line-height: <?php echo esc_html(get_theme_mod( 'kaya_heading_4_line_height', '1.5' )) ?>;
 }
 h5, .h5, .elementor-widget-heading h5.elementor-heading-title {
 	font-size: <?php echo esc_html(get_theme_mod( 'kaya_heading_5', '1.25' )) ?>rem;
-	line-height: <?php echo esc_html(get_theme_mod( 'kaya_heading_5_line_height', '1.5' )) ?>em;
+	line-height: <?php echo esc_html(get_theme_mod( 'kaya_heading_5_line_height', '1.5' )) ?>;
 }
 h6, .h6, .elementor-widget-heading h6.elementor-heading-title {
 	font-size: <?php echo esc_html(get_theme_mod( 'kaya_heading_6', '1.15' )) ?>rem;
-	line-height: <?php echo esc_html(get_theme_mod( 'kaya_heading_6_line_height', '1.5' )) ?>em;
+	line-height: <?php echo esc_html(get_theme_mod( 'kaya_heading_6_line_height', '1.5' )) ?>;
 }
 @media screen and (max-width: 767px) {
 	<?php 
@@ -159,7 +159,8 @@ h6, .h6, .elementor-widget-heading h6.elementor-heading-title {
 		font-size: <?php echo $kaya_heading_6 * 0.9 ?>rem;
 	}
 }
-body {
+body,
+body .elementor-button {
 	font-size: <?php echo esc_html(get_theme_mod( 'kaya_paragraph', '1' )) ?>rem;
 }
 .social-icons .fab,

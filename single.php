@@ -5,7 +5,7 @@
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
  * @package 
- * @version 1.2.2
+ * @version 1.9.1
  */
 
 get_header(); ?>
@@ -69,7 +69,9 @@ get_header(); ?>
 						<h3 class="mb0"><?php the_title(); ?></h3>
 						<?php the_excerpt(); ?>
 					</div>
-					<a class="button mt20" href="<?php the_permalink(); ?>">READ MORE</a>
+					<?php if(!get_theme_mod('kaya_turn_off_read_more', false)) { ?>
+						<a class="button mt20" href="<?php the_permalink(); ?>">Read more<span class="screen-reader-text"> <?php echo get_the_title(); ?></span></a>
+					<?php } ?>
 					
 				</div>
 				

@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.6.3
+ * @version 1.10
  */
 
 
@@ -669,4 +669,17 @@ function kaya_custom_styling() {
     $style_string .= '</style>';
 
   echo $style_string;
+}
+
+
+
+/**
+ * 
+ * Calculate reading time of blog post
+ * 
+ */
+function kaya_reading_time() {
+	$words = str_word_count( wp_strip_all_tags( get_the_content() ) );
+	$reading_time = ceil($words/250);
+	return $reading_time;
 }

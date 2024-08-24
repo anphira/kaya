@@ -1,0 +1,321 @@
+/**
+ * 
+ * CSS file for accessibility options panel.
+ * Conditionally loaded only when accessibilty options panel is turned on.
+ * 
+ * @author  Anphira
+ * @since   1.10
+ * @package Kaya
+ * @version 1.10
+ * 
+ * Table of contents:
+ * # text size
+ * # line height
+ * # load open dyslexic font
+ * # font choices
+ * # change contrast
+ * # enhance inputs
+ */
+
+/* prevent accessiblity option sizes from being changed since that causes button movements */
+#kaya-a11y-options,
+#kaya-a11y-options br,
+#kaya-a11y-options p,
+#kaya-a11y-options label,
+#kaya-a11y-options button,
+#kaya-a11y-options legend,
+#kaya-a11y-options input[type="radio"] {
+	font-size: 16px;
+	line-height: 24px;
+}
+#kaya-a11y-options .h4 {
+	font-size: 22px;
+}
+
+
+/**
+ * 
+ * text size
+ * 
+ */
+html:has(body.text-size-small) {
+	font-size: 80%;
+}
+html:has(body.text-size-large) {
+	font-size: 125%;
+}
+html:has(body.text-size-xlarge) {
+	font-size: 150%;
+}
+html:has(body.text-size-huge) {
+	font-size: 200%;
+}
+
+
+/**
+ * 
+ * line height
+ * 
+ */
+body.line-height-1,
+body.line-height-1 p,
+body.line-height-1 h1,
+body.line-height-1 h2,
+body.line-height-1 h3,
+body.line-height-1 h4,
+body.line-height-1 h5,
+body.line-height-1 h6 {
+	line-height: 1;
+}
+/* for line-height 1 the underline-offset needs to be removed */
+
+
+body.line-height-125,
+body.line-height-125 p,
+body.line-height-125 h1,
+body.line-height-125 h2,
+body.line-height-125 h3,
+body.line-height-125 h4,
+body.line-height-125 h5,
+body.line-height-125 h6 {
+	line-height: 1.25;
+}
+body.line-height-15,
+body.line-height-15 p,
+body.line-height-15 h1,
+body.line-height-15 h2,
+body.line-height-15 h3,
+body.line-height-15 h4,
+body.line-height-15 h5,
+body.line-height-15 h6 {
+	line-height: 1.5;
+}
+body.line-height-175,
+body.line-height-175 p,
+body.line-height-175 h1,
+body.line-height-175 h2,
+body.line-height-175 h3,
+body.line-height-175 h4,
+body.line-height-175 h5,
+body.line-height-175 h6 {
+	line-height: 1.75;
+}
+body.line-height-2,
+body.line-height-2 p,
+body.line-height-2 h1,
+body.line-height-2 h2,
+body.line-height-2 h3,
+body.line-height-2 h4,
+body.line-height-2 h5,
+body.line-height-2 h6 {
+	line-height: 2;
+}
+
+
+/**
+ * 
+ * load open dyslexic font
+ * 
+ */
+@font-face {
+	font-family: 'OpenDyslexic';
+	src:  url('/wp-content/themes/kaya/fonts/opendyslexic/OpenDyslexic-Regular.woff2');
+	font-weight: 400;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'OpenDyslexic';
+	src:  url('/wp-content/themes/kaya/fonts/opendyslexic/OpenDyslexic-Bold.woff2');
+	font-weight: 700;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'OpenDyslexic';
+	src:  url('/wp-content/themes/kaya/fonts/opendyslexic/OpenDyslexic-Bold-Italic.woff2') ;
+	font-weight: 700;
+	font-style: italic;
+	font-display: swap;
+}
+
+
+/**
+ * 
+ * Font choices
+ * 
+ */
+body.font-arial,
+body.font-arial p,
+body.font-arial h1,
+body.font-arial h2,
+body.font-arial h3,
+body.font-arial h4,
+body.font-arial h5, 
+body.font-arial h6 {
+	font-family: Arial, sans-serif;
+}
+body.font-dyslexic,
+body.font-dyslexic p,
+body.font-dyslexic h1,
+body.font-dyslexic h2,
+body.font-dyslexic h3,
+body.font-dyslexic h4,
+body.font-dyslexic h5, 
+body.font-dyslexic h6 {
+	font-family: 'OpenDyslexic', sans-serif;
+}
+body.font-times,
+body.font-times p,
+body.font-times h1,
+body.font-times h2,
+body.font-times h3,
+body.font-times h4,
+body.font-times h5, 
+body.font-times h6 {
+	font-family: 'Times New Roman', 'Times', serif;
+}
+body.font-verdana,
+body.font-verdana p,
+body.font-verdana h1,
+body.font-verdana h2,
+body.font-verdana h3,
+body.font-verdana h4,
+body.font-verdana h5, 
+body.font-verdana h6 {
+	font-family: Verdana, sans-serif;
+}
+
+
+
+
+
+/**
+ * 
+ * change contrast
+ * 
+ */
+/* white background, black text */
+body.white-bkgd-black-txt p,
+body.white-bkgd-black-txt h1,
+body.white-bkgd-black-txt h2,
+body.white-bkgd-black-txt h3,
+body.white-bkgd-black-txt h4, 
+body.white-bkgd-black-txt h5,
+body.white-bkgd-black-txt h6,
+body.white-bkgd-black-txt span,
+body.white-bkgd-black-txt a,
+body.white-bkgd-black-txt a:visited,
+body.white-bkgd-black-txt a:hover,
+body.white-bkgd-black-txt a:focus,
+body.white-bkgd-black-txt a:active,
+body.white-bkgd-black-txt #masthead #site-navigation a,
+body.white-bkgd-black-txt #colophon .site-info p,
+body.white-bkgd-black-txt #colophon a:not(.social-icon-single) {
+	color: black;
+}
+body.white-bkgd-black-txt,
+body.white-bkgd-black-txt #page,
+body.white-bkgd-black-txt #content,
+body.white-bkgd-black-txt button,
+body.white-bkgd-black-txt button:hover,
+body.white-bkgd-black-txt input[type=submit],
+body.white-bkgd-black-txt input[type=search],
+body.white-bkgd-black-txt input[type=submit]:hover,
+body.white-bkgd-black-txt input[type=search]:hover,
+body.white-bkgd-black-txt #colophon,
+body.white-bkgd-black-txt #masthead,
+body.white-bkgd-black-txt .top-header,
+body.white-bkgd-black-txt #page-hero-area,
+body.white-bkgd-black-txt #masthead .menu-toggle, 
+body.white-bkgd-black-txt #masthead #site-navigation, 
+body.white-bkgd-black-txt .main-navigation ul ul,
+body.white-bkgd-black-txt #colophon .site-info,
+body.white-bkgd-black-txt #masthead .announcement-bar,
+body.white-bkgd-black-txt #masthead .announcement-button,
+body.white-bkgd-black-txt #colophon .site-info p {
+	background: white;
+	color: black;
+}
+body.white-bkgd-black-txt button,
+body.white-bkgd-black-txt button:hover,
+body.white-bkgd-black-txt input[type=submit],
+body.white-bkgd-black-txt input[type=search],
+body.white-bkgd-black-txt .resp-sharing-button--facebook,
+body.white-bkgd-black-txt #masthead .announcement-button,
+body.white-bkgd-black-txt input[type=submit]:hover,
+body.white-bkgd-black-txt input[type=search]:hover {
+	border: 2px solid black;
+}
+
+/* black background, white text */
+body.black-bkgd-white-txt p,
+body.black-bkgd-white-txt h1,
+body.black-bkgd-white-txt h2,
+body.black-bkgd-white-txt h3,
+body.black-bkgd-white-txt h4, 
+body.black-bkgd-white-txt h5,
+body.black-bkgd-white-txt h6,
+body.black-bkgd-white-txt span,
+body.black-bkgd-white-txt a,
+body.black-bkgd-white-txt a:visited,
+body.black-bkgd-white-txt a:hover,
+body.black-bkgd-white-txt a:focus,
+body.black-bkgd-white-txt a:active,
+body.black-bkgd-white-txt #colophon .site-info p,
+body.black-bkgd-white-txt #colophon a:not(.social-icon-single) {
+	color: white;
+}
+body.black-bkgd-white-txt #page,
+body.black-bkgd-white-txt,
+body.black-bkgd-white-txt #content,
+body.black-bkgd-white-txt button,
+body.black-bkgd-white-txt button:hover,
+body.black-bkgd-white-txt input[type=submit],
+body.black-bkgd-white-txt input[type=search],
+body.black-bkgd-white-txt input[type=submit]:hover,
+body.black-bkgd-white-txt input[type=search]:hover,
+body.black-bkgd-white-txt #colophon,
+body.black-bkgd-white-txt #masthead,
+body.black-bkgd-white-txt .top-header,
+body.black-bkgd-white-txt #page-hero-area,
+body.black-bkgd-white-txt #masthead #site-navigation a, 
+body.black-bkgd-white-txt #masthead .menu-toggle, 
+body.black-bkgd-white-txt #masthead #site-navigation, 
+body.black-bkgd-white-txt .main-navigation ul ul,
+body.black-bkgd-white-txt #colophon .site-info,
+body.black-bkgd-white-txt #masthead .announcement-bar,
+body.black-bkgd-white-txt #masthead .announcement-button,
+body.black-bkgd-white-txt #colophon .site-info p {
+	background: black;
+	color: white;
+}
+body.black-bkgd-white-txt button,
+body.black-bkgd-white-txt button:hover,
+body.black-bkgd-white-txt input[type=submit],
+body.black-bkgd-white-txt input[type=search],
+body.black-bkgd-white-txt .resp-sharing-button--facebook,
+body.black-bkgd-white-txt #masthead .announcement-button,
+body.black-bkgd-white-txt input[type=submit]:hover,
+body.black-bkgd-white-txt input[type=search]:hover {
+	border: 2px solid white;
+}
+
+
+
+
+/**
+ * 
+ * enhance inputs
+ * 
+ */
+body.enhance-inputs button,
+body.enhance-inputs a,
+body.enhance-inputs input,
+body.enhance-inputs label {
+	font-weight: bold;
+}
+body.enhance-inputs button,
+body.enhance-inputs a,
+body.enhance-inputs input[type=submit] {
+	text-decoration: underline;
+	text-underline-offset: 4px;
+}

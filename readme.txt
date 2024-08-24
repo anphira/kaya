@@ -4,9 +4,9 @@ Contributors: anphira, automattic
 Tags: custom-background, theme-options, custom-menu, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, featured-images, flexible-header, footer-widgets, full-width-template, blog, accessibility-ready
 
 Requires at least: 5.5
-Tested up to: 6.5.2
+Tested up to: 6.5
 Requires PHP: 7.4
-Stable tag: v1.9
+Stable tag: v1.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,28 @@ Recommended plugins are available at https://easya11yguide.com/kaya-wordpress-th
 From the Customizer a number of customization options exist. Please see https://easya11yguide.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 1.10 - August 24 2024 =
+* Add: accessibility toolbar at top of website with text size changer.
+* Add: terms of service URL to default footer.
+* Add: HTML sitemap URL to default footer.
+* Update: change CSS class on #masthead .container to use "flexbox-non-responsive" instead of "flexbox" which makes header always use flexbox instead of flexbox only on desktop.
+* Add: CSS font size for elementor default button (Elementor removed "sizes" from buttons and changed a bit of their CSS).
+* Add: function to compute reading time (estimated at 250 words per minute).
+* Add: display reading time with post meta information (option in blog options to display this automatically with post meta).
+* Update: single blog post hero area to contain meta information if the single blog hero is turned on.
+* Update: Change line-height setting in customizer from em units to "number". Em was resulting in some undesired values when multiple font sizes were chained.
+* Update: Switch the option from displaying last updated date on blogs instead of published date to displaying last updated date in addition to published date.
+* Update: add role="main" to the #content div for Elementor templates (corrects lack of landmark on Elementor templates).
+* Add: generateblocks padding of 15px on responsive sizes when used with full-width pages.
+* Update: Focus state for links & buttons to dashed border with !important to override various button styles and create consistency.
+* Add: additional content sanitization.
+* Add: support for alignwide and alignfull.
+
+
+= 1.9.1 - May 9 2024 =
+* Update: related articles on single post.
+* Update: Elementor links on hover now remove underline.
 
 = 1.9 - Apr 24 2024 =
 * Update: make "hide the page footer" option NOT hide the whole footer. For legal reasons, hiding privacy & copyright of the lower footer is no longer possible without custom coding it in a child theme. 
