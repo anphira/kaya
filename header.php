@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.10
+ * @version 1.11
  */
 
 $postID = get_queried_object_id();
@@ -44,7 +44,7 @@ $postID = get_queried_object_id();
 				<?php if( get_theme_mod( 'kaya_a11y_textresize_checkbox', false ) ) { ?>
 					<div class="">
 						<fieldset>
-							<legend>Text Size:</legend>
+							<legend>Text size:</legend>
 							<input id="kaya-text-size-default" name="kaya-text-size" type="radio" value="default" onchange="kaya_set_text_size('default')"><label for="kaya-text-size-default">Default for site</label><br>
 							<input id="kaya-text-size-small" name="kaya-text-size" type="radio" value="text-size-small" onchange="kaya_set_text_size('text-size-small')"><label for="kaya-text-size-small">Small</label><br>
 							<input id="kaya-text-size-large" name="kaya-text-size" type="radio" value="text-size-large" onchange="kaya_set_text_size('text-size-large')"><label for="kaya-text-size-large">Large</label><br>
@@ -96,8 +96,8 @@ $postID = get_queried_object_id();
 					<div class="">
 						<fieldset>
 							<legend>Enhance inputs areas:</legend>
-							<input id="kaya-enhance-inputs-on" name="kaya-enhance-inputs" type="radio" value="on" onchange="kaya_set_enhance_inputs('on')"><label for="kaya-enhance-inputs-on">On</label><br>
-							<input id="kaya-enhance-inputs-off" name="kaya-enhance-inputs" type="radio" value="off" onchange="kaya_set_enhance_inputs('off')"><label for="kaya-enhance-inputs-off">Off</label>
+							<input id="kaya-enhance-inputs-off" name="kaya-enhance-inputs" type="radio" value="off" onchange="kaya_set_enhance_inputs('off')"><label for="kaya-enhance-inputs-off">Default for site: Off</label><br>
+							<input id="kaya-enhance-inputs-on" name="kaya-enhance-inputs" type="radio" value="on" onchange="kaya_set_enhance_inputs('on')"><label for="kaya-enhance-inputs-on">On</label>
 						</fieldset>
 					</div>
 				<?php } ?>

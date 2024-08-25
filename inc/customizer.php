@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.10
+ * @version 1.11
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -1130,7 +1130,7 @@ function kaya_add_a11y($wp_customize) {
 
 	$wp_customize->add_setting('kaya_a11y_enable_checkbox', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_a11y_enable_checkbox', array(
-		'label'        => __( 'Enable accessibility preferences. This enables the region, yout must select which options you want from the checkboxes below.', 'kaya' ),
+		'label'        => __( 'Enable accessibility preferences. This enables the region, you must select which options you want from the checkboxes below.', 'kaya' ),
 		'type'            => 'checkbox',
 		'section'    => 'kaya_a11y',
 		'settings'   => 'kaya_a11y_enable_checkbox',

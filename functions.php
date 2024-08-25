@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.10
+ * @version 1.11
  */
 
 /**
@@ -787,7 +787,7 @@ require get_template_directory() . '/inc/jetpack.php';
  * Enqueue Font Awesome Stylesheet
  */
 function kaya_enqueue_font_awesome_stylesheet(){
-	wp_enqueue_style('font-awesome-kaya', get_template_directory_uri() . '/inc/fontawesome-free-5.13.0-web/css/all.min.css');
+	wp_enqueue_style('font-awesome-kaya', get_template_directory_uri() . '/fonts/fontawesome-free-6.6.0-web/css/all.min.css');
 }
 add_action('wp_enqueue_scripts','kaya_enqueue_font_awesome_stylesheet');
 
