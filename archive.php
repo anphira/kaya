@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.6.1
+ * @version 2.0
  */
 
 get_header(); 
@@ -15,7 +15,7 @@ get_header();
 ?>
 
 	<?php 
-	if (get_theme_mod( 'kaya_archive_sidebar', 'no_sidebar' ) == 'left_sidebar') {
+	if ( get_theme_mod( 'kaya_archive_sidebar', 'no_sidebar' ) == 'left_sidebar') {
 		get_sidebar(); 
 	}
 	$has_sidebar = '';
@@ -31,7 +31,7 @@ get_header();
 			?>
 
 			<?php
-			$page_hero_blog = get_theme_mod( 'kaya_page_hero_blog_archive', false );
+			$page_hero_blog = rest_sanitize_boolean( get_theme_mod( 'kaya_page_hero_blog_archive', false ) );
 			if( ! $page_hero_blog ) { ?>
 			<header class="page-header">
 				<?php
@@ -68,7 +68,7 @@ get_header();
 		</main><!-- #main -->
 	</div><!-- #primary -->
 	<?php 
-	if (get_theme_mod( 'kaya_archive_sidebar', 'no_sidebar' ) == 'right_sidebar') {
+	if ( get_theme_mod( 'kaya_archive_sidebar', 'no_sidebar' ) == 'right_sidebar') {
 		get_sidebar(); 
 	}
 	?>

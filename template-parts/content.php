@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.10
+ * @version 2.0
  */
 
 
@@ -59,18 +59,10 @@ $kaya_reading_time = get_theme_mod( 'kaya_post_show_reading_time', false );
 
 	<div class="entry-content">
 		<?php if(!is_single() && get_theme_mod( 'kaya_blog_excerpt', '' ) != '') {
-			the_excerpt( sprintf(
-				/* translators: %s: Name of current post. */
-				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'kaya' ), array( 'span' => array( 'class' => array() ) ) ),
-				the_title( '<span class="screen-reader-text">"', '"</span>', false )
-			) );
+			kaya_the_excerpt();
 		}
 		else {
-			the_content( sprintf(
-				/* translators: %s: Name of current post. */
-				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'kaya' ), array( 'span' => array( 'class' => array() ) ) ),
-				the_title( '<span class="screen-reader-text">"', '"</span>', false )
-			) );
+			the_content();
 		}
 
 		wp_link_pages( array(

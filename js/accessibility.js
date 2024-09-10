@@ -6,7 +6,7 @@
  * @author  Anphira
  * @since 1.10
  * @package Kaya
- * @version 1.10
+ * @version 2.0
  */
 
 
@@ -196,7 +196,10 @@ function kaya_load_cookie_values() {
 		let cookie = cookies[i].trim();
 
 		// set default state for font size
-		document.getElementById( 'kaya-text-size-default' ).setAttribute('checked', '');
+		let kaya_text_size = document.getElementById( 'kaya-text-size-default' );
+		if(kaya_text_size) {
+			kaya_text_size.setAttribute('checked', '');
+		}
 
 		// font size
 		if( cookie.startsWith("kayaA11yTextSize") ) {
@@ -225,7 +228,10 @@ function kaya_load_cookie_values() {
 		}
 
 		// set default state for line height
-		document.getElementById( 'kaya-line-spacing-default' ).setAttribute('checked', '');
+		let kaya_line_spacing = document.getElementById( 'kaya-line-spacing-default' );
+		if(kaya_line_spacing) { 
+			kaya_line_spacing.setAttribute('checked', '');
+		}
 
 		// line height
 		if( cookie.startsWith("kayaA11yLineHeight") ) {
@@ -257,7 +263,10 @@ function kaya_load_cookie_values() {
 		}
 
 		// set default state for font family
-		document.getElementById( 'kaya-font-family-default' ).setAttribute('checked', '');
+		let kaya_font_family = document.getElementById( 'kaya-font-family-default' );
+		if(kaya_font_family) {
+			kaya_font_family.setAttribute('checked', '');
+		}
 
 		// font family
 		if( cookie.startsWith("kayaA11yFontFamily") ) {
@@ -286,7 +295,10 @@ function kaya_load_cookie_values() {
 		}
 
 		// set default state for contrast changer
-		document.getElementById( 'kaya-contrast-default' ).setAttribute('checked', '');
+		let kaya_contrast = document.getElementById( 'kaya-contrast-default' );
+		if(kaya_contrast) {
+			kaya_contrast.setAttribute('checked', '');
+		}
 
 		// contrast changer
 		if( cookie.startsWith("kayaA11yContrast") ) {
@@ -308,7 +320,10 @@ function kaya_load_cookie_values() {
 		}
 
 		// set default state for enhance inputs
-		document.getElementById( 'kaya-enhance-inputs-off' ).setAttribute('checked', '');
+		let kaya_enhance = document.getElementById( 'kaya-enhance-inputs-off' );
+		if(kaya_enhance) {
+			kaya_enhance.setAttribute('checked', '');
+		}
 
 		// enhance inputs
 		if( cookie.startsWith("kayaA11yEnhanceInputs") ) {

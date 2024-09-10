@@ -1,12 +1,12 @@
 === kaya ===
 
-Contributors: anphira, automattic
+Contributors: anphira
 Tags: custom-background, theme-options, custom-menu, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, featured-images, flexible-header, footer-widgets, full-width-template, blog, accessibility-ready
 
 Requires at least: 5.5
 Tested up to: 6.5
-Requires PHP: 7.4
-Stable tag: v1.11
+Requires PHP: 8.0
+Stable tag: v2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,10 +44,21 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
-= 1.11 - August 25 2024 =
+= 2.0 - Sep 10 2024 =
+* Update: moved a lot of the code in footer.php and header.php into separate files. These were the most common files overriden in child themes and the most often modified, which meant a lot of work for child theme authors keeping everything current. The code has been separated with the goal of significantly reducing how often child themes need to be updated.
+* Add: header-head.php to hold just the <head> section of the site. This is the most commonly customized in a child theme and removing it to a separate file makes customization easier and reduces the amount of future code updates needed for child themes only customizing this part.
+* Add: header-accessibility.php for all of the accessibility options.
+* Add: header-top.php for all the top bar info.
+* Add: header-columns.php for all of the columns & main menu.
+* Add: footer-top.php for all of the footer columns options.
+* Add: footer-site-info.php  for all of the lower footer options.
+* Update: Blog excerpts with "read more" now function uniformly. For both auto generated excerpts and manually entered excerpts, they both have "read more" on or off based on theme settings. The default behavior of WordPress is to include them for auto and exclude them for manual, but this creates problems for content authors as they don't always want to write an excerpt and then there are some posts with a read more and some without. So now it's standardized in the theme.
+* Update: move code for updating logo on login screen from kaya-functions.php to functions.php so its compatible with current WP.
+
+= 1.11 - Aug 25 2024 =
 * Add: Font awesome free 6 added to the theme. Font awesome 5 has been removed.
 
-= 1.10 - August 24 2024 =
+= 1.10 - Aug 24 2024 =
 * Add: accessibility toolbar at top of website with text size changer.
 * Add: terms of service URL to default footer.
 * Add: HTML sitemap URL to default footer.

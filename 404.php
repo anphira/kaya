@@ -7,10 +7,11 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.10
+ * @version 2.0
  */
 
 $postID = get_queried_object_id();
+$page_hero_setting = false;
 
 get_header(); ?>
 
@@ -33,9 +34,9 @@ get_header(); ?>
 		default: 
 			$page_hero_setting = get_theme_mod( 'kaya_page_hero', false );
 	}
-	if((get_post_meta($postID, '_kaya_hide_title_check', true) !== 'on') && (true != $page_hero_setting)) { ?>
+	if( ( get_post_meta($postID, '_kaya_hide_title_check', true) !== 'on') && (true != $page_hero_setting) ) { ?>
 	<header class="entry-header">
-		<h1><?php echo esc_html(get_theme_mod( 'kaya_404_title', 'Sorry, we couldn\'t find that page')); ?></h1>
+		<h1><?php echo esc_html( get_theme_mod( 'kaya_404_title', 'Sorry, we couldn\'t find that page') ); ?></h1>
 	</header><!-- .entry-header -->
 	<?php } ?>
 

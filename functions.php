@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.11
+ * @version 2.0
  */
 
 /**
@@ -73,7 +73,7 @@ add_action('woocommerce_before_main_content', 'kaya_theme_wrapper_start', 10);
 add_action('woocommerce_after_main_content', 'kaya_theme_wrapper_end', 10);
 
 function kaya_theme_wrapper_start() {
-	$sidebar_setting = get_theme_mod( 'kaya_woo_sidebar' );
+	$sidebar_setting = kaya_sanitize_sidebars( get_theme_mod( 'kaya_woo_sidebar', 'no_sidebar' ) );
 	
 	echo '<div id="primary" class="content-area ';
 	if( ($sidebar_setting !== 'no_sidebar') ) { 
@@ -162,8 +162,9 @@ add_action( 'after_setup_theme', 'kaya_theme_add_editor_styles' );
  * Blog excerpts
  */
 function kaya_excerpt_length( $length ) {
-	if(get_theme_mod( 'kaya_blog_excerpt' ) != '') {
-		return get_theme_mod( 'kaya_blog_excerpt' );
+	$kaya_blog_excerpt = sanitize_text_field( get_theme_mod( 'kaya_blog_excerpt', '' ) );
+	if( $kaya_blog_excerpt != '') {
+		return $kaya_blog_excerpt;
 	}
 	else {
 		return 50;
@@ -172,33 +173,19 @@ function kaya_excerpt_length( $length ) {
 add_filter( 'excerpt_length', 'kaya_excerpt_length', 999 );
 
 function kaya_excerpt_more( $more ) {
-	if(get_theme_mod( 'kaya_turn_off_read_more', false)) {
-		return '';
-	}
-	return ' </p><p><a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'kaya') . '<span class="screen-reader-text">' . get_the_title( get_the_ID() ) . '</span></a>';
+	return '';
 }
 add_filter( 'excerpt_more', 'kaya_excerpt_more' );
 
-
-/***
- * Add notice to admin to welcome people to theme
- *
-function kaya_welcome_notice() {
-    ?>
-    <div class="notice updated is-dismissible kaya-welcome-notice-dismiss">
-        <p><?php _e( 'Thank you for installing the Kaya WordPress theme! View the setup instructions by going to the Customizer and selecting "Need Setup Help?"', 'kaya' ); ?></p>
-    </div>
-    <?php
-}
-if(get_theme_mod('kaya_welcome_notice_dismissed', '0')) {
-	add_action( 'admin_notices', 'kaya_welcome_notice' );
+function kaya_the_excerpt() {
+	the_excerpt();
+	if(!get_theme_mod( 'kaya_turn_off_read_more', false)) {
+		echo '<p><a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'kaya') . '<span class="screen-reader-text">' . get_the_title( get_the_ID() ) . '</span></a>';
+	}
 }
 
-function kaya_welcome_notice_dismiss() {
-	set_theme_mod( 'kaya_welcome_notice_dismissed', '1' );
-}
-add_action( 'wp_ajax_kaya_welcome_notice_dismiss', 'kaya_welcome_notice_dismiss' );
-*/
+
+
 
 if( ! function_exists('kaya_social_icons') ) :
 
@@ -882,3 +869,32 @@ function kaya_website_field_remove($fields) {
 	unset($fields['url']);
 	return $fields;
 }
+
+
+/**
+ * Customize login page with logo & URL
+ */
+function kaya_login_logo() { 
+	$default_kaya_logo = get_template_directory_uri() . '/img/kaya-logo.png';
+	$kaya_setting_logo = esc_url(get_theme_mod( 'kaya_logo', '' ));
+	if($kaya_setting_logo != '') {
+		$default_kaya_logo = $kaya_setting_logo;
+	}
+	?>
+	<style type="text/css">
+		#login h1 a, .login h1 a {
+			background-image: url(<?php echo esc_url($default_kaya_logo); ?>);
+			height:auto;
+			width:194px;
+			background-size: contain;
+			background-repeat: no-repeat;
+			padding-bottom: 30px;
+		}
+	</style>
+<?php }
+add_action( 'login_enqueue_scripts', 'kaya_login_logo' );
+
+function kaya_login_logo_url() {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'kaya_login_logo_url' );
