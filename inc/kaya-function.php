@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 2.0
+ * @version 2.1
  */
 
 
@@ -652,4 +652,32 @@ function kaya_reading_time() {
 	$words = str_word_count( wp_strip_all_tags( get_the_content() ) );
 	$reading_time = ceil($words/250);
 	return $reading_time;
+}
+
+
+
+/**
+ * 
+ * Get accessibility cookie values and preload the body classes
+ * 
+ */
+function kaya_get_a11y_cookies() {
+	$add_to_body = '';
+
+	if(isset($_COOKIE["kayaA11yTextSize"])) {
+		$add_to_body .= $_COOKIE["kayaA11yTextSize"] . " ";
+	}
+	if(isset($_COOKIE["kayaA11yLineHeight"])) {
+		$add_to_body .= $_COOKIE["kayaA11yLineHeight"] . " ";
+	}
+	if(isset($_COOKIE["kayaA11yFontFamily"])) {
+		$add_to_body .= $_COOKIE["kayaA11yFontFamily"] . " ";
+	}
+	if(isset($_COOKIE["kayaA11yContrast"])) {
+		$add_to_body .= $_COOKIE["kayaA11yContrast"] . " ";
+	}
+	if(isset($_COOKIE["kayaA11yEnhanceInputs"])) {
+		$add_to_body .= $_COOKIE["kayaA11yEnhanceInputs"];
+	}
+	return $add_to_body;
 }

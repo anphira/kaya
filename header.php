@@ -9,16 +9,22 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 2.0
+ * @version 2.1
  */
 
 $postID = get_queried_object_id();
+$add_to_body = '';
+
+// add accessibility options to body if active
+if( get_theme_mod( 'kaya_a11y_enable_checkbox', false ) ) {
+	$add_to_body = kaya_get_a11y_cookies();
+}
 
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <?php get_template_part('template-parts/header', 'head'); ?>
 
-<body <?php body_class(); ?>>
+<body <?php body_class( $add_to_body ); ?>>
 	<?php wp_body_open(); ?>
 
 <div id="page" class="site">

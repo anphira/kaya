@@ -6,7 +6,7 @@ Tags: custom-background, theme-options, custom-menu, threaded-comments, one-colu
 Requires at least: 5.5
 Tested up to: 6.5
 Requires PHP: 8.0
-Stable tag: v2.0
+Stable tag: v2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,10 @@ Recommended plugins are available at https://easya11yguide.com/kaya-wordpress-th
 From the Customizer a number of customization options exist. Please see https://easya11yguide.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 2.1 - Oct 05 2024 =
+* Update: accessibility options for elementor plugin.
+* Update: accessibility enhance inputs for max mega menu.
 
 = 2.0 - Sep 10 2024 =
 * Update: moved a lot of the code in footer.php and header.php into separate files. These were the most common files overriden in child themes and the most often modified, which meant a lot of work for child theme authors keeping everything current. The code has been separated with the goal of significantly reducing how often child themes need to be updated.
