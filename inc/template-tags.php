@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.10
+ * @version 2.2
  */
 
 if ( ! function_exists( 'kaya_posted_on' ) ) :
@@ -15,31 +15,41 @@ if ( ! function_exists( 'kaya_posted_on' ) ) :
  * Prints HTML with meta information for the current post-date/time and author.
  */
 function kaya_posted_on() {
+
+	// only display meta info if not hidden by option in theme customizer
+	if( !get_theme_mod( 'kaya_post_hide_meta_info', false) ) {
 	
-	$time_string = '<time class="entry-date published" datetime="%1$s">' . get_the_date( '' ) . '</time>';
-	$updated_on = '';
+		$time_string = '<time class="entry-date published" datetime="%1$s">' . get_the_date( '' ) . '</time>';
+		$updated_on = '';
 
-	if ( get_theme_mod( 'kaya_post_use_last_updated_date', false ) && get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-		$updated_string = '<time class="post-last-modified-td" itemprop="dateModified" datetime="' . get_the_modified_date( '' ) . '">' . get_the_modified_date( '' ) . '</time>';
-		$updated_on = sprintf(
+		if ( get_theme_mod( 'kaya_post_use_last_updated_date', false ) && get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+			$updated_string = '<time class="post-last-modified-td" itemprop="dateModified" datetime="' . get_the_modified_date( '' ) . '">' . get_the_modified_date( '' ) . '</time>';
+			$updated_on = sprintf(
+				/* translators: %s: post date. */
+				esc_html_x( ', updated on %s', 'updated date', 'kaya' ), $updated_string);
+		}
+		$time_string = sprintf( $time_string,
+			esc_attr( get_the_modified_date( 'c' ) ),
+			esc_html( get_the_modified_date() )
+		);
+
+		$posted_on = sprintf(
 			/* translators: %s: post date. */
-			esc_html_x( ', updated on %s', 'updated date', 'kaya' ), $updated_string);
+			esc_html_x( 'Posted on %s', 'post date', 'kaya' ), $time_string);
+
+		$byline = sprintf(
+			/* translators: %s: post author. */
+			esc_html_x( 'by %s.', 'post author', 'kaya' ),
+			'<span itemprop="author" class="author vcard">' . esc_html( get_the_author() ) . '</span>');
+
+		// show reading time if the option has been selected in theme customizer
+		if( get_theme_mod( 'kaya_post_show_reading_time', false ) ) {
+			echo '<span>' . $posted_on . '</span>' . $updated_on . '<span class="byline"> ' . $byline . '</span><br><span class="reading-time">Reading time ' . kaya_reading_time() . ' minutes.</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		}
+		else {
+			echo '<span>' . $posted_on . '</span>' . $updated_on . '<span class="byline"> ' . $byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		}
 	}
-	$time_string = sprintf( $time_string,
-		esc_attr( get_the_modified_date( 'c' ) ),
-		esc_html( get_the_modified_date() )
-	);
-
-	$posted_on = sprintf(
-		/* translators: %s: post date. */
-		esc_html_x( 'Posted on %s', 'post date', 'kaya' ), $time_string);
-
-	$byline = sprintf(
-		/* translators: %s: post author. */
-		esc_html_x( 'by %s.', 'post author', 'kaya' ),
-		'<span itemprop="author" class="author vcard">' . esc_html( get_the_author() ) . '</span>');
-
-	echo '<span>' . $posted_on . '</span>' . $updated_on . '<span class="byline"> ' . $byline . '</span><br><span class="reading-time">Reading time ' . kaya_reading_time() . ' minutes.</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 }
 endif;

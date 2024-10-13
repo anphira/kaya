@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   2.0
  * @package Kaya
- * @version 2.0
+ * @version 2.2
  */
 ?>
 
@@ -19,7 +19,7 @@
 				<div class="flexbox">
 
 				<?php if( get_theme_mod( 'kaya_a11y_textresize_checkbox', false ) ) { ?>
-					<div class="">
+					<div class="pb15">
 						<fieldset>
 							<legend>Text size:</legend>
 							<input id="kaya-text-size-default" name="kaya-text-size" type="radio" value="default" onchange="kaya_set_text_size('default')"><label for="kaya-text-size-default">Default for site</label><br>
@@ -32,7 +32,7 @@
 				<?php } ?>
 
 				<?php if( get_theme_mod( 'kaya_a11y_lineheight_checkbox', false ) ) { ?>
-					<div class="">
+					<div class="pb15">
 						<fieldset>
 							<legend>Line spacing:</legend>
 							<input id="kaya-line-spacing-default" name="kaya-line-spacing" type="radio" value="default" onchange="kaya_set_line_height('default')"><label for="kaya-line-spacing-default">Default for site</label><br>
@@ -46,7 +46,7 @@
 				<?php } ?>
 
 				<?php if( get_theme_mod( 'kaya_a11y_font_checkbox', false ) ) { ?>
-					<div class="">
+					<div class="pb15">
 						<fieldset>
 							<legend>Change font:</legend>
 							<input id="kaya-font-family-default" name="kaya-font-family" type="radio" value="default" onchange="kaya_set_font_family('default')"><label for="kaya-font-family-default">Default for site</label><br>
@@ -59,7 +59,7 @@
 				<?php } ?>
 
 				<?php if( get_theme_mod( 'kaya_a11y_contrast_checkbox', false ) ) { ?>
-					<div class="">
+					<div class="pb15">
 						<fieldset>
 							<legend>Change contrast:</legend>
 							<input id="kaya-contrast-default" name="kaya-contrast" type="radio" value="on" onchange="kaya_set_contrast('default')"><label for="kaya-contrast-default">Default for site</label><br>
@@ -70,7 +70,7 @@
 				<?php } ?>
 
 				<?php if( get_theme_mod( 'kaya_a11y_inputs_checkbox', false ) ) { ?>
-					<div class="">
+					<div class="pb15">
 						<fieldset>
 							<legend>Enhance inputs areas:</legend>
 							<input id="kaya-enhance-inputs-off" name="kaya-enhance-inputs" type="radio" value="off" onchange="kaya_set_enhance_inputs('off')"><label for="kaya-enhance-inputs-off">Default for site: Off</label><br>

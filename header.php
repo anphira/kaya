@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 2.1
+ * @version 2.2
  */
 
 $postID = get_queried_object_id();
@@ -25,6 +25,13 @@ if( get_theme_mod( 'kaya_a11y_enable_checkbox', false ) ) {
 <?php get_template_part('template-parts/header', 'head'); ?>
 
 <body <?php body_class( $add_to_body ); ?>>
+	<?php if( !empty(get_theme_mod( 'kaya_google_tag_analytics' )) ) { ?>
+		<!-- Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<?php echo esc_html(get_theme_mod( 'kaya_google_tag_analytics' )); ?>"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
+	<?php } ?>
+
 	<?php wp_body_open(); ?>
 
 <div id="page" class="site">
@@ -293,8 +300,12 @@ if( get_theme_mod( 'kaya_a11y_enable_checkbox', false ) ) {
 	if( is_page_template( array('elementor_canvas', 'elementor_header_footer', 'elementor_theme') ) ) { ?>
 		<div role="main" id="content" tabindex="-1" class="<?php  echo esc_html($content_class); ?>">
 
-	<?php } else { ?>
-		<div role="region" id="content" tabindex="-1" class="<?php  echo esc_html($content_class); ?>">
+	<?php } else { 
+		if(strpos($content_class, 'sidebar-right') !== false || strpos($content_class, 'sidebar-left') !== false) { ?>
+			<div id="content" tabindex="-1" class="<?php  echo esc_html($content_class); ?>">
+		<?php } else { ?>
+			<div role="region" id="content" tabindex="-1" class="<?php  echo esc_html($content_class); ?>">
 
 	<?php }
+	}
 	

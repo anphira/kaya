@@ -44,6 +44,14 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
+= 2.2 - Oct 13 2024 =
+* Update: accessibility options for change contrast updates.
+* Update: aria role for content area.
+* Add: checkbox to hide the post meta information (published by name & date).
+* Update: correct the reading time to hide unless explicitly choosen to be shown.
+* Fix: moved footer column check above the showing of columns so no top footer is shown if footer columns are not supposed to be displayed.
+* Update: add google tag manager code to the top of <body> if the option is used in the customizer.
+
 = 2.1 - Oct 05 2024 =
 * Update: accessibility options for elementor plugin.
 * Update: accessibility enhance inputs for max mega menu.

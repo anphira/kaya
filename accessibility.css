@@ -6,7 +6,7 @@
  * @author  Anphira
  * @since   1.10
  * @package Kaya
- * @version 2.1
+ * @version 2.2
  * 
  * Table of contents:
  * # text size
@@ -51,7 +51,7 @@ html:has(body.text-size-huge) {
 	font-size: 200%;
 }
 
-/* elementor specific */
+/* elementor specific - because they set font sizes in px */
 html .elementor-button.elementor-button {
 	font-size: 1.125rem;
 }
@@ -70,7 +70,10 @@ body.line-height-1 h2,
 body.line-height-1 h3,
 body.line-height-1 h4,
 body.line-height-1 h5,
-body.line-height-1 h6 {
+body.line-height-1 h6,
+body.line-height-1 *,
+body.line-height-1 * *,
+body.line-height-1 * * * {
 	line-height: 1;
 }
 /* for line-height 1 the underline-offset needs to be removed */
@@ -84,7 +87,10 @@ body.line-height-125 h2,
 body.line-height-125 h3,
 body.line-height-125 h4,
 body.line-height-125 h5,
-body.line-height-125 h6 {
+body.line-height-125 h6,
+body.line-height-125 *,
+body.line-height-125 * *,
+body.line-height-125 * * * {
 	line-height: 1.25;
 }
 body.line-height-15,
@@ -95,7 +101,10 @@ body.line-height-15 h2,
 body.line-height-15 h3,
 body.line-height-15 h4,
 body.line-height-15 h5,
-body.line-height-15 h6 {
+body.line-height-15 h6,
+body.line-height-15 *,
+body.line-height-15 * *,
+body.line-height-15 * * * {
 	line-height: 1.5;
 }
 body.line-height-175,
@@ -106,7 +115,10 @@ body.line-height-175 h2,
 body.line-height-175 h3,
 body.line-height-175 h4,
 body.line-height-175 h5,
-body.line-height-175 h6 {
+body.line-height-175 h6,
+body.line-height-175 *,
+body.line-height-175 * *,
+body.line-height-175 * * * {
 	line-height: 1.75;
 }
 body.line-height-2,
@@ -117,7 +129,10 @@ body.line-height-2 h2,
 body.line-height-2 h3,
 body.line-height-2 h4,
 body.line-height-2 h5,
-body.line-height-2 h6 {
+body.line-height-2 h6,
+body.line-height-2 *,
+body.line-height-2 * *,
+body.line-height-2 * * * {
 	line-height: 2;
 }
 
@@ -161,7 +176,10 @@ body.font-arial h2,
 body.font-arial h3,
 body.font-arial h4,
 body.font-arial h5, 
-body.font-arial h6 {
+body.font-arial h6,
+body.font-arial *,
+body.font-arial * *,
+body.font-arial * * * {
 	font-family: Arial, sans-serif;
 }
 body.font-dyslexic,
@@ -172,7 +190,10 @@ body.font-dyslexic h2,
 body.font-dyslexic h3,
 body.font-dyslexic h4,
 body.font-dyslexic h5, 
-body.font-dyslexic h6 {
+body.font-dyslexic h6,
+body.font-dyslexic *,
+body.font-dyslexic * *,
+body.font-dyslexic * * * {
 	font-family: 'OpenDyslexic', Verdana, sans-serif;
 }
 body.font-times,
@@ -183,7 +204,10 @@ body.font-times h2,
 body.font-times h3,
 body.font-times h4,
 body.font-times h5, 
-body.font-times h6 {
+body.font-times h6,
+body.font-times *,
+body.font-times * *,
+body.font-times * * * {
 	font-family: 'Times New Roman', 'Times', serif;
 }
 body.font-verdana,
@@ -194,7 +218,10 @@ body.font-verdana h2,
 body.font-verdana h3,
 body.font-verdana h4,
 body.font-verdana h5, 
-body.font-verdana h6 {
+body.font-verdana h6,
+body.font-verdana *,
+body.font-verdana * *,
+body.font-verdana * * * {
 	font-family: Verdana, sans-serif;
 }
 
@@ -243,6 +270,8 @@ body.white-bkgd-black-txt input[type=submit],
 body.white-bkgd-black-txt input[type=search],
 body.white-bkgd-black-txt input[type=submit]:hover,
 body.white-bkgd-black-txt input[type=search]:hover,
+body.white-bkgd-black-txt * a:hover,
+body.white-bkgd-black-txt * * a:hover,
 body.white-bkgd-black-txt #colophon,
 body.white-bkgd-black-txt #masthead,
 body.white-bkgd-black-txt .top-header,
@@ -283,12 +312,14 @@ body.white-bkgd-black-txt .elementor-button.elementor-button {
 body.white-bkgd-black-txt button:hover,
 body.white-bkgd-black-txt input[type=submit]:hover,
 body.white-bkgd-black-txt input[type=search]:hover,
+body.white-bkgd-black-txt #site-navigation a:hover,
 body.white-bkgd-black-txt .elementor-button.elementor-button:hover,
 body.white-bkgd-black-txt #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link:hover, 
 body.white-bkgd-black-txt #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link:focus,
 body.white-bkgd-black-txt #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-flyout ul.mega-sub-menu li.mega-menu-item a.mega-menu-link:hover, 
 body.white-bkgd-black-txt #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-flyout ul.mega-sub-menu li.mega-menu-item a.mega-menu-link:focus {
 	text-decoration: underline;
+	background-color: white !important;
 }
 
 /* black background, white text */
@@ -327,6 +358,8 @@ body.black-bkgd-white-txt input[type=submit],
 body.black-bkgd-white-txt input[type=search],
 body.black-bkgd-white-txt input[type=submit]:hover,
 body.black-bkgd-white-txt input[type=search]:hover,
+body.black-bkgd-white-txt * a:hover,
+body.black-bkgd-white-txt * * a:hover,
 body.black-bkgd-white-txt #colophon,
 body.black-bkgd-white-txt #masthead,
 body.black-bkgd-white-txt .top-header,
@@ -369,12 +402,17 @@ body.black-bkgd-white-txt .elementor-button.elementor-button {
 body.black-bkgd-white-txt button:hover,
 body.black-bkgd-white-txt input[type=submit]:hover,
 body.black-bkgd-white-txt input[type=search]:hover,
+body.black-bkgd-white-txt .main-navigation a:hover,
 body.black-bkgd-white-txt .elementor-button.elementor-button:hover,
 body.black-bkgd-white-txt #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link:hover, 
 body.black-bkgd-white-txt #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link:focus,
 body.black-bkgd-white-txt #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-flyout ul.mega-sub-menu li.mega-menu-item a.mega-menu-link:hover, 
 body.black-bkgd-white-txt #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-flyout ul.mega-sub-menu li.mega-menu-item a.mega-menu-link:focus {
 	text-decoration: underline;
+}
+
+body.black-bkgd-white-txt .site-branding img {
+	filter: invert(1);
 }
 
 

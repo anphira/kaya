@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.11
+ * @version 2.2
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -969,6 +969,15 @@ function kaya_add_blog_options($wp_customize) {
 		)
 	) );
 	
+	$wp_customize->add_setting('kaya_post_hide_meta_info', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_hide_meta_info', array(
+		'label'           => __( 'Hide the posted on date & author info', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_blog_options',
+		'settings'   => 'kaya_post_hide_meta_info',
+		)
+	) );
+	
 	$wp_customize->add_setting('kaya_post_show_reading_time', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_post_show_reading_time', array(
 		'label'           => __( 'Show estimated reading time on blog posts', 'kaya' ),
@@ -1075,8 +1084,7 @@ function kaya_add_footer($wp_customize) {
 	
 	$wp_customize->add_setting('kaya_footer_right', array('sanitize_callback' => 'wp_kses_post'));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_footer_right', array(
-		'label'           => __( 'Content for Right side of Lower Footer', 'kaya' ),
-		'description'	  => __( 'Enter content to replace the credit info', 'kaya'),
+		'label'           => __( 'Content for below Copyright line', 'kaya' ),
 		'type'            => 'textarea',
 		'section'         => 'kaya_footer',
 		'settings'   => 'kaya_footer_right',
