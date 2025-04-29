@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 2.2
+ * @version 2.4
  */
 
 $postID = get_queried_object_id();
@@ -41,16 +41,16 @@ if( get_theme_mod( 'kaya_a11y_enable_checkbox', false ) ) {
 
 	<?php get_template_part('template-parts/header', 'accessibility'); ?>
 
-	<?php if(get_theme_mod( 'kaya_announce_bar_checkbox', false )) { ?>
-		<div class="announcement-bar">
-			<?php echo esc_html(get_theme_mod( 'kaya_announce_bar_content', '' )); ?>
-			<?php if(get_theme_mod( 'kaya_announce_bar_button_show', false )) { ?>
-				<a class="announcement-button" href="<?php echo esc_url(get_theme_mod( 'kaya_announce_bar_button_url', '' )); ?>"><?php echo esc_html(get_theme_mod( 'kaya_announce_bar_button_text', '' )); ?></a>
-			<?php } ?>
-		</div>
-	<?php } ?>
-
 	<?php if( '' == get_post_meta($postID, '_kaya_hide_header_check', true)) { ?>
+		<?php if(get_theme_mod( 'kaya_announce_bar_checkbox', false )) { ?>
+			<div class="announcement-bar">
+				<span class="announcement-bar-text"><?php echo esc_html(get_theme_mod( 'kaya_announce_bar_content', '' )); ?></span>
+				<?php if(get_theme_mod( 'kaya_announce_bar_button_show', false )) { ?>
+					<a class="announcement-button button" href="<?php echo esc_url(get_theme_mod( 'kaya_announce_bar_button_url', '' )); ?>"><?php echo esc_html(get_theme_mod( 'kaya_announce_bar_button_text', '' )); ?></a>
+				<?php } ?>
+			</div>
+		<?php } ?>
+
 
 		<?php get_template_part('template-parts/header', 'top'); ?>
 		<?php get_template_part('template-parts/header', 'columns'); ?>
@@ -301,11 +301,11 @@ if( get_theme_mod( 'kaya_a11y_enable_checkbox', false ) ) {
 		<div role="main" id="content" tabindex="-1" class="<?php  echo esc_html($content_class); ?>">
 
 	<?php } else { 
-		if(strpos($content_class, 'sidebar-right') !== false || strpos($content_class, 'sidebar-left') !== false) { ?>
+		/*if(strpos($content_class, 'sidebar-right') !== false || strpos($content_class, 'sidebar-left') !== false) { */ ?>
 			<div id="content" tabindex="-1" class="<?php  echo esc_html($content_class); ?>">
-		<?php } else { ?>
+		<?php /* } else { ?>
 			<div role="region" id="content" tabindex="-1" class="<?php  echo esc_html($content_class); ?>">
 
-	<?php }
+	<?php } */
 	}
 	

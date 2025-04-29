@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   2.0
  * @package Kaya
- * @version 2.0
+ * @version 2.3
  */
 ?>
 
@@ -15,12 +15,12 @@
 			switch(get_theme_mod( 'kaya_header_columns', 'one_column' )) {
 				case 'one_column': 
 					echo '<div class="">';
-						kaya_logo_display();
+						do_action('kaya_logo_display');
 					echo '</div>';
 					break;
 				case 'two_column': 
 					echo '<div class="">';
-						kaya_logo_display();
+						do_action('kaya_logo_display');
 					echo '</div>';
 					echo '<div class="">';
 						dynamic_sidebar('Header-2');
@@ -28,7 +28,7 @@
 					break;
 				case 'three_column': 
 					echo '<div class="">';
-						kaya_logo_display();
+						do_action('kaya_logo_display');
 					echo '</div>';
 					echo '<div class="">';
 						dynamic_sidebar('Header-2');
@@ -39,7 +39,7 @@
 					break;
 				case 'four_column': 
 					echo '<div class="">';
-						kaya_logo_display();
+						do_action('kaya_logo_display');
 					echo '</div>';
 					echo '<div class="">';
 						dynamic_sidebar('Header-2');
@@ -53,7 +53,7 @@
 					break;
 				case 'logo_menu':
 					echo '<div class="kaya-left-side">';
-						kaya_logo_display();
+						do_action('kaya_logo_display');
 					echo '</div>';
 					echo '<div class="kaya-right-side">';
 						dynamic_sidebar('Header-2');
@@ -67,7 +67,7 @@
 					break;
 				case 'logo_left_right_content':
 					echo '<div class="kaya-left-side">';
-						kaya_logo_display();
+						do_action('kaya_logo_display');
 					echo '</div>';
 					echo '<div class="kaya-right-side">';
 						dynamic_sidebar('Header-2');
@@ -75,7 +75,7 @@
 					break;
 				default: 
 					echo '<div class="">';
-						kaya_logo_display();
+						do_action('kaya_logo_display');
 					echo '</div>';
 					break;
 			} ?>

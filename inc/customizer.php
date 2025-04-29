@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 2.2
+ * @version 2.4
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -289,6 +289,15 @@ function kaya_add_colors($wp_customize) {
 		'label'        => __( 'Link Hover Color', 'kaya' ),
 		'section'    => 'colors',
 		'settings'   => 'kaya_link_hover_color',
+		) 
+	) );
+
+	
+	$wp_customize->add_setting('kaya_input_border_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_input_border_color', array(
+		'label'        => __( 'Input & Textarea Border Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_input_border_color',
 		) 
 	) );
 	
@@ -1250,6 +1259,15 @@ function kaya_add_social($wp_customize) {
 		'type'            => 'text',
 		'section'         => 'kaya_social',
 		'settings'   => 'kaya_social_sharing_text',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_social_sharing_no_text', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_social_sharing_no_text', array(
+		'label'           => __( 'Only show social icon, not the text', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'         => 'kaya_social',
+		'settings'   => 'kaya_social_sharing_no_text',
 		)
 	) );
 	

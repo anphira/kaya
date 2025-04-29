@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 2.0
+ * @version 2.4
  */
 
 /**
@@ -136,17 +136,14 @@ function kaya_register_footer_menu() {
 add_action( 'init', 'kaya_register_footer_menu' );
 
 
-/**
- * Add notification for theme updates
- */
-//include("inc/update_notifier.php");
-include("inc/kaya-function.php");
-
 
 /**
+ * Loads the kaya functions so that they could be overriden by a child theme.
  * Registers an editor stylesheet for the theme.
  */
 function kaya_theme_add_editor_styles() {
+	require get_template_directory() . '/inc/kaya-function.php';
+
 	add_theme_support('editor-styles');
     add_editor_style( get_template_directory_uri() . '/style.min.css' );
 
@@ -198,7 +195,7 @@ function kaya_social_icons() {
 			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_facebook' )) . '"><i class="fab fa-facebook-f"></i><span class="screen-reader-text"> Visit us on Facebook</span></a>';
 		}
 		if( get_theme_mod( 'kaya_twitter' ) != '' ) {
-			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_twitter' )) . '"><i class="fab fa-twitter"></i><span class="screen-reader-text"> Visit us on X</span></a>';
+			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_twitter' )) . '"><i class="fab fa-x-twitter"></i><span class="screen-reader-text"> Visit us on X</span></a>';
 		}
 		if( get_theme_mod( 'kaya_linkedin' ) != '' ) {
 			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_linkedin' )) . '"><i class="fab fa-linkedin-in"><span class="screen-reader-text"> Visit us on LinkedIn</span></i></a>';
@@ -898,3 +895,39 @@ function kaya_login_logo_url() {
     return home_url();
 }
 add_filter( 'login_headerurl', 'kaya_login_logo_url' );
+
+
+
+/**
+ * Kaya Logo Display
+ */
+add_action('kaya_logo_display', 'kaya_logo_display_callback');
+
+function kaya_logo_display_callback() {
+	echo '<div class="site-branding">';
+		if ( get_theme_mod( 'kaya_logo', false ) ) :
+			echo '<a href="',  esc_url( home_url() )  , '">';
+			$kaya_alt = esc_attr( get_bloginfo( 'name', 'display' ) ) . ' home.';
+			$kaya_logo = esc_url(get_theme_mod( 'kaya_logo' ));
+			$width = get_theme_mod( 'kaya_logo_width', '' );
+			$height = get_theme_mod( 'kaya_logo_height', '' );
+			echo '<img src="' . esc_url($kaya_logo) . '" alt="' . esc_html($kaya_alt) . '" width="' . esc_html($width) . '" height="' . esc_html($height) . '">';
+			echo '</a>';
+		else :
+			echo '<h3 class="site-title"><a href="',  esc_url( home_url() )  , '">' , esc_html(bloginfo( 'name' )) , '</a></h3>';
+		endif;
+	echo '</div><!-- .site-branding -->';
+}
+
+
+/**
+ * 
+ * Calculate reading time of blog post
+ * 
+ */
+add_action('kaya_reading_time', 'kaya_reading_time_callback');
+function kaya_reading_time_callback() {
+	$words = str_word_count( wp_strip_all_tags( get_the_content() ) );
+	$reading_time = ceil($words/250);
+	echo $reading_time;
+}

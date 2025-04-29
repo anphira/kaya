@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.10
+ * @version 2.4
  */
 
 /**
@@ -79,14 +79,17 @@ html {
 #masthead .announcement-button:visited {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_announcement_button_background_color', '#181818' )); ?>;
 	color: <?php echo esc_html(get_theme_mod( 'kaya_announcement_button_text_color', '#ffffff' )); ?>;
+	border-color: <?php echo esc_html(get_theme_mod( 'kaya_announcement_button_background_color', '#181818' )); ?>;
 }
 #masthead .announcement-button:hover,
 #masthead .announcement-button:active {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_announcement_button_text_color', '#ffffff' )); ?>;
 	color: <?php echo esc_html(get_theme_mod( 'kaya_announcement_button_background_color', '#181818' )); ?>;
+	border-color: <?php echo esc_html(get_theme_mod( 'kaya_announcement_button_text_color', '#ffffff' )); ?>;
 }
 
-body, p, button, input, select, textarea, .elementor-widget-text-editor {
+body, p, button, input, select, textarea, .elementor-widget-text-editor,
+body.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_text_color', '#181818' )) ?>;
 	font-weight: <?php echo esc_html(get_theme_mod( 'kaya_paragraph_font_weight', '400' )) ?>;
 	line-height: <?php echo esc_html(get_theme_mod( 'kaya_paragraph_line_height', '1.5' )) ?>;
@@ -96,6 +99,9 @@ body, p, button, input, select, textarea, .elementor-widget-text-editor {
 			echo esc_html(get_theme_mod( 'kaya_custom_google_fonts_paragraph' ));
 		else
 			echo kaya_font_family_lookup( esc_html(get_theme_mod( 'kaya_paragraph_font', 'verdana' )) ); ?>;
+}
+input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=range], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], textarea, select {
+	border-color: <?php echo esc_html(get_theme_mod( 'kaya_input_border_color', '#777' )) ?>;
 }
 h1, h2, h3, h4, h5, h6 {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_heading_color', '#181818' )); ?>;
@@ -107,27 +113,27 @@ h1, h2, h3, h4, h5, h6 {
 		else
 			echo kaya_font_family_lookup( esc_html(get_theme_mod( 'kaya_heading_font', 'verdana' )) ); ?>;
 }
-h1, .h1, .elementor-widget-heading h1.elementor-heading-title {
+h1, .h1, .elementor-widget-heading h1.elementor-heading-title, body .h1.elementor-widget-heading .elementor-heading-title {
 	font-size: <?php echo esc_html(get_theme_mod( 'kaya_heading_1', '2' )) ?>rem;
 	line-height: <?php echo esc_html(get_theme_mod( 'kaya_heading_1_line_height', '1.5' )) ?>;
 }
-h2, .h2, .elementor-widget-heading h2.elementor-heading-title {
+h2, .h2, .elementor-widget-heading h2.elementor-heading-title, body .h2.elementor-widget-heading .elementor-heading-title {
 	font-size: <?php echo esc_html(get_theme_mod( 'kaya_heading_2', '1.8' )) ?>rem;
 	line-height: <?php echo esc_html(get_theme_mod( 'kaya_heading_2_line_height', '1.5' )) ?>;
 }
-h3, .h3, .elementor-widget-heading h3.elementor-heading-title {
+h3, .h3, .elementor-widget-heading h3.elementor-heading-title, body .h3.elementor-widget-heading .elementor-heading-title {
 	font-size: <?php echo esc_html(get_theme_mod( 'kaya_heading_3', '1.6' )) ?>rem;
 	line-height: <?php echo esc_html(get_theme_mod( 'kaya_heading_3_line_height', '1.5' )) ?>;
 }
-h4, .widget-title, .h4, .elementor-widget-heading h4.elementor-heading-title {
+h4, .widget-title, .h4, .elementor-widget-heading h4.elementor-heading-title, body .h4.elementor-widget-heading .elementor-heading-title {
 	font-size: <?php echo esc_html(get_theme_mod( 'kaya_heading_4', '1.4' )) ?>rem;
 	line-height: <?php echo esc_html(get_theme_mod( 'kaya_heading_4_line_height', '1.5' )) ?>;
 }
-h5, .h5, .elementor-widget-heading h5.elementor-heading-title {
+h5, .h5, .elementor-widget-heading h5.elementor-heading-title, body .h5.elementor-widget-heading .elementor-heading-title {
 	font-size: <?php echo esc_html(get_theme_mod( 'kaya_heading_5', '1.25' )) ?>rem;
 	line-height: <?php echo esc_html(get_theme_mod( 'kaya_heading_5_line_height', '1.5' )) ?>;
 }
-h6, .h6, .elementor-widget-heading h6.elementor-heading-title {
+h6, .h6, .elementor-widget-heading h6.elementor-heading-title, body .h6.elementor-widget-heading .elementor-heading-title {
 	font-size: <?php echo esc_html(get_theme_mod( 'kaya_heading_6', '1.15' )) ?>rem;
 	line-height: <?php echo esc_html(get_theme_mod( 'kaya_heading_6_line_height', '1.5' )) ?>;
 }
@@ -334,6 +340,11 @@ body form.frm-fluent-form .ff-btn-submit {
 		border-radius: <?php echo esc_html(get_theme_mod( 'kaya_border_radius', '0' )) ?>px;
 	<?php } ?>
 	border-style: solid;
+	line-height: <?php echo esc_html(get_theme_mod( 'kaya_paragraph_line_height', '1.5' )) ?>;
+	font-weight: <?php echo esc_html(get_theme_mod( 'kaya_paragraph_font_weight', '400' )) ?>;
+}
+body .resp-sharing-button__link {
+	border-radius: <?php echo esc_html(get_theme_mod( 'kaya_border_radius', '0' )) ?>px;
 }
 body button:active, 
 body button:hover, 
@@ -371,6 +382,12 @@ html .woocommerce input.button.alt,
 html :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_background_color', '#0075a5' )) ?>;
 	color: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_text_color', '#ffffff' )) ?>;
+	border-color: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_background_color', '#005dc4' )) ?>;
+	<?php if( esc_html(get_theme_mod( 'kaya_border_radius', '' )) != '' ) { ?>
+		border-radius: <?php echo esc_html(get_theme_mod( 'kaya_border_radius', '0' )) ?>px;
+	<?php } ?>
+	border-width: <?php echo esc_html(get_theme_mod( 'kaya_border_width', '0' )) ?>px;
+	border-style: solid;
 }
 
 html .woocommerce a.button:hover,
@@ -386,6 +403,7 @@ html .woocommerce input.button.alt:active,
 html :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button:hover,
 html :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button:active {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_background_hover_color', '#005dc4' )) ?>;
+	border-color: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_background_hover_color', '#005dc4' )) ?>;
 	color: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_text_hover_color', '#181818' )) ?>;
 }
 
@@ -409,8 +427,9 @@ $kaya_grid_width = esc_html(get_theme_mod( 'kaya_grid_width', '1140' ));
 $kaya_grid_width = ($kaya_grid_width > 320) ? $kaya_grid_width : 1140;
 ?>
 <?php if(get_theme_mod( 'kaya_content_in_grid', false )) { ?>
-	#content, body .vc_row[data-vc-full-width="true"] > .wpb_column, header:not(#masthead) .container, #content .container {
+	#content, body .vc_row[data-vc-full-width="true"] > .wpb_column, header:not(#masthead) .container, #content .container, .wp-block-cover .wp-block-cover__inner-container, .wp-block-cover-image .wp-block-cover__inner-container {
 		max-width: <?php echo $kaya_grid_width; ?>px;
+		width: 100%;
 		margin: auto;
 	}
 <?php } ?>

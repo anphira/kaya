@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 2.2
+ * @version 2.4
  */
 
 if ( ! function_exists( 'kaya_posted_on' ) ) :
@@ -44,7 +44,9 @@ function kaya_posted_on() {
 
 		// show reading time if the option has been selected in theme customizer
 		if( get_theme_mod( 'kaya_post_show_reading_time', false ) ) {
-			echo '<span>' . $posted_on . '</span>' . $updated_on . '<span class="byline"> ' . $byline . '</span><br><span class="reading-time">Reading time ' . kaya_reading_time() . ' minutes.</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo '<span>' . $posted_on . '</span>' . $updated_on . '<span class="byline"> ' . $byline . '</span><br><span class="reading-time">Reading time ';
+			do_action('kaya_reading_time');
+			echo ' minutes.</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 		else {
 			echo '<span>' . $posted_on . '</span>' . $updated_on . '<span class="byline"> ' . $byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

@@ -6,7 +6,7 @@ Tags: custom-background, theme-options, custom-menu, threaded-comments, one-colu
 Requires at least: 5.5
 Tested up to: 6.5
 Requires PHP: 8.0
-Stable tag: v2.1
+Stable tag: v2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,22 @@ Recommended plugins are available at https://easya11yguide.com/kaya-wordpress-th
 From the Customizer a number of customization options exist. Please see https://easya11yguide.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 2.4 - Apr 29 2025 = 
+* Update: replace kaya_logo_display() with a do_action to allow it to be overriden in child theme.
+* Update: Twitter bird icon to X icon.
+* Update: WooCommerce button border colors to match backgrounds.
+* Update: Include announcement bar when hiding header on individual pages.
+* Add: Border color for input fields.
+* Update: Elementor compatibility for styling headings.
+* Add: Option to remove visual text from social sharing buttons (will still have screen reader text for accessibility).
+* Update: CSS classes for position-absolute, bottom-0, text-wrap-balance, hide-mobile, hide-desktop.
+* Update: Set "flex-wrap: wrap" for flexbox class (this may impact your website).
+
+= 2.3 - Jan 19 2025 =
+* Update: font sizing for elementor page builder.
+* Update: cover block support within grid.
+* Update: make all theme functions overridable in the child theme.
 
 = 2.2 - Oct 13 2024 =
 * Update: accessibility options for change contrast updates.
