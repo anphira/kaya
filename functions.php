@@ -7,8 +7,30 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 2.4
+ * @version 3.0
  */
+
+/**
+ * 
+ * Updater
+ * 
+ */
+// Load updater classes
+require_once get_template_directory() . '/inc/class-github-api.php';
+require_once get_template_directory() . '/inc/class-theme-updater.php';
+
+// Initialize updater
+function initialize_theme_updater() {
+    $theme = wp_get_theme();
+    $theme_slug = get_option('stylesheet');
+    $version = $theme->get('Version');
+    $github_repo = $theme->get('GitHub Theme URI');
+
+    if ($github_repo) {
+        new Theme_Updater($theme_slug, $version, $github_repo);
+    }
+}
+add_action('init', 'initialize_theme_updater');
 
 /**
  * Prevent clickjacking -- this only works on some hosting systems. On others you have contact support for how to.
@@ -20,7 +42,7 @@ function kaya_send_frame_options_header() {
 
 
 /**
- * Strip out Visual Composer specific shortcodes in search results
+ * Strip out WP Bakery specific shortcodes in search results
  */
 add_filter('relevanssi_pre_excerpt_content', 'kaya_trim_vc_shortcodes');
 function kaya_trim_vc_shortcodes($content) {

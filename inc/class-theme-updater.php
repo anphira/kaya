@@ -1,0 +1,53 @@
+<?php
+/**
+ * Theme Updater
+ *
+ * @author  Anphira
+ * @since   3.0
+ * @package Kaya
+ * @version 3.0
+ */
+
+class Theme_Updater {
+    private $theme_slug;
+    private $version;
+    private $github_repo;
+    private $github_api;
+
+    public function __construct($theme_slug, $version, $github_repo) {
+        $this->theme_slug = $theme_slug;
+        $this->version = $version;
+        $this->github_repo = $github_repo;
+        $this->github_api = new GitHub_API($github_repo);
+        
+        add_filter('pre_set_site_transient_update_themes', [$this, 'check_for_update']);
+        add_filter('themes_api', [$this, 'themes_api_call'], 10, 3);
+    }
+
+    public function check_for_update($transient) {
+        if (empty($transient->checked[$this->theme_slug])) {
+            return $transient;
+        }
+
+        $remote_version = $this->github_api->get_latest_version();
+        
+        if (version_compare($this->version, $remote_version, '<')) {
+            $transient->response[$this->theme_slug] = [
+                'theme' => $this->theme_slug,
+                'new_version' => $remote_version,
+                'url' => $this->github_api->get_repo_url(),
+                'package' => $this->github_api->get_download_url()
+            ];
+        }
+
+        return $transient;
+    }
+
+    public function themes_api_call($result, $action, $args) {
+        if ($action !== 'theme_information' || $args->slug !== $this->theme_slug) {
+            return $result;
+        }
+
+        return $this->github_api->get_theme_info();
+    }
+}
