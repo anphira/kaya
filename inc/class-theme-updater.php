@@ -22,6 +22,41 @@ class Theme_Updater {
         
         add_filter('pre_set_site_transient_update_themes', [$this, 'check_for_update']);
         add_filter('themes_api', [$this, 'themes_api_call'], 10, 3);
+        add_filter('upgrader_source_selection', [$this, 'fix_theme_folder'], 10, 4);
+    }
+
+    public function fix_theme_folder($source, $remote_source, $upgrader, $extra) {
+        // Only process our theme updates
+        if (!isset($extra['theme']) || $extra['theme'] !== $this->theme_slug) {
+            return $source;
+        }
+
+        // Expected folder name should match theme slug
+        $desired_folder = trailingslashit(dirname($source)) . $this->theme_slug;
+        
+        // Rename the downloaded folder
+        if (rename($source, $desired_folder)) {
+            return $desired_folder;
+        }
+        
+        return $source;
+    }
+
+    public function fix_theme_folder($source, $remote_source, $upgrader, $extra) {
+        // Only process our theme updates
+        if (!isset($extra['theme']) || $extra['theme'] !== $this->theme_slug) {
+            return $source;
+        }
+
+        // Expected folder name should match theme slug
+        $desired_folder = trailingslashit(dirname($source)) . $this->theme_slug;
+        
+        // Rename the downloaded folder
+        if (rename($source, $desired_folder)) {
+            return $desired_folder;
+        }
+        
+        return $source;
     }
 
     public function check_for_update($transient) {

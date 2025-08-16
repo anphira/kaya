@@ -24,7 +24,7 @@ function initialize_theme_updater() {
     $theme = wp_get_theme();
     $theme_slug = get_option('stylesheet');
     $version = $theme->get('Version');
-    $github_repo = $theme->get('GitHub Theme URI');
+    $github_repo = 'anphira/kaya';
 
     if ($github_repo) {
         new Theme_Updater($theme_slug, $version, $github_repo);

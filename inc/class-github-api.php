@@ -17,9 +17,26 @@ class GitHub_API {
         $this->cache_key = 'github_theme_' . md5($repo);
     }
 
+    public function get_repo_url() {
+        return "https://github.com/{$this->repo}";
+    }
+
     public function get_latest_version() {
         $release = $this->get_latest_release();
-        return $release ? $release['tag_name'] : false;
+        if (!$release) {
+            return false;
+        }
+        
+        // Strip 'v' prefix if present
+        $version = $release['tag_name'];
+        if (strpos($version, 'v') === 0) {
+            $version = substr($version, 1);
+        }
+        
+        error_log('GitHub raw tag: ' . $release['tag_name']);
+        error_log('Cleaned version: ' . $version);
+        
+        return $version;
     }
 
     public function get_download_url() {
