@@ -6,7 +6,7 @@ Tags: custom-background, theme-options, custom-menu, threaded-comments, one-colu
 Requires at least: 5.5
 Tested up to: 6.5
 Requires PHP: 8.0
-Stable tag: v2.4
+Stable tag: v2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,11 +44,12 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
-= 2.5 - Jul 15 2025 =
+= 2.5 - Aug 16 2025 =
 * Update: search template to use sidebar selection of the blog archive.
 * Update: content-search.php to display the type of result (ie: post, page, etc).
 * Update: CSS alignright and alignleft switch from em to px to prevent varying spacing.
 * Add: Options for Woo button border & border hover colors.
+* Add: CSS class "flexbox-nowrap" for non-wrapping flexbox.
 
 = 2.4 - Apr 29 2025 = 
 * Update: replace kaya_logo_display() with a do_action to allow it to be overriden in child theme.

@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   2.0
  * @package Kaya
- * @version 2.2
+ * @version 2.5
  */
 
 $postID = get_queried_object_id();
@@ -15,7 +15,7 @@ $postID = get_queried_object_id();
 		<?php // hide the upper footer if set on page
 		if( ( get_theme_mod('kaya_show_footer_columns', false) ) && '' == get_post_meta($postID, '_kaya_hide_footer_check', true)) { 
 			?>
-			<div class="footer-columns flexbox <?php if(get_theme_mod( 'kaya_footer_columns_in_grid', false )) echo 'container'; ?>">
+			<div class="footer-columns flexbox-nowrap <?php if(get_theme_mod( 'kaya_footer_columns_in_grid', false )) echo 'container'; ?>">
 				<?php 
 				switch(get_theme_mod( 'kaya_footer_columns', 'one_column' )) {
 					case 'one_column': 

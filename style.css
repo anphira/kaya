@@ -1630,11 +1630,15 @@ body .extra-large-text li {
 # FlexBox - Introduced v 1.3
 --------------------------------------------------------------*/
 @media (min-width: 768px) {
-	.flexbox {
+	.flexbox,
+	.flexbox-nowrap {
 		display: flex;
 		justify-content: space-between;
 		gap: 30px;
 		flex-wrap: wrap;
+	}
+	.flexbox-nowrap {
+		flex-wrap: nowrap;
 	}
 }
 .flexbox-non-responsive {
