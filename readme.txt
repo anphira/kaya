@@ -45,6 +45,7 @@ From the Customizer a number of customization options exist. Please see https://
 == Changelog ==
 
 = 3.0 - Aug 16 2025 =
+* Add: updater for github connection direct to WordPress.
 
 = 2.5 - Aug 16 2025 =
 * Update: search template to use sidebar selection of the blog archive.
