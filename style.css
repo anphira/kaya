@@ -5,7 +5,7 @@ Author: anphira
 Author URI: https://www.easya11yguide.com/
 GitHub Theme URI: anphira/kaya
 Description: Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It's ready to work with your page builder and has built-in support for Visual Composer. You can view the setup instructions by going to the Customizer and selecting "Need Setup Help?".
-Version: 2.4
+Version: 2.5
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kaya
@@ -140,7 +140,7 @@ template {
 a {
 	background-color: transparent;
 	display: inline;
-	text-underline-offset: 4px;
+	text-underline-offset: 0.25em;
 }
 
 a:active,
@@ -151,7 +151,8 @@ body .elementor a:hover  {
 	text-decoration: none;
 }
 
-a.button, a.button:visited {
+a.button, a.button:visited,
+.fwpl-btn, .fwpl-btn:visited {
 	display: inline-block;
 	background: #333;
 	color: white;
@@ -159,7 +160,8 @@ a.button, a.button:visited {
 	padding: 7px 15px;
 }
 
-a.button:hover, a.button:focus, a.button:active {
+a.button:hover, a.button:focus, a.button:active,
+.fwpl-btn:hover, .fwpl-btn:focus, .fwpl-btn:active {
 	background: #777;
 	color: white;
 }
@@ -350,7 +352,7 @@ optgroup {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-	border: 1px solid #aaa;
+	border: 1px solid #888;
 }
 thead tr,
 tr:nth-child(even) {
@@ -359,7 +361,7 @@ tr:nth-child(even) {
 td,
 th {
 	padding: 5px;
-	border-right: 1px solid #aaa;
+	border-right: 1px solid #888;
 }
 td:last-child,
 th:last-child {
@@ -498,7 +500,7 @@ ol {
 	list-style: decimal;
 }
 
-#content li,
+#content li:not(.product),
 #colophon li {
 	padding-bottom: 0.7em;
 }
@@ -560,6 +562,7 @@ table {
 # Forms
 --------------------------------------------------------------*/
 button,
+.fwpl-btn,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
@@ -572,6 +575,7 @@ input[type="submit"] {
 }
 
 button:hover,
+.fwpl-btn:hover
 input[type="button"]:hover,
 input[type="reset"]:hover,
 input[type="submit"]:hover,
@@ -830,13 +834,13 @@ button:active {
 .alignleft {
 	display: inline;
 	float: left;
-	margin-right: 1.5em;
+	margin-right: 20px;
 }
 
 .alignright {
 	display: inline;
 	float: right;
-	margin-left: 1.5em;
+	margin-left: 20px;
 }
 
 .aligncenter {
@@ -993,7 +997,7 @@ button:active {
 	content: ' \00BB';
 	padding-left: 0.3em;
 }
-#content .container {
+.container {
 	padding-left: 15px;
 	padding-right: 15px;
 }
@@ -1645,6 +1649,9 @@ body .extra-large-text li {
 	.wp-block-buttons.is-layout-flex {
 		flex-direction: column;
 	}
+}
+.align-items-stretch {
+	align-items: stretch;
 }
 .align-items-center {
 	align-items: center !important; /* because WP core uses !important */

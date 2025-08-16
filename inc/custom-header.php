@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 2.4
+ * @version 2.5
  */
 
 /**
@@ -331,7 +331,9 @@ body #colophon .wp-block-button__link,
 body #colophon .wp-block-button__link:visited,
 body .fluentform .ff_upload_btn.ff-btn,
 body form.frm-fluent-form .ff-btn-submit:not(.ff_btn_no_style),
-body form.frm-fluent-form .ff-btn-submit {
+body form.frm-fluent-form .ff-btn-submit,
+body .fwpl-btn,
+body .fwpl-btn:visited {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_button_color', '#0075a5' )) ?>;
 	color: <?php echo esc_html(get_theme_mod( 'kaya_button_text_color', '#ffffff' )) ?>;
 	border-color: <?php echo esc_html(get_theme_mod( 'kaya_button_border_color', '#005dc4' )) ?>;
@@ -365,7 +367,9 @@ body #colophon .wp-block-button__link:active,
 body .fluentform .ff_upload_btn.ff-btn:hover,
 body form.frm-fluent-form .ff-btn-submit:hover,
 body .fluentform .ff_upload_btn.ff-btn:active,
-body form.frm-fluent-form .ff-btn-submit:active {
+body form.frm-fluent-form .ff-btn-submit:active,
+body .fwpl-btn:active,
+body .fwpl-btn:hover {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_button_hover_color', '#005dc4' )) ?>;
 	color: <?php echo esc_html(get_theme_mod( 'kaya_button_hover_text_color', '#ffffff' )) ?>;
 	border-color: <?php echo esc_html(get_theme_mod( 'kaya_button_border_hover_color', '#005dc4' )) ?>;
@@ -382,7 +386,7 @@ html .woocommerce input.button.alt,
 html :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_background_color', '#0075a5' )) ?>;
 	color: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_text_color', '#ffffff' )) ?>;
-	border-color: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_background_color', '#005dc4' )) ?>;
+	border-color: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_border_color', '#005dc4' )) ?>;
 	<?php if( esc_html(get_theme_mod( 'kaya_border_radius', '' )) != '' ) { ?>
 		border-radius: <?php echo esc_html(get_theme_mod( 'kaya_border_radius', '0' )) ?>px;
 	<?php } ?>
@@ -403,7 +407,7 @@ html .woocommerce input.button.alt:active,
 html :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button:hover,
 html :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button:active {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_background_hover_color', '#005dc4' )) ?>;
-	border-color: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_background_hover_color', '#005dc4' )) ?>;
+	border-color: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_border_hover_color', '#005dc4' )) ?>;
 	color: <?php echo esc_html(get_theme_mod( 'kaya_woo_button_text_hover_color', '#181818' )) ?>;
 }
 
@@ -427,7 +431,7 @@ $kaya_grid_width = esc_html(get_theme_mod( 'kaya_grid_width', '1140' ));
 $kaya_grid_width = ($kaya_grid_width > 320) ? $kaya_grid_width : 1140;
 ?>
 <?php if(get_theme_mod( 'kaya_content_in_grid', false )) { ?>
-	#content, body .vc_row[data-vc-full-width="true"] > .wpb_column, header:not(#masthead) .container, #content .container, .wp-block-cover .wp-block-cover__inner-container, .wp-block-cover-image .wp-block-cover__inner-container {
+	#content, .container, body .vc_row[data-vc-full-width="true"] > .wpb_column, header:not(#masthead) .container, #content .container, .wp-block-cover .wp-block-cover__inner-container, .wp-block-cover-image .wp-block-cover__inner-container {
 		max-width: <?php echo $kaya_grid_width; ?>px;
 		width: 100%;
 		margin: auto;

@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 2.4
+ * @version 2.5
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -376,6 +376,23 @@ function kaya_add_colors($wp_customize) {
 		'label'        => __( 'Woo Button Background Hover Color', 'kaya' ),
 		'section'    => 'colors',
 		'settings'   => 'kaya_woo_button_background_hover_color',
+		) 
+	) );
+	
+	$wp_customize->add_setting('kaya_woo_button_border_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_woo_button_border_color', array(
+		'label'        => __( 'Woo Button Border Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_woo_button_border_color',
+		) 
+	) );
+
+	$wp_customize->add_setting('kaya_woo_button_border_hover_color', array('sanitize_callback' => 'sanitize_hex_color'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
+'kaya_woo_button_border_hover_color', array(
+		'label'        => __( 'Woo Button Border Hover Color', 'kaya' ),
+		'section'    => 'colors',
+		'settings'   => 'kaya_woo_button_border_hover_color',
 		) 
 	) );
 

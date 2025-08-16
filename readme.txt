@@ -44,6 +44,12 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
+= 2.5 - Jul 15 2025 =
+* Update: search template to use sidebar selection of the blog archive.
+* Update: content-search.php to display the type of result (ie: post, page, etc).
+* Update: CSS alignright and alignleft switch from em to px to prevent varying spacing.
+* Add: Options for Woo button border & border hover colors.
+
 = 2.4 - Apr 29 2025 = 
 * Update: replace kaya_logo_display() with a do_action to allow it to be overriden in child theme.
 * Update: Twitter bird icon to X icon.

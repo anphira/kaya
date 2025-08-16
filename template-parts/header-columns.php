@@ -5,12 +5,12 @@
  * @author  Anphira
  * @since   2.0
  * @package Kaya
- * @version 2.3
+ * @version 2.5
  */
 ?>
 
 
-		<div class="container flexbox-non-responsive">
+		<div class="<?php if(get_theme_mod('kaya_header_in_grid', false)) {echo 'container';} else {echo 'pl15 pr15';} ?> flexbox-non-responsive">
 			<?php 
 			switch(get_theme_mod( 'kaya_header_columns', 'one_column' )) {
 				case 'one_column': 

@@ -733,15 +733,6 @@ function kaya_scripts() {
 add_action( 'wp_enqueue_scripts', 'kaya_scripts' );
 
 /**
- * Enqueue scripts and styles for WP dashboard (admin).
- */
-function kaya_admin_scripts() {
-    wp_enqueue_script( 'kaya_notice_update', get_template_directory_uri() . '/js/dismissible-admin-notices.js' );
-}
-add_action('admin_enqueue_scripts', 'kaya_admin_scripts');
-
-
-/**
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';
@@ -754,7 +745,7 @@ require get_template_directory() . '/inc/template-tags.php';
 /**
  * Custom functions that act independently of the theme templates.
  */
-require get_template_directory() . '/inc/extras.php';
+//require get_template_directory() . '/inc/extras.php';
 
 /**
  * Customizer additions.

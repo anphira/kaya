@@ -7,13 +7,13 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.0.2
+ * @version 2.5
  */
 
 get_header(); ?>
 
-	<?php if (get_theme_mod( 'kaya_post_sidebar', 'right_sidebar' ) == 'left_sidebar') get_sidebar(); ?>
-	<div id="primary" class="content-area <?php if( get_theme_mod( 'kaya_post_sidebar', 'right_sidebar' ) !== 'no_sidebar' ) echo 'has-sidebar'; ?>">
+	<?php if (get_theme_mod( 'kaya_archive_sidebar', 'right_sidebar' ) == 'left_sidebar') get_sidebar(); ?>
+	<div id="primary" class="content-area <?php if( get_theme_mod( 'kaya_archive_sidebar', 'right_sidebar' ) !== 'no_sidebar' ) echo 'has-sidebar'; ?>">
 		<main id="main" class="site-main">
 
 		<?php
@@ -26,6 +26,7 @@ get_header(); ?>
 					printf( esc_html__( 'Search Results for: %s', 'kaya' ), '<span>' . get_search_query() . '</span>' );
 					?>
 				</h1>
+				<?php get_search_form(); ?>
 			</header><!-- .page-header -->
 
 			<?php
@@ -51,8 +52,10 @@ get_header(); ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
-	<?php if (get_theme_mod( 'kaya_post_sidebar', 'right_sidebar' ) == 'right_sidebar') get_sidebar(); ?>
+	<?php if (get_theme_mod( 'kaya_archive_sidebar', 'right_sidebar' ) == 'right_sidebar') get_sidebar(); ?>
 
 <?php
-get_sidebar();
+if( get_theme_mod( 'kaya_archive_sidebar', 'right_sidebar' ) !== 'no_sidebar' ) {
+	get_sidebar();
+}
 get_footer();
