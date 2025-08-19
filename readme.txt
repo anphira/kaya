@@ -44,7 +44,7 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
-= 3.0.3 - Aug 19 2025 =
+= 3.0.4 - Aug 19 2025 =
 * Updater: fix updater for github.
 
 = 3.0 - Aug 16 2025 =
