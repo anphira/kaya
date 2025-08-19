@@ -33,9 +33,6 @@ class GitHub_API {
             $version = substr($version, 1);
         }
         
-        error_log('GitHub raw tag: ' . $release['tag_name']);
-        error_log('Cleaned version: ' . $version);
-        
         return $version;
     }
 
