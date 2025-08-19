@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 3.0.4
+ * @version 3.0.5
  */
 
 /**
@@ -19,7 +19,7 @@
 add_filter('pre_set_site_transient_update_themes', 'automatic_GitHub_updates', 100, 1);
 function automatic_GitHub_updates($data) {
   // Theme information
-  $theme   = get_stylesheet(); // Folder name of the current theme
+  $theme   = get_template(); // Folder name of the current theme
   $current = wp_get_theme()->get('Version'); // Get the version of the current theme
   // GitHub information
   $user = 'anphira'; // The GitHub username hosting the repository
