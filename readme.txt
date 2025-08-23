@@ -6,7 +6,7 @@ Tags: custom-background, theme-options, custom-menu, threaded-comments, one-colu
 Requires at least: 5.5
 Tested up to: 6.8.2
 Requires PHP: 8.0
-Stable tag: v3.0.6
+Stable tag: v3.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,9 @@ Recommended plugins are available at https://easya11yguide.com/kaya-wordpress-th
 From the Customizer a number of customization options exist. Please see https://easya11yguide.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 3.1 - Aug 23 2025 =
+* Update: font awesome to version 7.
 
 = 3.0.6 - Aug 22 2025 = 
 * Update: fix updater for semantic versioning compare.
