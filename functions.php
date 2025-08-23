@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 3.0.5
+ * @version 3.0.6
  */
 
 /**
@@ -20,7 +20,7 @@ add_filter('pre_set_site_transient_update_themes', 'automatic_GitHub_updates', 1
 function automatic_GitHub_updates($data) {
   // Theme information
   $theme   = get_template(); // Folder name of the current theme
-  $current = wp_get_theme()->get('Version'); // Get the version of the current theme
+  $current = wp_get_theme($theme)->get('Version'); // Get the version of the current theme
   // GitHub information
   $user = 'anphira'; // The GitHub username hosting the repository
   $repo = 'kaya'; // Repository name as it appears in the URL
@@ -30,9 +30,11 @@ function automatic_GitHub_updates($data) {
       stream_context_create(['http' => ['header' => "User-Agent: ".$user."\r\n"]])
   ));
   if($file) {
-	$update = filter_var($file->tag_name, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+		// Clean the version string by removing common prefixes like 'v', 'ver', etc.
+    $update = preg_replace('/^(v|ver|version)?\s*/', '', $file->tag_name);
     // Only return a response if the new version number is higher than the current version
-    if($update > $current) {
+    // Use version_compare() for proper semantic version comparison
+    if(version_compare($update, $current, '>')) {
   	  $data->response[$theme] = array(
 	      'theme'       => $theme,
 	      // Strip the version number of any non-alpha characters (excluding the period)
