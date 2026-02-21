@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 2.5
+ * @version 3.2.1
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -654,7 +654,7 @@ add_action('customize_register', 'kaya_add_header_options');
 function kaya_add_general($wp_customize) {
 	$wp_customize->add_section('kaya_general', array(
 		'title' => 'General Options',
-		'priority' => 65,
+		'priority' => 56,
 	));
 	$wp_customize->add_setting( 'kaya_general_content_separator', array( 'sanitize_callback' => 'kaya_sanitize_separator' ) );
 	$wp_customize->add_control(
@@ -1464,6 +1464,68 @@ function kaya_add_social($wp_customize) {
 		'type'            => 'email',
 		'section'         => 'kaya_social',
 		'settings'   => 'kaya_email',
+		)
+	) );
+
+	$wp_customize->add_setting( 'kaya_social_media_separator_2', array( 'sanitize_callback' => 'kaya_sanitize_separator' ) );
+	$wp_customize->add_control(
+		new Kaya_Separator_Control(	$wp_customize, 'kaya_social_media_separator_2', array(
+		'label'           => __( 'Custom Icons & URLs', 'kaya' ),
+		'section' => 'kaya_social',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_social_custom_1_icon', array('sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_social_custom_1_icon', array(
+		'label'           => __( 'Custom Social Font Awesome 1', 'kaya' ),
+		'type'            => 'text',
+		'section'         => 'kaya_social',
+		'settings'   => 'kaya_social_custom_1_icon',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_social_custom_1', array('sanitize_callback' => 'esc_url_raw'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_social_custom_1', array(
+		'label'           => __( 'Custom Social URL 1', 'kaya' ),
+		'type'            => 'email',
+		'section'         => 'kaya_social',
+		'settings'   => 'kaya_social_custom_1',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_social_custom_2_icon', array('sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_social_custom_2_icon', array(
+		'label'           => __( 'Custom Social Font Awesome 2', 'kaya' ),
+		'type'            => 'text',
+		'section'         => 'kaya_social',
+		'settings'   => 'kaya_social_custom_2_icon',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_social_custom_2', array('sanitize_callback' => 'esc_url_raw'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_social_custom_2', array(
+		'label'           => __( 'Custom Social URL 2', 'kaya' ),
+		'type'            => 'email',
+		'section'         => 'kaya_social',
+		'settings'   => 'kaya_social_custom_2',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_social_custom_3_icon', array('sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_social_custom_3_icon', array(
+		'label'           => __( 'Custom Social Font Awesome 3', 'kaya' ),
+		'type'            => 'text',
+		'section'         => 'kaya_social',
+		'settings'   => 'kaya_social_custom_3_icon',
+		)
+	) );
+	
+	$wp_customize->add_setting('kaya_social_custom_3', array('sanitize_callback' => 'esc_url_raw'));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kaya_social_custom_3', array(
+		'label'           => __( 'Custom Social URL 3', 'kaya' ),
+		'type'            => 'email',
+		'section'         => 'kaya_social',
+		'settings'   => 'kaya_social_custom_3',
 		)
 	) );
 }

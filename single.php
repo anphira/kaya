@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 2.0
+ * @version 3.2
  */
 
 get_header(); ?>
@@ -69,7 +69,7 @@ get_header(); ?>
 					<?php the_post_thumbnail( 'related-posts-image' ); ?>
 					<div class="max-height-related-posts mt15">
 						<h3 class="mb0"><?php the_title(); ?></h3>
-						<?php kaya_the_excerpt(); ?>
+						<?php the_excerpt(); ?>
 					</div>
 					<?php if(!get_theme_mod('kaya_turn_off_read_more', false)) { ?>
 						<a class="button mt20" href="<?php the_permalink(); ?>">Read more<span class="screen-reader-text"> <?php echo get_the_title(); ?></span></a>

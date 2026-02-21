@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 3.1.0
+ * @version 3.2.1
  */
 
 /**
@@ -164,16 +164,6 @@ function kaya_dequeue_woocommerce_styles_scripts() {
 	}
 }
 
- 
-/**
- * Add footer & top menus
- */
-function kaya_register_footer_menu() {
-  register_nav_menu('footer-menu',__( 'Footer Menu', 'kaya' ));
-  register_nav_menu('top-menu',__( 'Top Menu', 'kaya' ));
-}
-add_action( 'init', 'kaya_register_footer_menu' );
-
 
 
 /**
@@ -269,6 +259,15 @@ function kaya_social_icons() {
 		if( get_theme_mod( 'kaya_email' ) != '' ) {
 			echo '<a class="social-icon-single" href="mailto:' . sanitize_email(get_theme_mod( 'kaya_email' )) . '"><i class="fas fa-envelope"></i><span class="screen-reader-text"> Email us</span></a>';
 		}
+		if( get_theme_mod( 'kaya_social_custom_1' ) != '' ) {
+			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_social_custom_1' )) . '"><i class="' . sanitize_text_field( get_theme_mod( 'kaya_social_custom_1_icon', '' ) ) . '"></i><span class="screen-reader-text"> Email us</span></a>';
+		}
+		if( get_theme_mod( 'kaya_social_custom_2' ) != '' ) {
+			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_social_custom_2' )) . '"><i class="' . sanitize_text_field( get_theme_mod( 'kaya_social_custom_2_icon', '' ) ) . '"></i><span class="screen-reader-text"> Email us</span></a>';
+		}
+		if( get_theme_mod( 'kaya_social_custom_3' ) != '' ) {
+			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_social_custom_3' )) . '"><i class="' . sanitize_text_field( get_theme_mod( 'kaya_social_custom_3_icon', '' ) ) . '"></i><span class="screen-reader-text"> Email us</span></a>';
+		}
 	echo '</div>';
 }
 
@@ -314,8 +313,11 @@ function kaya_setup() {
 	add_theme_support( 'post-thumbnails' );
 
 	// This theme uses wp_nav_menu() in one location.
+	// The footer menu & top menu can be used in other locations as desired.
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary', 'kaya' ),
+    'footer-menu' => esc_html__( 'Footer Menu', 'kaya' ),
+    'top-menu' => esc_html__( 'Top Menu', 'kaya' )
 	) );
 
 	/*

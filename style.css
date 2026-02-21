@@ -5,12 +5,12 @@ Author: anphira
 Author URI: https://easya11yguide.com/kaya-wordpress-theme/
 GitHub Theme URI: anphira/kaya
 Description: Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It's ready to work with your page builder and has built-in support for the block editor, Elementor, WooCommerce, Fluent Forms, Max Mega Menu, and WP Bakery. You can view the setup instructions by going to the Customizer and selecting "Need Setup Help?".
-Version: 3.1.0
+Version: 3.2.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kaya
 Requires at least: 5.5
-Tested up to: 6.8.2
+Tested up to: 6.9
 Requires PHP:  8.0
 Tags: custom-background, theme-options, custom-menu, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, featured-images, flexible-header, footer-widgets, full-width-template, blog, accessibility-ready
 
@@ -55,6 +55,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Fluent Forms Fixes
 # Max Mega Menu Fixes
 # Elementor Fixes
+# Imagify Fixes
 --------------------------------------------------------------*/
 
 
@@ -500,7 +501,7 @@ ol {
 	list-style: decimal;
 }
 
-#content li:not(.product),
+#content ul:not(.tabs) li:not(.product):not(:last-child),
 #colophon li {
 	padding-bottom: 0.7em;
 }
@@ -852,7 +853,7 @@ button:active {
 
 .site-content.no-sidebar .alignfull {
 	margin: 32px calc(50% - 50vw);
-	max-width: 100vw;
+	max-width: calc(100vw - 7.5px);
 	width: 100vw;
 }
 
@@ -1280,7 +1281,8 @@ body .fas {
 	margin-top: 0;
 }
 .social-icons .fas,
-.social-icons .fab {
+.social-icons .fab,
+.social-icons .fa-brands {
 	width: 2em;
 	height: 2em;
 	text-align: center;
@@ -1917,6 +1919,9 @@ background-color: #FF6600
 .overflow-hidden {
 	overflow: hidden;
 }
+.display-none {
+	display: none;
+}
 @media (max-width: 767px) {
 	.hide-mobile {
 		display: none;
@@ -2390,4 +2395,15 @@ body .elementor a {
 body .elementor-button span,
 body .elementor .elementor-button {
 	text-decoration: none;
+}
+
+
+
+/*--------------------------------------------------------------
+# Imagify Fixes
+--------------------------------------------------------------*/
+/* allow aspect ratio on blocks with Imagify */
+picture[class^="wp-image"][style*="aspect"] img {
+	aspect-ratio: inherit;
+	object-fit: inherit;
 }

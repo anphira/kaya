@@ -6,7 +6,7 @@ Tags: custom-background, theme-options, custom-menu, threaded-comments, one-colu
 Requires at least: 5.5
 Tested up to: 6.8.2
 Requires PHP: 8.0
-Stable tag: v3.1.0
+Stable tag: v3.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,20 @@ Recommended plugins are available at https://easya11yguide.com/kaya-wordpress-th
 From the Customizer a number of customization options exist. Please see https://easya11yguide.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 3.2.1 - Feb 21 2026 =
+* Add: CSS for classes of headings.
+* Add: custom icons & urls for social media. You can now define your own 3 icon & url combos. Must use font awesome.
+* Fix: issue on imagify image ratios.
+
+= 3.2 - Dec 04 2025 =
+* Add: CSS fix for Imagify plugin using Picture style. It broke the block editor's object fit & aspect ratio features on images.
+* Fix: CSS for social icons to declare foreground/background so WAVE doesn't false flag contrast ratio on screen reader text.
+* Fix: Remove double read more on the related articles of single blog posts.
+* Fix: blog hero display.
+
+= 3.1.1 - Sep 26 2025 =
+* Update: update the registration of the top bar and footer menus for compatibility with max mega menu widgets.
 
 = 3.1 - Aug 23 2025 =
 * Update: font awesome to version 7.

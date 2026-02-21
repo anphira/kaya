@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 2.5
+ * @version 3.2.1
  */
 
 /**
@@ -103,7 +103,7 @@ body.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.b
 input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=range], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], textarea, select {
 	border-color: <?php echo esc_html(get_theme_mod( 'kaya_input_border_color', '#777' )) ?>;
 }
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_heading_color', '#181818' )); ?>;
 	font-weight: <?php echo esc_html(get_theme_mod( 'kaya_heading_font_weight', '400' )); ?>;
 	letter-spacing: <?php echo esc_html(get_theme_mod( 'kaya_heading_letter_spacing', '0' )); ?>px;
@@ -170,20 +170,26 @@ body .elementor-button {
 	font-size: <?php echo esc_html(get_theme_mod( 'kaya_paragraph', '1' )) ?>rem;
 }
 .social-icons .fab,
-.social-icons .fas {
+.social-icons .fas,
+.social-icons .fa-brands {
 	background: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_background_color', '#181818' )) ?>;
+	color: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_color', '#ffffff' )) ?>;
 	font-size: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_size', '1.1' )) ?>rem;
 }
 .social-icons .fab:hover,
-.social-icons .fas:hover {
+.social-icons .fas:hover,
+.social-icons .fa-brands:hover {
+	color: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_background_color', '#181818' )) ?>;
 	background: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_color', '#ffffff' )) ?>;
 }
 .social-icons .fab:before,
-.social-icons .fas:before  {
+.social-icons .fas:before,
+.social-icons .fa-brands:before  {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_color', '#ffffff' )) ?>;
 }
 .social-icons .fab:hover:before,
-.social-icons .fas:hover:before {
+.social-icons .fas:hover:before,
+.social-icons .fa-brands:hover:before {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_background_color', '#181818' )) ?>;
 }
 body a, body a:visited {

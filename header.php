@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 2.4
+ * @version 3.2
  */
 
 $postID = get_queried_object_id();
@@ -177,26 +177,36 @@ if( get_theme_mod( 'kaya_a11y_enable_checkbox', false ) ) {
 	}
 	//get hero area setting for pages
 	elseif( is_home() || ( !is_single() && !is_archive() ) ) {
-		
 		if(is_home()) {
 			$page_for_posts = get_option( 'page_for_posts' );
-			$page_hero_setting = get_post_meta($page_for_posts, 'kaya_page_hero_setting', true);
+			switch( get_post_meta($page_for_posts, 'kaya_page_hero_setting', true) ) {
+				case 'no_page_hero':
+					$page_hero_setting = false;
+					break;
+				case 'use_default':
+					$page_hero_setting = get_theme_mod( 'kaya_page_hero_blog_archive', false );
+					break;
+				case 'use_page_hero':
+					$page_hero_setting = true;
+					break;
+				default: 
+					$page_hero_setting = get_theme_mod( 'kaya_page_hero_blog_archive', false );
+			}
 		}
 		elseif (is_page()) {
-			$page_hero_setting = get_post_meta($postID, 'kaya_page_hero_setting', true);
-		}
-		switch ($page_hero_setting ) {
-			case 'no_page_hero':
-				$page_hero_setting = false;
-				break;
-			case 'use_default':
-				$page_hero_setting = get_theme_mod( 'kaya_page_hero', false );
-				break;
-			case 'use_page_hero':
-				$page_hero_setting = true;
-				break;
-			default: 
-				$page_hero_setting = get_theme_mod( 'kaya_page_hero', false );
+			switch( get_post_meta($postID, 'kaya_page_hero_setting', true) ) {
+				case 'no_page_hero':
+					$page_hero_setting = false;
+					break;
+				case 'use_default':
+					$page_hero_setting = get_theme_mod( 'kaya_page_hero_blog_archive', false );
+					break;
+				case 'use_page_hero':
+					$page_hero_setting = true;
+					break;
+				default: 
+					$page_hero_setting = get_theme_mod( 'kaya_page_hero_blog_archive', false );
+			}
 		}
 		if( $page_hero_setting ) {
 			$content_class .= 'has-page-hero ';
@@ -243,7 +253,7 @@ if( get_theme_mod( 'kaya_a11y_enable_checkbox', false ) ) {
 			</header>
 		<?php }
 	}
-	elseif(!is_single() && !is_archive()) { 
+	elseif(!is_single() && !is_archive() && !is_home()) { 
 		if($page_hero_setting) { ?>
 			<header id="page-hero-area">
 				<div class="container">
@@ -277,7 +287,10 @@ if( get_theme_mod( 'kaya_a11y_enable_checkbox', false ) ) {
 			<header id="page-hero-area">
 				<div class="container">
 					<?php 
-					if(is_archive()) {
+					if( is_home() ) {
+						echo '<h1 class="entry-title" itemprop="name">' . get_the_title($page_for_posts) . '</h1>';
+					}
+					elseif(is_archive()) {
 						the_archive_title( '<h1 class="page-title">', '</h1>' );
 					}
 					else {
