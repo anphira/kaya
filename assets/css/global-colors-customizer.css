@@ -1,0 +1,56 @@
+/**
+ * Kaya Global Colors Customizer control styles.
+ *
+ * Sizing keeps interactive targets at 24px minimum (WCAG 2.2, 2.5.8) and
+ * relies on the browser default focus ring for a visible focus indicator.
+ */
+
+.kaya-global-colors__list {
+	margin: 0 0 12px;
+	padding: 0;
+	list-style: none;
+}
+
+.kaya-global-colors__item {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 8px;
+}
+
+.kaya-global-colors__swatch {
+	flex: 0 0 auto;
+	width: 32px;
+	height: 32px;
+	padding: 2px;
+	border: 1px solid #8c8f94;
+	border-radius: 4px;
+	background: none;
+	cursor: pointer;
+}
+
+.kaya-global-colors__name {
+	flex: 1 1 auto;
+	min-width: 0;
+	min-height: 30px;
+}
+
+.kaya-global-colors__remove {
+	flex: 0 0 auto;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 28px;
+	height: 28px;
+	padding: 0;
+	font-size: 20px;
+	line-height: 1;
+	color: #b32d2e;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.kaya-global-colors__remove:hover,
+.kaya-global-colors__remove:focus {
+	color: #8a1f1f;
+}

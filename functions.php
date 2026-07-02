@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 3.2.1
+ * @version 3.4
  */
 
 /**
@@ -748,7 +748,7 @@ function kaya_scripts() {
 
 	// enqueue accessibility options panel stylesheet
 	if( get_theme_mod( 'kaya_a11y_enable_checkbox', false ) ) {
-		wp_enqueue_style( 'kaya-a11y', get_template_directory_uri() . '/accessibility.css', false, filemtime( get_theme_file_path( 'accessibility.css' )));
+		wp_enqueue_style( 'kaya-a11y', get_template_directory_uri() . '/assets/css/accessibility.css', false, filemtime( get_theme_file_path( 'assets/css/accessibility.css' )));
 	}
 
 	// enqueue child theme if using child theme
@@ -761,11 +761,11 @@ function kaya_scripts() {
 	}
 
 	if(!get_theme_mod('kaya_do_not_load_nav_js', false)) {
-		wp_enqueue_script( 'kaya-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20161216', true );
+		wp_enqueue_script( 'kaya-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), '20161216', true );
 	}
 
-	wp_enqueue_script( 'kaya-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20161216', true );
-	wp_enqueue_script( 'kaya-accessibility', get_template_directory_uri() . '/js/accessibility.js', array(), '20240708', true );
+	wp_enqueue_script( 'kaya-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20161216', true );
+	wp_enqueue_script( 'kaya-accessibility', get_template_directory_uri() . '/assets/js/accessibility.js', array(), '20240708', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -792,6 +792,7 @@ require get_template_directory() . '/inc/template-tags.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
+require get_template_directory() . '/inc/global-colors.php';
 
 /**
  * Load Jetpack compatibility file.

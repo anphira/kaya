@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 3.3
+ * @version 3.4
  */
 
 /**
@@ -90,7 +90,7 @@ html {
 
 body, p, button, input, select, textarea, .elementor-widget-text-editor,
 body.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button {
-	color: <?php echo esc_html(get_theme_mod( 'kaya_text_color', '#181818' )) ?>;
+	color: <?php echo esc_html(kaya_color( 'kaya_text_color', 'text-color', '#181818' )) ?>;
 	font-weight: <?php echo esc_html(get_theme_mod( 'kaya_paragraph_font_weight', '400' )) ?>;
 	line-height: <?php echo esc_html(get_theme_mod( 'kaya_paragraph_line_height', '1.5' )) ?>;
 	letter-spacing: <?php echo esc_html(get_theme_mod( 'kaya_paragraph_letter_spacing', '0' )); ?>px;
@@ -101,10 +101,10 @@ body.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.b
 			echo kaya_font_family_lookup( esc_html(get_theme_mod( 'kaya_paragraph_font', 'verdana' )) ); ?>;
 }
 input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=range], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], textarea, select {
-	border-color: <?php echo esc_html(get_theme_mod( 'kaya_input_border_color', '#777' )) ?>;
+	border-color: <?php echo esc_html(kaya_color( 'kaya_input_border_color', 'border-color', '#777' )) ?>;
 }
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-	color: <?php echo esc_html(get_theme_mod( 'kaya_heading_color', '#181818' )); ?>;
+	color: <?php echo esc_html(kaya_color( 'kaya_heading_color', 'heading-color', '#181818' )); ?>;
 	font-weight: <?php echo esc_html(get_theme_mod( 'kaya_heading_font_weight', '400' )); ?>;
 	letter-spacing: <?php echo esc_html(get_theme_mod( 'kaya_heading_letter_spacing', '0' )); ?>px;
 	font-family: 
@@ -194,10 +194,10 @@ body .elementor .e-button-base {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_social_icon_background_color', '#181818' )) ?>;
 }
 body a, body a:visited {
-	color: <?php echo esc_html(get_theme_mod( 'kaya_link_color', '#0075a5' )) ?>;
+	color: <?php echo esc_html(kaya_color( 'kaya_link_color', 'link-color', '#0075a5' )) ?>;
 }
 body a:hover, body a:active {
-	color: <?php echo esc_html(get_theme_mod( 'kaya_link_hover_color', '#005dc4' )) ?>;
+	color: <?php echo esc_html(kaya_color( 'kaya_link_hover_color', 'link-hover-color', '#005dc4' )) ?>;
 }
 #masthead {
 	background: <?php if(get_theme_mod( 'kaya_transparent_header', false ) == true) {
@@ -343,9 +343,9 @@ body form.frm-fluent-form .ff-btn-submit:not(.ff_btn_no_style),
 body form.frm-fluent-form .ff-btn-submit,
 body .fwpl-btn,
 body .fwpl-btn:visited {
-	background: <?php echo esc_html(get_theme_mod( 'kaya_button_color', '#0075a5' )) ?>;
-	color: <?php echo esc_html(get_theme_mod( 'kaya_button_text_color', '#ffffff' )) ?>;
-	border-color: <?php echo esc_html(get_theme_mod( 'kaya_button_border_color', '#005dc4' )) ?>;
+	background: <?php echo esc_html(kaya_color( 'kaya_button_color', 'button-background-color', '#0075a5' )) ?>;
+	color: <?php echo esc_html(kaya_color( 'kaya_button_text_color', 'button-text-color', '#ffffff' )) ?>;
+	border-color: <?php echo esc_html(kaya_color( 'kaya_button_border_color', 'button-background-color' '#005dc4' )) ?>;
 	border-width: <?php echo esc_html(get_theme_mod( 'kaya_border_width', '0' )) ?>px;
 	<?php if( esc_html(get_theme_mod( 'kaya_border_radius', '' )) != '' ) { ?>
 		border-radius: <?php echo esc_html(get_theme_mod( 'kaya_border_radius', '0' )) ?>px;

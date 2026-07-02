@@ -44,6 +44,9 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
+= 3.4 - Jul 02 2026 = 
+* Add: Block editor colors into the customizer.
+
 = 3.3 - Jul 02 2026 = 
 * Add: Checkbox to hide the announcement bar on mobile.
 * Update: set !important in CSS for "hide-mobile" and "hide-desktop" so the classes work all the time.

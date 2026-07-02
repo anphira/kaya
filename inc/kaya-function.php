@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 2.4
+ * @version 3.4
  */
 
 
@@ -650,7 +650,7 @@ if (!function_exists('kaya_custom_styling')) {
 		$style_string = '<style>';
 		$style_string .= 'body .editor-styles-wrapper,
 		body .editor-styles-wrapper p {';
-		$style_string .= 'color: ' . esc_html(get_theme_mod( 'kaya_text_color', '#000000' )) . ';';
+		$style_string .= 'color: ' . esc_html( kaya_color( 'kaya_text_color', 'text-color', '#000000' ) ) . ';';
 		$style_string .= 'font-weight: ' . esc_html(get_theme_mod( 'kaya_paragraph_font_weight', '400' )) . ';';
 		$style_string .= 'line-height: ' . esc_html(get_theme_mod( 'kaya_paragraph_line_height', '1.5' )) . ';';
 		$style_string .= 'font-family:';
@@ -666,7 +666,7 @@ if (!function_exists('kaya_custom_styling')) {
 	    html body .editor-styles-wrapper h4,
 	    html body .editor-styles-wrapper h5,
 	    html body .editor-styles-wrapper h6 {';
-	    $style_string .= 'color: ' . esc_html(get_theme_mod( 'kaya_heading_color', '#000000' )) . ';';
+	    $style_string .= 'color: ' . esc_html( kaya_color( 'kaya_heading_color', 'heading-color', '#000000' ) ) . ';';
 		$style_string .= 'font-weight: ' . esc_html(get_theme_mod( 'kaya_heading_font_weight', '400' )) . ';';
 		$style_string .= 'font-family:';
 			if(get_theme_mod( 'kaya_custom_google_fonts_heading', '' ) != '')
