@@ -98,7 +98,7 @@ body.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.b
 		<?php if(get_theme_mod( 'kaya_custom_google_fonts_paragraph', '' ) != '')
 			echo esc_html(get_theme_mod( 'kaya_custom_google_fonts_paragraph' ));
 		else
-			echo kaya_font_family_lookup( esc_html(get_theme_mod( 'kaya_paragraph_font', 'verdana' )) ); ?>;
+			echo kaya_font_family_lookup( esc_html(get_theme_mod( 'kaya_paragraph_font', 'verdana' )) ); ?>, Verdana, sans-serif;
 }
 input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=range], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], textarea, select {
 	border-color: <?php echo esc_html(kaya_color( 'kaya_input_border_color', 'border-color', '#777' )) ?>;
@@ -111,7 +111,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 		<?php if(get_theme_mod( 'kaya_custom_google_fonts_heading', '' ) != '')
 			echo '"' . esc_html(get_theme_mod( 'kaya_custom_google_fonts_heading' )) . '"';
 		else
-			echo kaya_font_family_lookup( esc_html(get_theme_mod( 'kaya_heading_font', 'verdana' )) ); ?>;
+			echo kaya_font_family_lookup( esc_html(get_theme_mod( 'kaya_heading_font', 'verdana' )) ); ?>, Verdana, sans-serif;
 }
 h1, .h1, .elementor-widget-heading h1.elementor-heading-title, body .h1.elementor-widget-heading .elementor-heading-title {
 	font-size: <?php echo esc_html(get_theme_mod( 'kaya_heading_1', '2' )) ?>rem;
@@ -345,7 +345,7 @@ body .fwpl-btn,
 body .fwpl-btn:visited {
 	background: <?php echo esc_html(kaya_color( 'kaya_button_color', 'button-background-color', '#0075a5' )) ?>;
 	color: <?php echo esc_html(kaya_color( 'kaya_button_text_color', 'button-text-color', '#ffffff' )) ?>;
-	border-color: <?php echo esc_html(kaya_color( 'kaya_button_border_color', 'button-background-color' '#005dc4' )) ?>;
+	border-color: <?php echo esc_html(kaya_color( 'kaya_button_border_color', 'button-background-color', '#005dc4' )) ?>;
 	border-width: <?php echo esc_html(get_theme_mod( 'kaya_border_width', '0' )) ?>px;
 	<?php if( esc_html(get_theme_mod( 'kaya_border_radius', '' )) != '' ) { ?>
 		border-radius: <?php echo esc_html(get_theme_mod( 'kaya_border_radius', '0' )) ?>px;
