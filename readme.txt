@@ -44,6 +44,10 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
+= 3.3 - Jul 02 2026 = 
+* Add: Checkbox to hide the announcement bar on mobile.
+* Update: set !important in CSS for "hide-mobile" and "hide-desktop" so the classes work all the time.
+
 = 3.2.1 - Feb 21 2026 =
 * Add: CSS for classes of headings.
 * Add: custom icons & urls for social media. You can now define your own 3 icon & url combos. Must use font awesome.

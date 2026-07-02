@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 3.2.1
+ * @version 3.3
  *
  * Included with WordPress Sanitize Functions:
  * sanitize_email()
@@ -127,7 +127,7 @@ function kaya_add_colors($wp_customize) {
 	$wp_customize->add_setting( 'kaya_colors_heading_separator', array( 'sanitize_callback' => 'kaya_sanitize_separator' ) );
 	$wp_customize->add_control(
 		new Kaya_Separator_Control(	$wp_customize, 'kaya_colors_heading_separator', array(
-		'label'           => __( 'Heading Section', 'kaya' ),
+		'label'           => __( 'Header Section', 'kaya' ),
 		'section' => 'colors',
 		)
 	) );
@@ -602,10 +602,19 @@ function kaya_add_header_options($wp_customize) {
 
 	$wp_customize->add_setting('kaya_announce_bar_checkbox', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_announce_bar_checkbox', array(
-		'label'        => __( 'Show announcement bar', 'kaya' ),
+		'label'        => __( 'Show announcement bar on desktop', 'kaya' ),
 		'type'            => 'checkbox',
 		'section'    => 'kaya_header',
 		'settings'   => 'kaya_announce_bar_checkbox',
+		) 
+	) );
+
+	$wp_customize->add_setting('kaya_announce_bar_checkbox_mobile', array('sanitize_callback' => 'kaya_sanitize_checkbox'));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'kaya_announce_bar_checkbox_mobile', array(
+		'label'        => __( 'Show announcement bar on mobile', 'kaya' ),
+		'type'            => 'checkbox',
+		'section'    => 'kaya_header',
+		'settings'   => 'kaya_announce_bar_checkbox_mobile',
 		) 
 	) );
 	

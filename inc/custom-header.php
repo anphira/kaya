@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 3.2.1
+ * @version 3.3
  */
 
 /**
@@ -166,7 +166,8 @@ h6, .h6, .elementor-widget-heading h6.elementor-heading-title, body .h6.elemento
 	}
 }
 body,
-body .elementor-button {
+body .elementor-button,
+body .elementor .e-button-base {
 	font-size: <?php echo esc_html(get_theme_mod( 'kaya_paragraph', '1' )) ?>rem;
 }
 .social-icons .fab,
@@ -331,6 +332,8 @@ body .elementor-button.elementor-size-sm,
 body .elementor-button.elementor-size-md,
 body .elementor-button.elementor-size-lg,
 body .elementor-button:visited,
+body .elementor .e-button-base,
+body .elementor .e-button-base:visited,
 body .wp-block-button__link,
 body .wp-block-button__link:visited,
 body #colophon .wp-block-button__link,
@@ -366,6 +369,8 @@ body input[type=submit]:hover,
 body input[type=submit]:active,
 body .elementor-button:hover,
 body .elementor-button:active,
+body .elementor .e-button-base:hover,
+body .elementor .e-button-base:active,
 body .wp-block-button__link:hover,
 body .wp-block-button__link:active,
 body #colophon .wp-block-button__link:hover,

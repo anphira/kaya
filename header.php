@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 3.2
+ * @version 3.3
  */
 
 $postID = get_queried_object_id();
@@ -42,8 +42,15 @@ if( get_theme_mod( 'kaya_a11y_enable_checkbox', false ) ) {
 	<?php get_template_part('template-parts/header', 'accessibility'); ?>
 
 	<?php if( '' == get_post_meta($postID, '_kaya_hide_header_check', true)) { ?>
-		<?php if(get_theme_mod( 'kaya_announce_bar_checkbox', false )) { ?>
-			<div class="announcement-bar">
+		<?php if(get_theme_mod( 'kaya_announce_bar_checkbox', false ) || get_theme_mod( 'kaya_announce_bar_checkbox_mobile', false )) { 
+			if(!get_theme_mod( 'kaya_announce_bar_checkbox', false ) && get_theme_mod( 'kaya_announce_bar_checkbox_mobile', false )) {
+				$announcement_css_class = 'hide-desktop';
+			}
+			elseif(get_theme_mod( 'kaya_announce_bar_checkbox', false ) && !get_theme_mod( 'kaya_announce_bar_checkbox_mobile', false )) {
+				$announcement_css_class = 'hide-mobile';
+			}
+			?>
+			<div class="announcement-bar <?php echo $announcement_css_class; ?>">
 				<span class="announcement-bar-text"><?php echo esc_html(get_theme_mod( 'kaya_announce_bar_content', '' )); ?></span>
 				<?php if(get_theme_mod( 'kaya_announce_bar_button_show', false )) { ?>
 					<a class="announcement-button button" href="<?php echo esc_url(get_theme_mod( 'kaya_announce_bar_button_url', '' )); ?>"><?php echo esc_html(get_theme_mod( 'kaya_announce_bar_button_text', '' )); ?></a>

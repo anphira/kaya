@@ -5,7 +5,7 @@ Author: anphira
 Author URI: https://easya11yguide.com/kaya-wordpress-theme/
 GitHub Theme URI: anphira/kaya
 Description: Kaya is a flexible theme to build fabulous & functional websites. With a focus on being lightweight and fast, Kaya allows you to quickly build & customize your site with a wide array of color, font, header, footer and width options. It's ready to work with your page builder and has built-in support for the block editor, Elementor, WooCommerce, Fluent Forms, Max Mega Menu, and WP Bakery. You can view the setup instructions by going to the Customizer and selecting "Need Setup Help?".
-Version: 3.2.1
+Version: 3.3
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kaya
@@ -1419,6 +1419,7 @@ body .white-text,
 body .white-text p, 
 body .white-text li,
 body .white-text a,
+body .white-text a:hover,
 body .white-text a:visited,
 body .white-text h1, 
 body .white-text h2, 
@@ -1924,12 +1925,12 @@ background-color: #FF6600
 }
 @media (max-width: 767px) {
 	.hide-mobile {
-		display: none;
+		display: none !important;
 	}
 }
 @media (min-width: 768px) {
 	.hide-desktop {
-		display: none;
+		display: none !important;
 	}
 }
 
@@ -2393,7 +2394,8 @@ body .elementor a {
 	text-decoration: underline;
 }
 body .elementor-button span,
-body .elementor .elementor-button {
+body .elementor .elementor-button,
+body .elementor .e-button-base {
 	text-decoration: none;
 }
 
@@ -2405,5 +2407,7 @@ body .elementor .elementor-button {
 /* allow aspect ratio on blocks with Imagify */
 picture[class^="wp-image"][style*="aspect"] img {
 	aspect-ratio: inherit;
+}
+picture[class^="post-image"][style*="object"] img {
 	object-fit: inherit;
 }
