@@ -147,22 +147,13 @@ h6, .h6, .elementor-widget-heading h6.elementor-heading-title, body .h6.elemento
 		$kaya_heading_6 = (float) esc_html(get_theme_mod( 'kaya_heading_6', '1.15' ));
 	?>
 	h1, .h1, .elementor-widget-heading h1.elementor-heading-title {
-		font-size: <?php echo $kaya_heading_1 * 0.7 ?>rem;
+		font-size: <?php echo $kaya_heading_1 * 0.75 ?>rem;
 	}
 	h2, .h2, .elementor-widget-heading h2.elementor-heading-title {
-		font-size: <?php echo $kaya_heading_2 * 0.75 ?>rem;
+		font-size: <?php echo $kaya_heading_2 * 0.8 ?>rem;
 	}
 	h3, .h3, .elementor-widget-heading h3.elementor-heading-title {
-		font-size: <?php echo $kaya_heading_3 * 0.8 ?>rem;
-	}
-	h4, .h4, .elementor-widget-heading h4.elementor-heading-title {
-		font-size: <?php echo $kaya_heading_4 * 0.9 ?>rem;
-	}
-	h5, .h5, .elementor-widget-heading h5.elementor-heading-title {
-		font-size: <?php echo $kaya_heading_5 * 0.9 ?>rem;
-	}
-	h6, .h6, .elementor-widget-heading h6.elementor-heading-title {
-		font-size: <?php echo $kaya_heading_6 * 0.9 ?>rem;
+		font-size: <?php echo $kaya_heading_3 * 0.9 ?>rem;
 	}
 }
 body,
