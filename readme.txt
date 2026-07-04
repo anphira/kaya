@@ -46,9 +46,14 @@ From the Customizer a number of customization options exist. Please see https://
 
 = 3.4 - Jul 02 2026 = 
 * Add: Block editor colors into the customizer.
+* Add: max width for ch units: 50, 60, 70, 80. For accessibility to limit how many characters on a line.
+* Update: set up fallback fonts for custom font family.
+* Update: remove automatic button centering on mobile for button block.
+* Update: adjust mobile sizing of headings to reduce their size a little less.
 
 = 3.3 - Jul 02 2026 = 
 * Add: Checkbox to hide the announcement bar on mobile.
+* Update: elementor button classes added for new class names.
 * Update: set !important in CSS for "hide-mobile" and "hide-desktop" so the classes work all the time.
 
 = 3.2.1 - Feb 21 2026 =
