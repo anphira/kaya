@@ -47,6 +47,7 @@ From the Customizer a number of customization options exist. Please see https://
 = 3.4 - Jul 02 2026 = 
 * Add: Block editor colors into the customizer.
 * Add: max width for ch units: 50, 60, 70, 80. For accessibility to limit how many characters on a line.
+* Add: support for Kadence blocks "Use Theme Content Inner Width?" on the row width settings to use the value set in the customizer > General Options > Grid Width.
 * Update: set up fallback fonts for custom font family.
 * Update: remove automatic button centering on mobile for button block.
 * Update: adjust mobile sizing of headings to reduce their size a little less.
