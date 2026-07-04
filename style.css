@@ -1652,11 +1652,6 @@ body .extra-large-text li {
 .is-layout-flex {
 	display: flex;
 }
-@media (max-width: 767px) { /* flex buttons as column on mobile */
-	.wp-block-buttons.is-layout-flex {
-		flex-direction: column;
-	}
-}
 .align-items-stretch {
 	align-items: stretch;
 }
@@ -2352,6 +2347,12 @@ background-color: #FF6600
 .z0 {z-index: 0}
 .z1 {z-index: 1}
 .z10 {z-index: 10}
+
+/* width in characters */
+.ch50 { max-width: 50ch }
+.ch50 { max-width: 60ch }
+.ch50 { max-width: 70ch }
+.ch80 { max-width: 80ch }
 
 
 
