@@ -213,7 +213,8 @@ mark {
 	color: #000;
 }
 
-small {
+small,
+.small-text {
 	font-size: 80%;
 }
 
