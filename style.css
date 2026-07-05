@@ -163,7 +163,7 @@ a.button, a.button:visited,
 
 a.button:hover, a.button:focus, a.button:active,
 .fwpl-btn:hover, .fwpl-btn:focus, .fwpl-btn:active {
-	background: #777;
+	background: var(--kaya-focus-color);
 	color: white;
 }
 
@@ -590,7 +590,7 @@ input[type="button"]:active,
 input[type="reset"]:active,
 input[type="submit"]:active {
 	color: white;
-	background: #777;
+	background: var(--kaya-focus-color);
 }
 
 input[type="text"],
@@ -673,7 +673,10 @@ a:active {
 
 body a:focus,
 body a:visited:focus,
-body button:focus {
+body button:focus,
+body a:focus-visible,
+body a:visited:focus-visible,
+body button:focus-visible {
 	outline: 2px solid var(--kaya-focus-color);
 	border: 2px dashed white !important;
 }
