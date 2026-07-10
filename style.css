@@ -1239,8 +1239,9 @@ figure {
 /*--------------------------------------------------------------
 # Gutenberg Fixes
 --------------------------------------------------------------*/
-.wp-block-button {
+body .wp-block-buttons>.wp-block-button {
 	margin-bottom: 15px;
+	margin-right: 15px;
 }
 .wp-block-button.is-style-squared .wp-block-button__link {
 	border-radius: 0;

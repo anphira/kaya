@@ -44,13 +44,14 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
-= 3.4 - Jul 02 2026 = 
+= 3.4 - Jul 05 2026 = 
 * Add: Block editor colors into the customizer.
 * Add: max width for ch units: 50, 60, 70, 80. For accessibility to limit how many characters on a line.
 * Add: support for Kadence blocks "Use Theme Content Inner Width?" on the row width settings to use the value set in the customizer > General Options > Grid Width.
 * Update: set up fallback fonts for custom font family.
 * Update: remove automatic button centering on mobile for button block.
 * Update: adjust mobile sizing of headings to reduce their size a little less.
+* Update: focus styling for both :focus and :focus-visible to fix compatability with block editor (since it hates :focus and only supports :focus-visible on several elements)
 
 = 3.3 - Jul 02 2026 = 
 * Add: Checkbox to hide the announcement bar on mobile.
