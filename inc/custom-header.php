@@ -239,6 +239,13 @@ body a:hover, body a:active {
 	color: <?php echo esc_html(get_theme_mod( 'kaya_menu_background_color', '#ffffff' )) ?>;
 	background: <?php echo esc_html(get_theme_mod( 'kaya_menu_text_color', '#0075a5' )) ?>;
 }
+.main-navigation #primary-menu .nav-menu > .page_item_has_children:after {
+    border-top-color: <?php echo esc_html(get_theme_mod( 'kaya_menu_text_color', '#0075a5' )) ?>;
+}
+.main-navigation #primary-menu .children > .page_item_has_children:after {
+	border-top-color: transparent;
+    border-left-color: <?php echo esc_html(get_theme_mod( 'kaya_menu_text_color', '#0075a5' )) ?>;
+}
 #page-hero-area {
 	<?php
 	if(is_home()) {

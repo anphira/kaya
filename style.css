@@ -619,6 +619,8 @@ textarea {
 
 select {
 	border: 1px solid #777;
+	padding: 3px;
+	border-radius: 3px;
 }
 
 input[type="text"]:focus,
@@ -711,6 +713,24 @@ button:active {
 	float: left;
 	position: relative;
 	padding: 4px 10px;
+}
+.main-navigation #primary-menu .nav-menu > .page_item_has_children:after,
+.main-navigation #primary-menu .children > .page_item_has_children:after {
+	content: '';
+	position: absolute;
+    right: -3px;
+    top: calc(50% - 0.25em);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 8px solid #0075a5;
+    display: inline-block;
+}
+.main-navigation #primary-menu .children > .page_item_has_children:after {
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 8px solid #0075a5;
 }
 
 .main-navigation a {
@@ -873,7 +893,7 @@ button:active {
 }
 @media (max-width: 768px) {
 	.site-content.no-sidebar .alignwide {
-		margin: 32px 0;
+		margin: 32px -15px;
 	}
 }
 
@@ -2382,6 +2402,32 @@ body .fluentform .ff-el-form-control:focus {
 }
 body select.ff-el-form-control:not([size]):not([multiple]) {
 	height: calc(1.5rem + 22px);
+}
+
+
+
+/*--------------------------------------------------------------
+# WS Form Fixes
+--------------------------------------------------------------*/
+.wsf-field-wrapper>.wsf-label {
+	display: block;
+}
+.wsf-hidden-element {
+	display: none;
+}
+.wsf-grid {
+	gap: 15px;
+}
+body .wsf-extra-small-6 {
+	flex: 1 0 45% !important;
+}
+@media (min-width: 576px) {
+	body .wsf-small-6 {
+		flex: 1 0 45% !important;
+	}
+	body .wsf-small-4 {
+		flex: 1 0 30% !important;
+	}
 }
 
 

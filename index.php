@@ -12,7 +12,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 1.5.1
+ * @version 3.4
  */
 
 get_header(); ?>
@@ -52,8 +52,21 @@ get_header(); ?>
 				?>
 
 				<?php
-				$page_hero_blog = get_theme_mod( 'kaya_page_hero_blog_archive', false );
-				if( ! $page_hero_blog ) { ?>
+				$page_for_posts = get_option( 'page_for_posts' );
+				switch( get_post_meta($page_for_posts, 'kaya_page_hero_setting', true) ) {
+					case 'no_page_hero':
+						$page_hero_setting = false;
+						break;
+					case 'use_default':
+						$page_hero_setting = get_theme_mod( 'kaya_page_hero_blog_archive', false );
+						break;
+					case 'use_page_hero':
+						$page_hero_setting = true;
+						break;
+					default: 
+						$page_hero_setting = get_theme_mod( 'kaya_page_hero_blog_archive', false );
+				}
+				if( ! $page_hero_setting ) { ?>
 					<header>
 						<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
 					</header>
