@@ -1696,6 +1696,9 @@ body .extra-large-text li {
 #content .page-numbers li {
 	padding-bottom: 0;
 }
+body.woocommerce ul.products li.product .price del {
+	opacity: 1;
+}
 
 
 

@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 2.0
+ * @version 3.4.1
  */
 
 
@@ -77,13 +77,13 @@ $kaya_reading_time = get_theme_mod( 'kaya_post_show_reading_time', false );
 		if ( get_theme_mod( 'kaya_show_author_bio', 0 ) && is_single() && isset( $post->post_author ) ) {
 			$display_name = get_the_author_meta( 'display_name', $post->post_author );
 			$user_description = get_the_author_meta( 'user_description', $post->post_author );
-			$user_posts = get_the_author_meta( 'user_login', $post->post_author );
+			$user_posts = get_author_posts_url( $post->post_author );
 			if ( ! empty( $user_description ) ) {
 				echo '<hr class="mt20" />';
 				echo '<div class="author_bio_section" >';
 				echo '<h2 class="author_name">About ' . $display_name . '</h2>';
 				echo '<p class="author_details">' . get_avatar( get_the_author_meta('user_email') , 90, '', '', ['class' => 'alignleft'] ) . nl2br( $user_description ). '</p>';
-				echo '<p class="author_links"><a href="/author/'. $user_posts .'">View all posts by ' . $display_name . '</a></p>';
+				echo '<p class="author_links"><a href="'. $user_posts .'">View all posts by ' . $display_name . '</a></p>';
 				echo '</div>';
 			}
 		}
