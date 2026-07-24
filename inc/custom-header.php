@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 3.4
+ * @version 3.4.2
  */
 
 /**
@@ -440,7 +440,7 @@ $kaya_grid_width = esc_html(get_theme_mod( 'kaya_grid_width', '1140' ));
 $kaya_grid_width = ($kaya_grid_width > 320) ? $kaya_grid_width : 1140;
 ?>
 <?php if(get_theme_mod( 'kaya_content_in_grid', false )) { ?>
-	#content, .container, body .vc_row[data-vc-full-width="true"] > .wpb_column, header:not(#masthead) .container, #content .container, .wp-block-cover .wp-block-cover__inner-container, .wp-block-cover-image .wp-block-cover__inner-container, .kb-row-layout-wrap .kb-theme-content-width {
+	body:not(.page-template-elementor_header_footer) #content, .container, body .vc_row[data-vc-full-width="true"] > .wpb_column, header:not(#masthead) .container, #content .container, .wp-block-cover .wp-block-cover__inner-container, .wp-block-cover-image .wp-block-cover__inner-container, .kb-row-layout-wrap .kb-theme-content-width {
 		max-width: <?php echo $kaya_grid_width; ?>px;
 		width: 100%;
 		margin: auto;
