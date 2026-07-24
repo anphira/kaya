@@ -3,10 +3,10 @@
 Contributors: anphira
 Tags: custom-background, theme-options, custom-menu, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, featured-images, flexible-header, footer-widgets, full-width-template, blog, accessibility-ready
 
-Requires at least: 5.5
+Requires at least: 6.0
 Tested up to: 7.0.2
 Requires PHP: 8.0
-Stable tag: v3.4.2
+Stable tag: v3.4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,7 +44,10 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
-= 3.4.2 - Jul 19 2026 =
+= 3.4.3 - Jul 24 2026 =
+* Updated: fix for loading global colors into block editor so available to render content correctly on block editor.
+
+= 3.4.2 - Jul 24 2026 =
 * Update: for compatibility with elementor full width template.
 
 = 3.4.1 - Jul 19 2026 =

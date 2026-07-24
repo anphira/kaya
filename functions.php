@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 3.4
+ * @version 3.4.3
  */
 
 /**
@@ -178,7 +178,7 @@ function kaya_theme_add_editor_styles() {
 
     // also add the child theme styles
     if(get_theme_file_uri() != get_template_directory_uri()) {
-    	add_editor_style( get_theme_file_uri('style.css') );
+    	add_editor_style( get_theme_file_uri( 'style.css' ) . '?ver=' . filemtime( get_theme_file_path( 'style.css' ) ) );
     }
 }
 add_action( 'after_setup_theme', 'kaya_theme_add_editor_styles' );

@@ -10,7 +10,7 @@
  * @author  Anphira
  * @since   3.4
  * @package Kaya
- * @version 3.4
+ * @version 3.4.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -276,18 +276,22 @@ add_action( 'wp_head', 'kaya_print_global_colors_css', 5 );
 /**
  * Make the CSS variables available inside the block editor.
  */
-function kaya_enqueue_global_colors_editor_css() {
+function kaya_add_global_colors_to_editor_settings( $editor_settings ) {
 	$css = kaya_global_colors_css();
 
 	if ( '' === $css ) {
-		return;
+		return $editor_settings;
 	}
 
-	wp_register_style( 'kaya-global-colors-editor', false, array(), '3.3' );
-	wp_enqueue_style( 'kaya-global-colors-editor' );
-	wp_add_inline_style( 'kaya-global-colors-editor', $css );
+	if ( ! isset( $editor_settings['styles'] ) || ! is_array( $editor_settings['styles'] ) ) {
+		$editor_settings['styles'] = array();
+	}
+
+	$editor_settings['styles'][] = array( 'css' => $css );
+
+	return $editor_settings;
 }
-add_action( 'enqueue_block_editor_assets', 'kaya_enqueue_global_colors_editor_css' );
+add_filter( 'block_editor_settings_all', 'kaya_add_global_colors_to_editor_settings' );
 
 /**
  * Resolve a color for CSS output.
