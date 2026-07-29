@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 3.3
+ * @version 3.4.4
  */
 
 $postID = get_queried_object_id();
@@ -206,13 +206,13 @@ if( get_theme_mod( 'kaya_a11y_enable_checkbox', false ) ) {
 					$page_hero_setting = false;
 					break;
 				case 'use_default':
-					$page_hero_setting = get_theme_mod( 'kaya_page_hero_blog_archive', false );
+					$page_hero_setting = get_theme_mod( 'kaya_page_hero', false );
 					break;
 				case 'use_page_hero':
 					$page_hero_setting = true;
 					break;
 				default: 
-					$page_hero_setting = get_theme_mod( 'kaya_page_hero_blog_archive', false );
+					$page_hero_setting = get_theme_mod( 'kaya_page_hero', false );
 			}
 		}
 		if( $page_hero_setting ) {

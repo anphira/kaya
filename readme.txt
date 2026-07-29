@@ -6,7 +6,7 @@ Tags: custom-background, theme-options, custom-menu, threaded-comments, one-colu
 Requires at least: 6.0
 Tested up to: 7.0.2
 Requires PHP: 8.0
-Stable tag: v3.4.3
+Stable tag: v3.4.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,9 @@ Recommended plugins are available at https://easya11yguide.com/kaya-wordpress-th
 From the Customizer a number of customization options exist. Please see https://easya11yguide.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 3.4.4 - Jul 29 2026 =
+* Fix: page hero setting was incorrectly assigned to get status of blog page hero setting.
 
 = 3.4.3 - Jul 24 2026 =
 * Updated: fix for loading global colors into block editor so available to render content correctly on block editor.
