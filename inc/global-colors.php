@@ -10,7 +10,7 @@
  * @author  Anphira
  * @since   3.4
  * @package Kaya
- * @version 3.4.3
+ * @version 3.4.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -241,13 +241,21 @@ function kaya_register_global_colors_palette() {
 add_action( 'after_setup_theme', 'kaya_register_global_colors_palette', 20 );
 
 /**
- * Build the :root CSS variables string for the global colors.
+ * Build the CSS for the global colors.
+ *
+ * Outputs the :root custom properties (--slug and the core-compatible
+ * --wp--preset--color--slug) plus the palette utility classes that the block
+ * editor writes into content (has-{slug}-color, -background-color, -border-color).
+ * Core normally prints those classes through global styles. This theme does not
+ * load them, so inline text colors (<mark class="has-inline-color ...">) and
+ * block color classes need them generated here.
  *
  * @return string
  */
 function kaya_global_colors_css() {
-	$colors = kaya_get_global_colors();
-	$vars   = '';
+	$colors  = kaya_get_global_colors();
+	$vars    = '';
+	$classes = '';
 
 	foreach ( $colors as $color ) {
 		if ( empty( $color['slug'] ) || empty( $color['color'] ) ) {
@@ -255,10 +263,18 @@ function kaya_global_colors_css() {
 		}
 
 		// Slug is sanitize_title() and color is sanitize_hex_color(), so both are safe.
-		$vars .= '--' . $color['slug'] . ':' . $color['color'] . ';';
+		$slug = $color['slug'];
+		$var  = 'var(--' . $slug . ')';
+
+		$vars .= '--' . $slug . ':' . $color['color'] . ';';
+		$vars .= '--wp--preset--color--' . $slug . ':' . $color['color'] . ';';
+
+		$classes .= '.has-' . $slug . '-color{color:' . $var . ' !important;}';
+		$classes .= '.has-' . $slug . '-background-color{background-color:' . $var . ' !important;}';
+		$classes .= '.has-' . $slug . '-border-color{border-color:' . $var . ' !important;}';
 	}
 
-	return '' !== $vars ? ':root{' . $vars . '}' : '';
+	return '' !== $vars ? ':root{' . $vars . '}' . $classes : '';
 }
 
 /**

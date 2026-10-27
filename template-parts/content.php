@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 3.4.1
+ * @version 3.4.6
  */
 
 
@@ -17,7 +17,7 @@ $kaya_reading_time = get_theme_mod( 'kaya_post_show_reading_time', false );
 
 ?>
 
-<article itemscope itemtype="http://schema.org/Article" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article itemscope itemtype="http://schema.org/Article" <?php post_class( is_sticky() ? 'is-sticky' : '' ); ?> id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	
 	<header class="entry-header">
 		<?php

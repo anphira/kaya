@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 3.4.3
+ * @version 3.4.6
  */
 
 /**
@@ -63,7 +63,7 @@ function kaya_send_frame_options_header() {
  */
 add_filter('relevanssi_pre_excerpt_content', 'kaya_trim_vc_shortcodes');
 function kaya_trim_vc_shortcodes($content) {
-    $content = preg_replace('\[/vc(.*?)\]', '', $content);
+    return preg_replace( '#\[/?vc_[^\]]*\]#', '', $content );
     return $content;
 }
 

@@ -6,7 +6,7 @@ Tags: custom-background, theme-options, custom-menu, threaded-comments, one-colu
 Requires at least: 6.0
 Tested up to: 7.0.2
 Requires PHP: 8.0
-Stable tag: v3.4.4
+Stable tag: v3.4.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,16 @@ Recommended plugins are available at https://easya11yguide.com/kaya-wordpress-th
 From the Customizer a number of customization options exist. Please see https://easya11yguide.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+
+= 3.4.6 - Oct 27 2026 =
+* Update: add span on copyright line content for easier styling.
+* Update: function to filter out WPBakery shortcodes from relevanssi.
+* Add: sticky class on <article> for sticky posts in category archives.
+* Fix: Global colors properly print their CSS on the front end now.
+
+= 3.4.5 - Jul 29 2026 =
+* Update: add filter on post-excerpt block to create unique anchor link text for the read more link.
 
 = 3.4.4 - Jul 29 2026 =
 * Fix: page hero setting was incorrectly assigned to get status of blog page hero setting.

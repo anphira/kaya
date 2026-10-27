@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   2.0
  * @package Kaya
- * @version 2.2
+ * @version 3.4.6
  */
 
 ?>
@@ -13,7 +13,7 @@
 			<div class="container text-center">
 				<div class="">
 					<?php if(get_theme_mod( 'kaya_show_footer_social', false)) kaya_social_icons(); ?>
-					<p class="copyright-line">Copyright &copy; <?php echo esc_html(date('Y')); ?>. All rights reserved. <?php bloginfo('name'); ?>. 
+					<p class="copyright-line"><span class="copyright-content">Copyright &copy; <?php echo esc_html(date('Y')); ?>. All rights reserved. <?php bloginfo('name'); ?>.</span> 
 						<?php $privacy_policy = '';
 						$privacy_policy = get_privacy_policy_url();
 						if('' != $privacy_policy) {

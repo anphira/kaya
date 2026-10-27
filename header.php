@@ -9,7 +9,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 3.4.4
+ * @version 3.4.6
  */
 
 $postID = get_queried_object_id();
@@ -43,6 +43,7 @@ if( get_theme_mod( 'kaya_a11y_enable_checkbox', false ) ) {
 
 	<?php if( '' == get_post_meta($postID, '_kaya_hide_header_check', true)) { ?>
 		<?php if(get_theme_mod( 'kaya_announce_bar_checkbox', false ) || get_theme_mod( 'kaya_announce_bar_checkbox_mobile', false )) { 
+			$announcement_css_class = '';
 			if(!get_theme_mod( 'kaya_announce_bar_checkbox', false ) && get_theme_mod( 'kaya_announce_bar_checkbox_mobile', false )) {
 				$announcement_css_class = 'hide-desktop';
 			}
