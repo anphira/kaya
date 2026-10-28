@@ -7,45 +7,96 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 3.4.6
+ * @version 3.4.7
  */
 
 /**
- * 
- * Updater direct from github
- * 
+ * Updater direct from GitHub.
  */
-// Automatic theme updates from the GitHub repository
 add_filter('pre_set_site_transient_update_themes', 'automatic_GitHub_updates', 100, 1);
 function automatic_GitHub_updates($data) {
-  // Theme information
-  $theme   = get_template(); // Folder name of the current theme
-  $current = wp_get_theme($theme)->get('Version'); // Get the version of the current theme
-  // GitHub information
-  $user = 'anphira'; // The GitHub username hosting the repository
-  $repo = 'kaya'; // Repository name as it appears in the URL
-  // Get the latest release tag from the repository. The User-Agent header must be sent, as per
-  // GitHub's API documentation: https://developer.github.com/v3/#user-agent-required
-  $file = @json_decode(@file_get_contents('https://api.github.com/repos/'.$user.'/'.$repo.'/releases/latest', false,
-      stream_context_create(['http' => ['header' => "User-Agent: ".$user."\r\n"]])
-  ));
-  if($file) {
-		// Clean the version string by removing common prefixes like 'v', 'ver', etc.
-    $update = preg_replace('/^(v|ver|version)?\s*/', '', $file->tag_name);
-    // Only return a response if the new version number is higher than the current version
-    // Use version_compare() for proper semantic version comparison
-    if(version_compare($update, $current, '>')) {
-  	  $data->response[$theme] = array(
-	      'theme'       => $theme,
-	      // Strip the version number of any non-alpha characters (excluding the period)
-	      // This way you can still use tags like v1.1 or ver1.1 if desired
-	      'new_version' => $update,
-	      'url'         => 'https://github.com/'.$user.'/'.$repo,
-	      'package'     => $file->assets[0]->browser_download_url,
-      );
-    }
+  if (empty($data->checked)) {
+    return $data;
   }
+
+  $theme   = get_template();
+  $current = wp_get_theme($theme)->get('Version');
+  $user    = 'anphira';
+  $repo    = 'kaya';
+
+  // Cache the API response to avoid GitHub rate limits.
+  $cache_key = 'kaya_github_latest_release';
+  $file      = get_site_transient($cache_key);
+
+  if (false === $file) {
+    $response = wp_remote_get(
+      'https://api.github.com/repos/' . $user . '/' . $repo . '/releases/latest',
+      array(
+        'timeout' => 10,
+        'headers' => array('User-Agent' => $user),
+      )
+    );
+
+    if (is_wp_error($response) || 200 !== wp_remote_retrieve_response_code($response)) {
+      return $data;
+    }
+
+    $file = json_decode(wp_remote_retrieve_body($response));
+    set_site_transient($cache_key, $file ? $file : '', 6 * HOUR_IN_SECONDS);
+  }
+
+  if (empty($file) || empty($file->tag_name)) {
+    return $data;
+  }
+
+  $update = preg_replace('/^(v|ver|version)?\s*/i', '', $file->tag_name);
+
+  if (version_compare($update, $current, '>')) {
+    // Prefer the asset named kaya.zip. Fall back to GitHub's source zipball.
+    $package = $file->zipball_url;
+    if (!empty($file->assets)) {
+      foreach ($file->assets as $asset) {
+        if ('kaya.zip' === $asset->name) {
+          $package = $asset->browser_download_url;
+          break;
+        }
+      }
+    }
+
+    $data->response[$theme] = array(
+      'theme'       => $theme,
+      'new_version' => $update,
+      'url'         => 'https://github.com/' . $user . '/' . $repo,
+      'package'     => $package,
+    );
+  }
+
   return $data;
+}
+
+/**
+ * Force the unpacked folder name to match the installed theme folder.
+ */
+add_filter('upgrader_source_selection', 'kaya_fix_update_folder_name', 10, 4);
+function kaya_fix_update_folder_name($source, $remote_source, $upgrader, $hook_extra) {
+  global $wp_filesystem;
+
+  if (empty($hook_extra['theme']) || get_template() !== $hook_extra['theme']) {
+    return $source;
+  }
+
+  $slug   = $hook_extra['theme'];
+  $target = trailingslashit($remote_source) . $slug . '/';
+
+  if (untrailingslashit($source) === untrailingslashit($target)) {
+    return $source;
+  }
+
+  if ($wp_filesystem->move($source, $target, true)) {
+    return $target;
+  }
+
+  return new WP_Error('kaya_rename_failed', 'Could not rename the Kaya theme folder.');
 }
 
 

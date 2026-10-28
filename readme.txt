@@ -6,7 +6,7 @@ Tags: custom-background, theme-options, custom-menu, threaded-comments, one-colu
 Requires at least: 6.0
 Tested up to: 7.0.2
 Requires PHP: 8.0
-Stable tag: v3.4.6
+Stable tag: v3.4.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,6 +44,8 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
+= 3.4.7 - Oct 28 2026 =
+* Fix: improve github updater code to force the theme name to be kaya when unpacked.
 
 = 3.4.6 - Oct 27 2026 =
 * Update: add span on copyright line content for easier styling.
