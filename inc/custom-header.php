@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 3.4.10
+ * @version 3.4.11
  */
 
 /**
@@ -282,6 +282,8 @@ body a:hover, body a:active {
 			$page_hero_background_color = get_theme_mod('kaya_page_hero_background_color');
 			$page_hero_background_image = get_theme_mod('kaya_page_hero_background_image');
 	}
+	$page_hero_background_color = kaya_sanitize_css_color( $page_hero_background_color ); // NEW
+	$page_hero_background_image = esc_url( $page_hero_background_image );
 	switch($page_hero_background_setting) {
 		case 'dont_use':
 			echo 'background: '. $page_hero_background_color .';';

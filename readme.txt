@@ -3,10 +3,10 @@
 Contributors: anphira
 Tags: custom-background, theme-options, custom-menu, threaded-comments, one-column, two-columns, left-sidebar, right-sidebar, custom-logo, featured-images, flexible-header, footer-widgets, full-width-template, blog, accessibility-ready
 
-Requires at least: 6.0
+Requires at least: 7.0
 Tested up to: 7.1.4
 Requires PHP: 8.0
-Stable tag: v3.4.10
+Stable tag: v3.4.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,10 @@ Recommended plugins are available at https://easya11yguide.com/kaya-wordpress-th
 From the Customizer a number of customization options exist. Please see https://easya11yguide.com/kaya-wordpress-theme/kaya-setup-guide/ for the official setup guide including current options.
 
 == Changelog ==
+
+= 3.4.11 - Nov 13 2026 =
+* Fix: update security filtering on kaya options.
+* Updated: minimum version to 7.0, just to stop worrying about supporting earlier versions of WP.
 
 = 3.4.10 - Nov 13 2026 =
 * Fix: update security filtering on kaya options.
