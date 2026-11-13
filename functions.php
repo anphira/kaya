@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 3.4.7
+ * @version 3.4.8
  */
 
 /**
@@ -311,13 +311,13 @@ function kaya_social_icons() {
 			echo '<a class="social-icon-single" href="mailto:' . sanitize_email(get_theme_mod( 'kaya_email' )) . '"><i class="fas fa-envelope"></i><span class="screen-reader-text"> Email us</span></a>';
 		}
 		if( get_theme_mod( 'kaya_social_custom_1' ) != '' ) {
-			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_social_custom_1' )) . '"><i class="' . sanitize_text_field( get_theme_mod( 'kaya_social_custom_1_icon', '' ) ) . '"></i><span class="screen-reader-text"> Email us</span></a>';
+			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_social_custom_1' )) . '"><i class="' . esc_attr( get_theme_mod( 'kaya_social_custom_1_icon', '' ) ) . '"></i><span class="screen-reader-text"> Email us</span></a>';
 		}
 		if( get_theme_mod( 'kaya_social_custom_2' ) != '' ) {
-			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_social_custom_2' )) . '"><i class="' . sanitize_text_field( get_theme_mod( 'kaya_social_custom_2_icon', '' ) ) . '"></i><span class="screen-reader-text"> Email us</span></a>';
+			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_social_custom_2' )) . '"><i class="' . esc_attr( get_theme_mod( 'kaya_social_custom_2_icon', '' ) ) . '"></i><span class="screen-reader-text"> Email us</span></a>';
 		}
 		if( get_theme_mod( 'kaya_social_custom_3' ) != '' ) {
-			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_social_custom_3' )) . '"><i class="' . sanitize_text_field( get_theme_mod( 'kaya_social_custom_3_icon', '' ) ) . '"></i><span class="screen-reader-text"> Email us</span></a>';
+			echo '<a class="social-icon-single" href="' . esc_url(get_theme_mod( 'kaya_social_custom_3' )) . '"><i class="' . esc_attr( get_theme_mod( 'kaya_social_custom_3_icon', '' ) ) . '"></i><span class="screen-reader-text"> Email us</span></a>';
 		}
 	echo '</div>';
 }
@@ -709,7 +709,7 @@ function kaya_page_settings_display_callback( $post ) {
 
     
     <p>Enter content for page hero area:<br /><em>This content area supports full HTML</em></p>
-    <textarea rows="4" style="width: 100%;" id="kaya_page_hero_content" name="kaya_page_hero_content" ><?php echo $page_hero_content; ?></textarea>
+    <textarea rows="4" style="width: 100%;" id="kaya_page_hero_content" name="kaya_page_hero_content" ><?php echo esc_textarea( $page_hero_content ); ?></textarea>
 
     <?php 
 }
@@ -773,12 +773,12 @@ function kaya_page_settings_save_meta_box( $post_id ) {
 	}
 
 	if( isset( $_POST['kaya_page_hero_header_color'] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-        update_post_meta( $post_id, '_kaya_page_hero_header_color', wp_unslash($_POST['kaya_page_hero_header_color']) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+        update_post_meta( $post_id, '_kaya_page_hero_header_color', kaya_sanitize_css_color( wp_unslash($_POST['kaya_page_hero_header_color']) ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 	}
 
     // Checks for input and saves if needed
 	if( isset( $_POST[ 'kaya_page_hero_image' ] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-	    update_post_meta( $post_id, '_kaya_page_hero_image', wp_unslash($_POST[ 'kaya_page_hero_image' ]) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+	    update_post_meta( $post_id, '_kaya_page_hero_image', wp_slash( esc_url_raw( wp_unslash($_POST[ 'kaya_page_hero_image' ]) ) ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 	}
 
 	if( isset( $_POST['kaya_page_hero_background_setting'] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
@@ -786,7 +786,12 @@ function kaya_page_settings_save_meta_box( $post_id ) {
 	}
 		
 	if( isset( $_POST['kaya_page_hero_content'] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-		update_post_meta( $post_id, '_kaya_page_hero_content', $_POST['kaya_page_hero_content'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		// Users who may post unfiltered HTML keep full HTML. Everyone else gets the post content allowlist.
+		$kaya_page_hero_content = $_POST['kaya_page_hero_content']; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
+		if( !current_user_can( 'unfiltered_html' ) ) {
+			$kaya_page_hero_content = wp_filter_post_kses( $kaya_page_hero_content );
+		}
+		update_post_meta( $post_id, '_kaya_page_hero_content', $kaya_page_hero_content );
 	}
 }
 add_action( 'save_post', 'kaya_page_settings_save_meta_box' );

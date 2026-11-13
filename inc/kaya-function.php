@@ -5,7 +5,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 3.4
+ * @version 3.4.8
  */
 
 
@@ -15,8 +15,29 @@
 if (!function_exists('kaya_sanitize_logo')) {
 	function kaya_sanitize_logo( $value ) {
 	    
-	    return $value;
+	    return esc_url_raw( $value );
 	}
+}
+
+/**
+ * Sanitize a CSS color value.
+ *
+ * Accepts hex values, color names, and rgb()/hsl() functions. Returns an empty
+ * string for anything else so the value is safe to print inside a style block.
+ *
+ * @param string $color The color value to check.
+ * @return string The color value or an empty string.
+ */
+if (!function_exists('kaya_sanitize_css_color')) {
+	function kaya_sanitize_css_color( $color ) {
+		$color = trim( (string) $color );
+
+		if ( preg_match( '/^(#[0-9a-f]{3,8}|[a-z]+|(rgb|hsl)a?\([0-9\s.,%\/]+\))$/i', $color ) ) {
+			return $color;
+		}
+
+		return '';
+ 	}
 }
 
 /**

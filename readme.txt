@@ -44,6 +44,9 @@ From the Customizer a number of customization options exist. Please see https://
 
 == Changelog ==
 
+= 3.4.8 - Nov 13 2026 =
+* Fix: update security filtering on kaya options.
+
 = 3.4.7 - Oct 28 2026 =
 * Fix: improve github updater code to force the theme name to be kaya when unpacked.
 
