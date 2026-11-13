@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 3.4.9
+ * @version 3.4.10
  */
 
 /**
@@ -250,13 +250,13 @@ body a:hover, body a:active {
 	<?php
 	if(is_home()) {
 		$page_for_posts = get_option( 'page_for_posts' );
-		$page_hero_background_color = get_post_meta($page_for_posts, '_kaya_page_hero_header_color', true);
-		$page_hero_background_image = get_post_meta($page_for_posts, '_kaya_page_hero_image', true);
+		$page_hero_background_color = kaya_sanitize_css_color(get_post_meta($page_for_posts, '_kaya_page_hero_header_color', true));
+		$page_hero_background_image = esc_url(get_post_meta($page_for_posts, '_kaya_page_hero_image', true));
 		$page_hero_background_setting = get_post_meta($page_for_posts, 'kaya_page_hero_background_setting', true);
 	}
 	else {
-		$page_hero_background_color = get_post_meta(get_the_ID(), '_kaya_page_hero_header_color', true);
-		$page_hero_background_image = get_post_meta(get_the_ID(), '_kaya_page_hero_image', true);
+		$page_hero_background_color = kaya_sanitize_css_color(get_post_meta(get_the_ID(), '_kaya_page_hero_header_color', true));
+		$page_hero_background_image = esc_url(get_post_meta(get_the_ID(), '_kaya_page_hero_image', true));
 		$page_hero_background_setting = get_post_meta(get_the_ID(), 'kaya_page_hero_background_setting', true);
 	}
 	switch ($page_hero_background_setting ) {
@@ -279,8 +279,8 @@ body a:hover, body a:active {
 			break;
 		default: 
 			$page_hero_background_setting = get_theme_mod('kaya_page_hero_background_image_type');
-			$page_hero_background_color = kaya_sanitize_css_color(get_theme_mod('kaya_page_hero_background_color'));
-			$page_hero_background_image = esc_url(get_theme_mod('kaya_page_hero_background_image'));
+			$page_hero_background_color = get_theme_mod('kaya_page_hero_background_color');
+			$page_hero_background_image = get_theme_mod('kaya_page_hero_background_image');
 	}
 	switch($page_hero_background_setting) {
 		case 'dont_use':
