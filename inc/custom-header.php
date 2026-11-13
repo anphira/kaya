@@ -7,7 +7,7 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 3.4.8
+ * @version 3.4.9
  */
 
 /**
@@ -27,7 +27,7 @@ add_action( 'after_setup_theme', 'kaya_custom_header_setup' );
 function kaya_customizer_settings() {
 	
 	if( '' != get_theme_mod( 'kaya_custom_google_fonts_url', '' )) {
-		echo '<link href="', get_theme_mod( 'kaya_custom_google_fonts_url' ), '" rel="stylesheet">';
+		echo '<link href="', esc_url(get_theme_mod( 'kaya_custom_google_fonts_url' )), '" rel="stylesheet">';
 	}
 	elseif(!get_theme_mod( 'kaya_disable_google_fonts', false )) {
 		echo kaya_build_fonts_from_google( get_theme_mod( 'kaya_heading_font', 'verdana' ), get_theme_mod( 'kaya_paragraph_font', 'verdana' ) );

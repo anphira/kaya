@@ -7,14 +7,14 @@
  * @author  Anphira
  * @since   0.1
  * @package Kaya
- * @version 3.4.8
+ * @version 3.4.9
  */
 
 /**
  * Updater direct from GitHub.
  */
-add_filter('pre_set_site_transient_update_themes', 'automatic_GitHub_updates', 100, 1);
-function automatic_GitHub_updates($data) {
+add_filter('pre_set_site_transient_update_themes', 'kaya_automatic_GitHub_updates', 100, 1);
+function kaya_automatic_GitHub_updates($data) {
   if (empty($data->checked)) {
     return $data;
   }
@@ -63,6 +63,10 @@ function automatic_GitHub_updates($data) {
       }
     }
 
+    $host = wp_parse_url( $package, PHP_URL_HOST );
+		if ( ! in_array( $host, array( 'github.com', 'api.github.com' ), true ) ) {
+			return $data;
+		}
     $data->response[$theme] = array(
       'theme'       => $theme,
       'new_version' => $update,
